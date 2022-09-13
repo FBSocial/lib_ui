@@ -5,23 +5,25 @@ import 'package:flutter/widgets.dart';
 import 'package:lib_ui/src/theme/themes.dart';
 
 class AppTheme extends InheritedWidget {
+  final AppThemeData theme;
+  final AppThemeData? darkTheme;
+
   const AppTheme({
     Key? key,
-    required this.data,
+    required this.theme,
+    this.darkTheme,
     required Widget child,
   }) : super(
           key: key,
           child: child,
         );
 
-  final AppThemeData data;
-
   static AppThemeData of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AppTheme>()!.data;
+    return context.dependOnInheritedWidgetOfExactType<AppTheme>()!.theme;
   }
 
   @override
   bool updateShouldNotify(covariant AppTheme oldWidget) {
-    return oldWidget.data != data;
+    return oldWidget.theme != theme;
   }
 }
