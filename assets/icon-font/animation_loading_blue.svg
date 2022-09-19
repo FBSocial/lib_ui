@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>loading_blue_36x36</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BUFF图标库" transform="translate(-147.000000, -3535.000000)">
+            <g id="error_outline-24px" transform="translate(147.000000, 3535.000000)">
+                <polygon id="路径" points="0 0 36 0 36 36 0 36"></polygon>
+                <path d="M17.982,0 C8.046,0 0,8.064 0,18 C0,27.936 8.046,36 17.982,36 C27.936,36 36,27.936 36,18 C36,8.064 27.936,0 17.982,0 Z M18,32.4 C10.044,32.4 3.6,25.956 3.6,18 C3.6,10.044 10.044,3.6 18,3.6 C25.956,3.6 32.4,10.044 32.4,18 C32.4,25.956 25.956,32.4 18,32.4 Z" id="形状" fill="" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

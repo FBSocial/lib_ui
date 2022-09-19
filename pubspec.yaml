@@ -13,9 +13,33 @@ dependencies:
 
   # 限制函数的连续执行，防止按钮重复点击用的 https://github.com/mhrst/just_throttle_it
   just_throttle_it: ^2.1.0
+  # 用于处理IOS、Android、web三个平台的SVG资源 https://github.com/peiffer-innovations/websafe_svg
+  websafe_svg: ^2.1.0
+  # 动画 https://github.com/flutter/packages/tree/master/packages/animations
+  animations: ^2.0.2
+  # 矢量动画库：
+  # pub.dev: https://pub.dev/packages/rive
+  # OfficialWeb: https://rive.app/
+  rive: ^0.8.1
+  # 缓存网络图像文件 https://github.com/Baseflow/flutter_cached_network_image
+  cached_network_image: ^3.2.0
+  # GetX轻量级的Flutter整体解决方案（状态管理、依赖注入和路由管理） https://github.com/jonataslaw/getx
+  get:
+    git:
+      url: https://github.com/FBSocial/getx_fix.git
+      ref: 4.6.5.1
+  # 采用外接纹理的实现图片显示 https://github.com/BuildAndRelease/flutter_image_view
+  flutter_image_view:
+    git:
+      url: https://github.com/FBSocial/flutter_image_view.git
+      ref: 2.0.1+1
+  # 土司 https://github.com/OpenFlutter/flutter_oktoast
+  oktoast: ^3.1.5
 
   lib_theme:
     path: ../lib_theme
+  lib_extension:
+    path: ../lib_extension
 
 dev_dependencies:
   flutter_test:
