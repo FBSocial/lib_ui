@@ -1,7 +1,7 @@
 name: lib_ui
 description: ui库
 version: 0.0.1
-homepage:
+publish_to: none
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -35,11 +35,18 @@ dependencies:
       ref: 2.0.1+1
   # 土司 https://github.com/OpenFlutter/flutter_oktoast
   oktoast: ^3.1.5
+  # IOS原生文本输入框插件 https://gitee.com/fanbook/native_text_field
+  native_text_field:
+    git:
+      url: https://github.com/FBSocial/native_text_field.git
+      ref: 5a1286a7e0588da9a24a110eddd90ceeb4eb62cb
 
   lib_theme:
     path: ../lib_theme
   lib_extension:
     path: ../lib_extension
+  lib_image:
+    path: ../lib_image
 
 dev_dependencies:
   flutter_test:
