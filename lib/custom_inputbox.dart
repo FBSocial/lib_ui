@@ -76,13 +76,25 @@ class CustomInputBox extends StatefulWidget {
 }
 
 class _CustomInputBoxState extends State<CustomInputBox> {
+  bool _isShowClear = false;
+
   @override
   void initState() {
     super.initState();
+    setClearButtonState();
+    widget.controller.addListener(checkNeedShowClearButton);
+  }
+
+  @override
+  void didUpdateWidget(covariant CustomInputBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    setClearButtonState();
   }
 
   @override
   Widget build(BuildContext context) {
+    setClearButtonState();
+
     final decoration = InputDecoration(
       contentPadding: widget.contentPadding,
       border: OutlineInputBorder(
@@ -224,5 +236,20 @@ class _CustomInputBoxState extends State<CustomInputBox> {
     if (widget.onChange != null) widget.onChange!(val);
   }
 
-  bool get _isShowClear => widget.controller.text.trim().isNotEmpty;
+  void setClearButtonState() {
+    _isShowClear = widget.controller.text.trim().isNotEmpty;
+  }
+
+  void checkNeedShowClearButton() {
+    final isNeedShow = widget.controller.text.trim().isNotEmpty;
+    if (_isShowClear != isNeedShow) {
+      if (mounted) {
+        setState(() {
+          _isShowClear = isNeedShow;
+        });
+      }
+    }
+  }
+
+// bool get _isShowClear => widget.controller.text.trim().isNotEmpty;
 }
