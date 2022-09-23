@@ -40,7 +40,6 @@ class ScrollablePositionedList extends StatefulWidget {
     required this.itemBuilder,
     Key? key,
     this.itemScrollController,
-    this.shrinkWrap = false,
     ItemPositionsListener? itemPositionsListener,
     this.initialScrollIndex = 0,
     this.initialAlignment = 0,
@@ -68,11 +67,11 @@ class ScrollablePositionedList extends StatefulWidget {
     required this.itemBuilder,
     required this.separatorBuilder,
     Key? key,
-    this.shrinkWrap = false,
     this.itemScrollController,
     ItemPositionsListener? itemPositionsListener,
     this.initialScrollIndex = 0,
     this.initialAlignment = 0,
+    this.initialOffset = 0,
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
     this.physics,
@@ -83,7 +82,6 @@ class ScrollablePositionedList extends StatefulWidget {
     this.addRepaintBoundaries = true,
     this.minCacheExtent,
     required this.scrollController,
-    this.initialOffset = 0,
   })  : assert(itemCount != null),
         assert(itemBuilder != null),
         assert(separatorBuilder != null),
@@ -132,15 +130,6 @@ class ScrollablePositionedList extends StatefulWidget {
   ///
   /// See [ScrollView.reverse].
   final bool reverse;
-
-  /// {@template flutter.widgets.scroll_view.shrinkWrap}
-  /// Whether the extent of the scroll view in the [scrollDirection] should be
-  /// determined by the contents being viewed.
-  ///
-  ///  Defaults to false.
-  ///
-  /// See [ScrollView.shrinkWrap].
-  final bool shrinkWrap;
 
   /// How the scroll view should respond to user input.
   ///
@@ -194,9 +183,12 @@ class ItemScrollController {
   /// If `false`, then [jumpTo] and [scrollTo] must not be called.
   bool get isAttached => _scrollableListState != null;
 
-  _ScrollablePositionedListState? _scrollableListState;
+  ScrollController? get scrollController =>
+      _scrollableListState?.primary.scrollController;
 
-  double get alignment => _scrollableListState!.primary.alignment;
+  double? get alignment => _scrollableListState?.primary.alignment;
+
+  _ScrollablePositionedListState? _scrollableListState;
 
   /// Immediately, without animation, reconfigure the list so that the item at
   /// [index]'s leading edge is at the given [alignment].
@@ -214,10 +206,9 @@ class ItemScrollController {
   /// * 0 aligns the left edge of the item with the left edge of the view
   /// * 1 aligns the left edge of the item with the right edge of the view.
   /// * 0.5 aligns the left edge of the item with the center of the view.
-
   void jumpTo({required int index, double alignment = 0, double offset = 0}) {
-    _scrollableListState!
-        ._jumpTo(index: index, alignment: alignment, offset: offset);
+    _scrollableListState?._jumpTo(
+        index: index, alignment: alignment, offset: offset);
   }
 
   /// Animate the list over [duration] using the given [curve] such that the
@@ -294,7 +285,8 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
         offset: widget.initialOffset);
     secondary = _ListDisplayDetails(const ValueKey('Pong'),
         offset: widget.initialOffset);
-    final ItemPosition? initialPosition = PageStorage.of(context)!.readState(context);
+    final ItemPosition? initialPosition =
+        PageStorage.of(context)!.readState(context);
     primary.target = initialPosition?.index ?? widget.initialScrollIndex;
     primary.alignment =
         initialPosition?.itemLeadingEdge ?? widget.initialAlignment;
