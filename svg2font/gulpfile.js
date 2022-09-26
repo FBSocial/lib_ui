@@ -57,7 +57,7 @@ function camelNaming(name, capitalize = true) {
 function generateDartFile(icons) {
     let lines = "";
     for (let icon of icons) {
-        lines += `  static const IconData ${icon.name} = IconData(${icon.code}, fontFamily: "iconfont");\n`;
+        lines += `  static const IconData ${icon.name} = IconData(${icon.code}, fontFamily: "iconfont", fontPackage: "lib_ui");\n`;
     }
     let content = `// GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/widgets.dart';
