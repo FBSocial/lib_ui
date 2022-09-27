@@ -23,11 +23,6 @@ dependencies:
   rive: ^0.8.1
   # 缓存网络图像文件 https://github.com/Baseflow/flutter_cached_network_image
   cached_network_image: ^3.2.0
-  # GetX轻量级的Flutter整体解决方案（状态管理、依赖注入和路由管理） https://github.com/jonataslaw/getx
-  get:
-    git:
-      url: https://github.com/FBSocial/getx_fix.git
-      ref: 4.6.5.1
   # 采用外接纹理的实现图片显示 https://github.com/BuildAndRelease/flutter_image_view
   flutter_image_view:
     git:

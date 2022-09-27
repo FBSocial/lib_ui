@@ -391,7 +391,7 @@ packages:
     source: sdk
     version: "0.0.0"
   get:
-    dependency: "direct main"
+    dependency: transitive
     description:
       path: "."
       ref: "4.6.5.1"
