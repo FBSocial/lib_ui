@@ -43,7 +43,8 @@ class ProxyIndexList extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => buildList(controller!.listType);
+  Widget build(BuildContext context) =>
+      buildList(controller?.listType ?? ListType.scrollablePositionedList);
 
   Widget buildList(ListType type) {
     if (type == ListType.indexList) {
