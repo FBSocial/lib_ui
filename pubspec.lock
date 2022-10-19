@@ -206,6 +206,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.3"
+  date_format:
+    dependency: transitive
+    description:
+      name: date_format
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.7"
   dbus:
     dependency: transitive
     description:
@@ -592,8 +599,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "5a1286a7e0588da9a24a110eddd90ceeb4eb62cb"
-      resolved-ref: "5a1286a7e0588da9a24a110eddd90ceeb4eb62cb"
+      ref: "2.0.3"
+      resolved-ref: "5e362b62281d245351aea7ad67ed3b1e723d1451"
       url: "https://github.com/FBSocial/native_text_field.git"
     source: git
     version: "2.0.1+1"
