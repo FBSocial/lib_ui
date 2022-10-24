@@ -104,6 +104,7 @@ class _LoadMoreState extends State<LoadMore> {
       _isLoading = false;
     }).catchError((_) {
       _isLoading = false;
+      return;
     });
   }
 
