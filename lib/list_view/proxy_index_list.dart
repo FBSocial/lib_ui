@@ -74,9 +74,9 @@ class ProxyIndexList extends StatelessWidget {
       itemBuilder: builder,
       itemCount: itemCount,
       initialAlignment: initialAlignment == ProxyInitialAlignment.top ? 0 : 1,
-      itemScrollController: controller!.itemScrollController!,
+      itemScrollController: controller!.itemScrollController,
       physics: physics!,
-      itemPositionsListener: indexListener!.itemPositionsListener!,
+      itemPositionsListener: indexListener!.itemPositionsListener,
       scrollController: controller!.scrollController,
       minCacheExtent: minCacheExtent,
     );
