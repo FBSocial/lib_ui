@@ -162,8 +162,8 @@ class FlutterAvatar extends StatelessWidget {
       return Container(
         width: _size,
         height: _size,
-        decoration: BoxDecoration(
-          color: Theme.of(context).dividerColor,
+        decoration: const BoxDecoration(
+          color: Colors.white,
           shape: BoxShape.circle,
         ),
       );
