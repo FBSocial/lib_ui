@@ -163,7 +163,6 @@ class FlutterAvatar extends StatelessWidget {
         width: _size,
         height: _size,
         decoration: const BoxDecoration(
-          color: Colors.white,
           shape: BoxShape.circle,
         ),
       );
