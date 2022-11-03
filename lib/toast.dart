@@ -11,6 +11,10 @@ enum ToastIcon {
 }
 
 class Toast {
+  static void text(String msg) {
+    showToast(msg);
+  }
+
   static void iconToast(
       {required ToastIcon icon,
       required String? label,
