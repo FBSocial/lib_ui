@@ -43,6 +43,7 @@ dependencies:
   lib_image:
     path: ../lib_image
   flutter_svg: ^1.0.3
+  sliding_sheet: ^0.5.2
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 /*
- * @FilePath       : /social/lib/widgets/fb_ui_kit/button/button_builder.dart
+ * @FilePath       : /social/lib/widgets/lib_ui_kit/button/button_builder.dart
  * 
  * @Info           : 统一组件：图标（可选）+ 文字 按钮
  * 
