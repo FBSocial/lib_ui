@@ -227,6 +227,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.1"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.6"
   disk_space:
     dependency: transitive
     description:
@@ -352,8 +359,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "2.0.1+2"
-      resolved-ref: ea1ee5aa39550e7dfaa1658ba2ffd6437d3d57e8
+      ref: "2.1.0"
+      resolved-ref: "5adcbb019ebec28e088323cebd57836eb25653c3"
       url: "https://github.com/FBSocial/flutter_link_preview.git"
     source: git
     version: "2.0.1+2"
@@ -381,7 +388,7 @@ packages:
     source: git
     version: "2.1.0"
   flutter_svg:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_svg
       url: "https://pub.dartlang.org"
@@ -401,8 +408,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "4.6.5.1"
-      resolved-ref: "61f9e53340f95b9c64e6da71c3f25ee94aa1c89c"
+      ref: "4.6.5.2"
+      resolved-ref: "543da3face7bb217c1be8c68a90022898e7f7072"
       url: "https://github.com/FBSocial/getx_fix.git"
     source: git
     version: "4.6.5"
@@ -536,6 +543,13 @@ packages:
     dependency: "direct main"
     description:
       path: "../lib_image"
+      relative: true
+    source: path
+    version: "0.0.1"
+  lib_net:
+    dependency: transitive
+    description:
+      path: "../lib_net"
       relative: true
     source: path
     version: "0.0.1"
