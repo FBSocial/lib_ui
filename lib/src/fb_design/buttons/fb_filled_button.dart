@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:lib_ui/lib_ui.dart';
 import 'package:lib_ui/src/fb_colors.dart';
-import 'package:flutter/material.dart';
 
 import 'fb_buttons_mixins.dart';
 
 enum _ButtonType {
   primary,
-  seconary,
+  secondary,
   tertiary,
+  quaternary,
   dangerous,
 }
 
@@ -39,7 +40,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
     Key? key,
-  })  : type = _ButtonType.seconary,
+  })  : type = _ButtonType.secondary,
         super(key: key);
 
   const FbFilledButton.tertiary(
@@ -51,6 +52,17 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     Key? key,
   })  : type = _ButtonType.tertiary,
+        super(key: key);
+
+  const FbFilledButton.quaternary(
+    this.label, {
+    this.icon,
+    required this.onTap,
+    this.onLongPress,
+    this.state = FbButtonState.normal,
+    this.size = FbButtonSize.small,
+    Key? key,
+  })  : type = _ButtonType.quaternary,
         super(key: key);
 
   const FbFilledButton.dangerous(
@@ -104,8 +116,10 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
       switch (type) {
         case _ButtonType.primary:
           return Colors.white;
-        case _ButtonType.seconary:
         case _ButtonType.tertiary:
+          return theme.textTheme.bodyText2!.color!;
+        case _ButtonType.secondary:
+        case _ButtonType.quaternary:
           return theme.primaryColor;
         case _ButtonType.dangerous:
           return Colors.white;
@@ -114,6 +128,11 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
 
     switch (state) {
       case FbButtonState.normal:
+        if (states.contains(MaterialState.pressed)) {
+          return colorDistinguishedByButtonType().withOpacity(0.7);
+        } else {
+          return colorDistinguishedByButtonType();
+        }
       case FbButtonState.loading:
         return colorDistinguishedByButtonType();
       case FbButtonState.disabled:
@@ -132,9 +151,10 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
       switch (type) {
         case _ButtonType.primary:
           return theme.primaryColor;
-        case _ButtonType.seconary:
-          return theme.colorScheme.onSecondary.withOpacity(0.1);
+        case _ButtonType.secondary:
         case _ButtonType.tertiary:
+          return theme.colorScheme.onSecondary.withOpacity(0.1);
+        case _ButtonType.quaternary:
           return theme.primaryColor.withOpacity(0.1);
         case _ButtonType.dangerous:
           return FbColors.destructiveRed;
@@ -143,7 +163,11 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
 
     switch (state) {
       case FbButtonState.normal:
-        return colorDistinguishedByButtonType();
+        if (states.contains(MaterialState.pressed)) {
+          return colorDistinguishedByButtonType().withOpacity(0);
+        } else {
+          return colorDistinguishedByButtonType();
+        }
       case FbButtonState.loading:
         return colorDistinguishedByButtonType();
       case FbButtonState.disabled:
@@ -152,7 +176,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
       case FbButtonState.deactivated:
         final color = colorDistinguishedByButtonType();
         // 禁用态有些特殊，次按钮的背景色是 0.1，其他类型按钮的背景色是 0.4 透明度
-        if (type == _ButtonType.seconary || type == _ButtonType.tertiary) {
+        if (type == _ButtonType.secondary || type == _ButtonType.tertiary) {
           return color.withOpacity(0.1);
         } else {
           return color.withOpacity(0.4);
