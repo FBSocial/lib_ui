@@ -1,5 +1,5 @@
-import 'package:lib_ui/lib_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_ui/lib_ui.dart';
 
 import 'fb_buttons_mixins.dart';
 
@@ -64,7 +64,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     if (states.contains(MaterialState.hovered)) {
       return colorDistinguishedByButtonType().withOpacity(0.1);
     }
-    return null;
+    if (states.contains(MaterialState.pressed)) {
+      return theme.backgroundColor.withOpacity(0.8);
+    }
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {

@@ -164,7 +164,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     switch (state) {
       case FbButtonState.normal:
         if (states.contains(MaterialState.pressed)) {
-          return colorDistinguishedByButtonType().withOpacity(0);
+          return colorDistinguishedByButtonType().withOpacity(0.8);
         } else {
           return colorDistinguishedByButtonType();
         }

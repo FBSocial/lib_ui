@@ -1,5 +1,5 @@
-import 'package:lib_ui/lib_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_ui/lib_ui.dart';
 
 mixin FbButtonMixin {
   double getFontSize(FbButtonSize size) {
@@ -69,8 +69,7 @@ mixin FbButtonMixin {
     if (state == FbButtonState.completed) return color;
 
     if (states.contains(MaterialState.pressed)) {
-      return Color.alphaBlend(
-          Colors.black.withOpacity(0.15), color.withOpacity(0.7));
+      return Color.alphaBlend(Colors.black.withOpacity(0.15), color);
     }
     if (states.contains(MaterialState.hovered)) {
       return Color.alphaBlend(Colors.white.withOpacity(0.15), color);
