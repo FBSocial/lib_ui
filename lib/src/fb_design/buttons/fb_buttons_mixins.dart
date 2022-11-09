@@ -1,15 +1,13 @@
 import 'package:lib_ui/lib_ui.dart';
 import 'package:flutter/material.dart';
 
-import '../fb_loading_indicator.dart';
-
 mixin FbButtonMixin {
   double getFontSize(FbButtonSize size) {
     switch (size) {
       case FbButtonSize.small:
       case FbButtonSize.medium:
-      case FbButtonSize.followConstraint:
         return 14;
+      case FbButtonSize.followConstraint:
       case FbButtonSize.large:
         return 16;
     }
