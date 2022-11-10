@@ -13,8 +13,8 @@
  * @LastEditTime   : 2022-03-11 16:57:28
  *
  */
-import 'package:lib_ui/src/painting/fb_rounded_rectangle_border.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_ui/src/painting/fb_rounded_rectangle_border.dart';
 
 /// 设计规范 https://idreamsky.feishu.cn/wiki/wikcnfMNP9YPqralTmDuWl8PSKc
 ///
@@ -54,13 +54,10 @@ final ThemeData fbTheme = ThemeData(
   iconTheme: const IconThemeData(color: _iconGray, size: 24),
   // 这个颜色值也会用来表示 UI 页面上的浅色部分（图标和文本），从目前的规范定义上看，就使用 dividerColor
   dividerColor: _lightGray.withOpacity(0.1),
-  colorScheme:
-      const ColorScheme.light(primary: fbPrimaryColor, onSurface: _iconGray, onSecondary: _lightGray),
-  dividerTheme: const DividerThemeData(
-      // color 会使用 dividerColor，无需设置
-      // color: const Color(0xFF8F959E).withOpacity(0.15),
-      space: 0,
-      thickness: 0.5),
+  colorScheme: const ColorScheme.light(
+      primary: fbPrimaryColor, onSurface: _iconGray, onSecondary: _lightGray),
+  dividerTheme: DividerThemeData(
+      color: _lightGray.withOpacity(0.1), space: 0, thickness: 0.5),
   disabledColor: _iconGray,
   textTheme: const TextTheme(
     headline1: TextStyle(color: _fontColor, fontSize: 22),
