@@ -40,7 +40,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         super(key: key);
 
   Color? getBackgroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = Theme.of(context);
+    final theme = fbTheme;
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
@@ -72,7 +72,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = Theme.of(context);
+    final theme = fbTheme;
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
@@ -90,9 +90,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
       case FbButtonState.deactivated:
         return colorDistinguishedByButtonType().withOpacity(0.4);
       case FbButtonState.disabled:
-        return Theme.of(context).iconTheme.color!.withOpacity(0.4);
+        return fbTheme.iconTheme.color!.withOpacity(0.4);
       case FbButtonState.completed:
-        return Theme.of(context).iconTheme.color!.withOpacity(0.8);
+        return fbTheme.iconTheme.color!.withOpacity(0.8);
     }
   }
 
@@ -130,7 +130,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   }
 
   BorderSide? getBorderSide(BuildContext context, Set<MaterialState> states) {
-    final theme = Theme.of(context);
+    final theme = fbTheme;
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:

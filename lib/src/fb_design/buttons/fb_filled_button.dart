@@ -110,7 +110,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = Theme.of(context);
+    final theme = fbTheme;
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
@@ -145,7 +145,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getBackgroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = Theme.of(context);
+    final theme = fbTheme;
 
     Color colorDistinguishedByButtonType() {
       switch (type) {

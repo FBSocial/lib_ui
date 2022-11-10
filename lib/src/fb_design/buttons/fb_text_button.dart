@@ -74,7 +74,7 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = Theme.of(context);
+    final theme = fbTheme;
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
