@@ -67,6 +67,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     if (states.contains(MaterialState.pressed)) {
       return theme.backgroundColor.withOpacity(0.8);
     }
+
+    return null;
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
