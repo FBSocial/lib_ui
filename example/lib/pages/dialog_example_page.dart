@@ -1,5 +1,6 @@
 import 'package:lib_ui/lib_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_ui/toast.dart';
 
 class DialogExamplePage extends StatelessWidget {
   const DialogExamplePage({Key? key}) : super(key: key);

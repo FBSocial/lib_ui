@@ -10,7 +10,6 @@ export 'src/fb_design/fb_loading_indicator.dart';
 export 'src/theme.dart';
 export 'src/theme/app_theme.dart';
 export 'src/theme/themes.dart';
-export 'src/toast.dart';
 
 class FbTheme extends StatelessWidget {
   final Widget child;
