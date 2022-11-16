@@ -73,7 +73,7 @@ class Loading {
       Material(
         color: Colors.transparent,
         child: isEmpty
-            ? const SizedBox()
+            ? const SizedBox.expand()
             : Center(
               child: Container(
                 width: 112,
