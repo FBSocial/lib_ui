@@ -40,7 +40,7 @@ class CountShowWidget extends StatelessWidget {
               ),
             ),
           Text(
-            "$currentCount/$allCount",
+            allCount == -1 ? "$currentCount" : "$currentCount/$allCount",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 11,
