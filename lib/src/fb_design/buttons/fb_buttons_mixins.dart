@@ -37,8 +37,9 @@ mixin FbButtonMixin {
         return const Size(184, 36);
       case FbButtonSize.large:
         return const Size(240, 44);
+      case FbButtonSize.followConstraint:
+        return null;
     }
-    return null;
   }
 
   Widget constrain(Widget widget, FbButtonSize size) {
