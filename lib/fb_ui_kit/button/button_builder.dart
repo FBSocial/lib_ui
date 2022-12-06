@@ -393,9 +393,9 @@ class FbButton extends StatelessWidget {
             const EdgeInsets.symmetric(horizontal: 4)),
         //  边框
         side: MaterialStateProperty.all(_getBorderSide()),
-        //  圆角：按钮高度 / 8 （规范提供公式）
+        //  圆角：按钮高度 / 6 （规范提供公式）
         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(btnSize.height / 8))),
+            borderRadius: BorderRadius.circular(btnSize.height / 6))),
         tapTargetSize: MaterialTapTargetSize.padded,
       );
 
