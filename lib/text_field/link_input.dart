@@ -59,53 +59,50 @@ class _LinkInputState extends State<LinkInput> {
 
     ///TODO:这个颜色暂时没有对应的theme参数
     const color2 = Color(0xff576B95);
-    return Container(
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            child: Row(
-              children: [
-                buildChooseButton(context, choosing: linkType == _LinkTypes.url,
-                    onTap: () {
-                  if (linkType == _LinkTypes.url) return;
-                  linkType = _LinkTypes.url;
-                  updateLinkBean(linkType);
-                  widget.onChanged?.call(UrlBean(''));
-                  refresh();
-                }),
-                sizeWidth12,
-                buildChooseButton(context,
-                    choosing: linkType == _LinkTypes.wxProgram,
-                    text: '小程序'.tr,
-                    iconData: IconFont.channelLink, onTap: () {
-                  if (linkType == _LinkTypes.wxProgram) return;
-                  linkType = _LinkTypes.wxProgram;
-                  updateLinkBean(linkType);
-                  widget.onChanged?.call(WxProgramBean(''));
-                  refresh();
-                }),
-                const Spacer(),
-                GestureDetector(
-                  onTap: hasLink ? clearCallback.clear : null,
-                  child: Text(
-                    '清空'.tr,
-                    style: theme.textTheme.bodyText1!.copyWith(
-                        fontSize: 13, color: hasLink ? color2 : color1),
-                  ),
-                )
-              ],
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+          child: Row(
+            children: [
+              buildChooseButton(context, choosing: linkType == _LinkTypes.url,
+                  onTap: () {
+                if (linkType == _LinkTypes.url) return;
+                linkType = _LinkTypes.url;
+                updateLinkBean(linkType);
+                widget.onChanged?.call(UrlBean(''));
+                refresh();
+              }),
+              sizeWidth12,
+              buildChooseButton(context,
+                  choosing: linkType == _LinkTypes.wxProgram,
+                  text: '小程序'.tr,
+                  iconData: IconFont.channelLink, onTap: () {
+                if (linkType == _LinkTypes.wxProgram) return;
+                linkType = _LinkTypes.wxProgram;
+                updateLinkBean(linkType);
+                widget.onChanged?.call(WxProgramBean(''));
+                refresh();
+              }),
+              const Spacer(),
+              GestureDetector(
+                onTap: hasLink ? clearCallback.clear : null,
+                child: Text(
+                  '清空'.tr,
+                  style: theme.textTheme.bodyText1!
+                      .copyWith(fontSize: 13, color: hasLink ? color2 : color1),
+                ),
+              )
+            ],
           ),
-          Divider(
-            height: 1,
-            color: color1.withOpacity(0.2),
-          ),
-          buildInput()
-        ],
-      ),
+        ),
+        Divider(
+          height: 1,
+          color: color1.withOpacity(0.2),
+        ),
+        buildInput()
+      ],
     );
   }
 

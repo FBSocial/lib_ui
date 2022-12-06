@@ -50,7 +50,6 @@ class _UrlInputState extends State<UrlInput> {
     final color1 = theme.disabledColor;
     return Container(
       height: 120,
-      color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: TextFormField(
         controller: urlController,
