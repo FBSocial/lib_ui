@@ -82,6 +82,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     if (icon != null && state != FbButtonState.loading) {
       child = addLeadingIcon(child, icon!, size);
     }
+    Size? buttonSize = getButtonSize(size);
     child = ElevatedButton(
       onPressed: wrapTapCallback(onTap, state),
       onLongPress: wrapTapCallback(onLongPress, state),
@@ -98,6 +99,11 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
                 getBackgroundColor(context, states), state, states)),
         // overlayColor: MaterialStateProperty.resolveWith(getOverlayColor),
         padding: MaterialStateProperty.all(EdgeInsets.zero),
+        //圆角：按钮高度 / 6 （规范提供公式）
+        shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                    Radius.circular((buttonSize?.height ?? 44) / 6)))),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontSize: getFontSize(size),
           fontWeight: FontWeight.w500,

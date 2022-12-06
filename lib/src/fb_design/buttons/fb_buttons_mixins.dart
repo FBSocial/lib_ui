@@ -29,6 +29,18 @@ mixin FbButtonMixin {
     }
   }
 
+  Size? getButtonSize(FbButtonSize size) {
+    switch (size) {
+      case FbButtonSize.small:
+        return const Size(60, 32);
+      case FbButtonSize.medium:
+        return const Size(184, 36);
+      case FbButtonSize.large:
+        return const Size(240, 44);
+    }
+    return null;
+  }
+
   Widget constrain(Widget widget, FbButtonSize size) {
     Size s = Size.zero;
     switch (size) {
