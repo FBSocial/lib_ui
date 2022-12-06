@@ -63,7 +63,6 @@ class _WxProgramInputState extends State<WxProgramInput> {
       children: [
         Container(
           height: 84,
-          color: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: TextFormField(
             controller: usernameController,
@@ -86,7 +85,6 @@ class _WxProgramInputState extends State<WxProgramInput> {
         ),
         Container(
           height: 84,
-          color: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: TextFormField(
             controller: pathController,
