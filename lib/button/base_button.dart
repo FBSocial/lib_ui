@@ -18,12 +18,14 @@ import 'package:just_throttle_it/just_throttle_it.dart';
 
 class BaseButton extends StatefulWidget {
   final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
   final Widget? child;
   final Duration throttleDuration;
 
   const BaseButton({
     Key? key,
     this.onTap,
+    this.onLongPress,
     required this.child,
     this.throttleDuration = const Duration(milliseconds: 300),
   }) : super(key: key);
@@ -38,6 +40,8 @@ class BaseButtonState<T extends BaseButton> extends State<T> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: widget.onTap == null ? null : onTap,
+      onLongPress: widget.onLongPress == null ? null : onLongPress,
+
       child: widget.child,
     );
   }
@@ -45,6 +49,11 @@ class BaseButtonState<T extends BaseButton> extends State<T> {
   void onTap() {
     if (widget.onTap == null) return;
     Throttle.duration(widget.throttleDuration, widget.onTap!);
+  }
+
+  void onLongPress() {
+    if (widget.onLongPress == null) return;
+    Throttle.duration(widget.throttleDuration, widget.onLongPress!);
   }
 
   @override

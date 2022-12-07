@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'base_button.dart';
 
 class FadeBackgroundButton extends BaseButton {
-  final VoidCallback? onLongPress;
   final EdgeInsets? padding;
   final double? width;
   final double? height;
@@ -16,7 +15,7 @@ class FadeBackgroundButton extends BaseButton {
   const FadeBackgroundButton({
     Widget? child,
     VoidCallback? onTap,
-    this.onLongPress,
+    VoidCallback? onLongPress,
     this.padding = EdgeInsets.zero,
     this.width,
     this.height,

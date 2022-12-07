@@ -13,6 +13,7 @@ class FadeButton extends BaseButton {
   const FadeButton({
     Widget? child,
     VoidCallback? onTap,
+    VoidCallback? onLongPress,
     this.padding = EdgeInsets.zero,
     this.height,
     this.backgroundColor,
@@ -24,6 +25,7 @@ class FadeButton extends BaseButton {
   }) : super(
           child: child,
           onTap: onTap,
+          onLongPress: onLongPress,
           throttleDuration: throttleDuration,
           key: key,
         );
@@ -43,6 +45,7 @@ class _FadeButtonState extends BaseButtonState<FadeButton> {
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: onTap,
+        onLongPress: onLongPress,
         onTapDown: (_) {
           setState(() {
             _opacity = 0.3;
