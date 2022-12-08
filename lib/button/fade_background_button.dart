@@ -30,6 +30,7 @@ class FadeBackgroundButton extends BaseButton {
           child: child,
           onTap: onTap,
           throttleDuration: throttleDuration,
+          onLongPress: onLongPress,
           key: key,
         );
 
