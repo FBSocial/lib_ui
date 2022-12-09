@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lib_theme/const.dart';
 
 import '../icon_font.dart';
 
@@ -56,7 +55,7 @@ class _AnimatedExpandableIconState extends State<AnimatedExpandableIcon>
       onLongPress: widget.onLongPress,
       child: Row(
         children: <Widget>[
-          sizeWidth8,
+          const SizedBox(width: 4),
           RotationTransition(
               turns: _animation,
               child: Icon(
