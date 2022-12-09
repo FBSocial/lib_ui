@@ -11,6 +11,7 @@ class FadeBackgroundButton extends BaseButton {
   final Color? backgroundColor;
   final Color? tapDownBackgroundColor;
   final Alignment? alignment;
+  final HitTestBehavior? behavior;
 
   const FadeBackgroundButton({
     Widget? child,
@@ -23,6 +24,7 @@ class FadeBackgroundButton extends BaseButton {
     this.boxShadow,
     this.backgroundColor,
     this.alignment = Alignment.center,
+    this.behavior,
     required this.tapDownBackgroundColor,
     Duration throttleDuration = const Duration(milliseconds: 300),
     Key? key,
@@ -66,7 +68,7 @@ class _FadeBackgroundButtonState extends BaseButtonState<FadeBackgroundButton> {
           ? kThemeAnimationDuration
           : Duration.zero,
       child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
+        behavior: widget.behavior ?? HitTestBehavior.opaque,
         onTap: onTap,
         onLongPress: widget.onLongPress,
         onSecondaryTapUp: (_) => widget.onLongPress!(),
