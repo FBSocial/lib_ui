@@ -21,7 +21,7 @@ class CountShowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 20,
+      height: 16,
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 5),
       decoration: ShapeDecoration(
@@ -43,8 +43,8 @@ class CountShowWidget extends StatelessWidget {
             allCount == -1 ? "$currentCount" : "$currentCount/$allCount",
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 11,
-              height: 1,
+              fontSize: 10,
+              height: 1.1,
               color: color,
               fontWeight: FontWeight.w500,
             ),
