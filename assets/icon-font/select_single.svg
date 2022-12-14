@@ -1,12 +1,1 @@
-<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg t="1626337908680" class="icon" viewBox="0 0 1024 1024" version="1.1"
-    xmlns="http://www.w3.org/2000/svg" p-id="5935" xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="200" height="200">
-    <defs>
-        <style type="text/css"></style>
-    </defs>
-    <path
-        d="M512 42.666667c259.2 0 469.333333 210.133333 469.333333 469.333333s-210.133333 469.333333-469.333333 469.333333S42.666667 771.2 42.666667 512 252.8 42.666667 512 42.666667z m0 256c-117.824 0-213.333333 95.509333-213.333333 213.333333s95.509333 213.333333 213.333333 213.333333 213.333333-95.509333 213.333333-213.333333-95.509333-213.333333-213.333333-213.333333z"
-        fill="#5562F2" p-id="5936"></path>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><g fill-rule="evenodd" fill="none"><path fill="none" d="M0 0h48v48H0z"/><path fill-rule="nonzero" fill="#198CFE" d="M24 2c12.15 0 22 9.85 22 22s-9.85 22-22 22S2 36.15 2 24 11.85 2 24 2Zm0 12c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10Z" data-follow-fill="#198CFE"/></g></svg>

@@ -182,34 +182,20 @@ class _MyRadioState<T> extends State<MyRadio<T>> {
     final selected = widget.value == widget.groupValue;
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        child: Container(
+        child: SizedBox(
           width: 20,
           height: 20,
-          decoration: ShapeDecoration(
-              color: !selected
-                  ? Colors.transparent
-                  : Theme.of(context).primaryColor,
-              shape: CircleBorder(
-                  side: BorderSide(
-                      color: !selected
-                          ? enabled
-                              ? const Color(0xFF8F959E)
-                              : const Color(0xFF8F959E).withOpacity(0.25)
-                          : Theme.of(context).primaryColor))),
-          child: AnimatedOpacity(
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.easeInOut,
-            opacity: selected ? 1 : 0,
-            child: const Padding(
-              padding: EdgeInsets.all(3),
-              child: FittedBox(
-                child: Icon(
-                  IconFont.audioVisualRight,
-                  color: Colors.white,
+          child: selected
+              ? const Icon(
+                  IconFont.selectSingle,
+                  size: 20,
+                  color: Color(0xff198CFE),
+                )
+              : const Icon(
+                  IconFont.selectUnSingle,
+                  size: 20,
+                  color: Color(0xff8D93A6),
                 ),
-              ),
-            ),
-          ),
         ));
   }
 }
