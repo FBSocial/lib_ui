@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CountShowWidget extends StatelessWidget {
   final int currentCount;
   final int allCount;
-  final IconData? prefix;
+  final Widget? prefix;
 
   final Color? color;
   final Color? backgroundColor;
@@ -33,11 +33,7 @@ class CountShowWidget extends StatelessWidget {
           if (prefix != null)
             Padding(
               padding: const EdgeInsets.only(right: 2.0),
-              child: Icon(
-                prefix,
-                size: 12,
-                color: color,
-              ),
+              child: prefix,
             ),
           Text(
             allCount == -1 ? "$currentCount" : "$currentCount/$allCount",
