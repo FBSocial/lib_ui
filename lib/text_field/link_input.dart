@@ -25,12 +25,14 @@ class LinkInput extends StatefulWidget {
   final ValueChanged<LinkBean>? onChanged;
   final LinkBean? linkBean;
   final Color? bgColor;
+  final bool? isRequestFocus;
 
   const LinkInput({
     Key? key,
     this.onChanged,
     this.linkBean,
     this.bgColor = Colors.white,
+    this.isRequestFocus,
   }) : super(key: key);
 
   @override
@@ -135,6 +137,7 @@ class _LinkInputState extends State<LinkInput> {
           _url = (bean as UrlBean).path;
           refresh();
         },
+        isRequestFocus: widget.isRequestFocus,
       );
     } else {
       return WxProgramInput(
@@ -166,10 +169,10 @@ class _LinkInputState extends State<LinkInput> {
       child: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7.5),
             decoration: BoxDecoration(
               color: bgColor,
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: BorderRadius.circular(6),
             ),
             child: Row(
               children: [
@@ -181,10 +184,7 @@ class _LinkInputState extends State<LinkInput> {
                 sizeWidth4,
                 Text(
                   text,
-                  style: TextStyle(
-                    color: iconColor,
-                    fontSize: 15,
-                  ),
+                  style: TextStyle(color: iconColor, fontSize: 15, height: 1.4),
                 ),
               ],
             ),
@@ -195,7 +195,7 @@ class _LinkInputState extends State<LinkInput> {
               bottom: 0,
               child: CustomPaint(
                 painter:
-                    TriangleShape(borderRadius: 3, color: theme.primaryColor),
+                    TriangleShape(borderRadius: 6, color: theme.primaryColor),
                 child: Container(
                   width: 20,
                   height: 20,

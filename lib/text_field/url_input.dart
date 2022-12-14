@@ -9,6 +9,7 @@ class UrlInput extends InputWidget {
     ValueChanged<LinkBean>? onChanged,
     ClearCallback? clearCallback,
     Key? key,
+    required this.isRequestFocus,
   }) : super(
             onChanged: onChanged,
             linkBean: urlBean,
@@ -17,6 +18,8 @@ class UrlInput extends InputWidget {
 
   final UrlBean urlBean;
 
+  final bool? isRequestFocus;
+
   @override
   _UrlInputState createState() => _UrlInputState();
 }
@@ -24,11 +27,17 @@ class UrlInput extends InputWidget {
 class _UrlInputState extends State<UrlInput> {
   TextEditingController? urlController;
 
+  final FocusNode focusNode = FocusNode();
+
   @override
   void initState() {
     urlController = TextEditingController(text: widget.urlBean.path);
     widget.clearCallback?.addCallback(urlController!.clear);
     urlController!.addListener(changeListener);
+    if (widget.isRequestFocus == true) {
+      focusNode.requestFocus();
+    }
+
     super.initState();
   }
 
@@ -56,6 +65,7 @@ class _UrlInputState extends State<UrlInput> {
         expands: true,
         maxLines: null,
         maxLength: 2000,
+        focusNode: focusNode,
         decoration: InputDecoration(
           border: InputBorder.none,
           counterText: '',
