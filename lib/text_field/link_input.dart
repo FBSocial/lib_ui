@@ -25,14 +25,14 @@ class LinkInput extends StatefulWidget {
   final ValueChanged<LinkBean>? onChanged;
   final LinkBean? linkBean;
   final Color? bgColor;
-  final bool? isRequestFocus;
+  final FocusNode? focusNode;
 
   const LinkInput({
     Key? key,
     this.onChanged,
     this.linkBean,
     this.bgColor = Colors.white,
-    this.isRequestFocus,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -137,7 +137,7 @@ class _LinkInputState extends State<LinkInput> {
           _url = (bean as UrlBean).path;
           refresh();
         },
-        isRequestFocus: widget.isRequestFocus,
+        focusNode: widget.focusNode ?? FocusNode(),
       );
     } else {
       return WxProgramInput(
