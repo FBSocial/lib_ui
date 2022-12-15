@@ -25,7 +25,12 @@ class LinkInput extends StatefulWidget {
   final ValueChanged<LinkBean>? onChanged;
   final LinkBean? linkBean;
   final Color? bgColor;
+
+  //将焦点交给外部
   final FocusNode? focusNode;
+
+  //是否点击聚集
+  final bool? clickAutoFocus;
 
   const LinkInput({
     Key? key,
@@ -33,6 +38,7 @@ class LinkInput extends StatefulWidget {
     this.linkBean,
     this.bgColor = Colors.white,
     this.focusNode,
+    this.clickAutoFocus,
   }) : super(key: key);
 
   @override
@@ -44,11 +50,14 @@ class _LinkInputState extends State<LinkInput> {
   ClearCallback clearCallback = ClearCallback();
   String _url = '';
   LinkBean? _linkBean;
+  FocusNode? wxFocusNode = FocusNode();
+  FocusNode? urlFocusNode;
 
   @override
   void initState() {
     _linkBean = widget.linkBean;
     linkType = widget.linkBean?.type ?? _LinkTypes.url;
+    urlFocusNode = widget.focusNode ?? FocusNode();
     super.initState();
   }
 
@@ -78,6 +87,9 @@ class _LinkInputState extends State<LinkInput> {
                     linkType = _LinkTypes.url;
                     updateLinkBean(linkType);
                     widget.onChanged?.call(UrlBean(''));
+                    if (widget.clickAutoFocus ?? false) {
+                      urlFocusNode?.requestFocus();
+                    }
                     refresh();
                   }),
                   sizeWidth12,
@@ -89,6 +101,9 @@ class _LinkInputState extends State<LinkInput> {
                     linkType = _LinkTypes.wxProgram;
                     updateLinkBean(linkType);
                     widget.onChanged?.call(WxProgramBean(''));
+                    if (widget.clickAutoFocus ?? false) {
+                      wxFocusNode?.requestFocus();
+                    }
                     refresh();
                   }),
                   const Spacer(),
@@ -137,11 +152,12 @@ class _LinkInputState extends State<LinkInput> {
           _url = (bean as UrlBean).path;
           refresh();
         },
-        focusNode: widget.focusNode ?? FocusNode(),
+        focusNode: urlFocusNode,
       );
     } else {
       return WxProgramInput(
         wxProgramBean: _linkBean as WxProgramBean? ?? WxProgramBean(''),
+        focusNode: wxFocusNode,
         clearCallback: clearCallback,
         onChanged: (bean) {
           widget.onChanged?.call(bean);

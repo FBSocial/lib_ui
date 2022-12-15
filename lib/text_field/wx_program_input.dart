@@ -6,6 +6,7 @@ import 'link_input.dart';
 class WxProgramInput extends InputWidget {
   const WxProgramInput({
     required this.wxProgramBean,
+    required this.focusNode,
     ValueChanged<LinkBean>? onChanged,
     ClearCallback? clearCallback,
     Key? key,
@@ -16,7 +17,7 @@ class WxProgramInput extends InputWidget {
             key: key);
 
   final WxProgramBean wxProgramBean;
-
+  final FocusNode? focusNode;
   @override
   _WxProgramInputState createState() => _WxProgramInputState();
 }
@@ -66,6 +67,7 @@ class _WxProgramInputState extends State<WxProgramInput> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: TextFormField(
             controller: usernameController,
+            focusNode: widget.focusNode,
             expands: true,
             maxLines: null,
             maxLength: 100,
