@@ -102,6 +102,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     if (icon != null && state != FbButtonState.loading) {
       child = addLeadingIcon(child, icon!, size);
     }
+    final buttonSize = getButtonSize(size);
     child = OutlinedButton(
       onPressed: wrapTapCallback(onTap, state),
       onLongPress: wrapTapCallback(onLongPress, state),
@@ -110,6 +111,12 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         side: MaterialStateProperty.resolveWith(
             (states) => getBorderSide(context, states)),
         padding: MaterialStateProperty.all(EdgeInsets.zero),
+        shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(
+                    (buttonSize?.height ??
+                            getButtonSize(FbButtonSize.large)!.height) /
+                        6)))),
         foregroundColor: MaterialStateProperty.resolveWith((states) =>
             getOverlayForegroundColor(
                 getForegroundColor(context, states), state, states)),
