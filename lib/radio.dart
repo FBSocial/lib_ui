@@ -191,7 +191,7 @@ class _MyRadioState<T> extends State<MyRadio<T>> {
                   size: 20,
                   color: Color(0xff198CFE),
                 )
-              : const Icon(
+              : Icon(
                   IconFont.selectUnSingle,
                   size: 20,
                   color: const Color(0xFF1A2033).withOpacity(0.2),
