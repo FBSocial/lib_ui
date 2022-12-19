@@ -50,14 +50,20 @@ class _LinkInputState extends State<LinkInput> {
   ClearCallback clearCallback = ClearCallback();
   String _url = '';
   LinkBean? _linkBean;
-  FocusNode? wxFocusNode = FocusNode();
+  FocusNode? wxFocusNode;
   FocusNode? urlFocusNode;
 
   @override
   void initState() {
     _linkBean = widget.linkBean;
     linkType = widget.linkBean?.type ?? _LinkTypes.url;
-    urlFocusNode = widget.focusNode ?? FocusNode();
+    if (linkType == _LinkTypes.url) {
+      urlFocusNode = widget.focusNode ?? FocusNode();
+      wxFocusNode = FocusNode();
+    } else {
+      urlFocusNode = FocusNode();
+      wxFocusNode = widget.focusNode ?? FocusNode();
+    }
     super.initState();
   }
 
