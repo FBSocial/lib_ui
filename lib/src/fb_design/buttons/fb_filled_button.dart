@@ -20,12 +20,14 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   final FbButtonSize size;
   final _ButtonType type;
   final FbButtonState state;
+  final bool widthUnlimited;
 
   const FbFilledButton.primary(
     this.label, {
     this.icon,
     required this.onTap,
     this.onLongPress,
+    this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
     Key? key,
@@ -37,6 +39,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.icon,
     required this.onTap,
     this.onLongPress,
+    this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
     Key? key,
@@ -48,6 +51,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.icon,
     required this.onTap,
     this.onLongPress,
+    this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
     Key? key,
@@ -59,6 +63,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.icon,
     required this.onTap,
     this.onLongPress,
+    this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
     Key? key,
@@ -69,6 +74,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.label, {
     required this.onTap,
     this.onLongPress,
+    this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
     Key? key,
@@ -102,10 +108,8 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         //圆角：按钮高度 / 6 （规范提供公式）
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
             RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(
-                    (buttonSize?.height ??
-                            getButtonSize(FbButtonSize.large)!.height) /
-                        6)))),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(buttonSize.height / 6)))),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontSize: getFontSize(size),
           fontWeight: FontWeight.w500,
@@ -113,7 +117,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
       ),
       child: child,
     );
-    child = constrain(child, size);
+    child = constrain(child, size, widthUnlimited);
     return child;
   }
 

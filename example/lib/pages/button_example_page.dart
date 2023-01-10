@@ -14,8 +14,8 @@
  *
  */
 
-import 'package:lib_ui/lib_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_ui/lib_ui.dart';
 
 class ButtonExamplePage extends StatefulWidget {
   const ButtonExamplePage({Key? key}) : super(key: key);
@@ -167,36 +167,6 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
               icon: Icons.supervisor_account,
               size: FbButtonSize.large,
               onTap: () => {}),
-          SizedBox(
-            height: 50,
-            child: FbOutlinedButton.primary(title,
-                state: state,
-                size: FbButtonSize.followConstraint,
-                onTap: () => {}),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbOutlinedButton.primary(title,
-                state: state,
-                icon: Icons.supervisor_account,
-                size: FbButtonSize.followConstraint,
-                onTap: () => {}),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbOutlinedButton.secondary(title,
-                state: state,
-                size: FbButtonSize.followConstraint,
-                onTap: () => {}),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbOutlinedButton.secondary(title,
-                state: state,
-                icon: Icons.supervisor_account,
-                size: FbButtonSize.followConstraint,
-                onTap: () => {}),
-          ),
         ],
       );
     }
@@ -330,64 +300,6 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
           ),
           FbFilledButton.dangerous(title,
               state: state, size: FbButtonSize.large, onTap: () => {}),
-          SizedBox(
-            height: 50,
-            child: FbFilledButton.primary(title,
-                state: state,
-                size: FbButtonSize.followConstraint,
-                onTap: () => {}),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbFilledButton.primary(
-              title,
-              state: state,
-              size: FbButtonSize.followConstraint,
-              icon: Icons.supervisor_account,
-              onTap: () => {},
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbFilledButton.secondary(title,
-                state: state,
-                size: FbButtonSize.followConstraint,
-                onTap: () => {}),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbFilledButton.secondary(
-              title,
-              state: state,
-              size: FbButtonSize.followConstraint,
-              icon: Icons.supervisor_account,
-              onTap: () => {},
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbFilledButton.tertiary(title,
-                state: state,
-                size: FbButtonSize.followConstraint,
-                onTap: () => {}),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbFilledButton.tertiary(
-              title,
-              state: state,
-              size: FbButtonSize.followConstraint,
-              icon: Icons.supervisor_account,
-              onTap: () => {},
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            child: FbFilledButton.dangerous(title,
-                state: state,
-                size: FbButtonSize.followConstraint,
-                onTap: () => {}),
-          ),
         ],
       );
     }

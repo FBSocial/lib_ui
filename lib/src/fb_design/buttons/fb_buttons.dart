@@ -6,5 +6,4 @@ enum FbButtonSize {
   small,
   medium,
   large,
-  followConstraint,
 }

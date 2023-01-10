@@ -7,7 +7,6 @@ mixin FbButtonMixin {
       case FbButtonSize.small:
       case FbButtonSize.medium:
         return 14;
-      case FbButtonSize.followConstraint:
       case FbButtonSize.large:
         return 16;
     }
@@ -29,7 +28,7 @@ mixin FbButtonMixin {
     }
   }
 
-  Size? getButtonSize(FbButtonSize size) {
+  Size getButtonSize(FbButtonSize size) {
     switch (size) {
       case FbButtonSize.small:
         return const Size(60, 32);
@@ -37,31 +36,24 @@ mixin FbButtonMixin {
         return const Size(184, 36);
       case FbButtonSize.large:
         return const Size(240, 44);
-      case FbButtonSize.followConstraint:
-        return null;
     }
   }
 
-  Widget constrain(Widget widget, FbButtonSize size) {
-    Size s = Size.zero;
-    switch (size) {
-      case FbButtonSize.small:
-        s = const Size(60, 32);
-        break;
-      case FbButtonSize.medium:
-        s = const Size(184, 36);
-        break;
-      case FbButtonSize.large:
-        s = const Size(240, 44);
-        break;
-      case FbButtonSize.followConstraint:
-        return widget;
-    }
-    return UnconstrainedBox(
-        child: SizedBox.fromSize(
-      size: s,
+  Widget constrain(Widget widget, FbButtonSize size, bool widthUnlimited) {
+    final s = getButtonSize(size);
+
+    widget = SizedBox(
+      width: s.width,
+      height: s.height,
       child: widget,
-    ));
+    );
+
+    if (!widthUnlimited) {
+      widget = UnconstrainedBox(
+        child: widget,
+      );
+    }
+    return widget;
   }
 
   VoidCallback? wrapTapCallback(VoidCallback? callback, FbButtonState state) {
@@ -115,7 +107,6 @@ mixin FbButtonMixin {
         space = 6;
         break;
       case FbButtonSize.large:
-      case FbButtonSize.followConstraint:
         space = 8;
     }
     return Row(

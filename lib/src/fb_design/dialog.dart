@@ -129,7 +129,7 @@ class ActionSheet<T> extends StatelessWidget {
                   constraints: const BoxConstraints(minHeight: 56),
                   child: FbTextButton.primary(
                     actions[i].label,
-                    size: FbButtonSize.followConstraint,
+                    size: FbButtonSize.large,
                     onTap: () {
                       final retVal = actions[i].value ?? i;
                       if (onConfirm != null) {

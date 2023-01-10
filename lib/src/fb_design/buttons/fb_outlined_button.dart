@@ -16,6 +16,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   final FbButtonSize size;
   final _ButtonType type;
   final FbButtonState state;
+  final bool widthUnlimited;
 
   const FbOutlinedButton.primary(
     this.label, {
@@ -23,6 +24,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.onLongPress,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.widthUnlimited = false,
     this.icon,
     Key? key,
   })  : type = _ButtonType.primary,
@@ -34,6 +36,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.onLongPress,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.widthUnlimited = false,
     this.icon,
     Key? key,
   })  : type = _ButtonType.secondary,
@@ -113,10 +116,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         padding: MaterialStateProperty.all(EdgeInsets.zero),
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
             RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(
-                    (buttonSize?.height ??
-                            getButtonSize(FbButtonSize.large)!.height) /
-                        6)))),
+                borderRadius: BorderRadius.all(
+                    Radius.circular((buttonSize.height) / 6)))),
         foregroundColor: MaterialStateProperty.resolveWith((states) =>
             getOverlayForegroundColor(
                 getForegroundColor(context, states), state, states)),
@@ -132,7 +133,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
       ),
       child: child,
     );
-    child = constrain(child, size);
+    child = constrain(child, size, widthUnlimited);
     return child;
   }
 
