@@ -150,6 +150,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
 
     switch (state) {
       case FbButtonState.normal:
+        return BorderSide(color: colorDistinguishedByButtonType(), width: 0.5);
       case FbButtonState.deactivated:
         return BorderSide(
             color: colorDistinguishedByButtonType().withOpacity(0.4),
