@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:lib_ui/lib_ui.dart';
 import 'package:lib_ui/src/fb_colors.dart';
-import 'package:flutter/material.dart';
 
 import 'fb_buttons_mixins.dart';
 
@@ -57,6 +57,8 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
               : onTap,
       onLongPress: onLongPress,
       style: ButtonStyle(
+        minimumSize: MaterialStateProperty.all(Size.zero),
+        visualDensity: const VisualDensity(horizontal: -4.0, vertical: -4.0),
         backgroundColor: MaterialStateProperty.all(Colors.transparent),
         overlayColor: MaterialStateProperty.all(Colors.transparent),
         foregroundColor: MaterialStateProperty.resolveWith((states) =>
