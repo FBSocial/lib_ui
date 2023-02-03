@@ -78,6 +78,12 @@ class CustomInputBox extends StatefulWidget {
 class _CustomInputBoxState extends State<CustomInputBox> {
   bool _isShowClear = false;
 
+  static final RegExp _regexEmoji = RegExp(
+      r'(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])');
+
+  static final RegExp _specialString =
+      RegExp(r'([\u0e00-\u0eff]|[\u0300-\u036f])');
+
   @override
   void initState() {
     super.initState();
@@ -198,6 +204,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
         maxLength,
         required isFocused,
       }) {
+        currentLength = getRealUnicodeCount(widget.controller.text);
         if (!widget.needCounter) return null;
         if (maxLength == null) return const SizedBox();
         return Container(
@@ -249,6 +256,18 @@ class _CustomInputBoxState extends State<CustomInputBox> {
         });
       }
     }
+  }
+
+  static int getRealUnicodeCount(String text) {
+    if (_regexEmoji.hasMatch(text)) {
+      if (_specialString.hasMatch(text)) {
+        final realString = text.replaceAll(_specialString, '1');
+        return realString.characters.length;
+      }
+    } else if (text.length > text.characters.length) {
+      return text.length;
+    }
+    return text.characters.length;
   }
 
 // bool get _isShowClear => widget.controller.text.trim().isNotEmpty;
