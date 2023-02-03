@@ -4,638 +4,370 @@
 import 'package:flutter/material.dart';
 
 class AppThemeData {
-    final BorderRadius baseline12;
-    final Sys sys;
-    final Base base;
+    final Bg bg;
+    final Fg fg;
+    final Other other;
+    final String pingFang;
+    final Medium medium;
+    final Radius radius;
+    final Regular regular;
+    final Weight weight;
 
     AppThemeData({
-        required this.baseline12,
-        required this.sys,
-        required this.base,
+        required this.bg,
+        required this.fg,
+        required this.other,
+        required this.pingFang,
+        required this.medium,
+        required this.radius,
+        required this.regular,
+        required this.weight,
     });
 
     factory AppThemeData.light() {
         return AppThemeData(
-            baseline12: BorderRadius.circular(12),
-            sys: Sys(
-                color: SysColor(
-                    background: const Color(0xffffffff),
-                    onColor: const Color(0xffffffff),
-                    primary: const Color(0xff198cfe),
-                    surface: const Color(0xffe9e9e9),
-                    text: SysColorText(
-                        content: const Color(0xff5c6273),
-                        sub: const Color(0xff8d93a6),
-                        title: const Color(0xff1f2126),
-                    ),
+            bg: Bg(
+                one: const Color(0xfff3f4f5),
+                two: const Color(0xffffffff),
+            ),
+            fg: Fg(
+                brand: FgBrand(
+                    one: const Color(0xff198cfe),
+                    three: const Color(0x1a198cfe),
+                    two: const Color(0x66198cfe),
+                ),
+                green: FgGreen(
+                    one: const Color(0xff00bf7f),
+                    three: const Color(0x1a00bf7f),
+                    two: const Color(0x6600bf7f),
+                ),
+                grey: FgGrey(
+                    five: const Color(0x331a2033),
+                    four: const Color(0x661a2033),
+                    one: const Color(0xff1a2033),
+                    seven: const Color(0x0d1a2033),
+                    six: const Color(0x141a2033),
+                    three: const Color(0x991a2033),
+                    two: const Color(0xe61a2033),
+                ),
+                red: FgRed(
+                    one: const Color(0xfff2494a),
+                    three: const Color(0x1af2494a),
+                    two: const Color(0x66f2494a),
+                ),
+                whiteBlack: FgWhiteBlack(
+                    one: const Color(0xffffffff),
+                    three: const Color(0x1affffff),
+                    two: const Color(0x99ffffff),
+                ),
+                yellow: FgYellow(
+                    one: const Color(0xffffb726),
+                    three: const Color(0x1affb726),
+                    two: const Color(0x66ffb726),
                 ),
             ),
-            base: Base(
-                color: BaseColor(
-                    black: const Color(0xff000000),
-                    blue: BaseColorBlue(
-                        blue1: const Color(0xffe8f4ff),
-                        blue10: const Color(0xff0b3f72),
-                        blue2: const Color(0xffc8e3ff),
-                        blue3: const Color(0xff9cceff),
-                        blue4: const Color(0xff6eb7fe),
-                        blue5: const Color(0xff42a1fe),
-                        blue6: const Color(0xff198cfe),
-                        blue7: const Color(0xff1577d8),
-                        blue8: const Color(0xff1263b4),
-                        blue9: const Color(0xff0e5091),
-                    ),
-                    caption: BaseColorCaption(
-                        caption1: const Color(0xfff4f4f6),
-                        caption10: const Color(0xff3f424b),
-                        caption2: const Color(0xffe4e5ea),
-                        caption3: const Color(0xffced1d9),
-                        caption4: const Color(0xffb7bbc7),
-                        caption5: const Color(0xffa2a6b6),
-                        caption6: const Color(0xff8d93a6),
-                        caption7: const Color(0xff787d8d),
-                        caption8: const Color(0xff646876),
-                        caption9: const Color(0xff50545f),
-                    ),
-                    font: BaseColorFont(
-                        font1: const Color(0xffe9e9e9),
-                        font10: const Color(0xff0e0f11),
-                        font2: const Color(0xffc9cacb),
-                        font3: const Color(0xff9fa0a2),
-                        font4: const Color(0xff727376),
-                        font5: const Color(0xff47494d),
-                        font6: const Color(0xff1f2126),
-                        font7: const Color(0xff1a1c20),
-                        font8: const Color(0xff16171b),
-                        font9: const Color(0xff121316),
-                    ),
-                    green: BaseColorGreen(
-                        green1: const Color(0xffe6f9f2),
-                        green10: const Color(0xff005639),
-                        green2: const Color(0xffc2f0e0),
-                        green3: const Color(0xff91e3c8),
-                        green4: const Color(0xff5ed7ae),
-                        green5: const Color(0xff2ecb96),
-                        green6: const Color(0xff00bf7f),
-                        green7: const Color(0xff00a26c),
-                        green8: const Color(0xff00885a),
-                        green9: const Color(0xff006d48),
-                    ),
-                    icon: BaseColorIcon(
-                        icon1: const Color(0xffefeff1),
-                        icon10: const Color(0xff292c34),
-                        icon2: const Color(0xffd8d9dd),
-                        icon3: const Color(0xffb9bbc3),
-                        icon4: const Color(0xff989ca7),
-                        icon5: const Color(0xff797e8c),
-                        icon6: const Color(0xff5c6273),
-                        icon7: const Color(0xff4e5362),
-                        icon8: const Color(0xff414652),
-                        icon9: const Color(0xff343842),
-                    ),
-                    orange: BaseColorOrange(
-                        orange1: const Color(0xfffff0e6),
-                        orange10: const Color(0xff733000),
-                        orange2: const Color(0xffffdbc2),
-                        orange3: const Color(0xffffbf91),
-                        orange4: const Color(0xffffa15e),
-                        orange5: const Color(0xffff852e),
-                        orange6: const Color(0xffff6a00),
-                        orange7: const Color(0xffd95a00),
-                        orange8: const Color(0xffb54b00),
-                        orange9: const Color(0xff913c00),
-                    ),
-                    purple: BaseColorPurple(
-                        purple1: const Color(0xfff1eeff),
-                        purple10: const Color(0xff352873),
-                        purple2: const Color(0xffded7ff),
-                        purple3: const Color(0xffc4b8ff),
-                        purple4: const Color(0xffa896ff),
-                        purple5: const Color(0xff8e77ff),
-                        purple6: const Color(0xff7559ff),
-                        purple7: const Color(0xff634cd9),
-                        purple8: const Color(0xff533fb5),
-                        purple9: const Color(0xff433391),
-                    ),
-                    red: BaseColorRed(
-                        red1: const Color(0xfffeeded),
-                        red10: const Color(0xff6d2121),
-                        red2: const Color(0xfffcd3d4),
-                        red3: const Color(0xfff9b1b1),
-                        red4: const Color(0xfff78c8d),
-                        red5: const Color(0xfff46a6b),
-                        red6: const Color(0xfff2494a),
-                        red7: const Color(0xffce3e3f),
-                        red8: const Color(0xffac3435),
-                        red9: const Color(0xff8a2a2a),
-                    ),
-                    rose: BaseColorRose(
-                        rose1: const Color(0xffffebf1),
-                        rose10: const Color(0xff731736),
-                        rose2: const Color(0xffffcede),
-                        rose3: const Color(0xffffa7c5),
-                        rose4: const Color(0xffff7ea9),
-                        rose5: const Color(0xffff588f),
-                        rose6: const Color(0xffff3377),
-                        rose7: const Color(0xffd92b65),
-                        rose8: const Color(0xffb52454),
-                        rose9: const Color(0xff911d44),
-                    ),
-                    white: const Color(0xffffffff),
-                    yellow: BaseColorYellow(
-                        yellow1: const Color(0xfffff8e9),
-                        yellow10: const Color(0xff735211),
-                        yellow2: const Color(0xffffeecb),
-                        yellow3: const Color(0xffffe0a2),
-                        yellow4: const Color(0xffffd276),
-                        yellow5: const Color(0xffffc44d),
-                        yellow6: const Color(0xffffb726),
-                        yellow7: const Color(0xffd99c20),
-                        yellow8: const Color(0xffb5821b),
-                        yellow9: const Color(0xff916816),
-                    ),
-                ),
+            other: Other(
+                transparent: const Color(0x00ffffff),
+            ),
+            pingFang: "PingFang SC",
+            medium: Medium(
+                f1: const TextStyle(fontSize: 14,height: 20,fontWeight: FontWeight.w500,),
+                f2: const TextStyle(fontSize: 12,height: 17,fontWeight: FontWeight.w500,),
+                h1: const TextStyle(fontSize: 22,height: 30,fontWeight: FontWeight.w500,),
+                h2: const TextStyle(fontSize: 20,height: 28,fontWeight: FontWeight.w500,),
+                h3: const TextStyle(fontSize: 17,height: 24,fontWeight: FontWeight.w500,),
+                t1: const TextStyle(fontSize: 16,height: 22,fontWeight: FontWeight.w500,),
+                t2: const TextStyle(fontSize: 15,height: 20,fontWeight: FontWeight.w500,),
+            ),
+            radius: Radius(
+                five: BorderRadius.circular(10),
+                four: BorderRadius.circular(9),
+                one: BorderRadius.circular(4),
+                seven: BorderRadius.circular(13),
+                six: BorderRadius.circular(11),
+                three: BorderRadius.circular(8),
+                two: BorderRadius.circular(6),
+            ),
+            regular: Regular(
+                f1: const TextStyle(fontSize: 14,height: 20,fontWeight: FontWeight.w400,),
+                f2: const TextStyle(fontSize: 12,height: 17,fontWeight: FontWeight.w400,),
+                h1: const TextStyle(fontSize: 22,height: 30,fontWeight: FontWeight.w400,),
+                h2: const TextStyle(fontSize: 20,height: 28,fontWeight: FontWeight.w400,),
+                h3: const TextStyle(fontSize: 17,height: 24,fontWeight: FontWeight.w400,),
+                t1: const TextStyle(fontSize: 16,height: 22,fontWeight: FontWeight.w400,),
+                t2: const TextStyle(fontSize: 15,height: 21,fontWeight: FontWeight.w400,),
+            ),
+            weight: Weight(
+                medium: FontWeight.w500,
+                regular: FontWeight.w400,
             ),
         );
     }
     factory AppThemeData.dark() {
         return AppThemeData(
-            baseline12: BorderRadius.circular(12),
-            sys: Sys(
-                color: SysColor(
-                    background: const Color(0xff292c34),
-                    onColor: const Color(0xffffffff),
-                    primary: const Color(0xff42a1fe),
-                    surface: const Color(0xff47494d),
-                    text: SysColorText(
-                        content: const Color(0xffb9bbc3),
-                        sub: const Color(0xff8d93a6),
-                        title: const Color(0xffffffff),
-                    ),
+            bg: Bg(
+                one: const Color(0xff000000),
+                two: const Color(0xff1f1f1f),
+            ),
+            fg: Fg(
+                brand: FgBrand(
+                    one: const Color(0xff1a7cdd),
+                    three: const Color(0x1a1a7cdd),
+                    two: const Color(0x661a7cdd),
+                ),
+                green: FgGreen(
+                    one: const Color(0xff05a771),
+                    three: const Color(0x1a05a771),
+                    two: const Color(0x6605a771),
+                ),
+                grey: FgGrey(
+                    five: const Color(0x66ffffff),
+                    four: const Color(0x99ffffff),
+                    one: const Color(0xe6ffffff),
+                    seven: const Color(0x0dffffff),
+                    six: const Color(0x14ffffff),
+                    three: const Color(0xb3ffffff),
+                    two: const Color(0xccffffff),
+                ),
+                red: FgRed(
+                    one: const Color(0xffd24344),
+                    three: const Color(0x1ad24344),
+                    two: const Color(0x66d24344),
+                ),
+                whiteBlack: FgWhiteBlack(
+                    one: const Color(0xff000000),
+                    three: const Color(0x1a000000),
+                    two: const Color(0x99000000),
+                ),
+                yellow: FgYellow(
+                    one: const Color(0xffdc9f23),
+                    three: const Color(0x1adc9f23),
+                    two: const Color(0x66dc9f23),
                 ),
             ),
-            base: Base(
-                color: BaseColor(
-                    black: const Color(0xff000000),
-                    blue: BaseColorBlue(
-                        blue1: const Color(0xffe8f4ff),
-                        blue10: const Color(0xff0b3f72),
-                        blue2: const Color(0xffc8e3ff),
-                        blue3: const Color(0xff9cceff),
-                        blue4: const Color(0xff6eb7fe),
-                        blue5: const Color(0xff42a1fe),
-                        blue6: const Color(0xff198cfe),
-                        blue7: const Color(0xff1577d8),
-                        blue8: const Color(0xff1263b4),
-                        blue9: const Color(0xff0e5091),
-                    ),
-                    caption: BaseColorCaption(
-                        caption1: const Color(0xfff4f4f6),
-                        caption10: const Color(0xff3f424b),
-                        caption2: const Color(0xffe4e5ea),
-                        caption3: const Color(0xffced1d9),
-                        caption4: const Color(0xffb7bbc7),
-                        caption5: const Color(0xffa2a6b6),
-                        caption6: const Color(0xff8d93a6),
-                        caption7: const Color(0xff787d8d),
-                        caption8: const Color(0xff646876),
-                        caption9: const Color(0xff50545f),
-                    ),
-                    font: BaseColorFont(
-                        font1: const Color(0xffe9e9e9),
-                        font10: const Color(0xff0e0f11),
-                        font2: const Color(0xffc9cacb),
-                        font3: const Color(0xff9fa0a2),
-                        font4: const Color(0xff727376),
-                        font5: const Color(0xff47494d),
-                        font6: const Color(0xff1f2126),
-                        font7: const Color(0xff1a1c20),
-                        font8: const Color(0xff16171b),
-                        font9: const Color(0xff121316),
-                    ),
-                    green: BaseColorGreen(
-                        green1: const Color(0xffe6f9f2),
-                        green10: const Color(0xff005639),
-                        green2: const Color(0xffc2f0e0),
-                        green3: const Color(0xff91e3c8),
-                        green4: const Color(0xff5ed7ae),
-                        green5: const Color(0xff2ecb96),
-                        green6: const Color(0xff00bf7f),
-                        green7: const Color(0xff00a26c),
-                        green8: const Color(0xff00885a),
-                        green9: const Color(0xff006d48),
-                    ),
-                    icon: BaseColorIcon(
-                        icon1: const Color(0xffefeff1),
-                        icon10: const Color(0xff292c34),
-                        icon2: const Color(0xffd8d9dd),
-                        icon3: const Color(0xffb9bbc3),
-                        icon4: const Color(0xff989ca7),
-                        icon5: const Color(0xff797e8c),
-                        icon6: const Color(0xff5c6273),
-                        icon7: const Color(0xff4e5362),
-                        icon8: const Color(0xff414652),
-                        icon9: const Color(0xff343842),
-                    ),
-                    orange: BaseColorOrange(
-                        orange1: const Color(0xfffff0e6),
-                        orange10: const Color(0xff733000),
-                        orange2: const Color(0xffffdbc2),
-                        orange3: const Color(0xffffbf91),
-                        orange4: const Color(0xffffa15e),
-                        orange5: const Color(0xffff852e),
-                        orange6: const Color(0xffff6a00),
-                        orange7: const Color(0xffd95a00),
-                        orange8: const Color(0xffb54b00),
-                        orange9: const Color(0xff913c00),
-                    ),
-                    purple: BaseColorPurple(
-                        purple1: const Color(0xfff1eeff),
-                        purple10: const Color(0xff352873),
-                        purple2: const Color(0xffded7ff),
-                        purple3: const Color(0xffc4b8ff),
-                        purple4: const Color(0xffa896ff),
-                        purple5: const Color(0xff8e77ff),
-                        purple6: const Color(0xff7559ff),
-                        purple7: const Color(0xff634cd9),
-                        purple8: const Color(0xff533fb5),
-                        purple9: const Color(0xff433391),
-                    ),
-                    red: BaseColorRed(
-                        red1: const Color(0xfffeeded),
-                        red10: const Color(0xff6d2121),
-                        red2: const Color(0xfffcd3d4),
-                        red3: const Color(0xfff9b1b1),
-                        red4: const Color(0xfff78c8d),
-                        red5: const Color(0xfff46a6b),
-                        red6: const Color(0xfff2494a),
-                        red7: const Color(0xffce3e3f),
-                        red8: const Color(0xffac3435),
-                        red9: const Color(0xff8a2a2a),
-                    ),
-                    rose: BaseColorRose(
-                        rose1: const Color(0xffffebf1),
-                        rose10: const Color(0xff731736),
-                        rose2: const Color(0xffffcede),
-                        rose3: const Color(0xffffa7c5),
-                        rose4: const Color(0xffff7ea9),
-                        rose5: const Color(0xffff588f),
-                        rose6: const Color(0xffff3377),
-                        rose7: const Color(0xffd92b65),
-                        rose8: const Color(0xffb52454),
-                        rose9: const Color(0xff911d44),
-                    ),
-                    white: const Color(0xffffffff),
-                    yellow: BaseColorYellow(
-                        yellow1: const Color(0xfffff8e9),
-                        yellow10: const Color(0xff735211),
-                        yellow2: const Color(0xffffeecb),
-                        yellow3: const Color(0xffffe0a2),
-                        yellow4: const Color(0xffffd276),
-                        yellow5: const Color(0xffffc44d),
-                        yellow6: const Color(0xffffb726),
-                        yellow7: const Color(0xffd99c20),
-                        yellow8: const Color(0xffb5821b),
-                        yellow9: const Color(0xff916816),
-                    ),
-                ),
+            other: Other(
+                transparent: const Color(0x00ffffff),
+            ),
+            pingFang: "PingFang SC",
+            medium: Medium(
+                f1: const TextStyle(fontSize: 14,height: 20,fontWeight: FontWeight.w500,),
+                f2: const TextStyle(fontSize: 12,height: 17,fontWeight: FontWeight.w500,),
+                h1: const TextStyle(fontSize: 22,height: 30,fontWeight: FontWeight.w500,),
+                h2: const TextStyle(fontSize: 20,height: 28,fontWeight: FontWeight.w500,),
+                h3: const TextStyle(fontSize: 17,height: 24,fontWeight: FontWeight.w500,),
+                t1: const TextStyle(fontSize: 16,height: 22,fontWeight: FontWeight.w500,),
+                t2: const TextStyle(fontSize: 15,height: 20,fontWeight: FontWeight.w500,),
+            ),
+            radius: Radius(
+                five: BorderRadius.circular(10),
+                four: BorderRadius.circular(9),
+                one: BorderRadius.circular(4),
+                seven: BorderRadius.circular(13),
+                six: BorderRadius.circular(11),
+                three: BorderRadius.circular(8),
+                two: BorderRadius.circular(6),
+            ),
+            regular: Regular(
+                f1: const TextStyle(fontSize: 14,height: 20,fontWeight: FontWeight.w400,),
+                f2: const TextStyle(fontSize: 12,height: 17,fontWeight: FontWeight.w400,),
+                h1: const TextStyle(fontSize: 22,height: 30,fontWeight: FontWeight.w400,),
+                h2: const TextStyle(fontSize: 20,height: 28,fontWeight: FontWeight.w400,),
+                h3: const TextStyle(fontSize: 17,height: 24,fontWeight: FontWeight.w400,),
+                t1: const TextStyle(fontSize: 16,height: 22,fontWeight: FontWeight.w400,),
+                t2: const TextStyle(fontSize: 15,height: 21,fontWeight: FontWeight.w400,),
+            ),
+            weight: Weight(
+                medium: FontWeight.w500,
+                regular: FontWeight.w400,
             ),
         );
     }
 
 }
 
-class Base {
-    final BaseColor color;
+class Weight {
+    final FontWeight medium;
+    final FontWeight regular;
 
-    Base({
-        required this.color,
+    Weight({
+        required this.medium,
+        required this.regular,
     });
 }
 
-class BaseColor {
-    final Color black;
-    final BaseColorBlue blue;
-    final BaseColorCaption caption;
-    final BaseColorFont font;
-    final BaseColorGreen green;
-    final BaseColorIcon icon;
-    final BaseColorOrange orange;
-    final BaseColorPurple purple;
-    final BaseColorRed red;
-    final BaseColorRose rose;
-    final Color white;
-    final BaseColorYellow yellow;
+class Regular {
+    final TextStyle f1;
+    final TextStyle f2;
+    final TextStyle h1;
+    final TextStyle h2;
+    final TextStyle h3;
+    final TextStyle t1;
+    final TextStyle t2;
 
-    BaseColor({
-        required this.black,
-        required this.blue,
-        required this.caption,
-        required this.font,
+    Regular({
+        required this.f1,
+        required this.f2,
+        required this.h1,
+        required this.h2,
+        required this.h3,
+        required this.t1,
+        required this.t2,
+    });
+}
+
+class Radius {
+    final BorderRadius five;
+    final BorderRadius four;
+    final BorderRadius one;
+    final BorderRadius seven;
+    final BorderRadius six;
+    final BorderRadius three;
+    final BorderRadius two;
+
+    Radius({
+        required this.five,
+        required this.four,
+        required this.one,
+        required this.seven,
+        required this.six,
+        required this.three,
+        required this.two,
+    });
+}
+
+class Medium {
+    final TextStyle f1;
+    final TextStyle f2;
+    final TextStyle h1;
+    final TextStyle h2;
+    final TextStyle h3;
+    final TextStyle t1;
+    final TextStyle t2;
+
+    Medium({
+        required this.f1,
+        required this.f2,
+        required this.h1,
+        required this.h2,
+        required this.h3,
+        required this.t1,
+        required this.t2,
+    });
+}
+
+class Other {
+    final Color transparent;
+
+    Other({
+        required this.transparent,
+    });
+}
+
+class Fg {
+    final FgBrand brand;
+    final FgGreen green;
+    final FgGrey grey;
+    final FgRed red;
+    final FgWhiteBlack whiteBlack;
+    final FgYellow yellow;
+
+    Fg({
+        required this.brand,
         required this.green,
-        required this.icon,
-        required this.orange,
-        required this.purple,
+        required this.grey,
         required this.red,
-        required this.rose,
-        required this.white,
+        required this.whiteBlack,
         required this.yellow,
     });
 }
 
-class BaseColorYellow {
-    final Color yellow1;
-    final Color yellow10;
-    final Color yellow2;
-    final Color yellow3;
-    final Color yellow4;
-    final Color yellow5;
-    final Color yellow6;
-    final Color yellow7;
-    final Color yellow8;
-    final Color yellow9;
+class FgYellow {
+    final Color one;
+    final Color three;
+    final Color two;
 
-    BaseColorYellow({
-        required this.yellow1,
-        required this.yellow10,
-        required this.yellow2,
-        required this.yellow3,
-        required this.yellow4,
-        required this.yellow5,
-        required this.yellow6,
-        required this.yellow7,
-        required this.yellow8,
-        required this.yellow9,
+    FgYellow({
+        required this.one,
+        required this.three,
+        required this.two,
     });
 }
 
-class BaseColorRose {
-    final Color rose1;
-    final Color rose10;
-    final Color rose2;
-    final Color rose3;
-    final Color rose4;
-    final Color rose5;
-    final Color rose6;
-    final Color rose7;
-    final Color rose8;
-    final Color rose9;
+class FgWhiteBlack {
+    final Color one;
+    final Color three;
+    final Color two;
 
-    BaseColorRose({
-        required this.rose1,
-        required this.rose10,
-        required this.rose2,
-        required this.rose3,
-        required this.rose4,
-        required this.rose5,
-        required this.rose6,
-        required this.rose7,
-        required this.rose8,
-        required this.rose9,
+    FgWhiteBlack({
+        required this.one,
+        required this.three,
+        required this.two,
     });
 }
 
-class BaseColorRed {
-    final Color red1;
-    final Color red10;
-    final Color red2;
-    final Color red3;
-    final Color red4;
-    final Color red5;
-    final Color red6;
-    final Color red7;
-    final Color red8;
-    final Color red9;
+class FgRed {
+    final Color one;
+    final Color three;
+    final Color two;
 
-    BaseColorRed({
-        required this.red1,
-        required this.red10,
-        required this.red2,
-        required this.red3,
-        required this.red4,
-        required this.red5,
-        required this.red6,
-        required this.red7,
-        required this.red8,
-        required this.red9,
+    FgRed({
+        required this.one,
+        required this.three,
+        required this.two,
     });
 }
 
-class BaseColorPurple {
-    final Color purple1;
-    final Color purple10;
-    final Color purple2;
-    final Color purple3;
-    final Color purple4;
-    final Color purple5;
-    final Color purple6;
-    final Color purple7;
-    final Color purple8;
-    final Color purple9;
+class FgGrey {
+    final Color five;
+    final Color four;
+    final Color one;
+    final Color seven;
+    final Color six;
+    final Color three;
+    final Color two;
 
-    BaseColorPurple({
-        required this.purple1,
-        required this.purple10,
-        required this.purple2,
-        required this.purple3,
-        required this.purple4,
-        required this.purple5,
-        required this.purple6,
-        required this.purple7,
-        required this.purple8,
-        required this.purple9,
+    FgGrey({
+        required this.five,
+        required this.four,
+        required this.one,
+        required this.seven,
+        required this.six,
+        required this.three,
+        required this.two,
     });
 }
 
-class BaseColorOrange {
-    final Color orange1;
-    final Color orange10;
-    final Color orange2;
-    final Color orange3;
-    final Color orange4;
-    final Color orange5;
-    final Color orange6;
-    final Color orange7;
-    final Color orange8;
-    final Color orange9;
+class FgGreen {
+    final Color one;
+    final Color three;
+    final Color two;
 
-    BaseColorOrange({
-        required this.orange1,
-        required this.orange10,
-        required this.orange2,
-        required this.orange3,
-        required this.orange4,
-        required this.orange5,
-        required this.orange6,
-        required this.orange7,
-        required this.orange8,
-        required this.orange9,
+    FgGreen({
+        required this.one,
+        required this.three,
+        required this.two,
     });
 }
 
-class BaseColorIcon {
-    final Color icon1;
-    final Color icon10;
-    final Color icon2;
-    final Color icon3;
-    final Color icon4;
-    final Color icon5;
-    final Color icon6;
-    final Color icon7;
-    final Color icon8;
-    final Color icon9;
+class FgBrand {
+    final Color one;
+    final Color three;
+    final Color two;
 
-    BaseColorIcon({
-        required this.icon1,
-        required this.icon10,
-        required this.icon2,
-        required this.icon3,
-        required this.icon4,
-        required this.icon5,
-        required this.icon6,
-        required this.icon7,
-        required this.icon8,
-        required this.icon9,
+    FgBrand({
+        required this.one,
+        required this.three,
+        required this.two,
     });
 }
 
-class BaseColorGreen {
-    final Color green1;
-    final Color green10;
-    final Color green2;
-    final Color green3;
-    final Color green4;
-    final Color green5;
-    final Color green6;
-    final Color green7;
-    final Color green8;
-    final Color green9;
+class Bg {
+    final Color one;
+    final Color two;
 
-    BaseColorGreen({
-        required this.green1,
-        required this.green10,
-        required this.green2,
-        required this.green3,
-        required this.green4,
-        required this.green5,
-        required this.green6,
-        required this.green7,
-        required this.green8,
-        required this.green9,
-    });
-}
-
-class BaseColorFont {
-    final Color font1;
-    final Color font10;
-    final Color font2;
-    final Color font3;
-    final Color font4;
-    final Color font5;
-    final Color font6;
-    final Color font7;
-    final Color font8;
-    final Color font9;
-
-    BaseColorFont({
-        required this.font1,
-        required this.font10,
-        required this.font2,
-        required this.font3,
-        required this.font4,
-        required this.font5,
-        required this.font6,
-        required this.font7,
-        required this.font8,
-        required this.font9,
-    });
-}
-
-class BaseColorCaption {
-    final Color caption1;
-    final Color caption10;
-    final Color caption2;
-    final Color caption3;
-    final Color caption4;
-    final Color caption5;
-    final Color caption6;
-    final Color caption7;
-    final Color caption8;
-    final Color caption9;
-
-    BaseColorCaption({
-        required this.caption1,
-        required this.caption10,
-        required this.caption2,
-        required this.caption3,
-        required this.caption4,
-        required this.caption5,
-        required this.caption6,
-        required this.caption7,
-        required this.caption8,
-        required this.caption9,
-    });
-}
-
-class BaseColorBlue {
-    final Color blue1;
-    final Color blue10;
-    final Color blue2;
-    final Color blue3;
-    final Color blue4;
-    final Color blue5;
-    final Color blue6;
-    final Color blue7;
-    final Color blue8;
-    final Color blue9;
-
-    BaseColorBlue({
-        required this.blue1,
-        required this.blue10,
-        required this.blue2,
-        required this.blue3,
-        required this.blue4,
-        required this.blue5,
-        required this.blue6,
-        required this.blue7,
-        required this.blue8,
-        required this.blue9,
-    });
-}
-
-class Sys {
-    final SysColor color;
-
-    Sys({
-        required this.color,
-    });
-}
-
-class SysColor {
-    final Color background;
-    final Color onColor;
-    final Color primary;
-    final Color surface;
-    final SysColorText text;
-
-    SysColor({
-        required this.background,
-        required this.onColor,
-        required this.primary,
-        required this.surface,
-        required this.text,
-    });
-}
-
-class SysColorText {
-    final Color content;
-    final Color sub;
-    final Color title;
-
-    SysColorText({
-        required this.content,
-        required this.sub,
-        required this.title,
+    Bg({
+        required this.one,
+        required this.two,
     });
 }
 

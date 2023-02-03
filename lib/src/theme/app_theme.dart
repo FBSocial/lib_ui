@@ -27,6 +27,6 @@ class AppTheme extends InheritedWidget {
 
   @override
   bool updateShouldNotify(covariant AppTheme oldWidget) {
-    return oldWidget.theme != theme;
+    return oldWidget.theme != theme || oldWidget.darkTheme != darkTheme;
   }
 }
