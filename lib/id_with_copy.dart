@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lib_theme/app_theme.dart';
-import 'package:lib_ui/lib_ui.dart';
 import 'package:lib_utils/orientation_util.dart';
 import 'package:oktoast/oktoast.dart';
 
