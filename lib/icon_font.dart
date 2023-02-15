@@ -14,14 +14,17 @@ class IconFont {
   static const IconData moduleMic = IconData(0xea0a, fontFamily: "iconfont", fontPackage: "lib_ui");
   static const IconData navBarBackItem = IconData(0xea0b, fontFamily: "iconfont", fontPackage: "lib_ui");
   static const IconData navBarCloseItem = IconData(0xea0c, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData selectCheck = IconData(0xea0d, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData selectGroup = IconData(0xea0e, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData selectSingle = IconData(0xea0f, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData selectUnSingle = IconData(0xea10, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData selectUncheck = IconData(0xea11, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData toastFail = IconData(0xea12, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData toastSuccess = IconData(0xea13, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData unselectGroup = IconData(0xea14, fontFamily: "iconfont", fontPackage: "lib_ui");
-  static const IconData xiayibu = IconData(0xea15, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData pause = IconData(0xea0d, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData play = IconData(0xea0e, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData rotateDevice = IconData(0xea0f, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData selectCheck = IconData(0xea10, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData selectGroup = IconData(0xea11, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData selectSingle = IconData(0xea12, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData selectUncheck = IconData(0xea13, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData toastFail = IconData(0xea14, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData toastSuccess = IconData(0xea15, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData unselectGroup = IconData(0xea16, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData wifi = IconData(0xea17, fontFamily: "iconfont", fontPackage: "lib_ui");
+  static const IconData xiayibu = IconData(0xea18, fontFamily: "iconfont", fontPackage: "lib_ui");
 
 }

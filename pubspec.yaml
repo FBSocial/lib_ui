@@ -42,9 +42,12 @@ dependencies:
     path: ../lib_extension
   lib_image:
     path: ../lib_image
+  service:
+    path: ../../module/module_service
   flutter_svg: ^1.0.3
   sliding_sheet: ^0.5.2
-
+  video_player: ^2.5.1
+  simple_shadow: ^0.3.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
