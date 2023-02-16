@@ -259,9 +259,11 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                                         .controller.value.duration.inSeconds
                                         .toDouble(),
                                     onChangeStart: (v) {
+                                      _hideControlsTimer?.cancel();
                                       _draggingValue.value = v;
                                     },
                                     onChangeEnd: (v) {
+                                      _startHideControlsCountdown();
                                       _draggingValue.value = null;
                                       widget.controller
                                           .seekTo(Duration(seconds: v.toInt()));
