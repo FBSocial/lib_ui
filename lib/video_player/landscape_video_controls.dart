@@ -38,7 +38,7 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
     // animations
     _controlsFadeAnimation = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 500),
     );
     _controlsFadeAnimation.value = 1;
     _opacityAnimation = CurvedAnimation(
@@ -281,6 +281,8 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
   }
 
   void _togglePlay() {
+    _startHideControlsCountdown();
+
     if (widget.controller.value.isPlaying) {
       _isPlaying.value = false;
       widget.controller.pause();
