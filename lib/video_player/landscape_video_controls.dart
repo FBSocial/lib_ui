@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_ui/button/fade_button.dart';
+import 'package:lib_ui/video_player/unstyled_video_progress_slider.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'package:video_player/video_player.dart';
 
@@ -20,7 +21,6 @@ class LandscapeVideoControls extends StatefulWidget {
 class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
     with SingleTickerProviderStateMixin {
   late ValueNotifier<bool> _isPlaying;
-  late ValueNotifier<double?> _draggingValue;
   bool _showControls = true;
   Timer? _hideControlsTimer;
   late Duration _videoProgress;
@@ -32,7 +32,6 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
   @override
   void initState() {
     _isPlaying = ValueNotifier(widget.controller.value.isPlaying);
-    _draggingValue = ValueNotifier(null);
     _videoProgress = widget.controller.value.position;
     widget.controller.addListener(_updateVideoProgress);
 
@@ -57,7 +56,6 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
   @override
   void dispose() {
     _controlsFadeAnimation.dispose();
-    _draggingValue.dispose();
     _isPlaying.dispose();
     widget.controller.removeListener(_updateVideoProgress);
     _hideControlsTimer!.cancel();
@@ -221,67 +219,55 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                             );
                           }),
                       // 当前播放进度
-                      Text(
-                        _formatDuration(_videoProgress),
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
+                      Container(
+                        width: 30 + 12,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          _formatDuration(_videoProgress),
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
-                      const SizedBox(width: 12),
                       // 进度调整 Slider
                       Expanded(
-                          child: ValueListenableBuilder<double?>(
-                              valueListenable: _draggingValue,
-                              builder: (context, draggingValue, child) {
-                                return SliderTheme(
-                                  data: const SliderThemeData().copyWith(
-                                    trackShape: CustomTrackShape(),
-                                    trackHeight: 2,
-                                    thumbColor:
-                                        const Color.fromRGBO(255, 255, 255, 1),
-                                    thumbShape: const RoundSliderThumbShape(
-                                      disabledThumbRadius: 4,
-                                      enabledThumbRadius: 4,
-                                      elevation: 0,
-                                      pressedElevation: 0,
-                                    ),
-                                    overlayColor: Colors.transparent,
-                                    activeTrackColor:
-                                        Colors.white.withOpacity(0.4),
-                                    inactiveTrackColor:
-                                        Colors.white.withOpacity(0.2),
-                                  ),
-                                  child: Slider(
-                                    value: draggingValue ??
-                                        _videoProgress.inSeconds.toDouble(),
-                                    max: widget
-                                        .controller.value.duration.inSeconds
-                                        .toDouble(),
-                                    onChangeStart: (v) {
-                                      _hideControlsTimer?.cancel();
-                                      _draggingValue.value = v;
-                                    },
-                                    onChangeEnd: (v) {
-                                      _startHideControlsCountdown();
-                                      _draggingValue.value = null;
-                                      widget.controller
-                                          .seekTo(Duration(seconds: v.toInt()));
-                                    },
-                                    onChanged: (v) {
-                                      _draggingValue.value = v;
-                                    },
-                                  ),
-                                );
-                              })),
-                      const SizedBox(width: 12),
+                          child: SliderTheme(
+                        data: const SliderThemeData().copyWith(
+                          trackShape: RoundedVideoSliderTrackShape(),
+                          trackHeight: 2,
+                          thumbColor: const Color.fromRGBO(255, 255, 255, 1),
+                          thumbShape: const RoundSliderThumbShape(
+                            disabledThumbRadius: 4,
+                            enabledThumbRadius: 4,
+                            elevation: 0,
+                            pressedElevation: 0,
+                          ),
+                          overlayColor: Colors.transparent,
+                          activeTrackColor: Colors.white.withOpacity(0.4),
+                          inactiveTrackColor: Colors.white.withOpacity(0.2),
+                        ),
+                        child: UnStyledVideoProgressSlider(
+                          widget.controller,
+                          onChangeStart: (_) {
+                            _hideControlsTimer?.cancel();
+                          },
+                          onChangeEnd: (_) {
+                            _startHideControlsCountdown();
+                          },
+                        ),
+                      )),
                       // 视频总时长
-                      Text(
-                        _formatDuration(widget.controller.value.duration),
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
+                      Container(
+                        width: 30 + 12,
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          _formatDuration(widget.controller.value.duration),
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
                     ],
                   ),
@@ -306,23 +292,5 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
 
   String _formatDuration(Duration duration) {
     return "${duration.inMinutes.toString().padLeft(2, '0')}:${duration.inSeconds.remainder(60).toString().padLeft(2, '0')}";
-  }
-}
-
-class CustomTrackShape extends RectangularSliderTrackShape {
-  @override
-  Rect getPreferredRect({
-    required RenderBox parentBox,
-    Offset offset = Offset.zero,
-    required SliderThemeData sliderTheme,
-    bool isEnabled = false,
-    bool isDiscrete = false,
-  }) {
-    final double trackHeight = sliderTheme.trackHeight!;
-    final double trackLeft = offset.dx;
-    final double trackTop =
-        offset.dy + (parentBox.size.height - trackHeight) / 2;
-    final double trackWidth = parentBox.size.width;
-    return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
   }
 }
