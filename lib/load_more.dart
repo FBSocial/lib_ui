@@ -39,7 +39,7 @@ class _LoadMoreState extends State<LoadMore> {
   @override
   void initState() {
     if (widget.autoStart) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         _startLoading();
       });
     }

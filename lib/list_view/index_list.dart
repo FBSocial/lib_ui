@@ -159,7 +159,7 @@ class IndexRenderViewport extends RenderViewport {
         final paddingTop = last > position._viewportExtent
             ? 0
             : (position._viewportExtent - last);
-        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           (firstChild as RenderSliverPadding).padding = EdgeInsets.only(
               top: paddingTop.toDouble() + controller!._initialPadding.top);
           controller?.position._padding = EdgeInsets.only(
@@ -671,7 +671,7 @@ class IndexController extends ScrollController {
       first++;
       firstOff = indexMap[first]!;
     }
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _indexListener!.call(first, last);
     });
   }

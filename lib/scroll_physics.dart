@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
 
 class BuffBouncingScrollPhysics extends ScrollPhysics {
   /// Creates scroll physics that bounce back from the edge.

@@ -25,7 +25,7 @@ class _AnimationFadeWrapperState extends State<AnimationFadeWrapper> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
           opacity = 0;

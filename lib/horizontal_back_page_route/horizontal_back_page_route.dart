@@ -148,7 +148,7 @@ class _PageTransitionsTheme with Diagnosticable {
 
   @override
   // ignore: avoid_equals_and_hash_code_on_mutable_classes
-  int get hashCode => hashList(_all(builders));
+  int get hashCode => Object.hashAll(_all(builders));
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {

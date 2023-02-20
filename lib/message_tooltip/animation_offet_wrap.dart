@@ -26,7 +26,7 @@ class _AnimationOffsetWrapperState extends State<AnimationOffsetWrapper> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
           offset = Offset.zero;

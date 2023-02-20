@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
 
 class ScrollWrapper extends StatefulWidget {
   final Widget child;
@@ -93,7 +92,6 @@ class CusBouncingScrollPhysics extends BouncingScrollPhysics {
     return this;
   }
 
-
   /// 临时把滑动速度调整快了 @lizichen
   Simulation? _createBallisticSimulation(
       ScrollMetrics position, double velocity) {
@@ -126,10 +124,8 @@ class CusBouncingScrollPhysics extends BouncingScrollPhysics {
 class CusClampingScrollPhysics extends ClampingScrollPhysics {
   final ScrollStatus scrollStatus;
 
-  const CusClampingScrollPhysics(
-    this.scrollStatus, {
-    ScrollPhysics? parent
-  }) : super(parent: parent);
+  const CusClampingScrollPhysics(this.scrollStatus, {ScrollPhysics? parent})
+      : super(parent: parent);
 
   @override
   SpringDescription get spring {
@@ -149,7 +145,6 @@ class CusClampingScrollPhysics extends ClampingScrollPhysics {
     if (scrollStatus.isJumpEnd) return super.spring;
     return springDescription();
   }
-
 
   @override
   ClampingScrollPhysics applyTo(ScrollPhysics? ancestor) {
@@ -172,13 +167,15 @@ class ScrollStatus {
   bool hasInitial = false;
 }
 
-SpringDescription springDescription() => SpringDescription.withDampingRatio(mass: 0.01, stiffness: 1000);
-
+SpringDescription springDescription() =>
+    SpringDescription.withDampingRatio(mass: 0.01, stiffness: 1000);
 
 final Set<int> _hashcodeSet = {};
 
-bool hasPhysicsAdded(ScrollPhysics physics) => _hashcodeSet.contains(physics.hashCode);
+bool hasPhysicsAdded(ScrollPhysics physics) =>
+    _hashcodeSet.contains(physics.hashCode);
 
-void addHashcodeToSet(ScrollPhysics physics) => _hashcodeSet.add(physics.hashCode);
+void addHashcodeToSet(ScrollPhysics physics) =>
+    _hashcodeSet.add(physics.hashCode);
 
 bool hasInitial = false;

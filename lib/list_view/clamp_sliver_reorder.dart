@@ -52,7 +52,7 @@ class ClampSliverReorderableList extends StatefulWidget {
 
   static ClampSliverReorderableListState? of(BuildContext context) {
     final ClampSliverReorderableListState? result =
-    context.findAncestorStateOfType<ClampSliverReorderableListState>();
+        context.findAncestorStateOfType<ClampSliverReorderableListState>();
     assert(() {
       if (result == null) {
         throw FlutterError.fromParts(<DiagnosticsNode>[
@@ -62,9 +62,9 @@ class ClampSliverReorderableList extends StatefulWidget {
               'No ClampSliverReorderableList ancestor could be found starting from the context that was passed to ClampSliverReorderableList.of().'),
           ErrorHint(
               'This can happen when the context provided is from the same StatefulWidget that '
-                  'built the ClampSliverReorderableList. Please see the ClampSliverReorderableList documentation for examples '
-                  'of how to refer to an ClampSliverReorderableList object:'
-                  '  https://api.flutter.dev/flutter/widgets/ClampSliverReorderableListState-class.html'),
+              'built the ClampSliverReorderableList. Please see the ClampSliverReorderableList documentation for examples '
+              'of how to refer to an ClampSliverReorderableList object:'
+              '  https://api.flutter.dev/flutter/widgets/ClampSliverReorderableListState-class.html'),
           context.describeElement('The context used was')
         ]);
       }
@@ -98,7 +98,7 @@ class ClampSliverReorderableListState extends State<ClampSliverReorderableList>
 
   bool get _reverse =>
       _scrollable!.axisDirection == AxisDirection.up ||
-          _scrollable!.axisDirection == AxisDirection.left;
+      _scrollable!.axisDirection == AxisDirection.left;
 
   @override
   void didChangeDependencies() {
@@ -211,7 +211,7 @@ class ClampSliverReorderableListState extends State<ClampSliverReorderableList>
         _finalDropPosition = _itemOffsetAt(_insertIndex);
       } else {
         final int? itemIndex =
-        _items.length > 1 ? _insertIndex! - 1 : _insertIndex;
+            _items.length > 1 ? _insertIndex! - 1 : _insertIndex;
         if (_reverse) {
           _finalDropPosition = _itemOffsetAt(itemIndex) -
               _extentOffset(item.itemExtent, _scrollDirection);
@@ -272,9 +272,9 @@ class ClampSliverReorderableListState extends State<ClampSliverReorderableList>
 
       final Rect geometry = item.targetGeometry();
       final double itemStart =
-      _scrollDirection == Axis.vertical ? geometry.top : geometry.left;
+          _scrollDirection == Axis.vertical ? geometry.top : geometry.left;
       final double itemExtent =
-      _scrollDirection == Axis.vertical ? geometry.height : geometry.width;
+          _scrollDirection == Axis.vertical ? geometry.height : geometry.width;
       final double itemEnd = itemStart + itemExtent;
       final double itemMiddle = itemStart + itemExtent / 2;
 
@@ -327,7 +327,7 @@ class ClampSliverReorderableListState extends State<ClampSliverReorderableList>
       const double overDragCoef = 10;
 
       final RenderBox scrollRenderBox =
-      _dragInfo!.scrollable!.context.findRenderObject() as RenderBox;
+          _dragInfo!.scrollable!.context.findRenderObject() as RenderBox;
       final Offset scrollOrigin = scrollRenderBox.localToGlobal(Offset.zero);
       final double scrollStart = _offsetExtent(scrollOrigin, _scrollDirection);
       final double scrollEnd =
@@ -378,7 +378,7 @@ class ClampSliverReorderableListState extends State<ClampSliverReorderableList>
 
   Offset _itemOffsetAt(int? index) {
     final RenderBox itemRenderBox =
-    _items[index!]!.context.findRenderObject() as RenderBox;
+        _items[index!]!.context.findRenderObject() as RenderBox;
     return itemRenderBox.localToGlobal(Offset.zero);
   }
 
@@ -398,7 +398,7 @@ class ClampSliverReorderableListState extends State<ClampSliverReorderableList>
       key: _ReorderableItemGlobalKey(child.key!, index, this),
       index: index,
       capturedThemes:
-      InheritedTheme.capture(from: context, to: overlay.context),
+          InheritedTheme.capture(from: context, to: overlay.context),
       child: child,
     );
   }
@@ -496,16 +496,17 @@ class _ReorderableItemState extends State<_ReorderableItem> {
   Offset? get offset {
     if (_offsetAnimation != null) {
       final double animValue =
-      Curves.easeInOut.transform(_offsetAnimation!.value);
+          Curves.easeInOut.transform(_offsetAnimation!.value);
       return Offset.lerp(_startOffset, _targetOffset, animValue);
     }
     return _targetOffset;
   }
 
-  void updateForGap(int gapIndex, double? gapExtent, bool animate, bool reverse) {
+  void updateForGap(
+      int gapIndex, double? gapExtent, bool animate, bool reverse) {
     final Offset newTargetOffset = (gapIndex <= index)
         ? _extentOffset(
-        reverse ? -gapExtent! : gapExtent, _listState!._scrollDirection)
+            reverse ? -gapExtent! : gapExtent, _listState!._scrollDirection)
         : Offset.zero;
     if (newTargetOffset != _targetOffset) {
       _targetOffset = newTargetOffset;
@@ -589,13 +590,14 @@ class ClampReorderableDragStartListener extends StatelessWidget {
 
   void _startDragging(BuildContext context, PointerDownEvent event) {
     final ClampSliverReorderableListState? list =
-    ClampSliverReorderableList.maybeOf(context);
+        ClampSliverReorderableList.maybeOf(context);
     list?.startItemDragReorder(
         index: index, event: event, recognizer: createRecognizer());
   }
 }
 
-class ClampReorderableDelayedDragStartListener extends ClampReorderableDragStartListener {
+class ClampReorderableDelayedDragStartListener
+    extends ClampReorderableDragStartListener {
   const ClampReorderableDelayedDragStartListener({
     Key? key,
     required Widget child,
@@ -626,7 +628,7 @@ class _DragInfo extends Drag {
     required this.tickerProvider,
   }) {
     final RenderBox itemRenderBox =
-    item.context.findRenderObject() as RenderBox;
+        item.context.findRenderObject() as RenderBox;
     dragPosition = initialPosition;
     dragOffset = itemRenderBox.globalToLocal(initialPosition);
     itemSize = item.context.size;
@@ -820,5 +822,5 @@ class _ReorderableItemGlobalKey extends GlobalObjectKey {
   }
 
   @override
-  int get hashCode => hashValues(subKey, index, state);
+  int get hashCode => Object.hash(subKey, index, state);
 }

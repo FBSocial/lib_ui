@@ -21,7 +21,9 @@ enum TooltipDirection {
   // 上下自动布局，默认在上方
   auto,
 }
+
 enum ShowCloseButton { inside, outside, none }
+
 enum ClipAreaShape { oval, rectangle }
 
 typedef OutSideTapHandler = void Function();
@@ -447,7 +449,8 @@ class _PopupBallonLayoutDelegate extends SingleChildLayoutDelegate {
         case TooltipDirection.top:
         case TooltipDirection.auto:
         case TooltipDirection.bottom:
-          leftMostXtoTarget = _targetCenter!.dx - childSize.width / 2 + _offsetX!;
+          leftMostXtoTarget =
+              _targetCenter!.dx - childSize.width / 2 + _offsetX!;
           leftMostXtoTarget = safeRight(leftMostXtoTarget);
           leftMostXtoTarget = safeLeft(leftMostXtoTarget);
 
@@ -471,7 +474,10 @@ class _PopupBallonLayoutDelegate extends SingleChildLayoutDelegate {
 
         case TooltipDirection.followMouse:
           leftMostXtoTarget = _globalPoint!.dx;
-          if (_globalPoint!.dx + childSize.width + _offsetX! + _outSidePadding! >
+          if (_globalPoint!.dx +
+                  childSize.width +
+                  _offsetX! +
+                  _outSidePadding! >
               size.width) {
             leftMostXtoTarget = _globalPoint!.dx - childSize.width - _offsetX!;
             leftMostXtoTarget = safeLeft(leftMostXtoTarget);
@@ -488,7 +494,8 @@ class _PopupBallonLayoutDelegate extends SingleChildLayoutDelegate {
       switch (_popupDirection) {
         case TooltipDirection.left:
         case TooltipDirection.right:
-          topmostYtoTarget = _targetCenter!.dy - childSize.height / 2 + _offsetY!;
+          topmostYtoTarget =
+              _targetCenter!.dy - childSize.height / 2 + _offsetY!;
           topmostYtoTarget = safeTop(topmostYtoTarget);
           topmostYtoTarget = safeBottom(topmostYtoTarget);
 
@@ -572,7 +579,8 @@ class _PopupBallonLayoutDelegate extends SingleChildLayoutDelegate {
           }
         } else {
           y = _targetCenter!.dy + _contextSize.height / 2 + _offsetY!;
-          if (y + childSize.height + _outSidePadding! + _offsetY! > size.height) {
+          if (y + childSize.height + _outSidePadding! + _offsetY! >
+              size.height) {
             y = _targetCenter!.dy -
                 childSize.height -
                 _offsetY! -
@@ -751,7 +759,10 @@ class _BubbleShape extends ShapeBorder {
   @override
   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
     //
-    late double topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius;
+    late double topLeftRadius,
+        topRightRadius,
+        bottomLeftRadius,
+        bottomRightRadius;
 
     Path _getLeftTopPath(Rect rect) {
       return Path()
@@ -1030,7 +1041,8 @@ class _ShapeOverlay extends ShapeBorder {
             Offset(clipRect!.left, clipRect!.bottom - clipAreaCornerRadius),
             radius: Radius.circular(clipAreaCornerRadius))
         ..lineTo(clipRect!.left, clipRect!.top + clipAreaCornerRadius)
-        ..arcToPoint(Offset(clipRect!.left + clipAreaCornerRadius, clipRect!.top),
+        ..arcToPoint(
+            Offset(clipRect!.left + clipAreaCornerRadius, clipRect!.top),
             radius: Radius.circular(clipAreaCornerRadius))
         ..close();
     }
@@ -1072,7 +1084,7 @@ class _AnimationWrapperState extends State<_AnimationWrapper> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
           opacity = 1.0;

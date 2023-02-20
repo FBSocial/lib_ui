@@ -66,7 +66,7 @@ class FBScrollbar extends RawScrollbar {
             key: key,
             child: child,
             controller: controller,
-            isAlwaysShown: isAlwaysShown,
+            thumbVisibility: isAlwaysShown,
             thickness: thickness,
             radius: radius,
             fadeDuration: _kScrollbarFadeDuration,
