@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_ui/button/fade_button.dart';
 import 'package:lib_ui/video_player/unstyled_video_progress_slider.dart';
+import 'package:lib_ui/video_player/video_player_event_tracker.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'package:video_player/video_player.dart';
 
@@ -11,8 +12,10 @@ import '../icon_font.dart';
 
 class LandscapeVideoControls extends StatefulWidget {
   final VideoPlayerController controller;
+  final VideoPlayerEventTracker? eventTracker;
 
-  const LandscapeVideoControls(this.controller, {Key? key}) : super(key: key);
+  const LandscapeVideoControls(this.controller, {Key? key, this.eventTracker})
+      : super(key: key);
 
   @override
   State<LandscapeVideoControls> createState() => _LandscapeVideoControlsState();
@@ -31,6 +34,8 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
 
   @override
   void initState() {
+    widget.eventTracker?.onEnterFullscreen();
+
     _isPlaying = ValueNotifier(widget.controller.value.isPlaying);
     _videoProgress = widget.controller.value.position;
     widget.controller.addListener(_updateVideoProgress);
@@ -55,6 +60,8 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
 
   @override
   void dispose() {
+    widget.eventTracker?.onExitFullscreen();
+
     _controlsFadeAnimation.dispose();
     _isPlaying.dispose();
     widget.controller.removeListener(_updateVideoProgress);
@@ -252,8 +259,9 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                           onChangeStart: (_) {
                             _hideControlsTimer?.cancel();
                           },
-                          onChangeEnd: (_) {
+                          onChangeEnd: (v) {
                             _startHideControlsCountdown();
+                            widget.eventTracker?.onSeek(v);
                           },
                         ),
                       )),
@@ -286,9 +294,11 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
     if (widget.controller.value.isPlaying) {
       _isPlaying.value = false;
       widget.controller.pause();
+      widget.eventTracker?.onPause();
     } else {
       _isPlaying.value = true;
       widget.controller.play();
+      widget.eventTracker?.onResume(false, widget.controller.value.size);
     }
   }
 
