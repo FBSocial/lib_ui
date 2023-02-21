@@ -43,7 +43,7 @@ class _FadeButtonState extends BaseButtonState<FadeButton> {
       opacity: _opacity,
       duration: _opacity == 1 ? kThemeAnimationDuration : Duration.zero,
       child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
+        behavior: HitTestBehavior.translucent,
         onTap: widget.onTap != null ? onTap : null,
         onLongPress: widget.onLongPress != null ? onLongPress : null,
         onTapDown: (_) {
