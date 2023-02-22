@@ -62,6 +62,10 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
   void dispose() {
     widget.eventTracker?.onExitFullscreen();
 
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     _controlsFadeAnimation.dispose();
     _isPlaying.dispose();
     widget.controller.removeListener(_updateVideoProgress);
