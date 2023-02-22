@@ -148,22 +148,6 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                     ],
                   ),
                 ))),
-            // 屏幕中心的播放按钮
-            ValueListenableBuilder<bool>(
-                valueListenable: _isPlaying,
-                builder: (context, playing, child) =>
-                    Visibility(visible: !playing, child: child!),
-                child: UnconstrainedBox(
-                  child: FadeButton(
-                    onTap: _togglePlay,
-                    child: const Icon(
-                      IconFont.play,
-                      size: 50,
-                      color: Colors.white,
-                    ),
-                  ),
-                )),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
