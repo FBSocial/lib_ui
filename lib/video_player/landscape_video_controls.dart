@@ -197,7 +197,12 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                 FadeTransition(
                   opacity: _opacityAnimation,
                   child: Padding(
-                    padding: mq.viewPadding,
+                    padding: EdgeInsets.fromLTRB(
+                        mq.viewPadding.left,
+                        0,
+                        // 右侧的 16 是匹配左侧按钮的左边距
+                        mq.viewPadding.left + 16,
+                        mq.viewPadding.bottom),
                     child: Row(
                       children: [
                         // 播放/暂停按钮
