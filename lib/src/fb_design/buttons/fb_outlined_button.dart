@@ -126,10 +126,11 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
           if (color == null) return null;
           return getOverlayBackgroundColor(color, state, states);
         }),
-        textStyle: MaterialStateProperty.all(TextStyle(
-          fontSize: getFontSize(size),
-          fontWeight: FontWeight.w500,
-        )),
+        textStyle: MaterialStateProperty.all(
+            Theme.of(context).textTheme.bodyText2!.copyWith(
+                  fontSize: getFontSize(size),
+                  fontWeight: FontWeight.w500,
+                )),
       ),
       child: child,
     );
