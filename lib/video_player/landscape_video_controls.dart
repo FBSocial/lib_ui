@@ -64,7 +64,6 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
 
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
     ]);
     _controlsFadeAnimation.dispose();
     _isPlaying.dispose();
@@ -179,7 +178,6 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                                 onTap: () {
                                   SystemChrome.setPreferredOrientations([
                                     DeviceOrientation.portraitUp,
-                                    DeviceOrientation.portraitDown,
                                   ]);
                                 },
                               ),
