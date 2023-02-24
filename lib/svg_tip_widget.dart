@@ -45,7 +45,7 @@ class SvgTipWidget extends StatelessWidget {
             style: TextStyle(
                 color: textColor ?? const Color(0xFF363940),
                 fontSize: textSize ?? 17,
-                fontWeight: fontWeight ?? FontWeight.bold),
+                fontWeight: fontWeight ?? FontWeight.w500),
           ),
         if (desc != null) ...[
           sizeHeight16,

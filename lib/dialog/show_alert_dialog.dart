@@ -35,7 +35,7 @@ class CommonAlertDialog extends StatelessWidget {
     final textStyle = TextStyle(
         color: textColor,
         fontSize: 17,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
         height: 1.35);
 
     return WillPopScope(
@@ -86,7 +86,7 @@ class CommonAlertDialog extends StatelessWidget {
                               style: TextStyle(
                                   color: btnTextColor,
                                   fontSize: 17,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
                         ),
@@ -140,7 +140,7 @@ class CommonTitleAlertDialog extends StatelessWidget {
         color: textColor,
         fontSize: 17,
         height: 1.35,
-        fontWeight: FontWeight.bold);
+        fontWeight: FontWeight.w500);
     final textStyle2 =
         TextStyle(color: textColor.withAlpha(0xcc), fontSize: 16, height: 1.35);
 
@@ -197,7 +197,7 @@ class CommonTitleAlertDialog extends StatelessWidget {
                         style: TextStyle(
                             color: btnTextColor,
                             fontSize: 17,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.w500),
                       ),
                     ),
                   ),

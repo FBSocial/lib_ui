@@ -105,7 +105,7 @@ class BindDialog extends StatelessWidget {
                             style: TextStyle(
                                 color: btnTextColor,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
                       ),
@@ -125,7 +125,7 @@ class BindDialog extends StatelessWidget {
     final textColor = theme.textTheme.bodyText2!.color;
     final textStyle1 = TextStyle(color: textColor, fontSize: 16);
     final textStyle2 =
-        TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.bold);
+        TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w500);
     return Text.rich(
       TextSpan(
         children: [
