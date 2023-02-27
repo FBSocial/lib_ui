@@ -20,7 +20,7 @@ class IdWithCopy extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Clipboard.setData(ClipboardData(text: username));
-        showToast("#号已复制".tr);
+        showToast("复制成功".tr);
         copyClickCallback?.call();
       },
       child: Row(
@@ -58,7 +58,7 @@ class IdWithButtonCopy extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Clipboard.setData(ClipboardData(text: username));
-        showToast("#号已复制".tr);
+        showToast("复制成功".tr);
         copyClickCallback?.call();
       },
       child: Row(
