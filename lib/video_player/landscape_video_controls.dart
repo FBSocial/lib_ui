@@ -203,11 +203,12 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                   opacity: _opacityAnimation,
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(
-                        mq.viewPadding.left,
-                        0,
-                        // 右侧的 16 是匹配左侧按钮的左边距
-                        mq.viewPadding.left + 16,
-                        mq.viewPadding.bottom),
+                            mq.viewPadding.left,
+                            0,
+                            // 右侧的 16 是匹配左侧按钮的左边距
+                            mq.viewPadding.left + 16,
+                            mq.viewPadding.bottom) +
+                        _extraPadding,
                     child: Row(
                       children: [
                         // 播放/暂停按钮
