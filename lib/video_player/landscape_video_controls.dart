@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_ui/button/fade_button.dart';
@@ -32,6 +34,8 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
   late AnimationController _controlsFadeAnimation;
   late Animation<double> _opacityAnimation;
 
+  EdgeInsets _extraPadding = EdgeInsets.zero;
+
   @override
   void initState() {
     widget.eventTracker?.onEnterFullscreen();
@@ -55,7 +59,10 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
     _startHideControlsCountdown();
 
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+
     super.initState();
+
+    _parseDeviceBrandToCalculateExtraPadding();
   }
 
   @override
@@ -159,7 +166,7 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                       SizedBox(
                         height: 44,
                         child: Padding(
-                          padding: mq.viewPadding,
+                          padding: mq.viewPadding + _extraPadding,
                           child: Row(
                             children: [
                               FadeButton(
@@ -300,5 +307,20 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
 
   String _formatDuration(Duration duration) {
     return "${duration.inMinutes.toString().padLeft(2, '0')}:${duration.inSeconds.remainder(60).toString().padLeft(2, '0')}";
+  }
+
+  void _parseDeviceBrandToCalculateExtraPadding() {
+    // 魅族 17+ 手机有个摄像头在屏幕上，但是有没有计入安全区
+    if (Platform.isAndroid) {
+      final androidInfoFuture = DeviceInfoPlugin().androidInfo;
+      androidInfoFuture.then((value) {
+        if (value.device!.startsWith("meizu")) {
+          final version = int.tryParse(value.device!.replaceFirst("meizu", ""));
+          if (version != null && version >= 17) {
+            _extraPadding = const EdgeInsets.only(left: 44);
+          }
+        }
+      });
+    }
   }
 }
