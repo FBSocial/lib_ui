@@ -16,6 +16,7 @@ class Avatar extends StatelessWidget {
   final double? size;
   final bool? showBorder;
   final bool useTexture;
+  final Color? decorationColor;
 
   const Avatar(
       {this.url,
@@ -26,6 +27,7 @@ class Avatar extends StatelessWidget {
       this.size,
       this.showBorder,
       this.useTexture = true,
+      this.decorationColor,
       Key? key})
       : super(key: key);
 
@@ -44,13 +46,15 @@ class Avatar extends StatelessWidget {
           showBorder: showBorder);
     } else {
       return FlutterAvatar(
-          url: url,
-          file: file,
-          radius: radius,
-          widgetKey: widgetKey,
-          cacheManager: cacheManager,
-          size: size,
-          showBorder: showBorder);
+        url: url,
+        file: file,
+        radius: radius,
+        widgetKey: widgetKey,
+        cacheManager: cacheManager,
+        size: size,
+        showBorder: showBorder,
+        decorationColor: decorationColor,
+      );
     }
   }
 }
@@ -135,6 +139,7 @@ class FlutterAvatar extends StatelessWidget {
   final BaseCacheManager? cacheManager;
   final double? size;
   final bool? showBorder;
+  final Color? decorationColor;
 
   const FlutterAvatar(
       {this.url,
@@ -144,6 +149,7 @@ class FlutterAvatar extends StatelessWidget {
       this.cacheManager,
       this.size,
       this.showBorder,
+      this.decorationColor = const Color(0xFFf0f1f2),
       Key? key})
       : super(key: key);
 
@@ -183,8 +189,8 @@ class FlutterAvatar extends StatelessWidget {
       height: _size,
       key: widgetKey,
       alignment: Alignment.center,
-      decoration: const BoxDecoration(
-        color: Color(0xFFf0f1f2),
+      decoration: BoxDecoration(
+        color: decorationColor ?? const Color(0xFFf0f1f2),
         shape: BoxShape.circle,
       ),
       foregroundDecoration: foregroundDecoration,

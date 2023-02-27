@@ -40,7 +40,6 @@ class CountShowWidget extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 10,
-              height: 1.1,
               color: color,
               fontWeight: FontWeight.w500,
             ),
