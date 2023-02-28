@@ -163,10 +163,10 @@ class _LandscapeVideoControlsState extends State<LandscapeVideoControls>
                   child: Column(
                     children: [
                       const SizedBox(height: 14),
-                      SizedBox(
-                        height: 44,
-                        child: Padding(
-                          padding: mq.viewPadding + _extraPadding,
+                      Padding(
+                        padding: mq.viewPadding + _extraPadding,
+                        child: SizedBox(
+                          height: 44,
                           child: Row(
                             children: [
                               FadeButton(
