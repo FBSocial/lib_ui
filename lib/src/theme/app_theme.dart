@@ -20,7 +20,7 @@ class AppTheme extends InheritedWidget {
 
   static AppThemeData of(BuildContext context) {
     final appTheme = context.dependOnInheritedWidgetOfExactType<AppTheme>()!;
-    return WidgetsBinding.instance.window.platformBrightness == Brightness.dark
+    return WidgetsBinding.instance!.window.platformBrightness == Brightness.dark
         ? appTheme.darkTheme ?? appTheme.theme
         : appTheme.theme;
   }

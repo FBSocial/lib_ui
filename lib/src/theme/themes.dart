@@ -4,370 +4,186 @@
 import 'package:flutter/material.dart';
 
 class AppThemeData {
+    final Auxiliary auxiliary;
     final Bg bg;
     final Fg fg;
-    final Other other;
-    final String pingFang;
-    final Medium medium;
-    final Radius radius;
-    final Regular regular;
-    final Weight weight;
+    final _Function function;
 
     AppThemeData({
+        required this.auxiliary,
         required this.bg,
         required this.fg,
-        required this.other,
-        required this.pingFang,
-        required this.medium,
-        required this.radius,
-        required this.regular,
-        required this.weight,
+        required this.function,
     });
 
     factory AppThemeData.light() {
         return AppThemeData(
+            auxiliary: Auxiliary(
+                green: const Color(0xff11CD75),
+                orange: const Color(0xffFF6A00),
+                red: const Color(0xffF2494A),
+                rose: const Color(0xffFF3377),
+                violet: const Color(0xff7559FF),
+                yellow: const Color(0xffF2AA19),
+            ),
             bg: Bg(
-                one: const Color(0xfff3f4f5),
-                two: const Color(0xffffffff),
+                bg1: const Color(0xffF3F4F5),
+                bg2: const Color(0xffEDEEEF),
+                bg3: const Color(0xffFFFFFF),
             ),
             fg: Fg(
-                brand: FgBrand(
-                    one: const Color(0xff198cfe),
-                    three: const Color(0x1a198cfe),
-                    two: const Color(0x66198cfe),
-                ),
-                green: FgGreen(
-                    one: const Color(0xff00bf7f),
-                    three: const Color(0x1a00bf7f),
-                    two: const Color(0x6600bf7f),
-                ),
-                grey: FgGrey(
-                    five: const Color(0x331a2033),
-                    four: const Color(0x661a2033),
-                    one: const Color(0xff1a2033),
-                    seven: const Color(0x0d1a2033),
-                    six: const Color(0x141a2033),
-                    three: const Color(0x991a2033),
-                    two: const Color(0xe61a2033),
-                ),
-                red: FgRed(
-                    one: const Color(0xfff2494a),
-                    three: const Color(0x1af2494a),
-                    two: const Color(0x66f2494a),
-                ),
-                whiteBlack: FgWhiteBlack(
-                    one: const Color(0xffffffff),
-                    three: const Color(0x1affffff),
-                    two: const Color(0x99ffffff),
-                ),
-                yellow: FgYellow(
-                    one: const Color(0xffffb726),
-                    three: const Color(0x1affb726),
-                    two: const Color(0x66ffb726),
-                ),
+                b10: const Color.fromARGB(25, 26, 32, 51),
+                b100: const Color(0xff1A2033),
+                b20: const Color(0xffD1D2D6),
+                b30: const Color(0xffBBBDC2),
+                b40: const Color(0xffA3A6AD),
+                b5: const Color.fromARGB(12, 26, 32, 51),
+                b60: const Color(0xff767985),
+                b95: const Color.fromARGB(242, 26, 32, 51),
+                black: const Color(0xff000000),
+                blue1: const Color(0xff198CFE),
+                blue2: const Color.fromARGB(76, 25, 140, 255),
+                blue3: const Color.fromARGB(25, 25, 140, 255),
+                white1: const Color(0xffFFFFFF),
+                widget: const Color.fromARGB(178, 64, 64, 64),
             ),
-            other: Other(
-                transparent: const Color(0x00ffffff),
-            ),
-            pingFang: "PingFang SC",
-            medium: Medium(
-                f1: const TextStyle(fontSize: 14,height: 20,fontWeight: FontWeight.w500,),
-                f2: const TextStyle(fontSize: 12,height: 17,fontWeight: FontWeight.w500,),
-                h1: const TextStyle(fontSize: 22,height: 30,fontWeight: FontWeight.w500,),
-                h2: const TextStyle(fontSize: 20,height: 28,fontWeight: FontWeight.w500,),
-                h3: const TextStyle(fontSize: 17,height: 24,fontWeight: FontWeight.w500,),
-                t1: const TextStyle(fontSize: 16,height: 22,fontWeight: FontWeight.w500,),
-                t2: const TextStyle(fontSize: 15,height: 20,fontWeight: FontWeight.w500,),
-            ),
-            radius: Radius(
-                five: BorderRadius.circular(10),
-                four: BorderRadius.circular(9),
-                one: BorderRadius.circular(4),
-                seven: BorderRadius.circular(13),
-                six: BorderRadius.circular(11),
-                three: BorderRadius.circular(8),
-                two: BorderRadius.circular(6),
-            ),
-            regular: Regular(
-                f1: const TextStyle(fontSize: 14,height: 20,fontWeight: FontWeight.w400,),
-                f2: const TextStyle(fontSize: 12,height: 17,fontWeight: FontWeight.w400,),
-                h1: const TextStyle(fontSize: 22,height: 30,fontWeight: FontWeight.w400,),
-                h2: const TextStyle(fontSize: 20,height: 28,fontWeight: FontWeight.w400,),
-                h3: const TextStyle(fontSize: 17,height: 24,fontWeight: FontWeight.w400,),
-                t1: const TextStyle(fontSize: 16,height: 22,fontWeight: FontWeight.w400,),
-                t2: const TextStyle(fontSize: 15,height: 21,fontWeight: FontWeight.w400,),
-            ),
-            weight: Weight(
-                medium: FontWeight.w500,
-                regular: FontWeight.w400,
+            function: _Function(
+                green1: const Color(0xff00BF7F),
+                green3: const Color.fromARGB(25, 0, 191, 127),
+                red1: const Color(0xffF2494A),
+                red2: const Color.fromARGB(76, 242, 73, 74),
+                red3: const Color.fromARGB(25, 242, 73, 74),
+                yellow1: const Color(0xffFFB726),
+                yellow3: const Color.fromARGB(25, 255, 183, 38),
             ),
         );
     }
     factory AppThemeData.dark() {
         return AppThemeData(
+            auxiliary: Auxiliary(
+                green: const Color(0xff0EA65F),
+                orange: const Color(0xffD95A00),
+                red: const Color(0xffCC3E3E),
+                rose: const Color(0xffD92B65),
+                violet: const Color(0xff634CD9),
+                yellow: const Color(0xffCC8F15),
+            ),
             bg: Bg(
-                one: const Color(0xff000000),
-                two: const Color(0xff1f1f1f),
+                bg1: const Color(0xff000000),
+                bg2: const Color(0xff141414),
+                bg3: const Color(0xff1F1F1F),
             ),
             fg: Fg(
-                brand: FgBrand(
-                    one: const Color(0xff1a7cdd),
-                    three: const Color(0x1a1a7cdd),
-                    two: const Color(0x661a7cdd),
-                ),
-                green: FgGreen(
-                    one: const Color(0xff05a771),
-                    three: const Color(0x1a05a771),
-                    two: const Color(0x6605a771),
-                ),
-                grey: FgGrey(
-                    five: const Color(0x66ffffff),
-                    four: const Color(0x99ffffff),
-                    one: const Color(0xe6ffffff),
-                    seven: const Color(0x0dffffff),
-                    six: const Color(0x14ffffff),
-                    three: const Color(0xb3ffffff),
-                    two: const Color(0xccffffff),
-                ),
-                red: FgRed(
-                    one: const Color(0xffd24344),
-                    three: const Color(0x1ad24344),
-                    two: const Color(0x66d24344),
-                ),
-                whiteBlack: FgWhiteBlack(
-                    one: const Color(0xff000000),
-                    three: const Color(0x1a000000),
-                    two: const Color(0x99000000),
-                ),
-                yellow: FgYellow(
-                    one: const Color(0xffdc9f23),
-                    three: const Color(0x1adc9f23),
-                    two: const Color(0x66dc9f23),
-                ),
+                b10: const Color.fromARGB(25, 255, 255, 255),
+                b100: const Color(0xffFFFFFF),
+                b20: const Color(0xff4C4C4C),
+                b30: const Color(0xff626262),
+                b40: const Color(0xff797979),
+                b5: const Color.fromARGB(12, 255, 255, 255),
+                b60: const Color(0xffA5A5A5),
+                b95: const Color.fromARGB(242, 255, 255, 255),
+                black: const Color(0xff000000),
+                blue1: const Color(0xff1677D9),
+                blue2: const Color.fromARGB(76, 22, 119, 217),
+                blue3: const Color.fromARGB(25, 22, 119, 217),
+                white1: const Color(0xffFFFFFF),
+                widget: const Color.fromARGB(178, 64, 64, 64),
             ),
-            other: Other(
-                transparent: const Color(0x00ffffff),
-            ),
-            pingFang: "PingFang SC",
-            medium: Medium(
-                f1: const TextStyle(fontSize: 14,height: 20,fontWeight: FontWeight.w500,),
-                f2: const TextStyle(fontSize: 12,height: 17,fontWeight: FontWeight.w500,),
-                h1: const TextStyle(fontSize: 22,height: 30,fontWeight: FontWeight.w500,),
-                h2: const TextStyle(fontSize: 20,height: 28,fontWeight: FontWeight.w500,),
-                h3: const TextStyle(fontSize: 17,height: 24,fontWeight: FontWeight.w500,),
-                t1: const TextStyle(fontSize: 16,height: 22,fontWeight: FontWeight.w500,),
-                t2: const TextStyle(fontSize: 15,height: 20,fontWeight: FontWeight.w500,),
-            ),
-            radius: Radius(
-                five: BorderRadius.circular(10),
-                four: BorderRadius.circular(9),
-                one: BorderRadius.circular(4),
-                seven: BorderRadius.circular(13),
-                six: BorderRadius.circular(11),
-                three: BorderRadius.circular(8),
-                two: BorderRadius.circular(6),
-            ),
-            regular: Regular(
-                f1: const TextStyle(fontSize: 14,height: 20,fontWeight: FontWeight.w400,),
-                f2: const TextStyle(fontSize: 12,height: 17,fontWeight: FontWeight.w400,),
-                h1: const TextStyle(fontSize: 22,height: 30,fontWeight: FontWeight.w400,),
-                h2: const TextStyle(fontSize: 20,height: 28,fontWeight: FontWeight.w400,),
-                h3: const TextStyle(fontSize: 17,height: 24,fontWeight: FontWeight.w400,),
-                t1: const TextStyle(fontSize: 16,height: 22,fontWeight: FontWeight.w400,),
-                t2: const TextStyle(fontSize: 15,height: 21,fontWeight: FontWeight.w400,),
-            ),
-            weight: Weight(
-                medium: FontWeight.w500,
-                regular: FontWeight.w400,
+            function: _Function(
+                green1: const Color(0xff009966),
+                green3: const Color.fromARGB(25, 0, 153, 102),
+                red1: const Color(0xffCC3E3E),
+                red2: const Color.fromARGB(76, 204, 62, 62),
+                red3: const Color.fromARGB(25, 204, 62, 62),
+                yellow1: const Color(0xffD99C20),
+                yellow3: const Color.fromARGB(25, 217, 156, 32),
             ),
         );
     }
 
 }
 
-class Weight {
-    final FontWeight medium;
-    final FontWeight regular;
+class _Function {
+    final Color green1;
+    final Color green3;
+    final Color red1;
+    final Color red2;
+    final Color red3;
+    final Color yellow1;
+    final Color yellow3;
 
-    Weight({
-        required this.medium,
-        required this.regular,
-    });
-}
-
-class Regular {
-    final TextStyle f1;
-    final TextStyle f2;
-    final TextStyle h1;
-    final TextStyle h2;
-    final TextStyle h3;
-    final TextStyle t1;
-    final TextStyle t2;
-
-    Regular({
-        required this.f1,
-        required this.f2,
-        required this.h1,
-        required this.h2,
-        required this.h3,
-        required this.t1,
-        required this.t2,
-    });
-}
-
-class Radius {
-    final BorderRadius five;
-    final BorderRadius four;
-    final BorderRadius one;
-    final BorderRadius seven;
-    final BorderRadius six;
-    final BorderRadius three;
-    final BorderRadius two;
-
-    Radius({
-        required this.five,
-        required this.four,
-        required this.one,
-        required this.seven,
-        required this.six,
-        required this.three,
-        required this.two,
-    });
-}
-
-class Medium {
-    final TextStyle f1;
-    final TextStyle f2;
-    final TextStyle h1;
-    final TextStyle h2;
-    final TextStyle h3;
-    final TextStyle t1;
-    final TextStyle t2;
-
-    Medium({
-        required this.f1,
-        required this.f2,
-        required this.h1,
-        required this.h2,
-        required this.h3,
-        required this.t1,
-        required this.t2,
-    });
-}
-
-class Other {
-    final Color transparent;
-
-    Other({
-        required this.transparent,
+    _Function({
+        required this.green1,
+        required this.green3,
+        required this.red1,
+        required this.red2,
+        required this.red3,
+        required this.yellow1,
+        required this.yellow3,
     });
 }
 
 class Fg {
-    final FgBrand brand;
-    final FgGreen green;
-    final FgGrey grey;
-    final FgRed red;
-    final FgWhiteBlack whiteBlack;
-    final FgYellow yellow;
+    final Color b10;
+    final Color b100;
+    final Color b20;
+    final Color b30;
+    final Color b40;
+    final Color b5;
+    final Color b60;
+    final Color b95;
+    final Color black;
+    final Color blue1;
+    final Color blue2;
+    final Color blue3;
+    final Color white1;
+    final Color widget;
 
     Fg({
-        required this.brand,
-        required this.green,
-        required this.grey,
-        required this.red,
-        required this.whiteBlack,
-        required this.yellow,
-    });
-}
-
-class FgYellow {
-    final Color one;
-    final Color three;
-    final Color two;
-
-    FgYellow({
-        required this.one,
-        required this.three,
-        required this.two,
-    });
-}
-
-class FgWhiteBlack {
-    final Color one;
-    final Color three;
-    final Color two;
-
-    FgWhiteBlack({
-        required this.one,
-        required this.three,
-        required this.two,
-    });
-}
-
-class FgRed {
-    final Color one;
-    final Color three;
-    final Color two;
-
-    FgRed({
-        required this.one,
-        required this.three,
-        required this.two,
-    });
-}
-
-class FgGrey {
-    final Color five;
-    final Color four;
-    final Color one;
-    final Color seven;
-    final Color six;
-    final Color three;
-    final Color two;
-
-    FgGrey({
-        required this.five,
-        required this.four,
-        required this.one,
-        required this.seven,
-        required this.six,
-        required this.three,
-        required this.two,
-    });
-}
-
-class FgGreen {
-    final Color one;
-    final Color three;
-    final Color two;
-
-    FgGreen({
-        required this.one,
-        required this.three,
-        required this.two,
-    });
-}
-
-class FgBrand {
-    final Color one;
-    final Color three;
-    final Color two;
-
-    FgBrand({
-        required this.one,
-        required this.three,
-        required this.two,
+        required this.b10,
+        required this.b100,
+        required this.b20,
+        required this.b30,
+        required this.b40,
+        required this.b5,
+        required this.b60,
+        required this.b95,
+        required this.black,
+        required this.blue1,
+        required this.blue2,
+        required this.blue3,
+        required this.white1,
+        required this.widget,
     });
 }
 
 class Bg {
-    final Color one;
-    final Color two;
+    final Color bg1;
+    final Color bg2;
+    final Color bg3;
 
     Bg({
-        required this.one,
-        required this.two,
+        required this.bg1,
+        required this.bg2,
+        required this.bg3,
+    });
+}
+
+class Auxiliary {
+    final Color green;
+    final Color orange;
+    final Color red;
+    final Color rose;
+    final Color violet;
+    final Color yellow;
+
+    Auxiliary({
+        required this.green,
+        required this.orange,
+        required this.red,
+        required this.rose,
+        required this.violet,
+        required this.yellow,
     });
 }
 
