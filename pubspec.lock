@@ -450,8 +450,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "4.6.5.2"
-      resolved-ref: "543da3face7bb217c1be8c68a90022898e7f7072"
+      ref: "4.6.5.3"
+      resolved-ref: "759368bc2a40a18a5a44728efaf16444ed381f0a"
       url: "https://github.com/FBSocial/getx_fix.git"
     source: git
     version: "4.6.5"
