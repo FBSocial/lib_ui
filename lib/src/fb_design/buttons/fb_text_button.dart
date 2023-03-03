@@ -11,6 +11,7 @@ enum FbButtonState {
   completed,
   loading,
 }
+
 enum _FbTextButtonType {
   priamary,
   dangerous,
@@ -68,6 +69,7 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
         padding: MaterialStateProperty.all(EdgeInsets.zero),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontSize: size == FbButtonSize.small ? 14 : 16,
+          fontWeight: FontWeight.w500,
         )),
       ),
       child: Text(label),
