@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lib_theme/get_theme.dart';
+import 'package:lib_theme/app_theme.dart';
 
 import '../icon_font.dart';
 
@@ -15,7 +14,7 @@ class MoreIcon extends StatelessWidget {
     return Icon(
       IconFont.xiayibu,
       size: size,
-      color: color ?? Get.themeToken.fg.b40,
+      color: color ?? AppTheme.of(context).fg.b40,
     );
   }
 }
