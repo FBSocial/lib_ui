@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_extension/string_extension.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
@@ -43,7 +44,7 @@ class SvgTipWidget extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: textColor ?? const Color(0xFF363940),
+                color: textColor ?? AppTheme.of(context).fg.b40,
                 fontSize: textSize ?? 17,
                 fontWeight: fontWeight ?? FontWeight.w500),
           ),
