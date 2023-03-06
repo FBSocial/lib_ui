@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
 import 'fb_buttons_mixins.dart';
@@ -43,7 +44,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         super(key: key);
 
   Color? getBackgroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
+    final theme = appThemeData;
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
@@ -75,7 +76,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
+    final theme = appThemeData;
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
@@ -93,9 +94,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
       case FbButtonState.deactivated:
         return colorDistinguishedByButtonType().withOpacity(0.4);
       case FbButtonState.disabled:
-        return fbTheme.iconTheme.color!.withOpacity(0.4);
+        return appThemeData.iconTheme.color!.withOpacity(0.4);
       case FbButtonState.completed:
-        return fbTheme.iconTheme.color!.withOpacity(0.8);
+        return appThemeData.iconTheme.color!.withOpacity(0.8);
     }
   }
 
@@ -139,7 +140,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   }
 
   BorderSide? getBorderSide(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
+    final theme = appThemeData;
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:

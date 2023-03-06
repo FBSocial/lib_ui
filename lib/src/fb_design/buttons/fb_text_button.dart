@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
-import 'package:lib_ui/src/fb_colors.dart';
+import 'package:lib_theme/app_colors.dart';
 
 import 'fb_buttons_mixins.dart';
 
@@ -78,14 +79,14 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
+    final theme = appThemeData;
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _FbTextButtonType.priamary:
           return theme.primaryColor;
         case _FbTextButtonType.dangerous:
-          return FbColors.destructiveRed;
+          return destructiveRed;
       }
     }
 
