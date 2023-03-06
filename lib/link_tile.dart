@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_ui/button/fade_background_button.dart';
 import 'package:lib_ui/button/more_icon.dart';
@@ -31,12 +32,11 @@ class LinkTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return FadeBackgroundButton(
       onTap: onTap,
       height: height,
-      backgroundColor: theme.backgroundColor,
-      tapDownBackgroundColor: theme.backgroundColor.withOpacity(0.5),
+      backgroundColor: AppTheme.of(context).bg.bg3,
+      tapDownBackgroundColor: AppTheme.of(context).bg.bg2,
       borderRadius: borderRadius,
       child: Padding(
         padding: padding ??

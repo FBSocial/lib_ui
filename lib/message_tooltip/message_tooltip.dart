@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/gesture/fb_ignore_pointer.dart';
 
 import 'animation_fade_wrap.dart';
@@ -8,7 +9,9 @@ import 'animation_offet_wrap.dart';
 import 'popup_ballon_layout_delegate.dart';
 
 enum TooltipDirection { up, down, center }
+
 enum ShowCloseButton { inside, outside, none }
+
 enum ClipAreaShape { oval, rectangle }
 
 typedef OutSideTapHandler = void Function();
@@ -307,7 +310,7 @@ class MessageTooltip {
             ? EdgeInsets.zero
             : const EdgeInsets.only(left: 300),
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: AppTheme.of(context).bg.bg3,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           border: Border.all(color: const Color(0xffE0E2E6), width: 0.5),
           boxShadow: hasShadow

@@ -52,8 +52,13 @@ class SvgTipWidget extends StatelessWidget {
           sizeHeight16,
           Text(
             desc!,
-            style:
-                Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
+            style: TextStyle(
+              color: AppTheme.of(context).fg.b60,
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              height: 1.35,
+              fontFamilyFallback: defaultFontFamilyFallback,
+            ),
             textAlign: TextAlign.center,
           )
         ],
