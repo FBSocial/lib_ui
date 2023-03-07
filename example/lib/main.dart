@@ -4,6 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'pages/button_example_page.dart';
 import 'pages/dialog_example_page.dart';
+import 'package:lib_theme/lib_theme.dart';
 
 const kRouteButtons = "buttons";
 const kRouteDialogs = "dialogs";
@@ -18,17 +19,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return FbTheme(
-      child: GetMaterialApp(
-        title: 'Flutter Demo',
-        theme: fbTheme,
-        home: const MyHomePage(),
-        routes: {
-          kRouteButtons: (_) => const ButtonExamplePage(),
-          kRouteDialogs: (_) => const DialogExamplePage()
-        },
-      ),
-    );
+    return AppTheme(
+        theme: AppThemeData.light(),
+        darkTheme: AppThemeData.dark(),
+        child: FbTheme(
+          child: GetMaterialApp(
+            title: 'Flutter Demo',
+            theme: fbTheme,
+            home: const MyHomePage(),
+            routes: {
+              kRouteButtons: (_) => const ButtonExamplePage(),
+              kRouteDialogs: (_) => const DialogExamplePage()
+            },
+          ),
+        ));
   }
 }
 

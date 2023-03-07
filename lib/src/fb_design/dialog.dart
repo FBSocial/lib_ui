@@ -1,3 +1,4 @@
+import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,14 +48,12 @@ class ActionSheet<T> extends StatelessWidget {
         resizeToAvoidBottomInset: false, builder: (context) {
       return SlidingSheetDialog(
         axisAlignment: 1,
-        // color: CustomColor(context).backgroundColor7,
+        color: AppTheme.of(context).bg.bg3,
         extendBody: true,
         elevation: 8,
-        // controller: controller,
         cornerRadius: 12,
         padding: EdgeInsets.zero,
         duration: kThemeAnimationDuration,
-        // scrollSpec: const ScrollSpec(physics: ClampingScrollPhysics()),
         avoidStatusBar: true,
         snapSpec: SnapSpec(
           snappings: const [0.9],
@@ -96,8 +95,8 @@ class ActionSheet<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Material(
+      color: AppTheme.of(context).bg.bg3,
       child: SafeArea(
         child: Column(
           children: [
@@ -109,7 +108,7 @@ class ActionSheet<T> extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(12)),
-                  color: theme.backgroundColor,
+                  color: AppTheme.of(context).bg.bg3,
                 ),
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(50, 22, 50, 22),
@@ -119,7 +118,7 @@ class ActionSheet<T> extends StatelessWidget {
               ),
             if (title != null)
               Divider(
-                color: theme.scaffoldBackgroundColor,
+                color: AppTheme.of(context).bg.bg1,
               ),
             for (var i = 0; i < actions.length; i++)
               if (actions[i] == ActionSheetItem.divider)

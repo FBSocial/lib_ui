@@ -1,6 +1,7 @@
 import 'package:lib_ui/lib_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_ui/toast.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class DialogExamplePage extends StatelessWidget {
   const DialogExamplePage({Key? key}) : super(key: key);
@@ -8,6 +9,7 @@ class DialogExamplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.of(context).bg.bg1,
       body: Wrap(
         children: [
           FbTextButton.primary("选项列表", onTap: () async {

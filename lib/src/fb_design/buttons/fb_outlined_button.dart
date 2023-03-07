@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
 import 'fb_buttons_mixins.dart';
@@ -43,14 +44,12 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         super(key: key);
 
   Color? getBackgroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
-
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return theme.primaryColor;
+          return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
-          return theme.colorScheme.onSecondary;
+          return AppTheme.of(context).fg.white1;
       }
     }
 
@@ -61,28 +60,26 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         break;
       case FbButtonState.disabled:
       case FbButtonState.completed:
-        return theme.colorScheme.onSecondary.withOpacity(0.1);
+        return AppTheme.of(context).fg.b20;
     }
 
     if (states.contains(MaterialState.hovered)) {
       return colorDistinguishedByButtonType().withOpacity(0.1);
     }
     if (states.contains(MaterialState.pressed)) {
-      return theme.backgroundColor.withOpacity(0.8);
+      return AppTheme.of(context).fg.b20.withOpacity(0.8);
     }
 
     return null;
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
-
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return theme.primaryColor;
+          return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
-          return theme.textTheme.bodyText2!.color!;
+          return AppTheme.of(context).fg.b100;
       }
     }
 
@@ -93,9 +90,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
       case FbButtonState.deactivated:
         return colorDistinguishedByButtonType().withOpacity(0.4);
       case FbButtonState.disabled:
-        return fbTheme.iconTheme.color!.withOpacity(0.4);
+        return AppTheme.of(context).fg.b60.withOpacity(0.4);
       case FbButtonState.completed:
-        return fbTheme.iconTheme.color!.withOpacity(0.8);
+        return AppTheme.of(context).fg.b60.withOpacity(0.8);
     }
   }
 
@@ -126,11 +123,10 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
           if (color == null) return null;
           return getOverlayBackgroundColor(color, state, states);
         }),
-        textStyle: MaterialStateProperty.all(
-            Theme.of(context).textTheme.bodyText2!.copyWith(
-                  fontSize: getFontSize(size),
-                  fontWeight: FontWeight.w500,
-                )),
+        textStyle: MaterialStateProperty.all(TextStyle(
+            fontSize: getFontSize(size),
+            fontWeight: FontWeight.w500,
+            color: AppTheme.of(context).fg.b100)),
       ),
       child: child,
     );
@@ -139,13 +135,12 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   }
 
   BorderSide? getBorderSide(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return theme.primaryColor;
+          return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
-          return theme.colorScheme.onSecondary;
+          return AppTheme.of(context).fg.b40;
       }
     }
 

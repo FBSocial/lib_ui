@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
-import 'package:lib_ui/src/fb_colors.dart';
 
 import 'fb_buttons_mixins.dart';
 
@@ -108,8 +108,8 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         //圆角：按钮高度 / 6 （规范提供公式）
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
             RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                    Radius.circular(buttonSize.height / 6)))),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(buttonSize.height / 6)))),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontSize: getFontSize(size),
           fontWeight: FontWeight.w500,
@@ -122,19 +122,17 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
-
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return Colors.white;
+          return AppTheme.of(context).fg.white1;
         case _ButtonType.tertiary:
-          return theme.textTheme.bodyText2!.color!;
+          return AppTheme.of(context).fg.b100;
         case _ButtonType.secondary:
         case _ButtonType.quaternary:
-          return theme.primaryColor;
+          return AppTheme.of(context).fg.blue1;
         case _ButtonType.dangerous:
-          return Colors.white;
+          return AppTheme.of(context).fg.white1;
       }
     }
 
@@ -148,28 +146,26 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
       case FbButtonState.loading:
         return colorDistinguishedByButtonType();
       case FbButtonState.disabled:
-        return theme.colorScheme.onSurface.withOpacity(0.4);
+        return AppTheme.of(context).fg.b10.withOpacity(0.4);
       case FbButtonState.completed:
-        return theme.colorScheme.onSurface.withOpacity(0.8);
+        return AppTheme.of(context).fg.b10.withOpacity(0.8);
       case FbButtonState.deactivated:
         return colorDistinguishedByButtonType().withOpacity(0.7);
     }
   }
 
   Color getBackgroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = fbTheme;
-
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return theme.primaryColor;
+          return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
         case _ButtonType.tertiary:
-          return theme.colorScheme.onSecondary.withOpacity(0.1);
+          return AppTheme.of(context).fg.b20;
         case _ButtonType.quaternary:
-          return theme.primaryColor.withOpacity(0.1);
+          return AppTheme.of(context).fg.blue1.withOpacity(0.1);
         case _ButtonType.dangerous:
-          return FbColors.destructiveRed;
+          return AppTheme.of(context).function.red1;
       }
     }
 
@@ -184,7 +180,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         return colorDistinguishedByButtonType();
       case FbButtonState.disabled:
       case FbButtonState.completed:
-        return theme.colorScheme.onSecondary.withOpacity(0.1);
+        return AppTheme.of(context).fg.b10.withOpacity(0.1);
       case FbButtonState.deactivated:
         final color = colorDistinguishedByButtonType();
         // 禁用态有些特殊，次按钮的背景色是 0.1，其他类型按钮的背景色是 0.4 透明度

@@ -16,6 +16,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lib_ui/lib_ui.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class ButtonExamplePage extends StatefulWidget {
   const ButtonExamplePage({Key? key}) : super(key: key);
@@ -38,13 +39,14 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppTheme.of(context).bg.bg1,
         body: ListView(
-      children: [
-        _buildTextButtons(context),
-        _buildOutlinedButtons(),
-        _buildFillButtons(),
-      ],
-    ));
+          children: [
+            _buildTextButtons(context),
+            _buildOutlinedButtons(),
+            _buildFillButtons(),
+          ],
+        ));
   }
 
   Widget _buildTextButtons(BuildContext context) {
@@ -167,6 +169,10 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
               icon: Icons.supervisor_account,
               size: FbButtonSize.large,
               onTap: () => {}),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1)
         ],
       );
     }
@@ -300,6 +306,13 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
           ),
           FbFilledButton.dangerous(title,
               state: state, size: FbButtonSize.large, onTap: () => {}),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1),
+          const SizedBox(width: 1),
         ],
       );
     }
@@ -392,12 +405,16 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
+        color: AppTheme.of(context).bg.bg3,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(title),
+              child: Text(
+                title,
+                style: TextStyle(color: AppTheme.of(context).fg.b100),
+              ),
             ),
             const Divider(),
             SingleChildScrollView(
