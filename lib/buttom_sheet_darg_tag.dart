@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/lib_theme.dart';
 
 double kBottomSheetDragTagHeight = 20;
 
 class BottomSheetDragTag extends StatelessWidget {
-  const BottomSheetDragTag({Key? key}) : super(key: key);
+  final Color? backgroundColor;
+
+  const BottomSheetDragTag({Key? key, this.backgroundColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: backgroundColor ?? AppTheme.of(context).bg.bg3,
       height: kBottomSheetDragTagHeight,
       alignment: Alignment.center,
       child: Container(
         width: 36,
         height: 4,
         decoration: BoxDecoration(
-            color:
-                Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.2),
+            color: AppTheme.of(context).fg.b10,
             borderRadius: const BorderRadius.all(Radius.circular(4))),
       ),
     );
