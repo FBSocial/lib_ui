@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
-import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/text_field/native_input.dart';
 import 'package:lib_utils/config/config.dart';
 import 'package:lib_utils/orientation_util.dart';
@@ -170,7 +170,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                             fontSize: 12,
                             color: widget.controller.text.characters.length >
                                     widget.maxLength!
-                                ? DefaultTheme.dangerColor
+                                ? AppTheme.of(context).auxiliary.red
                                 : Theme.of(context).textTheme.bodyText1!.color),
                         children: [
                           TextSpan(
@@ -215,7 +215,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
                       fontSize: 12,
                       color: currentLength > maxLength
-                          ? DefaultTheme.dangerColor
+                          ? AppTheme.of(context).auxiliary.red
                           : Theme.of(context).textTheme.bodyText1!.color),
                   children: [
                     TextSpan(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lib_theme/default_theme.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/text_field/native_input.dart';
 import 'package:lib_utils/config/config.dart';
 import 'package:lib_utils/universal_platform.dart';
@@ -79,7 +79,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             fontSize: 12,
                             color: _title.trim().characters.length >
                                     widget.maxLength!
-                                ? DefaultTheme.dangerColor
+                                ? AppTheme.of(context).auxiliary.red
                                 : const Color(0xFF8F959E),
                           ),
                       children: [

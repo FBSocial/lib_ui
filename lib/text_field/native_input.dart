@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/custom_text_selection.dart';
 import 'package:lib_utils/config/config.dart';
@@ -185,7 +186,7 @@ class _NativeInputState extends State<NativeInput> {
                                       color: widget.controller!.text.characters
                                                   .length >
                                               maxLength!
-                                          ? DefaultTheme.dangerColor
+                                          ? AppTheme.of(context).auxiliary.red
                                           : const Color(0xFF8F959E),
                                     ),
                             children: [
