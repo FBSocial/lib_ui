@@ -61,7 +61,7 @@ class _IconToast extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: appThemeData.textTheme.bodyText2!.color!.withOpacity(0.95),
+        color: AppTheme.of(context).fg.b100.withOpacity(0.95),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(

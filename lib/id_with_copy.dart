@@ -84,10 +84,10 @@ class IdWithButtonCopy extends StatelessWidget {
               child: Text(
                 '复制'.tr,
                 style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w500,
-                    color: appThemeData.textTheme.bodyText2!.color!
-                        .withOpacity(0.6)),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                  color: AppTheme.of(context).fg.b60,
+                ),
                 strutStyle: const StrutStyle(
                   fontSize: 10,
                   leading: 0,
