@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class CommonAlertDialog extends StatelessWidget {
   final String? content;
@@ -29,7 +30,7 @@ class CommonAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
+    final textColor = AppTheme.of(context).fg.b100;
     final btnTextColor = theme.primaryColor;
 
     final textStyle = TextStyle(
@@ -133,7 +134,7 @@ class CommonTitleAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color!;
+    final textColor = AppTheme.of(context).fg.b100;
     final btnTextColor = theme.primaryColor;
 
     final textStyle1 = TextStyle(

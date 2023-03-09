@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 
 typedef OnChange = void Function(String);
 
@@ -90,8 +91,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
               controller: widget.controller,
               style: TextStyle(
                 fontSize: widget.fontSize,
-                color: widget.textColor ??
-                    Theme.of(context).textTheme.bodyText2!.color,
+                color: widget.textColor ?? AppTheme.of(context).fg.b100,
               ),
               keyboardType: TextInputType.multiline,
               buildCounter: (

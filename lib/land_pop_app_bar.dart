@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 
 import 'icon_font.dart';
 
@@ -24,7 +25,10 @@ class LandPopAppBar extends StatelessWidget {
           Visibility(
             visible: title?.isNotEmpty ?? false,
             child: Text(title ?? '',
-                style: Get.textTheme.bodyText2!.copyWith(
+                style: TextStyle(
+                  color: AppTheme.of(context).fg.b100,
+                  fontSize: 16,
+                  height: 1.35,
                   fontWeight: FontWeight.w500,
                 )),
           ),

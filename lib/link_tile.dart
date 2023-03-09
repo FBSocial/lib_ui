@@ -53,7 +53,11 @@ class LinkTile extends StatelessWidget {
     return [
       Expanded(
         child: DefaultTextStyle(
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(fontSize: 17),
+          style: TextStyle(
+            color: AppTheme.of(context).fg.b100,
+            height: 1.35,
+            fontSize: 17,
+          ),
           child: title,
         ),
       ),

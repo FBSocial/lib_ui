@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/button/fade_background_button.dart';
 
 class ListItem extends StatelessWidget {
@@ -18,7 +19,7 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeBackgroundButton(
-      tapDownBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      tapDownBackgroundColor: AppTheme.of(context).bg.bg1,
       onTap: onTap,
       child: Row(
         children: <Widget>[

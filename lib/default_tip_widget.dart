@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/custom_color.dart';
 
 class DefaultTipWidget extends StatelessWidget {
@@ -31,8 +32,7 @@ class DefaultTipWidget extends StatelessWidget {
           height: 96,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: iconBackgroundColor ??
-                Theme.of(context).scaffoldBackgroundColor,
+            color: iconBackgroundColor ?? AppTheme.of(context).bg.bg1,
           ),
           child: Icon(
             icon,

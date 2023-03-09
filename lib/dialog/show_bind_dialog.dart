@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lib_extension/string_extension.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class BindDialog extends StatelessWidget {
   final String? oldName;
@@ -34,10 +35,9 @@ class BindDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
-    final bgColor = theme.scaffoldBackgroundColor;
-    final btnTextColor = theme.primaryColor;
+    final textColor = AppTheme.of(context).fg.b100;
+    final bgColor = AppTheme.of(context).bg.bg1;
+    final btnTextColor = AppTheme.of(context).fg.blue1;
 
     final bool noValue = oldName!.noValue || newName!.noValue;
 
@@ -121,8 +121,7 @@ class BindDialog extends StatelessWidget {
   }
 
   Widget hasName(BuildContext context) {
-    final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
+    final textColor = AppTheme.of(context).fg.b100;
     final textStyle1 = TextStyle(color: textColor, fontSize: 16);
     final textStyle2 =
         TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w500);
@@ -140,8 +139,7 @@ class BindDialog extends StatelessWidget {
   }
 
   Widget noName(BuildContext context) {
-    final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
+    final textColor = AppTheme.of(context).fg.b100;
     final textStyle1 = TextStyle(color: textColor, fontSize: 16);
     return Text.rich(
       TextSpan(

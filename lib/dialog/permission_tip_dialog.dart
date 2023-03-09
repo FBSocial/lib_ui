@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class PermissionTipDialog extends StatefulWidget {
   final String title;
@@ -24,11 +25,10 @@ class PermissionTipDialog extends StatefulWidget {
 class UpdateDialogState extends State<PermissionTipDialog> {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
-    final bgColor = theme.scaffoldBackgroundColor;
-    final cancelBgColor = theme.backgroundColor;
-    final confirmBgColor = theme.primaryColor;
+    final textColor = AppTheme.of(context).fg.b100;
+    final bgColor = AppTheme.of(context).bg.bg1;
+    final cancelBgColor = AppTheme.of(context).bg.bg3;
+    final confirmBgColor = AppTheme.of(context).fg.blue1;
 
     return WillPopScope(
       onWillPop: () async => false,

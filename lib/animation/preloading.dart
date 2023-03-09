@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 
 ///
 /// 页面预加载动画
@@ -39,7 +40,7 @@ class _PreloadingState extends State<Preloading> {
       },
       child: Container(
         padding: const EdgeInsets.only(top: 15),
-        color: Theme.of(context).backgroundColor,
+        color: AppTheme.of(context).bg.bg3,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
