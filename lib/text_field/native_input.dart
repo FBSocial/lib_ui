@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/custom_text_selection.dart';
 import 'package:lib_utils/config/config.dart';
@@ -138,8 +139,14 @@ class _NativeInputState extends State<NativeInput> {
               keyboardType: widget.keyboardType ?? TextInputType.text,
               textStyle: widget.style ?? Theme.of(context).textTheme.subtitle1,
               placeHolder: _hintText,
-              placeHolderStyle:
-                  _hintStyle ?? Theme.of(context).textTheme.bodyText1,
+              placeHolderStyle: _hintStyle ??
+                  TextStyle(
+                    color: AppTheme.of(context).fg.b60,
+                    fontWeight: FontWeight.normal,
+                    height: 1.35,
+                    fontFamilyFallback: defaultFontFamilyFallback,
+                    fontSize: 16,
+                  ),
               textAlign: widget.textAlign,
               onEditingComplete: widget.onEditingComplete,
               onSubmitted: widget.onSubmitted,
@@ -180,15 +187,16 @@ class _NativeInputState extends State<NativeInput> {
                         text: TextSpan(
                             text:
                                 '${widget.controller!.text.characters.length}',
-                            style:
-                                Theme.of(context).textTheme.bodyText1!.copyWith(
-                                      fontSize: 12,
-                                      color: widget.controller!.text.characters
-                                                  .length >
-                                              maxLength!
-                                          ? AppTheme.of(context).auxiliary.red
-                                          : const Color(0xFF8F959E),
-                                    ),
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              height: 1.35,
+                              fontFamilyFallback: defaultFontFamilyFallback,
+                              fontSize: 12,
+                              color: widget.controller!.text.characters.length >
+                                      maxLength!
+                                  ? AppTheme.of(context).auxiliary.red
+                                  : const Color(0xFF8F959E),
+                            ),
                             children: [
                               TextSpan(
                                 text: '/$maxLength',

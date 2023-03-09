@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_ui/text_field/native_input.dart';
 import 'package:lib_utils/config/config.dart';
 import 'package:lib_utils/universal_platform.dart';
@@ -75,13 +76,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 child: RichText(
                   text: TextSpan(
                       text: '${_title.trim().characters.length}',
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            fontSize: 12,
-                            color: _title.trim().characters.length >
-                                    widget.maxLength!
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        height: 1.35,
+                        fontFamilyFallback: defaultFontFamilyFallback,
+                        fontSize: 12,
+                        color:
+                            _title.trim().characters.length > widget.maxLength!
                                 ? AppTheme.of(context).auxiliary.red
                                 : const Color(0xFF8F959E),
-                          ),
+                      ),
                       children: [
                         TextSpan(
                           text: '/${widget.maxLength}',

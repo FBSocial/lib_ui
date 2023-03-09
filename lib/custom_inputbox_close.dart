@@ -133,13 +133,16 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
             child: RichText(
               text: TextSpan(
                   text: '${widget.controller.text.characters.length}',
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        fontSize: 14,
-                        color: widget.controller.text.characters.length >
-                                widget.maxLength!
-                            ? AppTheme.of(context).auxiliary.red
-                            : const Color(0xFF8F959E),
-                      ),
+                  style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    height: 1.35,
+                    fontFamilyFallback: defaultFontFamilyFallback,
+                    fontSize: 14,
+                    color: widget.controller.text.characters.length >
+                            widget.maxLength!
+                        ? AppTheme.of(context).auxiliary.red
+                        : const Color(0xFF8F959E),
+                  ),
                   children: [
                     TextSpan(
                       text: '/${widget.maxLength}',
