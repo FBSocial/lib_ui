@@ -166,19 +166,24 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                   child: RichText(
                     text: TextSpan(
                         text: '${widget.controller.text.characters.length}',
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            height: 1.35,
+                            fontFamilyFallback: defaultFontFamilyFallback,
                             fontSize: 12,
                             color: widget.controller.text.characters.length >
                                     widget.maxLength!
                                 ? AppTheme.of(context).auxiliary.red
-                                : Theme.of(context).textTheme.bodyText1!.color),
+                                : AppTheme.of(context).fg.b60),
                         children: [
                           TextSpan(
                             text: '/${widget.maxLength}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText1!
-                                .copyWith(fontSize: 12),
+                            style: TextStyle(
+                                color: AppTheme.of(context).fg.b60,
+                                fontWeight: FontWeight.normal,
+                                height: 1.35,
+                                fontFamilyFallback: defaultFontFamilyFallback,
+                                fontSize: 12),
                           )
                         ]),
                   )),
@@ -212,18 +217,23 @@ class _CustomInputBoxState extends State<CustomInputBox> {
             child: RichText(
               text: TextSpan(
                   text: '$currentLength',
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      height: 1.35,
+                      fontFamilyFallback: defaultFontFamilyFallback,
                       fontSize: 12,
                       color: currentLength > maxLength
                           ? AppTheme.of(context).auxiliary.red
-                          : Theme.of(context).textTheme.bodyText1!.color),
+                          : AppTheme.of(context).fg.b60),
                   children: [
                     TextSpan(
                       text: '/$maxLength',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 12),
+                      style: TextStyle(
+                          color: AppTheme.of(context).fg.b60,
+                          fontWeight: FontWeight.normal,
+                          height: 1.35,
+                          fontFamilyFallback: defaultFontFamilyFallback,
+                          fontSize: 12),
                     )
                   ]),
             ));

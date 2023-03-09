@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_utils/orientation_util.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -27,10 +28,12 @@ class IdWithCopy extends StatelessWidget {
         children: [
           Text(
             '#$username',
-            style: theme.textTheme.bodyText1!.copyWith(
+            style: TextStyle(
+              color: AppTheme.of(context).fg.b60,
+              fontWeight: FontWeight.normal,
+              fontFamilyFallback: defaultFontFamilyFallback,
               fontSize: OrientationUtil.portrait ? 13 : 12,
               height: 1.25,
-              color: theme.disabledColor,
             ),
           ),
           const SizedBox(width: 4),
@@ -54,7 +57,6 @@ class IdWithButtonCopy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         Clipboard.setData(ClipboardData(text: username));
@@ -65,10 +67,12 @@ class IdWithButtonCopy extends StatelessWidget {
         children: [
           Text(
             'ID: $username',
-            style: theme.textTheme.bodyText1!.copyWith(
+            style: TextStyle(
+              color: AppTheme.of(context).fg.b60,
+              fontWeight: FontWeight.normal,
+              fontFamilyFallback: defaultFontFamilyFallback,
               fontSize: OrientationUtil.portrait ? 13 : 12,
               height: 1.25,
-              color: theme.disabledColor,
             ),
           ),
           const SizedBox(width: 4),

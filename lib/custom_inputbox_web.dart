@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/const.dart';
 
 typedef OnChange = void Function(String);
 
@@ -131,7 +132,10 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
               child: RichText(
                 text: TextSpan(
                     text: '${Characters(widget.controller.text).length}',
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        height: 1.35,
+                        fontFamilyFallback: defaultFontFamilyFallback,
                         fontSize: 12,
                         color: Characters(widget.controller.text).length >
                                 widget.maxLength!
@@ -140,8 +144,13 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
                     children: [
                       TextSpan(
                         text: '/${widget.maxLength}',
-                        style: theme.textTheme.bodyText1!
-                            .copyWith(fontSize: 12, color: theme.disabledColor),
+                        style: TextStyle(
+                          color: AppTheme.of(context).fg.b60,
+                          fontWeight: FontWeight.normal,
+                          height: 1.35,
+                          fontFamilyFallback: defaultFontFamilyFallback,
+                          fontSize: 12,
+                        ),
                       )
                     ]),
               ),

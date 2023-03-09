@@ -64,7 +64,12 @@ class LinkTile extends StatelessWidget {
       sizeWidth8,
       if (trailing != null)
         DefaultTextStyle(
-          style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 15),
+          style: TextStyle(
+              color: AppTheme.of(context).fg.b60,
+              fontWeight: FontWeight.normal,
+              height: 1.35,
+              fontFamilyFallback: defaultFontFamilyFallback,
+              fontSize: 15),
           child: trailing!,
         ),
       if (showTrailingIcon!) ...[sizeWidth2, const MoreIcon()],
