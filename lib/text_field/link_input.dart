@@ -74,7 +74,6 @@ class _LinkInputState extends State<LinkInput> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final color1 = AppTheme.of(context).fg.b60;
 
     ///TODO:这个颜色暂时没有对应的theme参数
