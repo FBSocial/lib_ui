@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_theme/custom_color.dart';
 import 'package:lib_utils/loggers.dart';
@@ -74,7 +75,7 @@ class _LinkInputState extends State<LinkInput> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color1 = theme.disabledColor;
+    final color1 = AppTheme.of(context).fg.b60;
 
     ///TODO:这个颜色暂时没有对应的theme参数
     const color2 = Color(0xff576B95);

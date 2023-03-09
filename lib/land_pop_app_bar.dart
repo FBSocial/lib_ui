@@ -41,7 +41,7 @@ class LandPopAppBar extends StatelessWidget {
                 child: Icon(
                   IconFont.navBarCloseItem,
                   size: 17,
-                  color: Get.theme.disabledColor,
+                  color: AppTheme.of(context).fg.b60,
                 ),
               ),
             ),

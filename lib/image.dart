@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:lib_image/icon_font.dart';
 import 'package:lib_image/image_collection.dart';
 import 'package:lib_image/status_widget.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_utils/loggers.dart';
 
@@ -142,7 +143,6 @@ class _NetworkImageWithPlaceholderState
   }
 
   Widget _buildResizeErrorWidget(int width, int? height) {
-    final theme = Theme.of(context);
     if (width <= 48 || height! <= 48) {
       return Padding(
         padding: const EdgeInsets.all(4),
@@ -150,7 +150,7 @@ class _NetworkImageWithPlaceholderState
           child: Icon(
             IconFont.tupian,
             size: 24,
-            color: theme.disabledColor,
+            color: AppTheme.of(context).fg.b60,
           ),
         ),
       );
@@ -165,12 +165,13 @@ class _NetworkImageWithPlaceholderState
             Icon(
               IconFont.tupian,
               size: 24,
-              color: theme.disabledColor,
+              color: AppTheme.of(context).fg.b60,
             ),
             sizeHeight8,
             Text('缩略图无法显示'.tr,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12, color: theme.disabledColor)),
+                style: TextStyle(
+                    fontSize: 12, color: AppTheme.of(context).fg.b60)),
             sizeHeight4,
             Text(
               '点击查看原图'.tr,

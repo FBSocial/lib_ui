@@ -84,7 +84,7 @@ class TextureAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _size = size ?? radius * 2;
-    final borderColor = Theme.of(context).disabledColor.withOpacity(0.3);
+    final borderColor = AppTheme.of(context).fg.b20;
     final _showBorder = showBorder ?? true;
     final foregroundDecoration = BoxDecoration(
       border: _showBorder ? Border.all(color: borderColor, width: 0.5) : null,

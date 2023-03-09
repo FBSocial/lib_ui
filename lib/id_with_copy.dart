@@ -30,14 +30,14 @@ class IdWithCopy extends StatelessWidget {
             style: theme.textTheme.bodyText1!.copyWith(
               fontSize: OrientationUtil.portrait ? 13 : 12,
               height: 1.25,
-              color: theme.disabledColor,
+              color: AppTheme.of(context).fg.b60,
             ),
           ),
           const SizedBox(width: 4),
           Icon(
             IconFont.copy,
             size: OrientationUtil.portrait ? 16 : 12,
-            color: theme.disabledColor.withOpacity(0.7),
+            color: AppTheme.of(context).fg.b40,
           ),
         ],
       ),
@@ -68,7 +68,7 @@ class IdWithButtonCopy extends StatelessWidget {
             style: theme.textTheme.bodyText1!.copyWith(
               fontSize: OrientationUtil.portrait ? 13 : 12,
               height: 1.25,
-              color: theme.disabledColor,
+              color: AppTheme.of(context).fg.b60,
             ),
           ),
           const SizedBox(width: 4),

@@ -136,12 +136,12 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
                         color: Characters(widget.controller.text).length >
                                 widget.maxLength!
                             ? theme.errorColor
-                            : theme.disabledColor),
+                            : AppTheme.of(context).fg.b60),
                     children: [
                       TextSpan(
                         text: '/${widget.maxLength}',
-                        style: theme.textTheme.bodyText1!
-                            .copyWith(fontSize: 12, color: theme.disabledColor),
+                        style: theme.textTheme.bodyText1!.copyWith(
+                            fontSize: 12, color: AppTheme.of(context).fg.b60),
                       )
                     ]),
               ),

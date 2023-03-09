@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_ui/text_field/native_input.dart';
 
@@ -82,14 +83,12 @@ class _NormalTextInputState extends State<NormalTextInput> {
                     fontSize: 14,
                     color: _currentCount > _maxCnt!
                         ? Theme.of(context).errorColor.withOpacity(0.5)
-                        : Theme.of(context).disabledColor.withOpacity(0.5)),
+                        : AppTheme.of(context).fg.b30),
                 children: [
                   TextSpan(
                     text: '/$_maxCnt',
                     style: TextStyle(
-                        fontSize: 14,
-                        color:
-                            Theme.of(context).disabledColor.withOpacity(0.5)),
+                        fontSize: 14, color: AppTheme.of(context).fg.b30),
                   )
                 ]),
           ),

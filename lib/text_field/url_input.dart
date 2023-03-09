@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 
 import 'link_input.dart';
 
@@ -49,8 +50,7 @@ class _UrlInputState extends State<UrlInput> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final color1 = theme.disabledColor;
+    final color1 = AppTheme.of(context).fg.b60;
     return Container(
       height: 120,
       padding: const EdgeInsets.symmetric(horizontal: 16),
