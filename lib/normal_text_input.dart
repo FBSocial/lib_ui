@@ -55,7 +55,8 @@ class _NormalTextInputState extends State<NormalTextInput> {
           Expanded(
             child: NativeInput(
               style: TextStyle(
-                  fontSize: widget.fontSize, color: const Color(0xFF1F2125)),
+                  fontSize: widget.fontSize,
+                  color: AppTheme.of(context).fg.b100),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   counterText: "",

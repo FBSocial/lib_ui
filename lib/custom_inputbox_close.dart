@@ -141,14 +141,14 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
                     color: widget.controller.text.characters.length >
                             widget.maxLength!
                         ? AppTheme.of(context).auxiliary.red
-                        : const Color(0xFF8F959E),
+                        : AppTheme.of(context).fg.b40,
                   ),
                   children: [
                     TextSpan(
                       text: '/${widget.maxLength}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
-                        color: Color(0xFF8F959E),
+                        color: AppTheme.of(context).fg.b40,
                       ),
                     )
                   ]),
