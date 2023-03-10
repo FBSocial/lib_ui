@@ -1,7 +1,6 @@
 library lib_ui;
 
 import 'package:flutter/cupertino.dart';
-import 'package:lib_theme/app_theme.dart';
 import 'package:oktoast/oktoast.dart';
 
 export 'src/fb_design/buttons/fb_buttons.dart';
@@ -17,7 +16,6 @@ class FbTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return OKToast(
         radius: 8,
-        backgroundColor: AppTheme.of(context).fg.b95,
         textPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         child: child);
   }

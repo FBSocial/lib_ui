@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lib_theme/app_theme.dart';
-import 'package:lib_theme/custom_color.dart';
 
 class DefaultTipWidget extends StatelessWidget {
   final IconData icon;
@@ -37,7 +36,7 @@ class DefaultTipWidget extends StatelessWidget {
           child: Icon(
             icon,
             size: iconSize ?? 40,
-            color: iconColor ?? CustomColor(context).disableColor,
+            color: iconColor ?? AppTheme.of(context).fg.b40,
           ),
         ),
         const SizedBox(
@@ -47,7 +46,7 @@ class DefaultTipWidget extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: textColor ?? CustomColor(context).disableColor,
+            color: textColor ?? AppTheme.of(context).fg.b40,
             fontSize: textSize ?? 14,
           ),
         ),

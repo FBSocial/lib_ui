@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
-import 'package:lib_theme/custom_color.dart';
 import 'package:lib_utils/loggers.dart';
 
 import '../icon_font.dart';
@@ -188,7 +187,7 @@ class _LinkInputState extends State<LinkInput> {
     final theme = Theme.of(context);
     final bgColor = choosing
         ? theme.primaryColor.withOpacity(0.15)
-        : CustomColor(context).disableColor.withOpacity(0.15);
+        : AppTheme.of(context).fg.b10;
     final iconColor = choosing ? theme.primaryColor : theme.iconTheme.color;
     return GestureDetector(
       onTap: onTap,
