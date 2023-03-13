@@ -22,8 +22,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/get_theme.dart';
 
 /// 枚举 - 按钮类型
 enum FbButtonType {
@@ -673,7 +673,7 @@ class _FbWarningButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
-            primaryColor: redTextColor,
+            primaryColor: Get.themeToken.auxiliary.red,
             onPressed: onPressed,
             onLongPress: onLongPress);
 }

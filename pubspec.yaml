@@ -42,6 +42,8 @@ dependencies:
     path: ../lib_extension
   lib_image:
     path: ../lib_image
+  lib_utils:
+    path: ../lib_utils
   service:
     path: ../../module/module_service
   flutter_svg: ^1.0.3
