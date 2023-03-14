@@ -179,7 +179,7 @@ class _FbTextFieldState extends State<FbTextField> {
   }
 
   Widget _clearIcon() {
-    if (_controller.text.removeNonprintable().isEmpty) return const SizedBox();
+    if (_controller.text.removeUnprintable().isEmpty) return const SizedBox();
     return GestureDetector(
       onTap: () {
         _controller.clear();
@@ -195,7 +195,7 @@ class _FbTextFieldState extends State<FbTextField> {
   }
 
   Widget _counter() {
-    final val = _controller.text.removeNonprintable().characters;
+    final val = _controller.text.removeUnprintable().characters;
     final isOverflow = val.length > widget.maxLength!;
     return RichText(
       text: TextSpan(

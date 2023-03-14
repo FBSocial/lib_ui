@@ -4,7 +4,6 @@ import 'package:flutter/material.dart' hide TextButton;
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'pages/button_example_page.dart';
-import 'pages/dialog_example_page.dart';
 
 const kRouteButtons = "buttons";
 const kRouteDialogs = "dialogs";
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
         home: const MyHomePage(),
         routes: {
           kRouteButtons: (_) => const ButtonExamplePage(),
-          kRouteDialogs: (_) => const DialogExamplePage()
         },
       ),
     );
