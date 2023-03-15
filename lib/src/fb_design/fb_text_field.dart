@@ -106,10 +106,11 @@ class _FbTextFieldState extends State<FbTextField> {
   @override
   Widget build(BuildContext context) {
     Widget child;
-    if (isSingleLine)
+    if (isSingleLine) {
       child = _singleLineTextField();
-    else
+    } else {
       child = _multiLineTextField();
+    }
 
     return Container(
       decoration: BoxDecoration(
