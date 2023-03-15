@@ -173,7 +173,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                             fontSize: 12,
                             color: widget.controller.text.characters.length >
                                     widget.maxLength!
-                                ? AppTheme.of(context).auxiliary.red
+                                ? AppTheme.of(context).function.red1
                                 : AppTheme.of(context).fg.b60),
                         children: [
                           TextSpan(
@@ -223,7 +223,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                       fontFamilyFallback: defaultFontFamilyFallback,
                       fontSize: 12,
                       color: currentLength > maxLength
-                          ? AppTheme.of(context).auxiliary.red
+                          ? AppTheme.of(context).function.red1
                           : AppTheme.of(context).fg.b60),
                   children: [
                     TextSpan(

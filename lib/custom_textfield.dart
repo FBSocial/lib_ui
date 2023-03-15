@@ -83,7 +83,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         fontSize: 12,
                         color:
                             _title.trim().characters.length > widget.maxLength!
-                                ? AppTheme.of(context).auxiliary.red
+                                ? AppTheme.of(context).function.red1
                                 : const Color(0xFF8F959E),
                       ),
                       children: [

@@ -194,7 +194,7 @@ class _NativeInputState extends State<NativeInput> {
                               fontSize: 12,
                               color: widget.controller!.text.characters.length >
                                       maxLength!
-                                  ? AppTheme.of(context).auxiliary.red
+                                  ? AppTheme.of(context).function.red1
                                   : const Color(0xFF8F959E),
                             ),
                             children: [
