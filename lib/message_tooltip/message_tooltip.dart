@@ -312,16 +312,16 @@ class MessageTooltip {
         decoration: BoxDecoration(
           color: AppTheme.of(context).bg.bg3,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
-          border: Border.all(color: const Color(0xffE0E2E6), width: 0.5),
+          border: Border.all(color: AppTheme.of(context).fg.b10, width: 0.5),
           boxShadow: hasShadow
               ? [
                   BoxShadow(
-                      color: const Color(0xff717D8D).withOpacity(0.05),
+                      color: AppTheme.of(context).fg.b5,
                       offset: const Offset(0, 1),
                       blurRadius: 8,
                       spreadRadius: 2),
                   BoxShadow(
-                      color: const Color(0xff717D8D).withOpacity(0.1),
+                      color: AppTheme.of(context).fg.b10,
                       offset: const Offset(0, 2),
                       blurRadius: 16)
                 ]

@@ -79,7 +79,7 @@ class IdWithButtonCopy extends StatelessWidget {
             width: 32,
             height: 16,
             decoration: BoxDecoration(
-              color: const Color(0xFF1A2033).withOpacity(0.05),
+              color: AppTheme.of(context).fg.b10,
               borderRadius: const BorderRadius.all(Radius.circular(3)),
             ),
             // alignment: Alignment.center,

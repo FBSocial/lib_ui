@@ -35,12 +35,12 @@ Future<T?> showSliderModal<T>(
               borderRadius: direction == SliderDirection.rightDown
                   ? const BorderRadius.vertical(top: Radius.circular(8))
                   : BorderRadius.zero,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                     blurRadius: 26,
                     spreadRadius: 7,
-                    offset: Offset(0, 7),
-                    color: Color(0x4C717D8D))
+                    offset: const Offset(0, 7),
+                    color: AppTheme.of(context).fg.b10)
               ]),
           child: body);
     },

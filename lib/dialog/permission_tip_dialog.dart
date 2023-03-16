@@ -52,12 +52,12 @@ class UpdateDialogState extends State<PermissionTipDialog> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const Divider(
+                Divider(
                     height: 40,
                     thickness: 1,
                     indent: 10,
                     endIndent: 10,
-                    color: Color(0xffFFFFFF)),
+                    color: AppTheme.of(context).fg.white1),
                 Expanded(
                   child: Text(
                     widget.content.tr,

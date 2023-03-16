@@ -124,7 +124,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                 icon: Icon(
                   IconFont.close,
                   size: OrientationUtil.portrait ? 16 : 18,
-                  color: const Color(0x7F8F959E),
+                  color: AppTheme.of(context).fg.b40,
                 ),
                 onPressed: () {
                   widget.controller.clear();

@@ -195,14 +195,14 @@ class _NativeInputState extends State<NativeInput> {
                               color: widget.controller!.text.characters.length >
                                       maxLength!
                                   ? AppTheme.of(context).function.red1
-                                  : const Color(0xFF8F959E),
+                                  : AppTheme.of(context).fg.b60,
                             ),
                             children: [
                               TextSpan(
                                 text: '/$maxLength',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 12,
-                                  color: Color(0xFF8F959E),
+                                  color: AppTheme.of(context).fg.b60,
                                 ),
                               )
                             ]),

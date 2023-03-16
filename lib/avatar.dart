@@ -90,8 +90,8 @@ class TextureAvatar extends StatelessWidget {
       border: _showBorder ? Border.all(color: borderColor, width: 0.5) : null,
       shape: BoxShape.circle,
     );
-    const innerDecoration = BoxDecoration(
-      color: Color(0xFFf0f1f2),
+    final innerDecoration = BoxDecoration(
+      color: AppTheme.of(context).bg.bg1,
       shape: BoxShape.circle,
     );
     final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
@@ -149,7 +149,7 @@ class FlutterAvatar extends StatelessWidget {
       this.cacheManager,
       this.size,
       this.showBorder,
-      this.decorationColor = const Color(0xFFf0f1f2),
+      this.decorationColor,
       Key? key})
       : super(key: key);
 
@@ -190,7 +190,7 @@ class FlutterAvatar extends StatelessWidget {
       key: widgetKey,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: decorationColor ?? const Color(0xFFf0f1f2),
+        color: decorationColor ?? AppTheme.of(context).bg.bg1,
         shape: BoxShape.circle,
       ),
       foregroundDecoration: foregroundDecoration,

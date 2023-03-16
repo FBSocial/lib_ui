@@ -87,10 +87,10 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
       suffixIcon: (_isShowClear && !widget.readOnly)
           ? IconButton(
               padding: EdgeInsets.zero,
-              icon: const Icon(
+              icon: Icon(
                 IconFont.close,
                 size: 20,
-                color: Color(0x7F8F959E),
+                color: AppTheme.of(context).fg.b40,
               ),
               onPressed: () {
                 widget.controller.clear();

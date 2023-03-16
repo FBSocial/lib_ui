@@ -65,7 +65,7 @@ class CommonAlertDialog extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Divider(thickness: 0.5, color: Color(0x338F959E)),
+                Divider(thickness: 0.5, color: AppTheme.of(context).fg.b10),
                 // ignore: sized_box_for_whitespace
                 Container(
                   height: 55,
@@ -180,7 +180,7 @@ class CommonTitleAlertDialog extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 25),
-                const Divider(thickness: 0.5, color: Color(0x338F959E)),
+                Divider(thickness: 0.5, color: AppTheme.of(context).fg.b10),
                 // ignore: sized_box_for_whitespace
                 Expanded(
                   child: GestureDetector(

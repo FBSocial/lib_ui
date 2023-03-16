@@ -64,7 +64,7 @@ class BindDialog extends StatelessWidget {
                     child: noValue ? noName(context) : hasName(context),
                   ),
                 ),
-                const Divider(thickness: 0.5, color: Color(0xcccccccc)),
+                Divider(thickness: 0.5, color: AppTheme.of(context).fg.b10),
                 // ignore: sized_box_for_whitespace
                 Row(
                   children: <Widget>[
@@ -85,10 +85,10 @@ class BindDialog extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 50,
                       child: VerticalDivider(
-                          thickness: 0.5, color: Color(0xcccccccc)),
+                          thickness: 0.5, color: AppTheme.of(context).fg.b10),
                     ),
                     Expanded(
                       child: GestureDetector(

@@ -73,10 +73,6 @@ class _LinkInputState extends State<LinkInput> {
 
   @override
   Widget build(BuildContext context) {
-    final color1 = AppTheme.of(context).fg.b60;
-
-    ///TODO:这个颜色暂时没有对应的theme参数
-    const color2 = Color(0xff576B95);
     return Container(
         color: widget.bgColor,
         child: Column(
@@ -117,11 +113,14 @@ class _LinkInputState extends State<LinkInput> {
                     child: Text(
                       '清空'.tr,
                       style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          height: 1.35,
-                          fontFamilyFallback: defaultFontFamilyFallback,
-                          fontSize: 13,
-                          color: hasLink ? color2 : color1),
+                        fontWeight: FontWeight.normal,
+                        height: 1.35,
+                        fontFamilyFallback: defaultFontFamilyFallback,
+                        fontSize: 13,
+                        color: hasLink
+                            ? AppTheme.of(context).fg.blue2
+                            : AppTheme.of(context).fg.b60,
+                      ),
                     ),
                   )
                 ],
@@ -129,7 +128,7 @@ class _LinkInputState extends State<LinkInput> {
             ),
             Divider(
               height: 1,
-              color: color1.withOpacity(0.2),
+              color: AppTheme.of(context).fg.b10,
             ),
             buildInput()
           ],

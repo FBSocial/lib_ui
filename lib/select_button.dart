@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 
 import 'icon_font.dart';
 
@@ -19,7 +20,7 @@ class _SelectBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final highlightColor = Theme.of(context).primaryColor;
-    const grayColor = Color(0xFF8F959E);
+    final grayColor = AppTheme.of(context).fg.b40;
     final bgColor = !selected!
         ? Colors.transparent
         : (disabled ? grayColor : highlightColor);

@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 
 import 'icon_font.dart';
 
@@ -186,15 +187,15 @@ class _MyRadioState<T> extends State<MyRadio<T>> {
           width: 20,
           height: 20,
           child: selected
-              ? const Icon(
+              ? Icon(
                   IconFont.selectSingle,
                   size: 20,
-                  color: Color(0xff198CFE),
+                  color: AppTheme.of(context).fg.blue1,
                 )
               : Icon(
                   IconFont.selectUnSingle,
                   size: 20,
-                  color: const Color(0xFF1A2033).withOpacity(0.2),
+                  color: AppTheme.of(context).fg.b20,
                 ),
         ));
   }

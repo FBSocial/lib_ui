@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class CheckRadioBox extends StatelessWidget {
   final bool value;
@@ -25,16 +26,14 @@ class CheckRadioBox extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                    color: selectColor ??
-                        const Color(0xff8F959E).withOpacity(0.5)),
+                    color: selectColor ?? AppTheme.of(context).fg.b10),
               ),
               child: Container(
                 padding: const EdgeInsets.all(3),
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color:
-                        selectColor ?? const Color(0xff8F959E).withOpacity(0.5),
+                    color: selectColor ?? AppTheme.of(context).fg.b10,
                   ),
                 ),
               ),
@@ -45,8 +44,7 @@ class CheckRadioBox extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                      color: unSelectColor ??
-                          const Color(0xff8F959E).withOpacity(0.5))),
+                      color: unSelectColor ?? AppTheme.of(context).fg.b10)),
             ),
     );
   }

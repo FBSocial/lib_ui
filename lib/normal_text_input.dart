@@ -63,7 +63,7 @@ class _NormalTextInputState extends State<NormalTextInput> {
                   hintText: widget.placeHolder,
                   hintStyle: TextStyle(
                       fontSize: widget.fontSize,
-                      color: const Color(0xFF8F959E).withOpacity(0.5)),
+                      color: AppTheme.of(context).fg.b40),
                   contentPadding: widget.contentPadding),
               maxLength: _maxCnt,
               maxLengthEnforcement: MaxLengthEnforcement.none,

@@ -13,7 +13,7 @@ class WebCustomInputBox extends StatefulWidget {
   final double fontSize;
   final String? hintText;
   final Color? textColor;
-  final Color placeholderColor;
+  final Color? placeholderColor;
   final Color? fillColor;
   final Color? borderColor;
   final OnChange? onChange;
@@ -34,7 +34,7 @@ class WebCustomInputBox extends StatefulWidget {
     this.hintText,
     this.fontSize = 14,
     this.textColor,
-    this.placeholderColor = const Color(0xff8F959E),
+    this.placeholderColor,
     this.fillColor,
     this.borderColor,
     this.maxLength,
@@ -71,7 +71,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final borderColor = widget.borderColor ?? const Color(0xFFDEE0E3);
+    final borderColor = widget.borderColor ?? AppTheme.of(context).fg.b10;
     return ClipRect(
         child: Stack(
       children: [
@@ -117,7 +117,9 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
                 filled: true,
                 hintText: widget.hintText,
                 hintStyle: TextStyle(
-                    fontSize: widget.fontSize, color: widget.placeholderColor),
+                  fontSize: widget.fontSize,
+                  color: widget.placeholderColor ?? AppTheme.of(context).fg.b40,
+                ),
               ),
               onEditingComplete: widget.onEditingComplete,
             ),

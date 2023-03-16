@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class CirclePaint extends CustomPainter {
   final Color secondaryColor;
@@ -49,7 +50,7 @@ class CircularProgress extends StatefulWidget {
   const CircularProgress(
       {required this.size,
       this.secondaryColor = const Color(0x006179F2),
-      this.primaryColor = const Color(0xFF6179F2),
+      this.primaryColor,
       this.lapDuration = 1000,
       this.strokeWidth = 1.67,
       Key? key})
@@ -57,7 +58,7 @@ class CircularProgress extends StatefulWidget {
 
   final double size;
   final Color secondaryColor;
-  final Color primaryColor;
+  final Color? primaryColor;
   final int lapDuration;
   final double strokeWidth;
 
@@ -95,7 +96,7 @@ class _CircularProgress extends State<CircularProgress>
       child: CustomPaint(
         painter: CirclePaint(
             secondaryColor: widget.secondaryColor,
-            primaryColor: widget.primaryColor,
+            primaryColor: widget.primaryColor ?? AppTheme.of(context).fg.blue1,
             strokeWidth: widget.strokeWidth),
         size: Size(widget.size, widget.size),
       ),

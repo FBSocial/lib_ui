@@ -176,7 +176,10 @@ class _NetworkImageWithPlaceholderState
             Text(
               '点击查看原图'.tr,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 12, color: Color(0xff6179F2)),
+              style: TextStyle(
+                fontSize: 12,
+                color: AppTheme.of(context).auxiliary.violet,
+              ),
             )
           ],
         ),
@@ -190,12 +193,12 @@ class _NetworkImageWithPlaceholderState
       return Center(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
         Icon(IconFont.imgLoadFail,
-            size: 24, color: const Color(0xFF8F959E).withOpacity(0.65)),
+            size: 24, color: AppTheme.of(context).fg.b40),
         sizeHeight8,
         Text(
           '点击重新加载'.tr,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 12, color: Color(0xff8F959E)),
+          style: TextStyle(fontSize: 12, color: AppTheme.of(context).fg.b40),
         )
       ]));
     }
@@ -205,7 +208,7 @@ class _NetworkImageWithPlaceholderState
       return Center(
           child: Icon(IconFont.imgLoadFail,
               size: min(24, width.toDouble()),
-              color: const Color(0xFF8F959E).withOpacity(0.65)));
+              color: AppTheme.of(context).fg.b40));
     }
 
     return GestureDetector(

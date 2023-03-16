@@ -52,16 +52,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: SizedBox(
         height: 40,
         child: NativeInput(
-          style: const TextStyle(fontSize: 16, color: Color(0xFF363940)),
+          style: TextStyle(fontSize: 16, color: AppTheme.of(context).fg.b100),
           autofocus: true,
           height: 40,
           decoration: InputDecoration(
-              fillColor: const Color(0xfff2f3f5),
+              fillColor: AppTheme.of(context).bg.bg1,
               filled: true,
               contentPadding: const EdgeInsets.only(left: 12, top: 4),
-              hintStyle: TextStyle(
-                  fontSize: 16,
-                  color: const Color(0xFF8F959E).withOpacity(0.7)),
+              hintStyle:
+                  TextStyle(fontSize: 16, color: AppTheme.of(context).fg.b40),
               border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(6)),
                   borderSide: BorderSide.none),
@@ -84,14 +83,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         color:
                             _title.trim().characters.length > widget.maxLength!
                                 ? AppTheme.of(context).function.red1
-                                : const Color(0xFF8F959E),
+                                : AppTheme.of(context).fg.b60,
                       ),
                       children: [
                         TextSpan(
                           text: '/${widget.maxLength}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 12,
-                            color: Color(0xFF8F959E),
+                            color: AppTheme.of(context).fg.b60,
                           ),
                         )
                       ]),
