@@ -189,7 +189,7 @@ class _FbTextFieldState extends State<FbTextField> {
       child: Icon(
         IconFont.buffInputClearIcon,
         size: 17,
-        color: const Color(0xFF8F959E).withOpacity(0.75),
+        color: AppTheme.of(context).fg.b40,
       ),
     );
   }
