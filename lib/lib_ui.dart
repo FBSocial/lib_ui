@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:oktoast/oktoast.dart';
 
 export 'src/fb_design/buttons/fb_buttons.dart';
+export 'src/fb_design/fb_text_field.dart';
 export 'src/fb_design/dialog.dart';
 export 'src/fb_design/fb_loading_indicator.dart';
 
