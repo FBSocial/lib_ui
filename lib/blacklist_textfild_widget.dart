@@ -50,8 +50,14 @@ class _BlackListTextFieldState extends State<BlackListTextField> {
               fillColor: AppTheme.of(context).bg.bg1,
               controller: controller,
               hintText: hintText ?? '请输入原因(选填)'.tr,
-              hintStyle:
-                  TextStyle(color: AppTheme.of(context).fg.b40, fontSize: 16),
+              hintStyle: TextStyle(
+                color: AppTheme.of(context).fg.b40,
+                fontSize: 16,
+              ),
+              style: TextStyle(
+                color: AppTheme.of(context).fg.b100,
+                fontSize: 16,
+              ),
               maxLength: BlackListTextField.inputLength,
               onChange: (text) {
                 textFieldListener.call(text);
