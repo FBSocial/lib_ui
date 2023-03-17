@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_ui/button/fade_background_button.dart';
 import 'package:lib_ui/button/more_icon.dart';
@@ -63,7 +64,12 @@ class LinkTile extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 15),
           child: trailing!,
         ),
-      if (showTrailingIcon!) ...[sizeWidth2, const MoreIcon()],
+      if (showTrailingIcon!) ...[
+        sizeWidth2,
+        MoreIcon(
+          color: AppTheme.of(context).fg.b40,
+        )
+      ],
     ];
   }
 
