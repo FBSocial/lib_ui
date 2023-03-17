@@ -72,7 +72,12 @@ class LinkTile extends StatelessWidget {
               fontSize: 15),
           child: trailing!,
         ),
-      if (showTrailingIcon!) ...[sizeWidth2, const MoreIcon()],
+      if (showTrailingIcon!) ...[
+        sizeWidth2,
+        MoreIcon(
+          color: AppTheme.of(context).fg.b40,
+        )
+      ],
     ];
   }
 

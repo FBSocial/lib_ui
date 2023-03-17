@@ -1,19 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:lib_theme/lib_theme.dart';
 
 class FbLoadingIndicator extends StatefulWidget {
   final double size;
-  final Color? trailingColor;
-  final Color? leadingColor;
+  final Color color;
   final int lapDuration;
   final double strokeWidth;
 
   const FbLoadingIndicator({
+    required this.color,
     this.size = 32,
-    this.trailingColor,
-    this.leadingColor,
     this.lapDuration = 1000,
     this.strokeWidth = 2,
     Key? key,
@@ -42,9 +39,8 @@ class _FbLoadingIndicatorState extends State<FbLoadingIndicator>
 
   @override
   Widget build(BuildContext context) {
-    final trailing =
-        widget.trailingColor ?? AppTheme.of(context).fg.blue1.withOpacity(0);
-    final leading = widget.leadingColor ?? AppTheme.of(context).fg.blue1;
+    final trailing = widget.color.withOpacity(0);
+    final leading = widget.color;
 
     return RotationTransition(
       turns: animation,

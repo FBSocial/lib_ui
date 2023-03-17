@@ -4,7 +4,6 @@ import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
 import 'pages/button_example_page.dart';
-import 'pages/dialog_example_page.dart';
 
 const kRouteButtons = "buttons";
 const kRouteDialogs = "dialogs";
@@ -28,7 +27,6 @@ class MyApp extends StatelessWidget {
             home: const MyHomePage(),
             routes: {
               kRouteButtons: (_) => const ButtonExamplePage(),
-              kRouteDialogs: (_) => const DialogExamplePage()
             },
           ),
         ));

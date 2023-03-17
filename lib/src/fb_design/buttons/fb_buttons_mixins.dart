@@ -19,8 +19,7 @@ mixin FbButtonMixin {
         return FbLoadingIndicator(
           size: 16,
           strokeWidth: 1.33,
-          leadingColor: color,
-          trailingColor: color.withOpacity(0),
+          color: color,
         );
       });
     } else {
