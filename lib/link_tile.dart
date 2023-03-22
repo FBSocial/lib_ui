@@ -67,7 +67,7 @@ class LinkTile extends StatelessWidget {
       if (showTrailingIcon!) ...[
         sizeWidth2,
         MoreIcon(
-          color: AppTheme.of(context).fg.b40,
+          color: AppTheme.of(context).fg.b20,
         )
       ],
     ];
