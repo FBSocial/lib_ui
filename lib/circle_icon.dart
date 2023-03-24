@@ -32,7 +32,7 @@ class CircleIcon extends StatelessWidget {
         height: radius * 2,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: backgroundColor ?? AppTheme.of(context).bg.bg3,
+          color: backgroundColor ?? AppTheme.of(context).fg.b10,
           border: border,
         ),
         child: Icon(
