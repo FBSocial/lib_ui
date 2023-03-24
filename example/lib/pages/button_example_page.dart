@@ -39,7 +39,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppTheme.of(context).bg.bg1,
+        backgroundColor: AppTheme.of(context).bg.bg2,
         body: ListView(
           children: [
             _buildTextButtons(context),
