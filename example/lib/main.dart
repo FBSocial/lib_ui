@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart' hide TextButton;
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/themes.dart';
+import 'package:lib_ui/lib_ui.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
@@ -19,17 +22,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppTheme(
-        theme: AppThemeData.light(),
-        darkTheme: AppThemeData.dark(),
-        child: FbTheme(
-          child: GetMaterialApp(
-            title: 'Flutter Demo',
-            home: const MyHomePage(),
-            routes: {
-              kRouteButtons: (_) => const ButtonExamplePage(),
-            },
-          ),
-        ));
+      theme: AppThemeData.light(),
+      darkTheme: AppThemeData.dark(),
+      child: FbTheme(
+        child: GetMaterialApp(
+          title: 'Flutter Demo',
+          home: const MyHomePage(),
+          routes: {
+            kRouteButtons: (_) => const ButtonExamplePage(),
+          },
+        ),
+      ),
+    );
   }
 }
 

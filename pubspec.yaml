@@ -49,6 +49,8 @@ dependencies:
   service:
     path: ../../module/module_service
   flutter_svg: ^1.0.3
+  lib_base:
+    path: ../lib_base
   sliding_sheet:
     git:
       url: https://github.com/FBSocial/sliding_sheet.git

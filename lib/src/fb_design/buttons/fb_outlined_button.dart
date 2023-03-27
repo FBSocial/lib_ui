@@ -8,6 +8,7 @@ import 'fb_buttons_mixins.dart';
 enum _ButtonType {
   primary,
   secondary,
+  dangerous,
 }
 
 class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
@@ -19,6 +20,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   final _ButtonType type;
   final FbButtonState state;
   final bool widthUnlimited;
+  final bool placeIconAfterLabel;
 
   const FbOutlinedButton.primary(
     this.label, {
@@ -28,6 +30,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.widthUnlimited = false,
     this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.primary,
         super(key: key);
@@ -40,8 +43,22 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.widthUnlimited = false,
     this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.secondary,
+        super(key: key);
+
+  const FbOutlinedButton.dangerous(
+    this.label, {
+    required this.onTap,
+    this.onLongPress,
+    this.state = FbButtonState.normal,
+    this.size = FbButtonSize.small,
+    this.widthUnlimited = false,
+    this.icon,
+    this.placeIconAfterLabel = false,
+    Key? key,
+  })  : type = _ButtonType.dangerous,
         super(key: key);
 
   Color? getBackgroundColor(BuildContext context, Set<MaterialState> states) {
@@ -50,7 +67,10 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.primary:
           return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
-          return AppTheme.of(context).fg.white1;
+          return  AppTheme.of(context).fg.b40;
+
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red3;
       }
     }
 
@@ -81,6 +101,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
           return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
           return AppTheme.of(context).fg.b100;
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red1;
       }
     }
 
@@ -99,9 +121,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
 
   @override
   Widget build(BuildContext context) {
-    Widget child = buildLabelWidget(state, label);
+    Widget child = buildLabelWidget(state, size, label);
     if (icon != null && state != FbButtonState.loading) {
-      child = addLeadingIcon(child, icon!, size);
+      child = addIcon(child, icon!, placeIconAfterLabel, size);
     }
     final buttonSize = getButtonSize(size);
     child = OutlinedButton(
@@ -142,6 +164,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
           return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
           return AppTheme.of(context).fg.b40;
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red1;
       }
     }
 

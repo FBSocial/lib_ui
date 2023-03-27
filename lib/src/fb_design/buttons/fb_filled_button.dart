@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
@@ -11,6 +12,7 @@ enum _ButtonType {
   tertiary,
   quaternary,
   dangerous,
+  dangerous2,
 }
 
 class FbFilledButton extends StatelessWidget with FbButtonMixin {
@@ -22,10 +24,12 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   final _ButtonType type;
   final FbButtonState state;
   final bool widthUnlimited;
+  final bool placeIconAfterLabel;
 
   const FbFilledButton.primary(
     this.label, {
     this.icon,
+    this.placeIconAfterLabel = false,
     required this.onTap,
     this.onLongPress,
     this.widthUnlimited = false,
@@ -38,6 +42,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   const FbFilledButton.secondary(
     this.label, {
     this.icon,
+    this.placeIconAfterLabel = false,
     required this.onTap,
     this.onLongPress,
     this.widthUnlimited = false,
@@ -50,6 +55,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   const FbFilledButton.tertiary(
     this.label, {
     this.icon,
+    this.placeIconAfterLabel = false,
     required this.onTap,
     this.onLongPress,
     this.widthUnlimited = false,
@@ -62,6 +68,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   const FbFilledButton.quaternary(
     this.label, {
     this.icon,
+    this.placeIconAfterLabel = false,
     required this.onTap,
     this.onLongPress,
     this.widthUnlimited = false,
@@ -78,16 +85,30 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.dangerous,
-        icon = null,
+        super(key: key);
+
+  const FbFilledButton.dangerous2(
+    this.label, {
+    required this.onTap,
+    this.onLongPress,
+    this.widthUnlimited = false,
+    this.state = FbButtonState.normal,
+    this.size = FbButtonSize.small,
+    this.icon,
+    this.placeIconAfterLabel = false,
+    Key? key,
+  })  : type = _ButtonType.dangerous2,
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget child = buildLabelWidget(state, label);
+    Widget child = buildLabelWidget(state, size, label);
     if (icon != null && state != FbButtonState.loading) {
-      child = addLeadingIcon(child, icon!, size);
+      child = addIcon(child, icon!, placeIconAfterLabel, size);
     }
     Size? buttonSize = getButtonSize(size);
     child = ElevatedButton(
@@ -123,6 +144,9 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
+    final theme = appThemeData;
+    final newTheme = AppTheme.of(context);
+
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
@@ -133,7 +157,9 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.quaternary:
           return AppTheme.of(context).fg.blue1;
         case _ButtonType.dangerous:
-          return AppTheme.of(context).fg.white1;
+          return Colors.white;
+        case _ButtonType.dangerous2:
+          return newTheme.function.red1;
       }
     }
 
@@ -156,6 +182,9 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getBackgroundColor(BuildContext context, Set<MaterialState> states) {
+    final theme = appThemeData;
+    final newTheme = AppTheme.of(context);
+
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
@@ -166,7 +195,9 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.quaternary:
           return AppTheme.of(context).fg.blue1.withOpacity(0.1);
         case _ButtonType.dangerous:
-          return AppTheme.of(context).function.red1;
+          return destructiveRed;
+        case _ButtonType.dangerous2:
+          return newTheme.fg.white1;
       }
     }
 

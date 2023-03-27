@@ -4,6 +4,8 @@ import 'package:lib_ui/lib_ui.dart';
 mixin FbButtonMixin {
   double getFontSize(FbButtonSize size) {
     switch (size) {
+      case FbButtonSize.mini:
+        return 12;
       case FbButtonSize.small:
       case FbButtonSize.medium:
         return 14;
@@ -12,23 +14,44 @@ mixin FbButtonMixin {
     }
   }
 
-  Widget buildLabelWidget(FbButtonState state, String label) {
-    if (state == FbButtonState.loading) {
-      return Builder(builder: (context) {
-        final color = DefaultTextStyle.of(context).style.color!;
-        return FbLoadingIndicator(
-          size: 16,
-          strokeWidth: 1.33,
-          color: color,
-        );
-      });
-    } else {
-      return Text(label);
+  double getLoadingIconSize(FbButtonSize size) {
+    switch (size) {
+      case FbButtonSize.mini:
+        return 14;
+      case FbButtonSize.small:
+      case FbButtonSize.medium:
+      case FbButtonSize.large:
+        return 16;
     }
+  }
+
+  Widget buildLabelWidget(
+      FbButtonState state, FbButtonSize size, String label) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (state == FbButtonState.loading && size.canLoading())
+          Padding(
+            padding: const EdgeInsets.only(right: 6),
+            child: Builder(builder: (context) {
+              final color = DefaultTextStyle.of(context).style.color!;
+              return FbLoadingIndicator(
+                size: getLoadingIconSize(size),
+                strokeWidth: 1.33,
+                color: color,
+              );
+            }),
+          ),
+        Text(label),
+      ],
+    );
   }
 
   Size getButtonSize(FbButtonSize size) {
     switch (size) {
+      case FbButtonSize.mini:
+        return const Size(48, 24);
+
       case FbButtonSize.small:
         return const Size(60, 32);
       case FbButtonSize.medium:
@@ -95,26 +118,41 @@ mixin FbButtonMixin {
     return color;
   }
 
-  Widget addLeadingIcon(Widget label, IconData icon, FbButtonSize size) {
+  Widget addIcon(
+    Widget label,
+    IconData icon,
+    bool placeIconAfterLabel,
+    FbButtonSize size,
+  ) {
     double space;
+    double iconSize;
     switch (size) {
-      case FbButtonSize.small:
-        assert(false, "小按钮不能有图标");
+      case FbButtonSize.mini:
+        assert(false, "size 'mini' cannot display icons");
         space = 0;
+        iconSize = 0;
+        break;
+      case FbButtonSize.small:
+        space = 6;
+        iconSize = 16;
         break;
       case FbButtonSize.medium:
         space = 6;
+        iconSize = 16;
         break;
       case FbButtonSize.large:
         space = 8;
+        iconSize = 18;
+        break;
     }
+    final children = [
+      Icon(icon, size: iconSize),
+      SizedBox(width: space),
+      label,
+    ];
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 16),
-        SizedBox(width: space),
-        label,
-      ],
+      children: placeIconAfterLabel ? children.reversed.toList() : children,
     );
   }
 }

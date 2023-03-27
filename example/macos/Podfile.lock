@@ -6,6 +6,8 @@ PODS:
     - ReachabilitySwift
   - device_info_plus_macos (0.0.1):
     - FlutterMacOS
+  - devicelocale (0.0.1):
+    - FlutterMacOS
   - FlutterMacOS (1.0.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
@@ -29,6 +31,7 @@ DEPENDENCIES:
   - audioplayers (from `Flutter/ephemeral/.symlinks/plugins/audioplayers/macos`)
   - connectivity_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/connectivity_plus_macos/macos`)
   - device_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/device_info_plus_macos/macos`)
+  - devicelocale (from `Flutter/ephemeral/.symlinks/plugins/devicelocale/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - package_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/package_info_plus_macos/macos`)
   - path_provider_macos (from `Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos`)
@@ -49,6 +52,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/connectivity_plus_macos/macos
   device_info_plus_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/device_info_plus_macos/macos
+  devicelocale:
+    :path: Flutter/ephemeral/.symlinks/plugins/devicelocale/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
   package_info_plus_macos:
@@ -68,6 +73,7 @@ SPEC CHECKSUMS:
   audioplayers: 8b48e22684b6e0d9df143b2d1bbd61dca9dab6b4
   connectivity_plus_macos: f6e86fd000e971d361e54b5afcadc8c8fa773308
   device_info_plus_macos: 1ad388a1ef433505c4038e7dd9605aadd1e2e9c7
+  devicelocale: 9f0f36ac651cabae2c33f32dcff4f32b61c38225
   FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   package_info_plus_macos: f010621b07802a241d96d01876d6705f15e77c1c
