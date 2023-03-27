@@ -36,7 +36,7 @@ class _BlackListTextFieldState extends State<BlackListTextField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.textfieldBg,
+        color: AppTheme.textFieldBg,
         borderRadius: const BorderRadius.all(Radius.circular(6)),
       ),
       child: Row(
