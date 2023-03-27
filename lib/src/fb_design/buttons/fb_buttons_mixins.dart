@@ -14,12 +14,24 @@ mixin FbButtonMixin {
     }
   }
 
-  Widget buildLabelWidget(FbButtonState state, String label) {
+  double getLoadingIconSize(FbButtonSize size) {
+    switch (size) {
+      case FbButtonSize.mini:
+        return 14;
+      case FbButtonSize.small:
+      case FbButtonSize.medium:
+      case FbButtonSize.large:
+        return 16;
+    }
+  }
+
+  Widget buildLabelWidget(
+      FbButtonState state, FbButtonSize size, String label) {
     if (state == FbButtonState.loading) {
       return Builder(builder: (context) {
         final color = DefaultTextStyle.of(context).style.color!;
         return FbLoadingIndicator(
-          size: 16,
+          size: getLoadingIconSize(size),
           strokeWidth: 1.33,
           color: color,
         );

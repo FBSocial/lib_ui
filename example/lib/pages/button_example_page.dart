@@ -15,6 +15,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
 class ButtonExamplePage extends StatefulWidget {
@@ -332,10 +333,17 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
               size: FbButtonSize.mini, state: state, onTap: () => {}),
           FbFilledButton.secondary(title,
               size: FbButtonSize.mini, state: state, onTap: () => {}),
+          FbFilledButton.tertiary(title,
+              size: FbButtonSize.mini, state: state, onTap: () => {}),
+          FbFilledButton.dangerous(title,
+              size: FbButtonSize.mini, state: state, onTap: () => {}),
+          FbFilledButton.dangerous2(title,
+              size: FbButtonSize.mini, state: state, onTap: () => {}),
           FbFilledButton.primary(title, state: state, onTap: () => {}),
           FbFilledButton.secondary(title, state: state, onTap: () => {}),
           FbFilledButton.tertiary(title, state: state, onTap: () => {}),
           FbFilledButton.dangerous(title, state: state, onTap: () => {}),
+          FbFilledButton.dangerous2(title, state: state, onTap: () => {}),
           FbFilledButton.primary(title,
               state: state, size: FbButtonSize.medium, onTap: () => {}),
           FbFilledButton.primary(
@@ -365,6 +373,8 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
           ),
           FbFilledButton.dangerous(title,
               state: state, size: FbButtonSize.medium, onTap: () => {}),
+          FbFilledButton.dangerous2(title,
+              state: state, size: FbButtonSize.medium, onTap: () => {}),
           FbFilledButton.primary(title,
               state: state, size: FbButtonSize.large, onTap: () => {}),
           FbFilledButton.primary(
@@ -393,6 +403,8 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
             onTap: () => {},
           ),
           FbFilledButton.dangerous(title,
+              state: state, size: FbButtonSize.large, onTap: () => {}),
+          FbFilledButton.dangerous2(title,
               state: state, size: FbButtonSize.large, onTap: () => {}),
           SizedBox(
             height: 50,
@@ -459,6 +471,14 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
                 widthUnlimited: true,
                 onTap: () => {}),
           ),
+          SizedBox(
+            height: 50,
+            child: FbFilledButton.dangerous2(title,
+                state: state,
+                size: FbButtonSize.large,
+                widthUnlimited: true,
+                onTap: () => {}),
+          ),
         ],
       );
     }
@@ -475,8 +495,12 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
             const FixedColumnWidth(60 + 16),
             const FixedColumnWidth(60 + 16),
             const FixedColumnWidth(60 + 16),
-            const FixedColumnWidth(184 + 16),
-            const FixedColumnWidth(184 + 16),
+            const FixedColumnWidth(60 + 16),
+            const FixedColumnWidth(80 + 16),
+            const FixedColumnWidth(80 + 16),
+            const FixedColumnWidth(80 + 16),
+            const FixedColumnWidth(80 + 16),
+            const FixedColumnWidth(80 + 16),
             const FixedColumnWidth(184 + 16),
             const FixedColumnWidth(184 + 16),
             const FixedColumnWidth(184 + 16),
@@ -489,6 +513,11 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
             const FixedColumnWidth(240 + 16),
             const FixedColumnWidth(240 + 16),
             const FixedColumnWidth(240 + 16),
+            const FixedColumnWidth(240 + 16),
+            const FixedColumnWidth(240 + 16),
+            const FixedColumnWidth(300 + 16),
+            const FixedColumnWidth(300 + 16),
+            const FixedColumnWidth(300 + 16),
             const FixedColumnWidth(300 + 16),
             const FixedColumnWidth(300 + 16),
             const FixedColumnWidth(300 + 16),
@@ -504,10 +533,14 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
                 ...[
                   "主按钮（mini）",
                   "次按钮（mini）",
+                  "次按钮 2（mini）",
+                  "警示按钮（mini）",
+                  "警示按钮 2（mini）",
                   "主按钮（小）",
                   "次按钮（小）",
                   "次按钮 2（小）",
                   "警示按钮（小）",
+                  "警示按钮 2（小）",
                   "主按钮（中）",
                   "带图标主按钮（中）",
                   "次按钮（中）",
@@ -515,6 +548,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
                   "次按钮 2（中）",
                   "带图标次按钮 2（中）",
                   "警示按钮（中）",
+                  "警示按钮 2（中）",
                   "主按钮（大）",
                   "带图标主按钮（大）",
                   "次按钮（大）",
@@ -522,6 +556,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
                   "次按钮 2（大）",
                   "带图标次按钮 2（大）",
                   "警示按钮（大）",
+                  "警示按钮 2（大）",
                   "主按钮（跟随约束）",
                   "带图标主按钮（跟随约束）",
                   "次按钮（跟随约束）",
@@ -529,6 +564,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
                   "次按钮 2（跟随约束）",
                   "带图标次按钮 2（跟随约束）",
                   "警示按钮（跟随约束）",
+                  "警示按钮 2（跟随约束）",
                 ]
                     .map((e) => Center(
                             child: Padding(
@@ -553,6 +589,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
+        color: AppTheme.of(context).bg.bg1,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
-import 'package:lib_theme/app_colors.dart';
 
 import 'fb_buttons_mixins.dart';
 
@@ -11,6 +11,7 @@ enum _ButtonType {
   tertiary,
   quaternary,
   dangerous,
+  dangerous2,
 }
 
 class FbFilledButton extends StatelessWidget with FbButtonMixin {
@@ -83,9 +84,21 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         icon = null,
         super(key: key);
 
+  const FbFilledButton.dangerous2(
+    this.label, {
+    required this.onTap,
+    this.onLongPress,
+    this.widthUnlimited = false,
+    this.state = FbButtonState.normal,
+    this.size = FbButtonSize.small,
+    Key? key,
+  })  : type = _ButtonType.dangerous2,
+        icon = null,
+        super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    Widget child = buildLabelWidget(state, label);
+    Widget child = buildLabelWidget(state, size, label);
     if (icon != null && state != FbButtonState.loading) {
       child = addLeadingIcon(child, icon!, size);
     }
@@ -109,8 +122,8 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         //圆角：按钮高度 / 6 （规范提供公式）
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
             RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                    Radius.circular(buttonSize.height / 6)))),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(buttonSize.height / 6)))),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontSize: getFontSize(size),
           fontWeight: FontWeight.w500,
@@ -124,6 +137,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
     final theme = appThemeData;
+    final newTheme = AppTheme.of(context);
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
@@ -136,6 +150,8 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
           return theme.primaryColor;
         case _ButtonType.dangerous:
           return Colors.white;
+        case _ButtonType.dangerous2:
+          return newTheme.function.red1;
       }
     }
 
@@ -159,6 +175,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
 
   Color getBackgroundColor(BuildContext context, Set<MaterialState> states) {
     final theme = appThemeData;
+    final newTheme = AppTheme.of(context);
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
@@ -171,6 +188,8 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
           return theme.primaryColor.withOpacity(0.1);
         case _ButtonType.dangerous:
           return destructiveRed;
+        case _ButtonType.dangerous2:
+          return newTheme.fg.white1;
       }
     }
 

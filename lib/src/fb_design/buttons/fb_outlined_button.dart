@@ -120,7 +120,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
 
   @override
   Widget build(BuildContext context) {
-    Widget child = buildLabelWidget(state, label);
+    Widget child = buildLabelWidget(state, size, label);
     if (icon != null && state != FbButtonState.loading) {
       child = addLeadingIcon(child, icon!, size);
     }
