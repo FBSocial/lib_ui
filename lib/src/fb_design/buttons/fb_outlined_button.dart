@@ -7,6 +7,7 @@ import 'fb_buttons_mixins.dart';
 enum _ButtonType {
   primary,
   secondary,
+  dangerous,
 }
 
 class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
@@ -43,6 +44,18 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   })  : type = _ButtonType.secondary,
         super(key: key);
 
+  const FbOutlinedButton.dangerous(
+    this.label, {
+    required this.onTap,
+    this.onLongPress,
+    this.state = FbButtonState.normal,
+    this.size = FbButtonSize.small,
+    this.widthUnlimited = false,
+    this.icon,
+    Key? key,
+  })  : type = _ButtonType.dangerous,
+        super(key: key);
+
   Color? getBackgroundColor(BuildContext context, Set<MaterialState> states) {
     final theme = appThemeData;
 
@@ -52,6 +65,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
           return theme.primaryColor;
         case _ButtonType.secondary:
           return theme.colorScheme.onSecondary;
+
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red3;
       }
     }
 
@@ -84,6 +100,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
           return theme.primaryColor;
         case _ButtonType.secondary:
           return theme.textTheme.bodyText2!.color!;
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red1;
       }
     }
 
@@ -147,6 +165,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
           return theme.primaryColor;
         case _ButtonType.secondary:
           return theme.colorScheme.onSecondary;
+
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red1;
       }
     }
 
