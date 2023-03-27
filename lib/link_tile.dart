@@ -35,7 +35,7 @@ class LinkTile extends StatelessWidget {
     return FadeBackgroundButton(
       onTap: onTap,
       height: height,
-      backgroundColor: AppTheme.of(context).fg.b10,
+      backgroundColor: AppTheme.of(context).bg.bg3,
       tapDownBackgroundColor: AppTheme.of(context).bg.bg2,
       borderRadius: borderRadius,
       child: Padding(

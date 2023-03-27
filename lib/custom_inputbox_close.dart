@@ -76,7 +76,7 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
         borderRadius: BorderRadius.circular(widget.borderRadius),
         gapPadding: 0,
       ),
-      fillColor: widget.fillColor,
+      fillColor: Colors.transparent,
       filled: true,
       counterText: '',
       hintText: widget.hintText,

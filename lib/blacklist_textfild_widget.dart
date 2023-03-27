@@ -36,7 +36,7 @@ class _BlackListTextFieldState extends State<BlackListTextField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.of(context).bg.bg2,
+        color: AppTheme.textfieldBg,
         borderRadius: const BorderRadius.all(Radius.circular(6)),
       ),
       child: Row(
@@ -47,7 +47,7 @@ class _BlackListTextFieldState extends State<BlackListTextField> {
               focusNode: focusNode,
               //autofocus: true,
               borderRadius: 6,
-              fillColor: AppTheme.of(context).bg.bg2,
+              fillColor: Colors.transparent,
               controller: controller,
               hintText: hintText ?? '请输入原因(选填)'.tr,
               hintStyle: TextStyle(
