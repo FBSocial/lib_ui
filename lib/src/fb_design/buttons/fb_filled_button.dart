@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
@@ -144,7 +143,6 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = appThemeData;
     final newTheme = AppTheme.of(context);
 
     Color colorDistinguishedByButtonType() {
@@ -182,7 +180,6 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getBackgroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = appThemeData;
     final newTheme = AppTheme.of(context);
 
     Color colorDistinguishedByButtonType() {
@@ -195,7 +192,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.quaternary:
           return AppTheme.of(context).fg.blue1.withOpacity(0.1);
         case _ButtonType.dangerous:
-          return destructiveRed;
+          return AppTheme.of(context).function.red1;
         case _ButtonType.dangerous2:
           return newTheme.fg.white1;
       }

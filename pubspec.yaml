@@ -40,8 +40,6 @@ dependencies:
     path: ../lib_theme
   lib_extension:
     path: ../lib_extension
-  lib_base:
-    path: ../lib_base
   lib_image:
     path: ../lib_image
   lib_utils:
