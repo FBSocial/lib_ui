@@ -4,6 +4,8 @@ import 'package:lib_ui/lib_ui.dart';
 mixin FbButtonMixin {
   double getFontSize(FbButtonSize size) {
     switch (size) {
+      case FbButtonSize.mini:
+        return 12;
       case FbButtonSize.small:
       case FbButtonSize.medium:
         return 14;
@@ -29,6 +31,9 @@ mixin FbButtonMixin {
 
   Size getButtonSize(FbButtonSize size) {
     switch (size) {
+      case FbButtonSize.mini:
+        return const Size(48, 24);
+
       case FbButtonSize.small:
         return const Size(60, 32);
       case FbButtonSize.medium:
@@ -97,21 +102,30 @@ mixin FbButtonMixin {
 
   Widget addLeadingIcon(Widget label, IconData icon, FbButtonSize size) {
     double space;
+    double iconSize;
     switch (size) {
-      case FbButtonSize.small:
-        assert(false, "小按钮不能有图标");
+      case FbButtonSize.mini:
+        assert(false, "size 'mini' cannot display icons");
         space = 0;
+        iconSize = 0;
+        break;
+      case FbButtonSize.small:
+        space = 6;
+        iconSize = 16;
         break;
       case FbButtonSize.medium:
         space = 6;
+        iconSize = 16;
         break;
       case FbButtonSize.large:
         space = 8;
+        iconSize = 18;
+        break;
     }
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 16),
+        Icon(icon, size: iconSize),
         SizedBox(width: space),
         label,
       ],
