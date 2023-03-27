@@ -23,10 +23,12 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   final _ButtonType type;
   final FbButtonState state;
   final bool widthUnlimited;
+  final bool placeIconAfterLabel;
 
   const FbFilledButton.primary(
     this.label, {
     this.icon,
+    this.placeIconAfterLabel = false,
     required this.onTap,
     this.onLongPress,
     this.widthUnlimited = false,
@@ -39,6 +41,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   const FbFilledButton.secondary(
     this.label, {
     this.icon,
+    this.placeIconAfterLabel = false,
     required this.onTap,
     this.onLongPress,
     this.widthUnlimited = false,
@@ -51,6 +54,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   const FbFilledButton.tertiary(
     this.label, {
     this.icon,
+    this.placeIconAfterLabel = false,
     required this.onTap,
     this.onLongPress,
     this.widthUnlimited = false,
@@ -63,6 +67,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   const FbFilledButton.quaternary(
     this.label, {
     this.icon,
+    this.placeIconAfterLabel = false,
     required this.onTap,
     this.onLongPress,
     this.widthUnlimited = false,
@@ -79,9 +84,10 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.dangerous,
-        icon = null,
         super(key: key);
 
   const FbFilledButton.dangerous2(
@@ -91,16 +97,17 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.dangerous2,
-        icon = null,
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Widget child = buildLabelWidget(state, size, label);
     if (icon != null && state != FbButtonState.loading) {
-      child = addLeadingIcon(child, icon!, size);
+      child = addIcon(child, icon!, placeIconAfterLabel, size);
     }
     Size? buttonSize = getButtonSize(size);
     child = ElevatedButton(

@@ -118,7 +118,12 @@ mixin FbButtonMixin {
     return color;
   }
 
-  Widget addLeadingIcon(Widget label, IconData icon, FbButtonSize size) {
+  Widget addIcon(
+    Widget label,
+    IconData icon,
+    bool placeIconAfterLabel,
+    FbButtonSize size,
+  ) {
     double space;
     double iconSize;
     switch (size) {
@@ -140,13 +145,14 @@ mixin FbButtonMixin {
         iconSize = 18;
         break;
     }
+    final children = [
+      Icon(icon, size: iconSize),
+      SizedBox(width: space),
+      label,
+    ];
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: iconSize),
-        SizedBox(width: space),
-        label,
-      ],
+      children: placeIconAfterLabel ? children.reversed.toList() : children,
     );
   }
 }

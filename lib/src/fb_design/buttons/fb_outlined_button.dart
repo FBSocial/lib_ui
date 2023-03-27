@@ -19,6 +19,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   final _ButtonType type;
   final FbButtonState state;
   final bool widthUnlimited;
+  final bool placeIconAfterLabel;
 
   const FbOutlinedButton.primary(
     this.label, {
@@ -28,6 +29,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.widthUnlimited = false,
     this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.primary,
         super(key: key);
@@ -40,6 +42,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.widthUnlimited = false,
     this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.secondary,
         super(key: key);
@@ -52,6 +55,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.widthUnlimited = false,
     this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.dangerous,
         super(key: key);
@@ -122,7 +126,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   Widget build(BuildContext context) {
     Widget child = buildLabelWidget(state, size, label);
     if (icon != null && state != FbButtonState.loading) {
-      child = addLeadingIcon(child, icon!, size);
+      child = addIcon(child, icon!, placeIconAfterLabel, size);
     }
     final buttonSize = getButtonSize(size);
     child = OutlinedButton(

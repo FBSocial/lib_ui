@@ -374,7 +374,9 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
           FbFilledButton.dangerous(title,
               state: state, size: FbButtonSize.medium, onTap: () => {}),
           FbFilledButton.dangerous2(title,
-              state: state, size: FbButtonSize.medium, onTap: () => {}),
+              state: state,
+              size: FbButtonSize.medium,
+              onTap: () => {}),
           FbFilledButton.primary(title,
               state: state, size: FbButtonSize.large, onTap: () => {}),
           FbFilledButton.primary(
