@@ -91,7 +91,7 @@ class TextureAvatar extends StatelessWidget {
       shape: BoxShape.circle,
     );
     final innerDecoration = BoxDecoration(
-      color: AppTheme.of(context).bg.bg1,
+      color: AppTheme.of(context).fg.b10,
       shape: BoxShape.circle,
     );
     final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
@@ -190,7 +190,7 @@ class FlutterAvatar extends StatelessWidget {
       key: widgetKey,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: decorationColor ?? AppTheme.of(context).bg.bg1,
+        color: decorationColor ?? AppTheme.of(context).bg.bg3,
         shape: BoxShape.circle,
       ),
       foregroundDecoration: foregroundDecoration,

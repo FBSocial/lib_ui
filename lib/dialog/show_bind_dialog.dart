@@ -36,7 +36,7 @@ class BindDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = AppTheme.of(context).fg.b100;
-    final bgColor = AppTheme.of(context).bg.bg1;
+    final bgColor = AppTheme.of(context).bg.bg2;
     final btnTextColor = AppTheme.of(context).fg.blue1;
 
     final bool noValue = oldName!.noValue || newName!.noValue;

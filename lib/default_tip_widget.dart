@@ -31,7 +31,7 @@ class DefaultTipWidget extends StatelessWidget {
           height: 96,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: iconBackgroundColor ?? AppTheme.of(context).bg.bg1,
+            color: iconBackgroundColor ?? AppTheme.of(context).bg.bg2,
           ),
           child: Icon(
             icon,

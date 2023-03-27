@@ -26,7 +26,7 @@ class UpdateDialogState extends State<PermissionTipDialog> {
   @override
   Widget build(BuildContext context) {
     final textColor = AppTheme.of(context).fg.b100;
-    final bgColor = AppTheme.of(context).bg.bg1;
+    final bgColor = AppTheme.of(context).bg.bg2;
     final cancelBgColor = AppTheme.of(context).bg.bg3;
     final confirmBgColor = AppTheme.of(context).fg.blue1;
 
