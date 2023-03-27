@@ -27,18 +27,24 @@ mixin FbButtonMixin {
 
   Widget buildLabelWidget(
       FbButtonState state, FbButtonSize size, String label) {
-    if (state == FbButtonState.loading) {
-      return Builder(builder: (context) {
-        final color = DefaultTextStyle.of(context).style.color!;
-        return FbLoadingIndicator(
-          size: getLoadingIconSize(size),
-          strokeWidth: 1.33,
-          color: color,
-        );
-      });
-    } else {
-      return Text(label);
-    }
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (state == FbButtonState.loading && size.canLoading())
+          Padding(
+            padding: const EdgeInsets.only(right: 6),
+            child: Builder(builder: (context) {
+              final color = DefaultTextStyle.of(context).style.color!;
+              return FbLoadingIndicator(
+                size: getLoadingIconSize(size),
+                strokeWidth: 1.33,
+                color: color,
+              );
+            }),
+          ),
+        Text(label),
+      ],
+    );
   }
 
   Size getButtonSize(FbButtonSize size) {
