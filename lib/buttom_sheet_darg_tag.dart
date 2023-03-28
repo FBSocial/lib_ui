@@ -11,7 +11,7 @@ class BottomSheetDragTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgroundColor ?? AppTheme.of(context).bg.bg2,
+      color: backgroundColor ?? AppTheme.of(context).bg.bg3,
       height: kBottomSheetDragTagHeight,
       alignment: Alignment.center,
       child: Container(
