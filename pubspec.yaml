@@ -36,6 +36,8 @@ dependencies:
       url: https://github.com/FBSocial/native_text_field.git
       ref: 2.0.3
 
+  lib_base:
+    path: ../lib_base
   lib_theme:
     path: ../lib_theme
   lib_extension:
