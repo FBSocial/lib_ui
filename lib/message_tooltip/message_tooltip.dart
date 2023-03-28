@@ -316,12 +316,12 @@ class MessageTooltip {
           boxShadow: hasShadow
               ? [
                   BoxShadow(
-                      color: AppTheme.of(context).fg.b5,
+                      color: AppTheme.of(context).fg.widget.withOpacity(0.1),
                       offset: const Offset(0, 1),
                       blurRadius: 8,
                       spreadRadius: 2),
                   BoxShadow(
-                      color: AppTheme.of(context).fg.b10,
+                      color: AppTheme.of(context).fg.widget.withOpacity(0.2),
                       offset: const Offset(0, 2),
                       blurRadius: 16)
                 ]
