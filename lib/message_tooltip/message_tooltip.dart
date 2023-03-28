@@ -8,7 +8,9 @@ import 'animation_offet_wrap.dart';
 import 'popup_ballon_layout_delegate.dart';
 
 enum TooltipDirection { up, down, center }
+
 enum ShowCloseButton { inside, outside, none }
+
 enum ClipAreaShape { oval, rectangle }
 
 typedef OutSideTapHandler = void Function();
@@ -202,7 +204,7 @@ class MessageTooltip {
   void show(BuildContext targetContext) {
     final RenderBox renderBox = targetContext.findRenderObject() as RenderBox;
     final RenderBox? overlay =
-        Overlay.of(targetContext)!.context.findRenderObject() as RenderBox?;
+        Overlay.of(targetContext).context.findRenderObject() as RenderBox?;
 
     _targetCenter = renderBox.localToGlobal(
         renderBox.size.topCenter(Offset.zero),
@@ -291,8 +293,7 @@ class MessageTooltip {
       );
     });
 
-    Overlay.of(targetContext)!
-        .insertAll([_backGroundOverlay!, _ballonOverlay!]);
+    Overlay.of(targetContext).insertAll([_backGroundOverlay!, _ballonOverlay!]);
     isOpen = true;
   }
 
