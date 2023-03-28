@@ -286,7 +286,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
     secondary = _ListDisplayDetails(const ValueKey('Pong'),
         offset: widget.initialOffset);
     final ItemPosition? initialPosition =
-        PageStorage.of(context)!.readState(context);
+        PageStorage.of(context).readState(context);
     primary.target = initialPosition?.index ?? widget.initialScrollIndex;
     primary.alignment =
         initialPosition?.itemLeadingEdge ?? widget.initialAlignment;
@@ -569,7 +569,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
         .where((position) =>
             position.itemLeadingEdge < 1 && position.itemTrailingEdge > 0);
     if (itemPositions.isNotEmpty) {
-      PageStorage.of(context)!.writeState(
+      PageStorage.of(context).writeState(
           context,
           itemPositions.reduce((value, element) =>
               value.itemLeadingEdge < element.itemLeadingEdge
