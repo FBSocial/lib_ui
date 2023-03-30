@@ -114,7 +114,7 @@ class _FbTextFieldState extends State<FbTextField> {
 
     return Container(
       decoration: BoxDecoration(
-        color: widget.backgroundColor ?? AppTheme.of(context).bg.bg1,
+        color: widget.backgroundColor ?? AppTheme.textFieldBg,
         borderRadius: BorderRadius.circular(widget.borderRadius),
       ),
       height: widget.height,

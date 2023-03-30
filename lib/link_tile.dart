@@ -15,6 +15,7 @@ class LinkTile extends StatelessWidget {
   final double borderRadius;
   final Widget? trailingWidget;
   final bool titleExpanded;
+  final Color? backgroundColor;
 
   const LinkTile(
     this.context,
@@ -27,6 +28,7 @@ class LinkTile extends StatelessWidget {
     this.borderRadius = 0,
     this.trailingWidget,
     this.titleExpanded = true,
+    this.backgroundColor,
     Key? key,
   }) : super(key: key);
 
@@ -35,7 +37,7 @@ class LinkTile extends StatelessWidget {
     return FadeBackgroundButton(
       onTap: onTap,
       height: height,
-      backgroundColor: AppTheme.of(context).bg.bg3,
+      backgroundColor: backgroundColor ?? AppTheme.of(context).bg.bg3,
       tapDownBackgroundColor: AppTheme.of(context).bg.bg2,
       borderRadius: borderRadius,
       child: Padding(
