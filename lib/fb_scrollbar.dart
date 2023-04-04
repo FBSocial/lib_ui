@@ -57,7 +57,7 @@ class FBScrollbar extends RawScrollbar {
     this.thicknessWhileDragging = defaultThicknessWhileDragging,
     Radius radius = defaultRadius,
     this.radiusWhileDragging = defaultRadiusWhileDragging,
-    this.padding,
+    this.barPadding,
     ScrollNotificationPredicate? notificationPredicate,
     ScrollbarOrientation? scrollbarOrientation,
   })  : assert(thickness < double.infinity),
@@ -106,7 +106,7 @@ class FBScrollbar extends RawScrollbar {
   /// dragging the scrollbar.
   final Radius radiusWhileDragging;
 
-  final EdgeInsets? padding;
+  final EdgeInsets? barPadding;
 
   @override
   _FBScrollbarState createState() => _FBScrollbarState();
@@ -145,7 +145,7 @@ class _FBScrollbarState extends RawScrollbarState<FBScrollbar> {
       ..mainAxisMargin = _kScrollbarMainAxisMargin
       ..crossAxisMargin = _kScrollbarCrossAxisMargin
       ..radius = _radius
-      ..padding = widget.padding ?? const EdgeInsets.all(0)
+      ..padding = widget.barPadding ?? const EdgeInsets.all(0)
       ..minLength = _kScrollbarMinLength
       ..minOverscrollLength = _kScrollbarMinOverscrollLength;
   }
