@@ -35,7 +35,7 @@ class BindDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
+    final textColor = theme.textTheme.bodyMedium!.color;
     final bgColor = theme.scaffoldBackgroundColor;
     final btnTextColor = theme.primaryColor;
 
@@ -122,7 +122,7 @@ class BindDialog extends StatelessWidget {
 
   Widget hasName(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
+    final textColor = theme.textTheme.bodyMedium!.color;
     final textStyle1 = TextStyle(color: textColor, fontSize: 16);
     final textStyle2 =
         TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w500);
@@ -141,7 +141,7 @@ class BindDialog extends StatelessWidget {
 
   Widget noName(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
+    final textColor = theme.textTheme.bodyMedium!.color;
     final textStyle1 = TextStyle(color: textColor, fontSize: 16);
     return Text.rich(
       TextSpan(

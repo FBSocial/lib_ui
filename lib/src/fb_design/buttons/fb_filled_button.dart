@@ -130,7 +130,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.primary:
           return Colors.white;
         case _ButtonType.tertiary:
-          return theme.textTheme.bodyText2!.color!;
+          return theme.textTheme.bodyMedium!.color!;
         case _ButtonType.secondary:
         case _ButtonType.quaternary:
           return theme.primaryColor;

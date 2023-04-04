@@ -15,7 +15,7 @@ class BottomSheetDragTag extends StatelessWidget {
         height: 4,
         decoration: BoxDecoration(
             color:
-                Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.2),
+                Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.2),
             borderRadius: const BorderRadius.all(Radius.circular(4))),
       ),
     );

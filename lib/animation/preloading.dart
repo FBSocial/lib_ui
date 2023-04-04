@@ -39,7 +39,7 @@ class _PreloadingState extends State<Preloading> {
       },
       child: Container(
         padding: const EdgeInsets.only(top: 15),
-        color: Theme.of(context).backgroundColor,
+        color: Theme.of(context).colorScheme.background,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[

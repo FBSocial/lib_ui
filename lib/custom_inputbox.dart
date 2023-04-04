@@ -166,18 +166,18 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                   child: RichText(
                     text: TextSpan(
                         text: '${widget.controller.text.characters.length}',
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             fontSize: 12,
                             color: widget.controller.text.characters.length >
                                     widget.maxLength!
                                 ? DefaultTheme.dangerColor
-                                : Theme.of(context).textTheme.bodyText1!.color),
+                                : Theme.of(context).textTheme.bodyLarge!.color),
                         children: [
                           TextSpan(
                             text: '/${widget.maxLength}',
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1!
+                                .bodyLarge!
                                 .copyWith(fontSize: 12),
                           )
                         ]),
@@ -212,17 +212,17 @@ class _CustomInputBoxState extends State<CustomInputBox> {
             child: RichText(
               text: TextSpan(
                   text: '$currentLength',
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontSize: 12,
                       color: currentLength > maxLength
                           ? DefaultTheme.dangerColor
-                          : Theme.of(context).textTheme.bodyText1!.color),
+                          : Theme.of(context).textTheme.bodyLarge!.color),
                   children: [
                     TextSpan(
                       text: '/$maxLength',
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
+                          .bodyLarge!
                           .copyWith(fontSize: 12),
                     )
                   ]),

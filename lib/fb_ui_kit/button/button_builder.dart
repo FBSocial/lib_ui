@@ -275,7 +275,7 @@ class FbButton extends StatelessWidget {
               backgroundColor: type == FbButtonType.elevated
                   ? Colors.white
                   : type == FbButtonType.subOutlined
-                      ? appThemeData.textTheme.caption!.color
+                      ? appThemeData.textTheme.bodySmall!.color
                       : _primaryColor,
               strokeWidth: 1.5,
             ),
@@ -441,7 +441,7 @@ class FbButton extends StatelessWidget {
         _getFgColor = Colors.white;
         break;
       case FbButtonType.subOutlined:
-        _getFgColor = appThemeData.textTheme.caption!.color;
+        _getFgColor = appThemeData.textTheme.bodySmall!.color;
         break;
       default:
         break;
@@ -451,10 +451,10 @@ class FbButton extends StatelessWidget {
         _getFgColor = _getFgColor!.withOpacity(0.4);
         break;
       case FbButtonStatus.disable:
-        _getFgColor = appThemeData.textTheme.caption!.color!.withOpacity(0.4);
+        _getFgColor = appThemeData.textTheme.bodySmall!.color!.withOpacity(0.4);
         break;
       case FbButtonStatus.finish:
-        _getFgColor = appThemeData.textTheme.headline2!.color;
+        _getFgColor = appThemeData.textTheme.displayMedium!.color;
         break;
       default:
         break;
@@ -471,7 +471,7 @@ class FbButton extends StatelessWidget {
     //  边框颜色
     Color borderColor = type == FbButtonType.outlined
         ? _primaryColor
-        : appThemeData.textTheme.headline2!.color!.withOpacity(0.4);
+        : appThemeData.textTheme.displayMedium!.color!.withOpacity(0.4);
     switch (status) {
       case FbButtonStatus.unable:
         if (type == FbButtonType.outlined) {

@@ -75,7 +75,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 child: RichText(
                   text: TextSpan(
                       text: '${_title.trim().characters.length}',
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             fontSize: 12,
                             color: _title.trim().characters.length >
                                     widget.maxLength!

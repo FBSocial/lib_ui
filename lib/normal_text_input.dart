@@ -81,7 +81,7 @@ class _NormalTextInputState extends State<NormalTextInput> {
                 style: TextStyle(
                     fontSize: 14,
                     color: _currentCount > _maxCnt!
-                        ? Theme.of(context).errorColor.withOpacity(0.5)
+                        ? Theme.of(context).colorScheme.error.withOpacity(0.5)
                         : Theme.of(context).disabledColor.withOpacity(0.5)),
                 children: [
                   TextSpan(

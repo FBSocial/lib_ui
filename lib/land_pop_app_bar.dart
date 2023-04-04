@@ -24,7 +24,7 @@ class LandPopAppBar extends StatelessWidget {
           Visibility(
             visible: title?.isNotEmpty ?? false,
             child: Text(title ?? '',
-                style: Get.textTheme.bodyText2!.copyWith(
+                style: Get.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w500,
                 )),
           ),

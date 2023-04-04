@@ -203,7 +203,7 @@ class _FbTextFieldState extends State<FbTextField> {
           style: TextStyle(
             fontSize: 14,
             color: isOverflow
-                ? Theme.of(context).errorColor
+                ? Theme.of(context).colorScheme.error
                 : AppTheme.of(context).fg.b40,
           ),
           children: [

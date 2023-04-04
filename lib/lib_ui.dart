@@ -18,7 +18,7 @@ class FbTheme extends StatelessWidget {
     return OKToast(
         radius: 8,
         backgroundColor:
-            appThemeData.textTheme.bodyText2!.color!.withOpacity(0.95),
+            appThemeData.textTheme.bodyMedium!.color!.withOpacity(0.95),
         textPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         child: child);
   }

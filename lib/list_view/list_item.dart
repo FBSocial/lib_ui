@@ -36,7 +36,7 @@ class ListItem extends StatelessWidget {
                   if (title != null)
                     Text(
                       title!,
-                      style: Theme.of(context).textTheme.subtitle2,
+                      style: Theme.of(context).textTheme.titleSmall,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     )
@@ -45,7 +45,7 @@ class ListItem extends StatelessWidget {
                   if (content != null)
                     Text(
                       content!,
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     )
