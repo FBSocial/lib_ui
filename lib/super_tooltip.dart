@@ -226,7 +226,7 @@ class SuperTooltip {
     final renderBox = targetContext.findRenderObject() as RenderBox;
     // final localPoint = renderBox.globalToLocal(globalPoint);
     final overlay =
-        Overlay.of(targetContext)!.context.findRenderObject() as RenderBox?;
+        Overlay.of(targetContext).context.findRenderObject() as RenderBox?;
 
     _targetCenter = renderBox.localToGlobal(renderBox.size.center(Offset.zero),
         ancestor: overlay);
@@ -316,7 +316,7 @@ class SuperTooltip {
     }
     overlays.add(_ballonOverlay);
 
-    Overlay.of(targetContext)!.insertAll(overlays as Iterable<OverlayEntry>);
+    Overlay.of(targetContext).insertAll(overlays as Iterable<OverlayEntry>);
     isOpen = true;
   }
 

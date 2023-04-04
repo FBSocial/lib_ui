@@ -196,7 +196,7 @@ class RichEditorSuperTooltip {
   void show(BuildContext targetContext) {
     final renderBox = targetContext.findRenderObject() as RenderBox;
     final overlay =
-        Overlay.of(targetContext)!.context.findRenderObject() as RenderBox?;
+        Overlay.of(targetContext).context.findRenderObject() as RenderBox?;
 
     final x1 = renderBox
         .localToGlobal(renderBox.size.centerLeft(Offset.zero),
@@ -249,7 +249,7 @@ class RichEditorSuperTooltip {
     //   overlays.add(_backGroundOverlay);
     // }
     overlays.add(_ballonOverlay);
-    Overlay.of(targetContext)!.insertAll(overlays as Iterable<OverlayEntry>);
+    Overlay.of(targetContext).insertAll(overlays as Iterable<OverlayEntry>);
     isOpen = true;
   }
 
