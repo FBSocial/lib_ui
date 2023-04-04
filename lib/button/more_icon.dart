@@ -14,7 +14,7 @@ class MoreIcon extends StatelessWidget {
     return Icon(
       IconFont.xiayibu,
       size: size,
-      color: color ?? AppTheme.of(context).fg.b40,
+      color: color ?? AppTheme.of(context).fg.b20,
     );
   }
 }

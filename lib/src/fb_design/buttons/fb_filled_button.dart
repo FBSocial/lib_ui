@@ -188,7 +188,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
           return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
         case _ButtonType.tertiary:
-          return AppTheme.of(context).fg.b20;
+          return AppTheme.of(context).fg.b5;
         case _ButtonType.quaternary:
           return AppTheme.of(context).fg.blue1.withOpacity(0.1);
         case _ButtonType.dangerous:
