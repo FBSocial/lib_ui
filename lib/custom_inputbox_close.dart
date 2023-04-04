@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/text_field/native_input.dart';
@@ -137,15 +138,15 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
                         fontSize: 14,
                         color: widget.controller.text.characters.length >
                                 widget.maxLength!
-                            ? DefaultTheme.dangerColor
-                            : const Color(0xFF8F959E),
+                            ? AppTheme.of(context).function.red1
+                            : AppTheme.of(context).fg.b40,
                       ),
                   children: [
                     TextSpan(
                       text: '/${widget.maxLength}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
-                        color: Color(0xFF8F959E),
+                        color: AppTheme.of(context).fg.b40,
                       ),
                     )
                   ]),
