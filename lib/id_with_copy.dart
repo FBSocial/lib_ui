@@ -27,7 +27,7 @@ class IdWithCopy extends StatelessWidget {
         children: [
           Text(
             '#$username',
-            style: theme.textTheme.bodyText1!.copyWith(
+            style: theme.textTheme.bodyLarge!.copyWith(
               fontSize: OrientationUtil.portrait ? 13 : 12,
               height: 1.25,
               color: theme.disabledColor,
@@ -65,7 +65,7 @@ class IdWithButtonCopy extends StatelessWidget {
         children: [
           Text(
             'ID: $username',
-            style: theme.textTheme.bodyText1!.copyWith(
+            style: theme.textTheme.bodyLarge!.copyWith(
               fontSize: OrientationUtil.portrait ? 13 : 12,
               height: 1.25,
               color: theme.disabledColor,
@@ -86,7 +86,7 @@ class IdWithButtonCopy extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w500,
-                    color: appThemeData.textTheme.bodyText2!.color!
+                    color: appThemeData.textTheme.bodyMedium!.color!
                         .withOpacity(0.6)),
                 strutStyle: const StrutStyle(
                   fontSize: 10,

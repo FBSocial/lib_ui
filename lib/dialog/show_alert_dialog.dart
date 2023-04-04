@@ -29,7 +29,7 @@ class CommonAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
+    final textColor = theme.textTheme.bodyMedium!.color;
     final btnTextColor = theme.primaryColor;
 
     final textStyle = TextStyle(
@@ -133,7 +133,7 @@ class CommonTitleAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color!;
+    final textColor = theme.textTheme.bodyMedium!.color!;
     final btnTextColor = theme.primaryColor;
 
     final textStyle1 = TextStyle(

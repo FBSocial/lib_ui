@@ -25,9 +25,9 @@ class UpdateDialogState extends State<PermissionTipDialog> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyText2!.color;
+    final textColor = theme.textTheme.bodyMedium!.color;
     final bgColor = theme.scaffoldBackgroundColor;
-    final cancelBgColor = theme.backgroundColor;
+    final cancelBgColor = theme.colorScheme.background;
     final confirmBgColor = theme.primaryColor;
 
     return WillPopScope(

@@ -135,10 +135,11 @@ class _NativeInputState extends State<NativeInput> {
               focusNode: widget.focusNode,
 //              allowRegExp: _allowRegExp,
               keyboardType: widget.keyboardType ?? TextInputType.text,
-              textStyle: widget.style ?? Theme.of(context).textTheme.subtitle1,
+              textStyle:
+                  widget.style ?? Theme.of(context).textTheme.titleMedium,
               placeHolder: _hintText,
               placeHolderStyle:
-                  _hintStyle ?? Theme.of(context).textTheme.bodyText1,
+                  _hintStyle ?? Theme.of(context).textTheme.bodyLarge,
               textAlign: widget.textAlign,
               onEditingComplete: widget.onEditingComplete,
               onSubmitted: widget.onSubmitted,
@@ -180,7 +181,7 @@ class _NativeInputState extends State<NativeInput> {
                             text:
                                 '${widget.controller!.text.characters.length}',
                             style:
-                                Theme.of(context).textTheme.bodyText1!.copyWith(
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       fontSize: 12,
                                       color: widget.controller!.text.characters
                                                   .length >

@@ -91,7 +91,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
               style: TextStyle(
                 fontSize: widget.fontSize,
                 color: widget.textColor ??
-                    Theme.of(context).textTheme.bodyText2!.color,
+                    Theme.of(context).textTheme.bodyMedium!.color,
               ),
               keyboardType: TextInputType.multiline,
               buildCounter: (
@@ -131,16 +131,16 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
               child: RichText(
                 text: TextSpan(
                     text: '${Characters(widget.controller.text).length}',
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontSize: 12,
                         color: Characters(widget.controller.text).length >
                                 widget.maxLength!
-                            ? theme.errorColor
+                            ? theme.colorScheme.error
                             : theme.disabledColor),
                     children: [
                       TextSpan(
                         text: '/${widget.maxLength}',
-                        style: theme.textTheme.bodyText1!
+                        style: theme.textTheme.bodyLarge!
                             .copyWith(fontSize: 12, color: theme.disabledColor),
                       )
                     ]),

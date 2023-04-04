@@ -117,7 +117,7 @@ class _LinkInputState extends State<LinkInput> {
                     onTap: hasLink ? clearCallback.clear : null,
                     child: Text(
                       '清空'.tr,
-                      style: theme.textTheme.bodyText1!.copyWith(
+                      style: theme.textTheme.bodyLarge!.copyWith(
                           fontSize: 13, color: hasLink ? color2 : color1),
                     ),
                   )

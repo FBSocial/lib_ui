@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
-import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/text_field/native_input.dart';
 
 import 'icon_font.dart';
@@ -134,7 +133,7 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
             child: RichText(
               text: TextSpan(
                   text: '${widget.controller.text.characters.length}',
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontSize: 14,
                         color: widget.controller.text.characters.length >
                                 widget.maxLength!

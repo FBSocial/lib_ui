@@ -89,7 +89,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
       return colorDistinguishedByButtonType().withOpacity(0.1);
     }
     if (states.contains(MaterialState.pressed)) {
-      return theme.backgroundColor.withOpacity(0.8);
+      return theme.colorScheme.background.withOpacity(0.8);
     }
 
     return null;
@@ -103,7 +103,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.primary:
           return theme.primaryColor;
         case _ButtonType.secondary:
-          return theme.textTheme.bodyText2!.color!;
+          return theme.textTheme.bodyMedium!.color!;
         case _ButtonType.dangerous:
           return AppTheme.of(context).function.red1;
       }
@@ -150,7 +150,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
           return getOverlayBackgroundColor(color, state, states);
         }),
         textStyle: MaterialStateProperty.all(
-            Theme.of(context).textTheme.bodyText2!.copyWith(
+            Theme.of(context).textTheme.bodyMedium!.copyWith(
                   fontSize: getFontSize(size),
                   fontWeight: FontWeight.w500,
                 )),

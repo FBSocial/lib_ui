@@ -36,8 +36,8 @@ class LinkTile extends StatelessWidget {
     return FadeBackgroundButton(
       onTap: onTap,
       height: height,
-      backgroundColor: theme.backgroundColor,
-      tapDownBackgroundColor: theme.backgroundColor.withOpacity(0.5),
+      backgroundColor: theme.colorScheme.background,
+      tapDownBackgroundColor: theme.colorScheme.background.withOpacity(0.5),
       borderRadius: borderRadius,
       child: Padding(
         padding: padding ??
@@ -54,14 +54,14 @@ class LinkTile extends StatelessWidget {
     return [
       Expanded(
         child: DefaultTextStyle(
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(fontSize: 17),
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 17),
           child: title,
         ),
       ),
       sizeWidth8,
       if (trailing != null)
         DefaultTextStyle(
-          style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 15),
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 15),
           child: trailing!,
         ),
       if (showTrailingIcon!) ...[

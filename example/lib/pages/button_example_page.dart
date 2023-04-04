@@ -52,7 +52,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
     return makeSection(
       "FbTextButton - 文字按钮",
       child: DefaultTextStyle(
-        style: Theme.of(context).textTheme.caption!,
+        style: Theme.of(context).textTheme.bodySmall!,
         child: Table(
           defaultVerticalAlignment: TableCellVerticalAlignment.middle,
           columnWidths: const <int, TableColumnWidth>{
@@ -245,7 +245,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
     return makeSection(
       "FbOutlinedButton - 边框按钮",
       child: DefaultTextStyle(
-        style: Theme.of(context).textTheme.caption!,
+        style: Theme.of(context).textTheme.bodySmall!,
         child: Table(
           defaultVerticalAlignment: TableCellVerticalAlignment.middle,
           columnWidths: [
@@ -374,9 +374,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
           FbFilledButton.dangerous(title,
               state: state, size: FbButtonSize.medium, onTap: () => {}),
           FbFilledButton.dangerous2(title,
-              state: state,
-              size: FbButtonSize.medium,
-              onTap: () => {}),
+              state: state, size: FbButtonSize.medium, onTap: () => {}),
           FbFilledButton.primary(title,
               state: state, size: FbButtonSize.large, onTap: () => {}),
           FbFilledButton.primary(
@@ -488,7 +486,7 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
     return makeSection(
       "FbFilledButton - 实色按钮",
       child: DefaultTextStyle(
-        style: Theme.of(context).textTheme.caption!,
+        style: Theme.of(context).textTheme.bodySmall!,
         child: Table(
           defaultVerticalAlignment: TableCellVerticalAlignment.middle,
           columnWidths: [
