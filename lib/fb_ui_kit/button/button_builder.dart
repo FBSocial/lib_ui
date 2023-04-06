@@ -408,7 +408,7 @@ class FbButton extends StatelessWidget {
         bgColor = _primaryColor;
         break;
       case FbButtonType.subElevated:
-        bgColor = AppTheme.of(context).fg.b10;
+        bgColor = AppTheme.of(context).fg.b5;
         break;
       case FbButtonType.lightElevated:
         bgColor = _primaryColor.withOpacity(0.1);
