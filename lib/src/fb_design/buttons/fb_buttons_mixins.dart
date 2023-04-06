@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_ui/lib_ui.dart';
 
 mixin FbButtonMixin {
@@ -17,9 +18,9 @@ mixin FbButtonMixin {
   double getLoadingIconSize(FbButtonSize size) {
     switch (size) {
       case FbButtonSize.mini:
-        return 14;
       case FbButtonSize.small:
       case FbButtonSize.medium:
+        return 14;
       case FbButtonSize.large:
         return 16;
     }
@@ -32,17 +33,20 @@ mixin FbButtonMixin {
       children: [
         if (state == FbButtonState.loading && size.canLoading())
           Padding(
-            padding: const EdgeInsets.only(right: 6),
+            padding: EdgeInsets.only(right: size.gapOfIconAndText),
             child: Builder(builder: (context) {
               final color = DefaultTextStyle.of(context).style.color!;
               return FbLoadingIndicator(
                 size: getLoadingIconSize(size),
-                strokeWidth: 1.33,
+                strokeWidth: size.loadingIconThickness,
                 color: color,
               );
             }),
           ),
-        Text(label),
+        Text(label,
+            style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontFamilyFallback: defaultFontFamilyFallback)),
       ],
     );
   }
