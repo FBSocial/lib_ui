@@ -49,7 +49,7 @@ class _FbLoadingIndicatorState extends State<FbLoadingIndicator>
             trailingColor: trailing,
             leadingColor: leading,
             strokeWidth: widget.strokeWidth),
-        size: Size.square(widget.size),
+        size: Size.square(widget.size - widget.strokeWidth / 2),
       ),
     );
   }

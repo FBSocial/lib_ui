@@ -146,7 +146,7 @@ class MyRadio<T> extends StatefulWidget {
 
   /// The color to use when this radio button is selected.
   ///
-  /// Defaults to [ThemeData.toggleableActiveColor].
+  /// Defaults to
   final Color? activeColor;
 
   /// Configures the minimum size of the tap target.

@@ -67,7 +67,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.primary:
           return AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
-          return  AppTheme.of(context).fg.b40;
+          return AppTheme.of(context).fg.b40;
 
         case _ButtonType.dangerous:
           return AppTheme.of(context).function.red3;
