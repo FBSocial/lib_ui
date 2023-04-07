@@ -704,8 +704,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "68124853ead404764ad88c345df5f9c8ee2eaaf5"
-      resolved-ref: "68124853ead404764ad88c345df5f9c8ee2eaaf5"
+      ref: c260e33481f5888bb572692c59dc79ad32cdd90e
+      resolved-ref: c260e33481f5888bb572692c59dc79ad32cdd90e
       url: "https://github.com/FBSocial/fluwx.git"
     source: git
     version: "3.6.2"
