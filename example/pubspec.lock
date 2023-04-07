@@ -509,8 +509,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.5.5+4"
-      resolved-ref: "64148b119d059c5f84409adac2e34eca2325b484"
+      ref: "0.5.5+5"
+      resolved-ref: bdbc1793f462d218986e94fffd9e044f6113fb53
       url: "https://github.com/FBSocial/flutter_audio_recorder.git"
     source: git
     version: "0.5.5+3"
