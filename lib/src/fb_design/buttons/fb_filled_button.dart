@@ -117,14 +117,12 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         elevation: MaterialStateProperty.all(0),
         animationDuration: Duration.zero,
         splashFactory: NoSplash.splashFactory,
-        foregroundColor: MaterialStateProperty.resolveWith((states) =>
-            getOverlayForegroundColor(
-                getForegroundColor(context, states), state, states)),
-        // 不知为何，直接使用 overlayColor 对于 pressed 无效，所以和 backgroundColor 进行叠加
-        backgroundColor: MaterialStateProperty.resolveWith((states) =>
-            getOverlayBackgroundColor(
-                getBackgroundColor(context, states), state, states)),
-        // overlayColor: MaterialStateProperty.resolveWith(getOverlayColor),
+        foregroundColor: MaterialStateProperty.resolveWith(
+            (states) => getForegroundColor(context, states)),
+        overlayColor: MaterialStateProperty.resolveWith(
+            (states) => getOverlayColor(state, states)),
+        backgroundColor: MaterialStateProperty.resolveWith(
+            (states) => getBackgroundColor(context, states)),
         padding: MaterialStateProperty.all(EdgeInsets.zero),
         //圆角：按钮高度 / 6 （规范提供公式）
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
@@ -200,11 +198,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
 
     switch (state) {
       case FbButtonState.normal:
-        if (states.contains(MaterialState.pressed)) {
-          return colorDistinguishedByButtonType().withOpacity(0.8);
-        } else {
-          return colorDistinguishedByButtonType();
-        }
+        return colorDistinguishedByButtonType();
       case FbButtonState.loading:
         return colorDistinguishedByButtonType();
       case FbButtonState.disabled:
