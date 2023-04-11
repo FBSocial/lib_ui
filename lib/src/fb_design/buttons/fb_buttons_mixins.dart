@@ -93,7 +93,7 @@ mixin FbButtonMixin {
     return callback;
   }
 
-  Color? getOverlayColor(
+  Color getOverlayColor(
     FbButtonState state,
     Set<MaterialState> states,
   ) {
@@ -109,20 +109,6 @@ mixin FbButtonMixin {
 
     return Colors.transparent;
   }
-
-  // Color? getOverlayBackgroundColor(
-  //     Color color, FbButtonState state, Set<MaterialState> states) {
-  //   // 完成态不需要任何交互态
-  //   if (state == FbButtonState.completed) return color;
-
-  //   if (states.contains(MaterialState.pressed)) {
-  //     return Color.alphaBlend(Colors.black.withOpacity(0.15), color);
-  //   }
-  //   if (states.contains(MaterialState.hovered)) {
-  //     return Color.alphaBlend(Colors.white.withOpacity(0.15), color);
-  //   }
-  //   return color;
-  // }
 
   Widget addIcon(
     Widget label,

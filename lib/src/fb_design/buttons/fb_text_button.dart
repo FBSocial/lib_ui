@@ -63,8 +63,9 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
         visualDensity: const VisualDensity(horizontal: -4.0, vertical: -4.0),
         backgroundColor: MaterialStateProperty.all(Colors.transparent),
         overlayColor: MaterialStateProperty.all(Colors.transparent),
-        foregroundColor: MaterialStateProperty.resolveWith(
-            (states) => getForegroundColor(context, states)),
+        foregroundColor: MaterialStateProperty.resolveWith((states) =>
+            Color.alphaBlend(getOverlayColor(state, states),
+                getForegroundColor(context, states))),
         splashFactory: NoSplash.splashFactory,
         padding: MaterialStateProperty.all(EdgeInsets.zero),
         textStyle: MaterialStateProperty.all(TextStyle(
