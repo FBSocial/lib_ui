@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_theme/const.dart';
+import 'package:lib_theme/get_theme.dart';
 import 'package:lib_utils/universal_platform.dart';
 import 'package:oktoast/oktoast.dart';
-
+import 'package:get/get.dart';
 import 'circular_progress.dart';
 import 'icon_font.dart';
 
@@ -36,7 +37,7 @@ class Loading {
               child: CircularProgressIndicator(
                 backgroundColor: color,
                 strokeWidth: 3,
-                valueColor: const AlwaysStoppedAnimation(Colors.white),
+                valueColor: AlwaysStoppedAnimation(Get.themeToken.fg.white1),
               ),
             ),
     );
@@ -58,7 +59,7 @@ class Loading {
       child: Icon(
         iconData,
         size: 40,
-        color: Colors.white,
+        color: Get.themeToken.fg.white1,
       ),
     );
   }
@@ -70,44 +71,45 @@ class Loading {
   }) {
     hide();
     toast = showToastWidget(
-      Material(
-        color: Colors.transparent,
-        child: isEmpty
-            ? const SizedBox.expand()
-            : Center(
-              child: Container(
-                width: 112,
-                height: 112,
-                decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CircularProgress(
-                        primaryColor: Colors.white,
-                        secondaryColor: Colors.white.withOpacity(0),
-                        strokeWidth: 3,
-                        size: 33,
+        Material(
+          color: Colors.transparent,
+          child: isEmpty
+              ? const SizedBox.expand()
+              : Center(
+                  child: Container(
+                    width: 112,
+                    height: 112,
+                    decoration: BoxDecoration(
+                        color: Get.themeToken.fg.widget,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          CircularProgress(
+                            primaryColor: Get.themeToken.fg.white1,
+                            secondaryColor:
+                                Get.themeToken.fg.white1.withOpacity(0),
+                            strokeWidth: 3,
+                            size: 33,
+                          ),
+                          if (label != null) sizeHeight24,
+                          if (label != null)
+                            Text(
+                              label,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Get.themeToken.fg.white1),
+                            ),
+                        ],
                       ),
-                      if (label != null) sizeHeight24,
-                      if (label != null)
-                        Text(
-                          label,
-                          style: const TextStyle(
-                              fontSize: 14, color: Colors.white),
-                        ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-      ),
-      animationDuration: Duration.zero,
-      duration: Duration.zero,
-      handleTouch: true
-    );
+        ),
+        animationDuration: Duration.zero,
+        duration: Duration.zero,
+        handleTouch: true);
   }
 
   /// 关闭loading
@@ -143,7 +145,7 @@ class Loading {
                   width: 128,
                   height: 128,
                   decoration: BoxDecoration(
-                      color: const Color(0xFF1A1A1A).withOpacity(0.8),
+                      color: Get.themeToken.fg.widget,
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                     child: Column(
@@ -154,8 +156,8 @@ class Loading {
                         if (label != null)
                           Text(
                             label,
-                            style: const TextStyle(
-                                fontSize: 14, color: Colors.white),
+                            style: TextStyle(
+                                fontSize: 14, color: Get.themeToken.fg.white1),
                           ),
                       ],
                     ),
