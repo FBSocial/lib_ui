@@ -44,7 +44,7 @@ class SvgTipWidget extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: textColor ?? AppTheme.of(context).fg.b40,
+                color: textColor ?? AppTheme.of(context).fg.b100,
                 fontSize: textSize ?? 17,
                 fontWeight: fontWeight ?? FontWeight.w500),
           ),
