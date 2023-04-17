@@ -153,7 +153,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.quaternary:
           return AppTheme.of(context).fg.blue1;
         case _ButtonType.dangerous:
-          return Colors.white;
+          return newTheme.fg.white1;
         case _ButtonType.dangerous2:
           return newTheme.function.red1;
       }
@@ -192,7 +192,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         case _ButtonType.dangerous:
           return AppTheme.of(context).function.red1;
         case _ButtonType.dangerous2:
-          return newTheme.fg.white1;
+          return newTheme.bg.bg3;
       }
     }
 
