@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
-import 'package:lib_theme/app_colors.dart';
 
 import 'fb_buttons_mixins.dart';
 
@@ -14,7 +14,7 @@ enum FbButtonState {
 }
 
 enum _FbTextButtonType {
-  priamary,
+  primary,
   dangerous,
 }
 
@@ -35,7 +35,7 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
     Key? key,
     this.size = FbButtonSize.small,
     this.state = FbButtonState.normal,
-  })  : type = _FbTextButtonType.priamary,
+  })  : type = _FbTextButtonType.primary,
         assert(state != FbButtonState.completed, "文字按钮没有完成态"),
         assert(state != FbButtonState.loading, "文字按钮没有加载态"),
         super(key: key);
@@ -83,8 +83,8 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
 
     Color colorDistinguishedByButtonType() {
       switch (type) {
-        case _FbTextButtonType.priamary:
-          return theme.primaryColor;
+        case _FbTextButtonType.primary:
+          return FbButtonTheme.of(context)?.primaryColor ?? theme.primaryColor;
         case _FbTextButtonType.dangerous:
           return destructiveRed;
       }
