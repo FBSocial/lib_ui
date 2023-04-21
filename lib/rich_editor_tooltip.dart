@@ -224,24 +224,27 @@ class RichEditorSuperTooltip {
     // }
 
     _ballonOverlay = OverlayEntry(
-        builder: (context) => _AnimationWrapper(
-              builder: (context, opacity) => AnimatedOpacity(
-                duration: const Duration(
-                  milliseconds: 300,
+      builder: (context) => LayoutBuilder(
+        builder: (context, constraints) => _AnimationWrapper(
+          builder: (context, opacity) => AnimatedOpacity(
+            duration: const Duration(
+              milliseconds: 300,
+            ),
+            opacity: opacity,
+            child: CustomSingleChildLayout(
+                delegate: _PopupBallonLayoutDelegate(
+                  maxWidth: renderBox.constraints.maxWidth,
+                  maxHeight: Get.size.height,
+                  offset: Offset(x1, 0),
                 ),
-                opacity: opacity,
-                child: CustomSingleChildLayout(
-                    delegate: _PopupBallonLayoutDelegate(
-                      maxWidth: renderBox.constraints.maxWidth,
-                      maxHeight: Get.size.height,
-                      offset: Offset(x1, 0),
-                    ),
-                    child: Stack(
-                      fit: StackFit.passthrough,
-                      children: [_buildBackground(), _buildPopUp()],
-                    )),
-              ),
-            ));
+                child: Stack(
+                  fit: StackFit.passthrough,
+                  children: [_buildBackground(), _buildPopUp()],
+                )),
+          ),
+        ),
+      ),
+    );
 
     final overlays = <OverlayEntry?>[];
 
