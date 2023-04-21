@@ -13,7 +13,7 @@ enum FbButtonSize {
 
 extension FbButtonSizeX on FbButtonSize {
   bool canLoading() {
-    return this != FbButtonSize.mini && this != FbButtonSize.small;
+    return this != FbButtonSize.mini;
   }
 
   double get gapOfIconAndText {

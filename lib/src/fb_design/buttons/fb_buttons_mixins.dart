@@ -28,25 +28,26 @@ mixin FbButtonMixin {
 
   Widget buildLabelWidget(
       FbButtonState state, FbButtonSize size, String label) {
+    final showLoading = state == FbButtonState.loading && size.canLoading();
+    final showText = !(size == FbButtonSize.small && showLoading);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (state == FbButtonState.loading && size.canLoading())
-          Padding(
-            padding: EdgeInsets.only(right: size.gapOfIconAndText),
-            child: Builder(builder: (context) {
-              final color = DefaultTextStyle.of(context).style.color!;
-              return FbLoadingIndicator(
-                size: getLoadingIconSize(size),
-                strokeWidth: size.loadingIconThickness,
-                color: color,
-              );
-            }),
-          ),
-        Text(label,
-            style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontFamilyFallback: defaultFontFamilyFallback)),
+        if (showLoading)
+          Builder(builder: (context) {
+            final color = DefaultTextStyle.of(context).style.color!;
+            return FbLoadingIndicator(
+              size: getLoadingIconSize(size),
+              strokeWidth: size.loadingIconThickness,
+              color: color,
+            );
+          }),
+        if (showLoading && showText) SizedBox(width: size.gapOfIconAndText),
+        if (showText)
+          Text(label,
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontFamilyFallback: defaultFontFamilyFallback)),
       ],
     );
   }
