@@ -14,7 +14,7 @@ enum FbButtonState {
 }
 
 enum _FbTextButtonType {
-  priamary,
+  primary,
   dangerous,
 }
 
@@ -35,7 +35,7 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
     Key? key,
     this.size = FbButtonSize.small,
     this.state = FbButtonState.normal,
-  })  : type = _FbTextButtonType.priamary,
+  })  : type = _FbTextButtonType.primary,
         assert(state != FbButtonState.completed, "文字按钮没有完成态"),
         assert(state != FbButtonState.loading, "文字按钮没有加载态"),
         super(key: key);
@@ -81,8 +81,8 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
     Color colorDistinguishedByButtonType() {
       switch (type) {
-        case _FbTextButtonType.priamary:
-          return AppTheme.of(context).fg.blue1;
+        case _FbTextButtonType.primary:
+          return FbButtonTheme.of(context)?.primaryColor ??  AppTheme.of(context).fg.blue1;
         case _FbTextButtonType.dangerous:
           return AppTheme.of(context).function.red1;
       }

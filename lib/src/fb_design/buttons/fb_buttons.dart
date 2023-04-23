@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 export 'fb_filled_button.dart';
 export 'fb_outlined_button.dart';
 export 'fb_text_button.dart';
@@ -11,7 +13,7 @@ enum FbButtonSize {
 
 extension FbButtonSizeX on FbButtonSize {
   bool canLoading() {
-    return this != FbButtonSize.mini && this != FbButtonSize.small;
+    return this != FbButtonSize.mini;
   }
 
   double get gapOfIconAndText {
@@ -38,5 +40,31 @@ extension FbButtonSizeX on FbButtonSize {
       case FbButtonSize.large:
         return 1.5;
     }
+  }
+}
+
+class FbButtonThemeData {
+  final Color? primaryColor;
+
+  FbButtonThemeData({this.primaryColor});
+}
+
+class FbButtonTheme extends InheritedWidget {
+  final FbButtonThemeData data;
+
+  const FbButtonTheme({
+    Key? key,
+    required Widget child,
+    required this.data,
+  }) : super(key: key, child: child);
+
+  static FbButtonThemeData? of(BuildContext context) {
+    final theme = context.dependOnInheritedWidgetOfExactType<FbButtonTheme>();
+    return theme?.data;
+  }
+
+  @override
+  bool updateShouldNotify(FbButtonTheme oldWidget) {
+    return data != oldWidget.data;
   }
 }
