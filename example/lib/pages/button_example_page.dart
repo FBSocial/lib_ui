@@ -39,13 +39,14 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppTheme.of(context).bg.bg2,
         body: ListView(
-      children: [
-        _buildTextButtons(context),
-        _buildOutlinedButtons(),
-        _buildFillButtons(),
-      ],
-    ));
+          children: [
+            _buildTextButtons(context),
+            _buildOutlinedButtons(),
+            _buildFillButtons(),
+          ],
+        ));
   }
 
   Widget _buildTextButtons(BuildContext context) {
@@ -595,7 +596,10 @@ class _ButtonExamplePageState extends State<ButtonExamplePage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(title),
+              child: Text(
+                title,
+                style: TextStyle(color: AppTheme.of(context).fg.b100),
+              ),
             ),
             const Divider(),
             SingleChildScrollView(

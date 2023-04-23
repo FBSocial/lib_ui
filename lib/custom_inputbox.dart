@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
-import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/text_field/native_input.dart';
 import 'package:lib_utils/config/config.dart';
 import 'package:lib_utils/orientation_util.dart';
@@ -124,7 +124,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                 icon: Icon(
                   IconFont.close,
                   size: OrientationUtil.portrait ? 16 : 18,
-                  color: const Color(0x7F8F959E),
+                  color: AppTheme.of(context).fg.b40,
                 ),
                 onPressed: () {
                   widget.controller.clear();
@@ -166,19 +166,24 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                   child: RichText(
                     text: TextSpan(
                         text: '${widget.controller.text.characters.length}',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            height: 1.35,
+                            fontFamilyFallback: defaultFontFamilyFallback,
                             fontSize: 12,
                             color: widget.controller.text.characters.length >
                                     widget.maxLength!
-                                ? DefaultTheme.dangerColor
-                                : Theme.of(context).textTheme.bodyLarge!.color),
+                                ? AppTheme.of(context).function.red1
+                                : AppTheme.of(context).fg.b60),
                         children: [
                           TextSpan(
                             text: '/${widget.maxLength}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(fontSize: 12),
+                            style: TextStyle(
+                                color: AppTheme.of(context).fg.b60,
+                                fontWeight: FontWeight.normal,
+                                height: 1.35,
+                                fontFamilyFallback: defaultFontFamilyFallback,
+                                fontSize: 12),
                           )
                         ]),
                   )),
@@ -212,18 +217,23 @@ class _CustomInputBoxState extends State<CustomInputBox> {
             child: RichText(
               text: TextSpan(
                   text: '$currentLength',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      height: 1.35,
+                      fontFamilyFallback: defaultFontFamilyFallback,
                       fontSize: 12,
                       color: currentLength > maxLength
-                          ? DefaultTheme.dangerColor
-                          : Theme.of(context).textTheme.bodyLarge!.color),
+                          ? AppTheme.of(context).function.red1
+                          : AppTheme.of(context).fg.b60),
                   children: [
                     TextSpan(
                       text: '/$maxLength',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .copyWith(fontSize: 12),
+                      style: TextStyle(
+                          color: AppTheme.of(context).fg.b60,
+                          fontWeight: FontWeight.normal,
+                          height: 1.35,
+                          fontFamilyFallback: defaultFontFamilyFallback,
+                          fontSize: 12),
                     )
                   ]),
             ));

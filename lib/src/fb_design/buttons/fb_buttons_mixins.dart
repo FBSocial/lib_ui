@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lib_theme/const.dart';
+import 'package:lib_theme/get_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
+import 'package:get/get.dart';
 
 mixin FbButtonMixin {
   double getFontSize(FbButtonSize size) {
@@ -92,35 +94,21 @@ mixin FbButtonMixin {
     return callback;
   }
 
-  Color? getOverlayForegroundColor(
-    Color color,
+  Color getOverlayColor(
     FbButtonState state,
     Set<MaterialState> states,
   ) {
-    // 完成态不需要任何交互态
-    if (state == FbButtonState.completed) return color;
-
+    if (state != FbButtonState.normal) {
+      return Colors.transparent;
+    }
     if (states.contains(MaterialState.pressed)) {
-      return Color.alphaBlend(Colors.black.withOpacity(0.15), color);
+      return Get.themeToken.fg.b5;
     }
     if (states.contains(MaterialState.hovered)) {
-      return Color.alphaBlend(Colors.white.withOpacity(0.15), color);
+      return Get.themeToken.fg.white1.withOpacity(0.15);
     }
-    return color;
-  }
 
-  Color? getOverlayBackgroundColor(
-      Color color, FbButtonState state, Set<MaterialState> states) {
-    // 完成态不需要任何交互态
-    if (state == FbButtonState.completed) return color;
-
-    if (states.contains(MaterialState.pressed)) {
-      return Color.alphaBlend(Colors.black.withOpacity(0.15), color);
-    }
-    if (states.contains(MaterialState.hovered)) {
-      return Color.alphaBlend(Colors.white.withOpacity(0.15), color);
-    }
-    return color;
+    return Colors.transparent;
   }
 
   Widget addIcon(

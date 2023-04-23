@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/gesture/fb_ignore_pointer.dart';
 
 import 'animation_fade_wrap.dart';
@@ -308,18 +309,18 @@ class MessageTooltip {
             ? EdgeInsets.zero
             : const EdgeInsets.only(left: 300),
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: AppTheme.of(context).bg.bg3,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
-          border: Border.all(color: const Color(0xffE0E2E6), width: 0.5),
+          border: Border.all(color: AppTheme.of(context).fg.b10, width: 0.5),
           boxShadow: hasShadow
               ? [
                   BoxShadow(
-                      color: const Color(0xff717D8D).withOpacity(0.05),
+                      color: AppTheme.of(context).fg.widget.withOpacity(0.1),
                       offset: const Offset(0, 1),
                       blurRadius: 8,
                       spreadRadius: 2),
                   BoxShadow(
-                      color: const Color(0xff717D8D).withOpacity(0.1),
+                      color: AppTheme.of(context).fg.widget.withOpacity(0.2),
                       offset: const Offset(0, 2),
                       blurRadius: 16)
                 ]

@@ -15,6 +15,7 @@ class LinkTile extends StatelessWidget {
   final double borderRadius;
   final Widget? trailingWidget;
   final bool titleExpanded;
+  final Color? backgroundColor;
 
   const LinkTile(
     this.context,
@@ -27,17 +28,17 @@ class LinkTile extends StatelessWidget {
     this.borderRadius = 0,
     this.trailingWidget,
     this.titleExpanded = true,
+    this.backgroundColor,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return FadeBackgroundButton(
       onTap: onTap,
       height: height,
-      backgroundColor: theme.colorScheme.background,
-      tapDownBackgroundColor: theme.colorScheme.background.withOpacity(0.5),
+      backgroundColor: backgroundColor ?? AppTheme.of(context).bg.bg3,
+      tapDownBackgroundColor: AppTheme.of(context).bg.bg2,
       borderRadius: borderRadius,
       child: Padding(
         padding: padding ??
@@ -54,14 +55,23 @@ class LinkTile extends StatelessWidget {
     return [
       Expanded(
         child: DefaultTextStyle(
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 17),
+          style: TextStyle(
+            color: AppTheme.of(context).fg.b100,
+            height: 1.35,
+            fontSize: 17,
+          ),
           child: title,
         ),
       ),
       sizeWidth8,
       if (trailing != null)
         DefaultTextStyle(
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 15),
+          style: TextStyle(
+              color: AppTheme.of(context).fg.b60,
+              fontWeight: FontWeight.normal,
+              height: 1.35,
+              fontFamilyFallback: defaultFontFamilyFallback,
+              fontSize: 15),
           child: trailing!,
         ),
       if (showTrailingIcon!) ...[

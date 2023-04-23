@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:get/get.dart';
+import 'package:lib_theme/get_theme.dart';
 import 'package:oktoast/oktoast.dart';
 
 import 'icon_font.dart';
@@ -24,11 +25,11 @@ class Toast {
     Color? iconColor;
     switch (icon) {
       case ToastIcon.success:
-        iconColor = successColor;
+        iconColor = Get.themeToken.fg.white1;
         iconData = IconFont.chenggong;
         break;
       case ToastIcon.fail:
-        iconColor = successColor;
+        iconColor = Get.themeToken.fg.white1;
         iconData = IconFont.chatCloseDelete;
         break;
     }
@@ -61,7 +62,7 @@ class _IconToast extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: appThemeData.textTheme.bodyMedium!.color!.withOpacity(0.95),
+        color: AppTheme.of(context).fg.widget,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -71,7 +72,9 @@ class _IconToast extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             label!,
-            style: const TextStyle(fontWeight: FontWeight.w500),
+            style:  TextStyle(
+              color: Get.themeToken.fg.white1,
+                fontWeight: FontWeight.w500),
           ),
         ],
       ),

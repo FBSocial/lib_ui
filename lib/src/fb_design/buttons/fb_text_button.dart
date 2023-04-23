@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
 import 'fb_buttons_mixins.dart';
@@ -64,8 +64,8 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
         backgroundColor: MaterialStateProperty.all(Colors.transparent),
         overlayColor: MaterialStateProperty.all(Colors.transparent),
         foregroundColor: MaterialStateProperty.resolveWith((states) =>
-            getOverlayBackgroundColor(
-                getForegroundColor(context, states), state, states)),
+            Color.alphaBlend(getOverlayColor(state, states),
+                getForegroundColor(context, states))),
         splashFactory: NoSplash.splashFactory,
         padding: MaterialStateProperty.all(EdgeInsets.zero),
         textStyle: MaterialStateProperty.all(TextStyle(
@@ -79,14 +79,13 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = appThemeData;
-
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _FbTextButtonType.primary:
-          return FbButtonTheme.of(context)?.primaryColor ?? theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _FbTextButtonType.dangerous:
-          return destructiveRed;
+          return AppTheme.of(context).function.red1;
       }
     }
 
@@ -97,7 +96,7 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
       case FbButtonState.loading:
         throw Exception("never be here");
       case FbButtonState.disabled:
-        return theme.iconTheme.color!.withOpacity(0.4);
+        return AppTheme.of(context).fg.b60;
       case FbButtonState.deactivated:
         return colorDistinguishedByButtonType().withOpacity(0.4);
     }

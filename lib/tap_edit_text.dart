@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class TabEditText extends StatefulWidget {
   final String? initialText;
@@ -35,7 +36,6 @@ class _TabEditTextState extends State<TabEditText> {
     return buildEditText();
   }
 
-
   @override
   void didUpdateWidget(TabEditText oldWidget) {
     controller!.text = widget.initialText!;
@@ -46,7 +46,8 @@ class _TabEditTextState extends State<TabEditText> {
     return TextField(
       controller: controller,
       style: widget.style ??
-          const TextStyle(fontSize: 17, color: Color(0xff1F2125), height: 1),
+          TextStyle(
+              fontSize: 17, color: AppTheme.of(context).fg.b100, height: 1),
       onChanged: widget.onChanged,
       maxLength: 5,
       decoration: widget.decoration ??

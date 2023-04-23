@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 
 import 'icon_font.dart';
 
@@ -30,7 +31,6 @@ class _FBCheckBoxState extends State<FBCheckBox> {
 
   @override
   Widget build(BuildContext context) {
-    const normalColor = Color(0x595C6273);
     final selectedColor = Theme.of(context).primaryColor;
     return GestureDetector(
       onTap: () {
@@ -43,10 +43,10 @@ class _FBCheckBoxState extends State<FBCheckBox> {
               size: 20,
               color: selectedColor,
             )
-          : const Icon(
+          : Icon(
               IconFont.unselectGroup,
               size: 20,
-              color: normalColor,
+              color: AppTheme.of(context).fg.b40,
             ),
     );
   }

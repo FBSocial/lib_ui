@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_ui/custom_inputbox_close.dart';
 
 typedef TextFieldListener = void Function(String text);
@@ -34,9 +35,9 @@ class _BlackListTextFieldState extends State<BlackListTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: Color(0xFFF5F6FA),
-        borderRadius: BorderRadius.all(Radius.circular(6)),
+      decoration: BoxDecoration(
+        color: AppTheme.textFieldBg,
+        borderRadius: const BorderRadius.all(Radius.circular(6)),
       ),
       child: Row(
         children: [
@@ -46,11 +47,17 @@ class _BlackListTextFieldState extends State<BlackListTextField> {
               focusNode: focusNode,
               //autofocus: true,
               borderRadius: 6,
-              fillColor: const Color(0xFFF5F5F8),
+              fillColor: Colors.transparent,
               controller: controller,
               hintText: hintText ?? '请输入原因(选填)'.tr,
-              hintStyle:
-              const TextStyle(color: Color(0x968F959E), fontSize: 16),
+              hintStyle: TextStyle(
+                color: AppTheme.of(context).fg.b40,
+                fontSize: 16,
+              ),
+              style: TextStyle(
+                color: AppTheme.of(context).fg.b100,
+                fontSize: 16,
+              ),
               maxLength: BlackListTextField.inputLength,
               onChange: (text) {
                 textFieldListener.call(text);
