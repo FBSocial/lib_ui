@@ -151,7 +151,8 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
           return AppTheme.of(context).fg.b100;
         case _ButtonType.secondary:
         case _ButtonType.quaternary:
-          return FbButtonTheme.of(context)?.primaryColor ?? theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _ButtonType.dangerous:
           return newTheme.fg.white1;
         case _ButtonType.dangerous2:
@@ -183,12 +184,14 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return FbButtonTheme.of(context)?.primaryColor ?? theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
         case _ButtonType.tertiary:
           return AppTheme.of(context).fg.b5;
         case _ButtonType.quaternary:
-          return (FbButtonTheme.of(context)?.primaryColor ?? theme.primaryColor)
+          return (FbButtonTheme.of(context)?.primaryColor ??
+                  AppTheme.of(context).fg.blue1)
               .withOpacity(0.1);
         case _ButtonType.dangerous:
           return AppTheme.of(context).function.red1;

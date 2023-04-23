@@ -82,7 +82,8 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _FbTextButtonType.primary:
-          return FbButtonTheme.of(context)?.primaryColor ??  AppTheme.of(context).fg.blue1;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _FbTextButtonType.dangerous:
           return AppTheme.of(context).function.red1;
       }

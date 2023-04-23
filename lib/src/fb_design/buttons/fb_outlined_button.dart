@@ -65,7 +65,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return FbButtonTheme.of(context)?.primaryColor ?? theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
           return AppTheme.of(context).fg.b40;
 
@@ -98,7 +99,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return FbButtonTheme.of(context)?.primaryColor ?? theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
           return AppTheme.of(context).fg.b100;
         case _ButtonType.dangerous:
@@ -159,7 +161,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return FbButtonTheme.of(context)?.primaryColor ?? theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
           return AppTheme.of(context).fg.b40;
         case _ButtonType.dangerous:
