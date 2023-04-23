@@ -70,7 +70,6 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final borderColor = widget.borderColor ?? AppTheme.of(context).fg.b10;
     return ClipRect(
         child: Stack(
