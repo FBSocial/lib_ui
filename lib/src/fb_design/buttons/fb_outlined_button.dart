@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
@@ -149,6 +150,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         textStyle: MaterialStateProperty.all(TextStyle(
             fontSize: getFontSize(size),
             fontWeight: FontWeight.w500,
+            fontFamilyFallback: defaultFontFamilyFallback,
             color: AppTheme.of(context).fg.b100)),
       ),
       child: child,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:websafe_svg/websafe_svg.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 class RoundCheckBox extends StatefulWidget {
   final bool? defaultValue;
   final double size;
@@ -50,7 +49,7 @@ class _RoundCheckBoxState extends State<RoundCheckBox> {
         child: Padding(
           padding: EdgeInsets.fromLTRB(
               widget.left, widget.top, widget.right, widget.bottom),
-          child: WebsafeSvg.asset(
+          child: SvgPicture.asset(
             'assets/svg/${_selected! ? "" : "un"}check_image.svg',
             fit: BoxFit.fill,
             width: widget.size,

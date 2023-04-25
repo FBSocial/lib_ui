@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
@@ -71,6 +72,7 @@ class FbTextButton extends StatelessWidget with FbButtonMixin {
         textStyle: MaterialStateProperty.all(TextStyle(
           fontSize: size == FbButtonSize.small ? 14 : 16,
           fontWeight: FontWeight.w500,
+          fontFamilyFallback: defaultFontFamilyFallback,
         )),
       ),
       child: Text(label),
