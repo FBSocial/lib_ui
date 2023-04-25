@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lib_theme/default_theme.dart';
-
-import 'icon_font.dart';
+import 'package:lib_ui/radio_button.dart';
 
 class CheckSquareBox extends StatefulWidget {
   final bool value;
@@ -38,17 +36,7 @@ class _CheckSquareBoxState extends State<CheckSquareBox> {
           widget.onChanged?.call(_isCheck);
           setState(() {});
         },
-        child: _isCheck
-            ? Icon(
-                IconFont.selectCheck,
-                size: 22,
-                color: primaryColor,
-              )
-            : Icon(
-                IconFont.selectUncheck,
-                size: 22,
-                color: Theme.of(context).iconTheme.color!.withOpacity(.5),
-              ),
+        child: checkBoxButton(20, _isCheck, context),
       ),
     );
   }
