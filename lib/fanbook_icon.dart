@@ -16,7 +16,7 @@ class FanbookIcon extends StatelessWidget {
         foregroundDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-            color: AppTheme.of(context).fg.b10.withOpacity(0.4),
+            color: AppTheme.of(context).fg.b10,
             width: 0.5,
           ),
         ),
