@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lib_extension/string_extension.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
-import 'package:websafe_svg/websafe_svg.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 class SvgTipWidget extends StatelessWidget {
   final String svgName;
   final double size;
@@ -34,7 +33,7 @@ class SvgTipWidget extends StatelessWidget {
         SizedBox(
           width: size,
           height: size,
-          child: WebsafeSvg.asset(svgName),
+          child: SvgPicture.asset(svgName),
         ),
         const SizedBox(
           height: 18,
