@@ -17,7 +17,7 @@ class FbTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return OKToast(
         radius: 8,
-        backgroundColor: AppTheme.of(context).fg.widget,
+        backgroundColor: AppTheme.of(context).fg.toast,
         textStyle: TextStyle(
             color: AppTheme.of(context).fg.white1,
             fontSize: 14,
