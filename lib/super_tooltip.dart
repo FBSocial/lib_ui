@@ -214,7 +214,7 @@ class SuperTooltip {
       onClose!();
     }
 
-    _ballonOverlay!.remove();
+    _ballonOverlay?.remove();
     _backGroundOverlay?.remove();
     isOpen = false;
   }
@@ -309,15 +309,18 @@ class SuperTooltip {
               ),
             ));
 
-    final overlays = <OverlayEntry?>[];
+    final overlays = <OverlayEntry>[];
 
-    if (containsBackgroundOverlay) {
-      overlays.add(_backGroundOverlay);
+    if (containsBackgroundOverlay && _backGroundOverlay != null) {
+      overlays.add(_backGroundOverlay!);
     }
-    overlays.add(_ballonOverlay);
-
-    Overlay.of(targetContext).insertAll(overlays as Iterable<OverlayEntry>);
-    isOpen = true;
+    if (_ballonOverlay != null) {
+      overlays.add(_ballonOverlay!);
+    }
+    if (overlays.isNotEmpty) {
+      Overlay.of(targetContext).insertAll(overlays);
+      isOpen = true;
+    }
   }
 
   Widget _buildPopUp() {
