@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lib_theme/app_theme.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/get_theme.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -62,7 +62,7 @@ class _IconToast extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: AppTheme.of(context).fg.widget,
+        color: AppTheme.of(context).fg.toast,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -72,9 +72,8 @@ class _IconToast extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             label!,
-            style:  TextStyle(
-              color: Get.themeToken.fg.white1,
-                fontWeight: FontWeight.w500),
+            style: TextStyle(
+                color: Get.themeToken.fg.white1, fontWeight: FontWeight.w500),
           ),
         ],
       ),
