@@ -23,7 +23,7 @@ class ActionCompleteDialog extends StatelessWidget {
       elevation: 0,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8))),
-      backgroundColor: Colors.white,
+      backgroundColor: AppTheme.of(context).bg.bg3,
       // child: Container(color: Colors.yellow,width: 400,height: 6000,)
       child: SizedBox(
         // decoration: const BoxDecoration(
