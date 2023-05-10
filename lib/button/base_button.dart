@@ -41,7 +41,6 @@ class BaseButtonState<T extends BaseButton> extends State<T> {
       behavior: HitTestBehavior.translucent,
       onTap: widget.onTap == null ? null : onTap,
       onLongPress: widget.onLongPress == null ? null : onLongPress,
-
       child: widget.child,
     );
   }

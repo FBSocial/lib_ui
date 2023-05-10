@@ -12,6 +12,7 @@ class FadeBackgroundButton extends BaseButton {
   final Color? tapDownBackgroundColor;
   final Alignment? alignment;
   final HitTestBehavior? behavior;
+  final GestureTapUpCallback? onSecondaryTapUp; //鼠标右击回调
 
   const FadeBackgroundButton({
     Widget? child,
@@ -28,6 +29,7 @@ class FadeBackgroundButton extends BaseButton {
     required this.tapDownBackgroundColor,
     Duration throttleDuration = const Duration(milliseconds: 300),
     Key? key,
+    this.onSecondaryTapUp,
   }) : super(
           child: child,
           onTap: onTap,
@@ -71,7 +73,13 @@ class _FadeBackgroundButtonState extends BaseButtonState<FadeBackgroundButton> {
         behavior: widget.behavior ?? HitTestBehavior.opaque,
         onTap: onTap,
         onLongPress: widget.onLongPress,
-        onSecondaryTapUp: (_) => widget.onLongPress!(),
+        onSecondaryTapUp: (details) {
+          if (widget.onSecondaryTapUp != null) {
+            widget.onSecondaryTapUp?.call(details);
+          } else if (widget.onLongPress != null) {
+            return widget.onLongPress!();
+          }
+        },
         onTapDown: (_) {
           setState(() {
             _color = widget.tapDownBackgroundColor;
