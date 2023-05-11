@@ -1272,8 +1272,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "1.2.0+6"
-      resolved-ref: d9bbe553bbf64d809241bca604d4f923fe67eee5
+      ref: "350fa85be66edde87c955e4fc64063e865dfaf73"
+      resolved-ref: "350fa85be66edde87c955e4fc64063e865dfaf73"
       url: "https://gitee.com/fanbook/fb_media_picker.git"
     source: git
     version: "2.0.0+1"
@@ -2059,10 +2059,10 @@ packages:
     dependency: transitive
     description:
       name: ve_apm
-      sha256: da91c7208479b72d1ea21af39dc3dac205281bde77baa21a646e0b8dd1ebbd1f
+      sha256: "713c3c61be6d26dc668e85bfc177712fe0b98f0cda4833c2b79402a1df2ffd8d"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.6"
+    version: "2.5.4"
   ve_code_gen:
     dependency: transitive
     description:
@@ -2163,8 +2163,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "42695c95ab2acef1d529457d81ad0b5442c42893"
-      resolved-ref: "42695c95ab2acef1d529457d81ad0b5442c42893"
+      ref: "3.3.1"
+      resolved-ref: e91a3bd374915b113ef4a280a3546dbfed22dffb
       url: "https://github.com/FBSocial/volcengine_native.git"
     source: git
     version: "0.0.1"
@@ -2264,13 +2264,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
-  zego_ww:
-    dependency: transitive
-    description:
-      path: "../../../../plugins/zeinn_zego_flutter_plugin"
-      relative: true
-    source: path
-    version: "0.0.1"
 sdks:
   dart: ">=2.19.0 <3.0.0"
   flutter: ">=3.7.0"

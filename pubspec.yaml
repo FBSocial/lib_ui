@@ -64,7 +64,7 @@ dependency_overrides:
   flutter_quill:
     git:
       url: https://github.com/FBSocial/fb_flutter_quill.git
-      ref: e5c7ffb7d68ee5c6fede13e43b541acd4b6528d6
+      ref: 069ca95c2e896ff036dc5cb6c1596044b87f0c86
   device_info_plus: ^4.0.0
   analyzer: ^5.10.0
   flutter_cache_manager: ^3.3.0
