@@ -118,6 +118,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
       suffixIcon: (widget.showSuffixIcon && _isShowClear && !widget.readOnly)
           ? Center(
               child: IconButton(
+                hoverColor: Colors.transparent,
                 padding: OrientationUtil.portrait
                     ? const EdgeInsets.all(8)
                     : const EdgeInsets.all(2),
