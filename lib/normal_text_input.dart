@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_ui/text_field/native_input.dart';
 
@@ -54,14 +55,15 @@ class _NormalTextInputState extends State<NormalTextInput> {
           Expanded(
             child: NativeInput(
               style: TextStyle(
-                  fontSize: widget.fontSize, color: const Color(0xFF1F2125)),
+                  fontSize: widget.fontSize,
+                  color: AppTheme.of(context).fg.b100),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   counterText: "",
                   hintText: widget.placeHolder,
                   hintStyle: TextStyle(
                       fontSize: widget.fontSize,
-                      color: const Color(0xFF8F959E).withOpacity(0.5)),
+                      color: AppTheme.of(context).fg.b40),
                   contentPadding: widget.contentPadding),
               maxLength: _maxCnt,
               maxLengthEnforcement: MaxLengthEnforcement.none,
@@ -81,15 +83,13 @@ class _NormalTextInputState extends State<NormalTextInput> {
                 style: TextStyle(
                     fontSize: 14,
                     color: _currentCount > _maxCnt!
-                        ? Theme.of(context).colorScheme.error.withOpacity(0.5)
-                        : Theme.of(context).disabledColor.withOpacity(0.5)),
+                        ? AppTheme.of(context).function.red1.withOpacity(0.5)
+                        : AppTheme.of(context).fg.b30),
                 children: [
                   TextSpan(
                     text: '/$_maxCnt',
                     style: TextStyle(
-                        fontSize: 14,
-                        color:
-                            Theme.of(context).disabledColor.withOpacity(0.5)),
+                        fontSize: 14, color: AppTheme.of(context).fg.b30),
                   )
                 ]),
           ),

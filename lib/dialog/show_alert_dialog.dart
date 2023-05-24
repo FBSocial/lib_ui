@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class CommonAlertDialog extends StatelessWidget {
   final String? content;
@@ -29,7 +30,7 @@ class CommonAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyMedium!.color;
+    final textColor = AppTheme.of(context).fg.b100;
     final btnTextColor = theme.primaryColor;
 
     final textStyle = TextStyle(
@@ -64,7 +65,7 @@ class CommonAlertDialog extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Divider(thickness: 0.5, color: Color(0x338F959E)),
+                Divider(thickness: 0.5, color: AppTheme.of(context).fg.b10),
                 // ignore: sized_box_for_whitespace
                 Container(
                   height: 55,
@@ -133,7 +134,7 @@ class CommonTitleAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyMedium!.color!;
+    final textColor = AppTheme.of(context).fg.b100;
     final btnTextColor = theme.primaryColor;
 
     final textStyle1 = TextStyle(
@@ -179,7 +180,7 @@ class CommonTitleAlertDialog extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 25),
-                const Divider(thickness: 0.5, color: Color(0x338F959E)),
+                Divider(thickness: 0.5, color: AppTheme.of(context).fg.b10),
                 // ignore: sized_box_for_whitespace
                 Expanded(
                   child: GestureDetector(

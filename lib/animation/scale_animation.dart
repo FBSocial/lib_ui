@@ -34,10 +34,18 @@ class _ScaleAnimationState extends State<ScaleAnimation>
     _controller = AnimationController(duration: widget.duration, vsync: this);
     _curve = CurvedAnimation(
         parent: _controller, curve: widget.curve ?? Curves.ease);
+    _controller.addStatusListener(_aniStatusChanged);
+  }
+
+  void _aniStatusChanged(AnimationStatus status) {
+    if (status == AnimationStatus.completed) {
+      _controller.reverse();
+    }
   }
 
   @override
   void dispose() {
+    _controller.removeStatusListener(_aniStatusChanged);
     _controller.dispose();
     super.dispose();
   }

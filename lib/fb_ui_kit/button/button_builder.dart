@@ -22,8 +22,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/get_theme.dart';
 
 /// 枚举 - 按钮类型
 enum FbButtonType {
@@ -249,15 +249,15 @@ class FbButton extends StatelessWidget {
         width: btnSize.width <= 0 ? null : btnSize.width,
         height: btnSize.height,
         alignment: Alignment.center,
-        child: _assembleChild(btnSize));
+        child: _assembleChild(context, btnSize));
   }
 
   // ====== Method: Private ====== //
 
   /// 组装：按钮视图
-  Widget _assembleChild(Size btnSize) {
+  Widget _assembleChild(BuildContext context, Size btnSize) {
     //  按钮样式
-    final ButtonStyle buttonStyle = _getButtonStyle(btnSize);
+    final ButtonStyle buttonStyle = _getButtonStyle(context, btnSize);
     //  按钮大小
     final double iconSize = size != FbButtonSize.big ? 14.67 : 20;
     //  按钮视图：文字/加载圈
@@ -275,7 +275,7 @@ class FbButton extends StatelessWidget {
               backgroundColor: type == FbButtonType.elevated
                   ? Colors.white
                   : type == FbButtonType.subOutlined
-                      ? appThemeData.textTheme.bodySmall!.color
+                      ? AppTheme.of(context).fg.b60
                       : _primaryColor,
               strokeWidth: 1.5,
             ),
@@ -340,31 +340,31 @@ class FbButton extends StatelessWidget {
   }
 
   /// 获取按钮样式
-  ButtonStyle _getButtonStyle(Size btnSize) => ButtonStyle(
+  ButtonStyle _getButtonStyle(BuildContext context, Size btnSize) =>
+      ButtonStyle(
         //  背景色
         backgroundColor: MaterialStateProperty.resolveWith((states) {
           //  纯文字按钮不需要展示背景变化
           if (type == FbButtonType.text) {
             return Colors.transparent;
           }
-          return _getBackgroundColor();
+          return _getBackgroundColor(context);
         }),
         //  前景色
         foregroundColor: MaterialStateProperty.resolveWith((states) {
-          final Color? fgColor = _getForegroundColor();
+          final Color? fgColor = _getForegroundColor(context);
           //  非normal状态下不变化文字样式
           if (status == FbButtonStatus.normal) {
             //  文字状态变化：
             //  1、按压颜色要变深
             if (states.contains(MaterialState.pressed)) {
               return Color.alphaBlend(
-                  appThemeData.dividerColor.withOpacity(0.1), fgColor!);
+                  AppTheme.of(context).fg.b10.withOpacity(0.1), fgColor!);
             }
             //  2、戍边经过要变浅
             if (states.contains(MaterialState.hovered)) {
               return Color.alphaBlend(
-                  appThemeData.scaffoldBackgroundColor.withOpacity(0.1),
-                  fgColor!);
+                  AppTheme.of(context).bg.bg1.withOpacity(0.1), fgColor!);
             }
           }
           return fgColor;
@@ -377,11 +377,11 @@ class FbButton extends StatelessWidget {
           if (type != FbButtonType.text && status == FbButtonStatus.normal) {
             //  -- 按压状态：
             if (states.contains(MaterialState.pressed)) {
-              return appThemeData.dividerColor.withOpacity(0.1);
+              return AppTheme.of(context).fg.b10.withOpacity(0.1);
             }
             //  -- 鼠标经过状态：
             if (states.contains(MaterialState.hovered)) {
-              return appThemeData.scaffoldBackgroundColor.withOpacity(0.1);
+              return AppTheme.of(context).bg.bg1.withOpacity(0.1);
             }
           }
           //  2、其它情况：透明
@@ -392,7 +392,7 @@ class FbButton extends StatelessWidget {
         padding: MaterialStateProperty.all(
             const EdgeInsets.symmetric(horizontal: 4)),
         //  边框
-        side: MaterialStateProperty.all(_getBorderSide()),
+        side: MaterialStateProperty.all(_getBorderSide(context)),
         //  圆角：按钮高度 / 6 （规范提供公式）
         shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(btnSize.height / 6))),
@@ -400,7 +400,7 @@ class FbButton extends StatelessWidget {
       );
 
   ///  获取按钮颜色
-  Color _getBackgroundColor() {
+  Color _getBackgroundColor(BuildContext context) {
     Color bgColor = Colors.transparent;
     switch (type) {
       case FbButtonType.elevated:
@@ -408,7 +408,7 @@ class FbButton extends StatelessWidget {
         bgColor = _primaryColor;
         break;
       case FbButtonType.subElevated:
-        bgColor = appThemeData.dividerColor;
+        bgColor = AppTheme.of(context).fg.b5;
         break;
       case FbButtonType.lightElevated:
         bgColor = _primaryColor.withOpacity(0.1);
@@ -426,14 +426,14 @@ class FbButton extends StatelessWidget {
         if (type == FbButtonType.text) {
           return bgColor;
         }
-        return appThemeData.dividerColor;
+        return AppTheme.of(context).fg.b10;
       default:
         return bgColor;
     }
   }
 
   ///  获取按钮姿势图样式
-  Color? _getForegroundColor() {
+  Color? _getForegroundColor(BuildContext context) {
     Color? _getFgColor = _primaryColor;
     switch (type) {
       case FbButtonType.elevated:
@@ -441,20 +441,20 @@ class FbButton extends StatelessWidget {
         _getFgColor = Colors.white;
         break;
       case FbButtonType.subOutlined:
-        _getFgColor = appThemeData.textTheme.bodySmall!.color;
+        _getFgColor = AppTheme.of(context).fg.b60;
         break;
       default:
         break;
     }
     switch (status) {
       case FbButtonStatus.unable:
-        _getFgColor = _getFgColor!.withOpacity(0.4);
+        _getFgColor = _getFgColor.withOpacity(0.4);
         break;
       case FbButtonStatus.disable:
-        _getFgColor = appThemeData.textTheme.bodySmall!.color!.withOpacity(0.4);
+        _getFgColor = AppTheme.of(context).fg.b20;
         break;
       case FbButtonStatus.finish:
-        _getFgColor = appThemeData.textTheme.displayMedium!.color;
+        _getFgColor = AppTheme.of(context).fg.b40;
         break;
       default:
         break;
@@ -463,7 +463,7 @@ class FbButton extends StatelessWidget {
   }
 
   /// 获取按钮边框
-  BorderSide _getBorderSide() {
+  BorderSide _getBorderSide(BuildContext context) {
     //  只有outlined和subOutlined才需要边框
     if (type != FbButtonType.outlined && type != FbButtonType.subOutlined) {
       return BorderSide.none;
@@ -471,7 +471,7 @@ class FbButton extends StatelessWidget {
     //  边框颜色
     Color borderColor = type == FbButtonType.outlined
         ? _primaryColor
-        : appThemeData.textTheme.displayMedium!.color!.withOpacity(0.4);
+        : AppTheme.of(context).fg.b20;
     switch (status) {
       case FbButtonStatus.unable:
         if (type == FbButtonType.outlined) {
@@ -673,7 +673,7 @@ class _FbWarningButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
-            primaryColor: redTextColor,
+            primaryColor: Get.themeToken.auxiliary.red,
             onPressed: onPressed,
             onLongPress: onLongPress);
 }

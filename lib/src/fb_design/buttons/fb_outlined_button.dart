@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/const.dart';
+import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
 import 'fb_buttons_mixins.dart';
@@ -7,6 +9,7 @@ import 'fb_buttons_mixins.dart';
 enum _ButtonType {
   primary,
   secondary,
+  dangerous,
 }
 
 class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
@@ -18,6 +21,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   final _ButtonType type;
   final FbButtonState state;
   final bool widthUnlimited;
+  final bool placeIconAfterLabel;
 
   const FbOutlinedButton.primary(
     this.label, {
@@ -27,6 +31,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.widthUnlimited = false,
     this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.primary,
         super(key: key);
@@ -39,19 +44,35 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.widthUnlimited = false,
     this.icon,
+    this.placeIconAfterLabel = false,
     Key? key,
   })  : type = _ButtonType.secondary,
         super(key: key);
 
-  Color? getBackgroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = appThemeData;
+  const FbOutlinedButton.dangerous(
+    this.label, {
+    required this.onTap,
+    this.onLongPress,
+    this.state = FbButtonState.normal,
+    this.size = FbButtonSize.small,
+    this.widthUnlimited = false,
+    this.icon,
+    this.placeIconAfterLabel = false,
+    Key? key,
+  })  : type = _ButtonType.dangerous,
+        super(key: key);
 
+  Color? getBackgroundColor(BuildContext context, Set<MaterialState> states) {
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
-          return theme.colorScheme.onSecondary;
+          return AppTheme.of(context).fg.b40;
+
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red3;
       }
     }
 
@@ -62,28 +83,29 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         break;
       case FbButtonState.disabled:
       case FbButtonState.completed:
-        return theme.colorScheme.onSecondary.withOpacity(0.1);
+        return AppTheme.of(context).fg.b20;
     }
 
     if (states.contains(MaterialState.hovered)) {
       return colorDistinguishedByButtonType().withOpacity(0.1);
     }
     if (states.contains(MaterialState.pressed)) {
-      return theme.colorScheme.background.withOpacity(0.8);
+      return AppTheme.of(context).fg.b20.withOpacity(0.8);
     }
 
     return null;
   }
 
   Color getForegroundColor(BuildContext context, Set<MaterialState> states) {
-    final theme = appThemeData;
-
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
-          return theme.textTheme.bodyMedium!.color!;
+          return AppTheme.of(context).fg.b100;
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red1;
       }
     }
 
@@ -94,17 +116,17 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
       case FbButtonState.deactivated:
         return colorDistinguishedByButtonType().withOpacity(0.4);
       case FbButtonState.disabled:
-        return appThemeData.iconTheme.color!.withOpacity(0.4);
+        return AppTheme.of(context).fg.b60.withOpacity(0.4);
       case FbButtonState.completed:
-        return appThemeData.iconTheme.color!.withOpacity(0.8);
+        return AppTheme.of(context).fg.b60.withOpacity(0.8);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    Widget child = buildLabelWidget(state, label);
+    Widget child = buildLabelWidget(state, size, label);
     if (icon != null && state != FbButtonState.loading) {
-      child = addLeadingIcon(child, icon!, size);
+      child = addIcon(child, icon!, placeIconAfterLabel, size);
     }
     final buttonSize = getButtonSize(size);
     child = OutlinedButton(
@@ -119,19 +141,17 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
             RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                     Radius.circular((buttonSize.height) / 6)))),
-        foregroundColor: MaterialStateProperty.resolveWith((states) =>
-            getOverlayForegroundColor(
-                getForegroundColor(context, states), state, states)),
-        backgroundColor: MaterialStateProperty.resolveWith((states) {
-          final color = getBackgroundColor(context, states);
-          if (color == null) return null;
-          return getOverlayBackgroundColor(color, state, states);
-        }),
-        textStyle: MaterialStateProperty.all(
-            Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontSize: getFontSize(size),
-                  fontWeight: FontWeight.w500,
-                )),
+        foregroundColor: MaterialStateProperty.resolveWith(
+            (states) => getForegroundColor(context, states)),
+        overlayColor: MaterialStateProperty.resolveWith(
+            (states) => getOverlayColor(state, states)),
+        backgroundColor: MaterialStateProperty.resolveWith(
+            (states) => getBackgroundColor(context, states)),
+        textStyle: MaterialStateProperty.all(TextStyle(
+            fontSize: getFontSize(size),
+            fontWeight: FontWeight.w500,
+            fontFamilyFallback: defaultFontFamilyFallback,
+            color: AppTheme.of(context).fg.b100)),
       ),
       child: child,
     );
@@ -140,13 +160,15 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   }
 
   BorderSide? getBorderSide(BuildContext context, Set<MaterialState> states) {
-    final theme = appThemeData;
     Color colorDistinguishedByButtonType() {
       switch (type) {
         case _ButtonType.primary:
-          return theme.primaryColor;
+          return FbButtonTheme.of(context)?.primaryColor ??
+              AppTheme.of(context).fg.blue1;
         case _ButtonType.secondary:
-          return theme.colorScheme.onSecondary;
+          return AppTheme.of(context).fg.b40;
+        case _ButtonType.dangerous:
+          return AppTheme.of(context).function.red1;
       }
     }
 

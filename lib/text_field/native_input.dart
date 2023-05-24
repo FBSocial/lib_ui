@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/custom_text_selection.dart';
 import 'package:lib_utils/config/config.dart';
@@ -138,8 +140,14 @@ class _NativeInputState extends State<NativeInput> {
               textStyle:
                   widget.style ?? Theme.of(context).textTheme.titleMedium,
               placeHolder: _hintText,
-              placeHolderStyle:
-                  _hintStyle ?? Theme.of(context).textTheme.bodyLarge,
+              placeHolderStyle: _hintStyle ??
+                  TextStyle(
+                    color: AppTheme.of(context).fg.b60,
+                    fontWeight: FontWeight.normal,
+                    height: 1.35,
+                    fontFamilyFallback: defaultFontFamilyFallback,
+                    fontSize: 16,
+                  ),
               textAlign: widget.textAlign,
               onEditingComplete: widget.onEditingComplete,
               onSubmitted: widget.onSubmitted,
@@ -180,21 +188,22 @@ class _NativeInputState extends State<NativeInput> {
                         text: TextSpan(
                             text:
                                 '${widget.controller!.text.characters.length}',
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      fontSize: 12,
-                                      color: widget.controller!.text.characters
-                                                  .length >
-                                              maxLength!
-                                          ? DefaultTheme.dangerColor
-                                          : const Color(0xFF8F959E),
-                                    ),
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              height: 1.35,
+                              fontFamilyFallback: defaultFontFamilyFallback,
+                              fontSize: 12,
+                              color: widget.controller!.text.characters.length >
+                                      maxLength!
+                                  ? AppTheme.of(context).function.red1
+                                  : AppTheme.of(context).fg.b60,
+                            ),
                             children: [
                               TextSpan(
                                 text: '/$maxLength',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 12,
-                                  color: Color(0xFF8F959E),
+                                  color: AppTheme.of(context).fg.b60,
                                 ),
                               )
                             ]),
@@ -213,28 +222,34 @@ class _NativeInputState extends State<NativeInput> {
       );
     }
     return ClipRect(
-        child: TextField(
-      textAlignVertical: TextAlignVertical.center,
-      controller: widget.controller,
-      focusNode: widget.focusNode,
-      decoration: widget.decoration,
-      keyboardType: widget.keyboardType,
-      style: widget.style,
-      textAlign: widget.textAlign,
-      onEditingComplete: widget.onEditingComplete,
-      onSubmitted: widget.onSubmitted,
-      onChanged: widget.onChanged,
-      autofocus: widget.autofocus,
-      maxLength: widget.maxLength == 0 ? null : widget.maxLength,
-      inputFormatters: widget.inputFormatters,
-      buildCounter: widget.buildCounter,
-      maxLengthEnforcement: widget.maxLengthEnforcement,
-      readOnly: widget.readOnly ?? false,
-      maxLines: widget.maxLines,
-      selectionControls: widget.selectionControls ??
-          (Theme.of(context).platform == TargetPlatform.android
-              ? customMaterialTextSelectionControls
-              : null),
+        child: Padding(
+      padding: const EdgeInsets.only(left: 1),
+      child: TextField(
+        textAlignVertical: TextAlignVertical.center,
+        controller: widget.controller,
+        focusNode: widget.focusNode,
+        decoration: widget.decoration,
+        keyboardType: widget.keyboardType,
+        style: widget.style,
+        textAlign: widget.textAlign,
+        onEditingComplete: widget.onEditingComplete,
+        onSubmitted: widget.onSubmitted,
+        onChanged: widget.onChanged,
+        autofocus: widget.autofocus,
+        maxLength: widget.maxLength == 0 ? null : widget.maxLength,
+        inputFormatters: widget.inputFormatters,
+        buildCounter: widget.buildCounter,
+        maxLengthEnforcement: widget.maxLengthEnforcement,
+        readOnly: widget.readOnly ?? false,
+        maxLines: widget.maxLines,
+        cursorHeight: 22,
+        cursorWidth: 2,
+        cursorRadius: const Radius.circular(1),
+        selectionControls: widget.selectionControls ??
+            (Theme.of(context).platform == TargetPlatform.android
+                ? customMaterialTextSelectionControls
+                : null),
+      ),
     ));
   }
 }

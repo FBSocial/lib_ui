@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class ActionConfirmDialog extends StatelessWidget {
   final String title;
@@ -36,11 +37,11 @@ class ActionConfirmDialog extends StatelessWidget {
                 child: Text(
                   title.tr,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
                       height: 1.35,
-                      color: Colors.black),
+                      color: AppTheme.of(context).fg.b100),
                 ),
               ),
             if (content.isNotEmpty)
@@ -48,11 +49,12 @@ class ActionConfirmDialog extends StatelessWidget {
                 padding: const EdgeInsets.only(
                     left: 36, right: 36, top: 10, bottom: 10),
                 child: Text(content.tr,
-                    style: const TextStyle(fontSize: 16, color: Colors.grey)),
+                    style: TextStyle(
+                        fontSize: 16, color: AppTheme.of(context).fg.b40)),
               ),
             Divider(
               height: 0.5,
-              color: const Color(0xFF8F959E).withOpacity(0.2),
+              color: AppTheme.of(context).fg.b10,
             ),
             SizedBox(
               height: 55,
@@ -64,24 +66,24 @@ class ActionConfirmDialog extends StatelessWidget {
                         onPressed: onCancel,
                         child: Text(
                           cancelText.tr,
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF363940)),
+                              color: AppTheme.of(context).fg.b60),
                         )),
                   if (onCancel != null)
                     VerticalDivider(
                       width: 1,
-                      color: const Color(0xFF8F959E).withOpacity(0.2),
+                      color: AppTheme.of(context).fg.b10,
                     ),
                   TextButton(
                       onPressed: onConfirm,
                       child: Text(
                         confirmText.tr,
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF6179F2)),
+                            color: AppTheme.of(context).auxiliary.violet),
                       )),
                 ],
               ),

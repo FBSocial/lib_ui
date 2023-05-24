@@ -13,8 +13,6 @@ dependencies:
 
   # 限制函数的连续执行，防止按钮重复点击用的 https://github.com/mhrst/just_throttle_it
   just_throttle_it: ^2.1.0
-  # 用于处理IOS、Android、web三个平台的SVG资源 https://github.com/peiffer-innovations/websafe_svg
-  websafe_svg: ^2.1.0
   # 动画 https://github.com/flutter/packages/tree/master/packages/animations
   animations: ^2.0.2
   # 矢量动画库：
@@ -36,16 +34,23 @@ dependencies:
       url: https://github.com/FBSocial/native_text_field.git
       ref: 2.0.3
 
+  lib_base:
+    path: ../lib_base
   lib_theme:
     path: ../lib_theme
   lib_extension:
     path: ../lib_extension
   lib_image:
     path: ../lib_image
+  lib_utils:
+    path: ../lib_utils
   service:
     path: ../../module/module_service
-  flutter_svg: ^1.0.3
-  sliding_sheet: ^0.5.2
+  flutter_svg: ^2.0.5
+  sliding_sheet:
+    git:
+      url: https://github.com/FBSocial/sliding_sheet.git
+      ref: 0.5.2+2
   video_player: ^2.5.1
   simple_shadow: ^0.3.1
   device_info_plus: ^4.0.0
@@ -54,6 +59,16 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.0
 
+dependency_overrides:
+  i18n_extension: ^8.0.0
+  flutter_quill:
+    git:
+      url: https://github.com/FBSocial/fb_flutter_quill.git
+      ref: e5c7ffb7d68ee5c6fede13e43b541acd4b6528d6
+  device_info_plus: ^4.0.0
+  analyzer: ^5.10.0
+  flutter_cache_manager: ^3.3.0
+  sqflite: ^2.2.7
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

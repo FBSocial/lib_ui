@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class RowBottomBorder extends ShapeBorder {
   final double leading;
+  final double tail;
   final double width;
   final Color color;
 
   const RowBottomBorder(
       {this.leading = 40,
       this.width = 0.5,
+      this.tail = 0,
       this.color = const Color(0x268F959E)});
 
   @override
@@ -29,8 +31,8 @@ class RowBottomBorder extends ShapeBorder {
       ..color = color
       ..strokeWidth = width;
     final bottom = rect.bottom - width;
-    canvas.drawLine(
-        Offset(rect.left + leading, bottom), Offset(rect.right, bottom), paint);
+    canvas.drawLine(Offset(rect.left + leading, bottom),
+        Offset(rect.right - tail, bottom), paint);
   }
 
   @override

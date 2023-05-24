@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lib_extension/string_extension.dart';
+import 'package:lib_theme/app_theme.dart';
 
 class BindDialog extends StatelessWidget {
   final String? oldName;
@@ -34,10 +35,9 @@ class BindDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyMedium!.color;
-    final bgColor = theme.scaffoldBackgroundColor;
-    final btnTextColor = theme.primaryColor;
+    final textColor = AppTheme.of(context).fg.b100;
+    final bgColor = AppTheme.of(context).bg.bg2;
+    final btnTextColor = AppTheme.of(context).fg.blue1;
 
     final bool noValue = oldName!.noValue || newName!.noValue;
 
@@ -64,7 +64,7 @@ class BindDialog extends StatelessWidget {
                     child: noValue ? noName(context) : hasName(context),
                   ),
                 ),
-                const Divider(thickness: 0.5, color: Color(0xcccccccc)),
+                Divider(thickness: 0.5, color: AppTheme.of(context).fg.b10),
                 // ignore: sized_box_for_whitespace
                 Row(
                   children: <Widget>[
@@ -85,10 +85,10 @@ class BindDialog extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 50,
                       child: VerticalDivider(
-                          thickness: 0.5, color: Color(0xcccccccc)),
+                          thickness: 0.5, color: AppTheme.of(context).fg.b10),
                     ),
                     Expanded(
                       child: GestureDetector(
@@ -121,8 +121,7 @@ class BindDialog extends StatelessWidget {
   }
 
   Widget hasName(BuildContext context) {
-    final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyMedium!.color;
+    final textColor = AppTheme.of(context).fg.b100;
     final textStyle1 = TextStyle(color: textColor, fontSize: 16);
     final textStyle2 =
         TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w500);
@@ -140,8 +139,7 @@ class BindDialog extends StatelessWidget {
   }
 
   Widget noName(BuildContext context) {
-    final theme = Theme.of(context);
-    final textColor = theme.textTheme.bodyMedium!.color;
+    final textColor = AppTheme.of(context).fg.b100;
     final textStyle1 = TextStyle(color: textColor, fontSize: 16);
     return Text.rich(
       TextSpan(

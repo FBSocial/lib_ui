@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
-import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/text_field/native_input.dart';
 
 import 'icon_font.dart';
@@ -76,7 +76,7 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
         borderRadius: BorderRadius.circular(widget.borderRadius),
         gapPadding: 0,
       ),
-      fillColor: widget.fillColor,
+      fillColor: Colors.transparent,
       filled: true,
       counterText: '',
       hintText: widget.hintText,
@@ -87,10 +87,10 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
       suffixIcon: (_isShowClear && !widget.readOnly)
           ? IconButton(
               padding: EdgeInsets.zero,
-              icon: const Icon(
+              icon: Icon(
                 IconFont.close,
                 size: 20,
-                color: Color(0x7F8F959E),
+                color: AppTheme.of(context).fg.b40,
               ),
               onPressed: () {
                 widget.controller.clear();
@@ -133,19 +133,22 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
             child: RichText(
               text: TextSpan(
                   text: '${widget.controller.text.characters.length}',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        fontSize: 14,
-                        color: widget.controller.text.characters.length >
-                                widget.maxLength!
-                            ? DefaultTheme.dangerColor
-                            : const Color(0xFF8F959E),
-                      ),
+                  style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    height: 1.35,
+                    fontFamilyFallback: defaultFontFamilyFallback,
+                    fontSize: 14,
+                    color: widget.controller.text.characters.length >
+                            widget.maxLength!
+                        ? AppTheme.of(context).auxiliary.red
+                        : AppTheme.of(context).fg.b40,
+                  ),
                   children: [
                     TextSpan(
                       text: '/${widget.maxLength}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
-                        color: Color(0xFF8F959E),
+                        color: AppTheme.of(context).fg.b40,
                       ),
                     )
                   ]),

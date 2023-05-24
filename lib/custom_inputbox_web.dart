@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_ui/icon_font.dart';
 
@@ -13,7 +14,7 @@ class WebCustomInputBox extends StatefulWidget {
   final double fontSize;
   final String? hintText;
   final Color? textColor;
-  final Color placeholderColor;
+  final Color? placeholderColor;
   final Color? fillColor;
   final Color? borderColor;
   final OnChange? onChange;
@@ -35,7 +36,7 @@ class WebCustomInputBox extends StatefulWidget {
     this.hintText,
     this.fontSize = 14,
     this.textColor,
-    this.placeholderColor = const Color(0xff8F959E),
+    this.placeholderColor,
     this.fillColor,
     this.borderColor,
     this.maxLength,
@@ -72,8 +73,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final borderColor = widget.borderColor ?? const Color(0xFFDEE0E3);
+    final borderColor = widget.borderColor ?? AppTheme.of(context).fg.b10;
     final closeButtonShow =
         (widget.closeButtonEnable && _isShowClear && !widget.readOnly);
     final inputPadding = EdgeInsets.only(bottom: _isMultiline ? 15 : 0);
@@ -99,8 +99,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
               controller: widget.controller,
               style: TextStyle(
                 fontSize: widget.fontSize,
-                color: widget.textColor ??
-                    Theme.of(context).textTheme.bodyMedium!.color,
+                color: widget.textColor ?? AppTheme.of(context).fg.b100,
               ),
               keyboardType: TextInputType.multiline,
               buildCounter: (
@@ -125,7 +124,9 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
                 filled: true,
                 hintText: widget.hintText,
                 hintStyle: TextStyle(
-                    fontSize: widget.fontSize, color: widget.placeholderColor),
+                  fontSize: widget.fontSize,
+                  color: widget.placeholderColor ?? AppTheme.of(context).fg.b40,
+                ),
               ),
               onEditingComplete: widget.onEditingComplete,
             ),
@@ -165,17 +166,25 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
                   RichText(
                     text: TextSpan(
                         text: '${Characters(widget.controller.text).length}',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            height: 1.35,
+                            fontFamilyFallback: defaultFontFamilyFallback,
                             fontSize: 12,
                             color: Characters(widget.controller.text).length >
                                     widget.maxLength!
-                                ? theme.colorScheme.error
-                                : theme.disabledColor),
+                                ? AppTheme.of(context).function.red1
+                                : AppTheme.of(context).fg.b60),
                         children: [
                           TextSpan(
                             text: '/${widget.maxLength}',
-                            style: theme.textTheme.bodyLarge!.copyWith(
-                                fontSize: 12, color: theme.disabledColor),
+                            style: TextStyle(
+                              color: AppTheme.of(context).fg.b60,
+                              fontWeight: FontWeight.normal,
+                              height: 1.35,
+                              fontFamilyFallback: defaultFontFamilyFallback,
+                              fontSize: 12,
+                            ),
                           )
                         ]),
                   ),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 
 ///
 /// 页面预加载动画
 ///
 class Preloading extends StatefulWidget {
   /// 条子颜色
-  final Color sliverColor;
+  final Color? sliverColor;
 
-  const Preloading({this.sliverColor = const Color(0xFF737780), Key? key})
-      : super(key: key);
+  const Preloading({this.sliverColor, Key? key}) : super(key: key);
 
   @override
   _PreloadingState createState() => _PreloadingState();
@@ -39,7 +39,7 @@ class _PreloadingState extends State<Preloading> {
       },
       child: Container(
         padding: const EdgeInsets.only(top: 15),
-        color: Theme.of(context).colorScheme.background,
+        color: AppTheme.of(context).bg.bg3,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -91,7 +91,8 @@ class _PreloadingState extends State<Preloading> {
             height: 30,
             margin: const EdgeInsets.only(left: 16, right: 18),
             decoration: BoxDecoration(
-                color: widget.sliverColor, shape: BoxShape.circle),
+                color: widget.sliverColor ?? AppTheme.of(context).fg.b40,
+                shape: BoxShape.circle),
           ),
           Expanded(
             child: Column(
@@ -108,7 +109,7 @@ class _PreloadingState extends State<Preloading> {
       height: 20,
       margin: EdgeInsets.only(right: rightPadding, bottom: 12),
       decoration: BoxDecoration(
-        color: widget.sliverColor,
+        color: widget.sliverColor ?? AppTheme.of(context).fg.b40,
         borderRadius: BorderRadius.circular(10),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 
 class ActionCompleteDialog extends StatelessWidget {
@@ -22,7 +23,7 @@ class ActionCompleteDialog extends StatelessWidget {
       elevation: 0,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8))),
-      backgroundColor: Colors.white,
+      backgroundColor: AppTheme.of(context).bg.bg3,
       // child: Container(color: Colors.yellow,width: 400,height: 6000,)
       child: SizedBox(
         // decoration: const BoxDecoration(
@@ -48,9 +49,9 @@ class ActionCompleteDialog extends StatelessWidget {
             space1,
             _buildIcon()!,
             space2,
-            _buildText(),
+            _buildText(context),
             space3,
-            ..._buildButtons(),
+            ..._buildButtons(context),
           ],
         ),
       ),
@@ -62,33 +63,33 @@ class ActionCompleteDialog extends StatelessWidget {
     return icon;
   }
 
-  Widget _buildText() {
+  Widget _buildText(BuildContext context) {
     if (text!.isEmpty) return const SizedBox();
     return Text(
       text!,
       textAlign: TextAlign.center,
-      style: const TextStyle(
+      style: TextStyle(
           fontSize: 18,
           height: 22.0 / 18.0,
-          color: Color(0xFF363940),
+          color: AppTheme.of(context).fg.b60,
           fontWeight: FontWeight.w600),
     );
   }
 
-  List<Widget> _buildButtons() {
+  List<Widget> _buildButtons(BuildContext context) {
     final List<Widget> items = [];
     if (buttons!.isEmpty) return items;
     for (var element in buttons!) {
-      items.add(_normalDivider());
+      items.add(_normalDivider(context));
       items.add(element);
     }
     return items;
   }
 
-  Widget _normalDivider() {
+  Widget _normalDivider(BuildContext context) {
     return Divider(
       height: 0.5,
-      color: const Color(0xFF8F959E).withOpacity(0.2),
+      color: AppTheme.of(context).fg.b10,
     );
   }
 }
