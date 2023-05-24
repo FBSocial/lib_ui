@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
+import 'package:lib_ui/icon_font.dart';
 
 typedef OnChange = void Function(String);
 
@@ -21,6 +23,8 @@ class WebCustomInputBox extends StatefulWidget {
   final bool readOnly;
   final FocusNode? focusNode;
   final double borderRadius;
+  final bool closeButtonEnable; //是否开启清空按钮
+  final double? closeButtonIconSize; //清空按钮图标大小
 
   // final int maxLines;
   final bool autofocus;
@@ -48,6 +52,8 @@ class WebCustomInputBox extends StatefulWidget {
     this.needCounter = true,
     this.keyboardType = TextInputType.text,
     this.contentPadding,
+    this.closeButtonEnable = false,
+    this.closeButtonIconSize,
     Key? key,
   }) : super(key: key);
 
@@ -71,13 +77,16 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
   @override
   Widget build(BuildContext context) {
     final borderColor = widget.borderColor ?? AppTheme.of(context).fg.b10;
+    final inputPadding = EdgeInsets.only(bottom: _isMultiline ? 15 : 0);
     return ClipRect(
         child: Stack(
       children: [
         Opacity(
           opacity: widget.readOnly ? 0.5 : 1,
           child: Container(
-            padding: EdgeInsets.only(bottom: _isMultiline ? 15 : 0),
+            padding: _closeButtonShow
+                ? inputPadding.copyWith(right: 8)
+                : inputPadding,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(widget.borderRadius),
               border: Border.all(color: borderColor),
@@ -130,30 +139,36 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
               alignment:
                   _isMultiline ? Alignment.bottomRight : Alignment.centerRight,
               padding: const EdgeInsets.all(5),
-              child: RichText(
-                text: TextSpan(
-                    text: '${Characters(widget.controller.text).length}',
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        height: 1.35,
-                        fontFamilyFallback: defaultFontFamilyFallback,
-                        fontSize: 12,
-                        color: Characters(widget.controller.text).length >
-                                widget.maxLength!
-                            ? AppTheme.of(context).function.red1
-                            : AppTheme.of(context).fg.b60),
-                    children: [
-                      TextSpan(
-                        text: '/${widget.maxLength}',
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  if (_closeButtonShow) _getCloseButton,
+                  RichText(
+                    text: TextSpan(
+                        text: '${Characters(widget.controller.text).length}',
                         style: TextStyle(
-                          color: AppTheme.of(context).fg.b60,
-                          fontWeight: FontWeight.normal,
-                          height: 1.35,
-                          fontFamilyFallback: defaultFontFamilyFallback,
-                          fontSize: 12,
-                        ),
-                      )
-                    ]),
+                            fontWeight: FontWeight.normal,
+                            height: 1.35,
+                            fontFamilyFallback: defaultFontFamilyFallback,
+                            fontSize: 12,
+                            color: Characters(widget.controller.text).length >
+                                    widget.maxLength!
+                                ? AppTheme.of(context).function.red1
+                                : AppTheme.of(context).fg.b60),
+                        children: [
+                          TextSpan(
+                            text: '/${widget.maxLength}',
+                            style: TextStyle(
+                              color: AppTheme.of(context).fg.b60,
+                              fontWeight: FontWeight.normal,
+                              height: 1.35,
+                              fontFamilyFallback: defaultFontFamilyFallback,
+                              fontSize: 12,
+                            ),
+                          )
+                        ]),
+                  ),
+                ],
               ),
             ),
           )
@@ -165,4 +180,30 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
     setState(() {});
     if (widget.onChange != null) widget.onChange!(val);
   }
+
+  Widget get _getCloseButton => Container(
+        margin: const EdgeInsets.only(right: 4),
+        width: widget.closeButtonIconSize ?? 20,
+        height: widget.closeButtonIconSize ?? 20,
+        child: IconButton(
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          icon: Icon(
+            IconFont.close,
+            size: widget.closeButtonIconSize ?? 20,
+            color: clearColor,
+          ),
+          onPressed: () {
+            widget.controller.clear();
+            _onTextChange('');
+          },
+        ),
+      );
+
+  bool get _closeButtonShow =>
+      (widget.closeButtonEnable && _isShowClear && !widget.readOnly);
+
+  bool get _isShowClear => widget.controller.text.trim().isNotEmpty;
 }

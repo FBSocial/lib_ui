@@ -185,7 +185,7 @@ class RichEditorSuperTooltip {
       onClose!();
     }
 
-    _ballonOverlay!.remove();
+    _ballonOverlay?.remove();
     // _backGroundOverlay?.remove();
     isOpen = false;
   }
@@ -246,13 +246,15 @@ class RichEditorSuperTooltip {
       ),
     );
 
-    final overlays = <OverlayEntry?>[];
+    final overlays = <OverlayEntry>[];
 
     // if (containsBackgroundOverlay) {
     //   overlays.add(_backGroundOverlay);
     // }
-    overlays.add(_ballonOverlay);
-    Overlay.of(targetContext).insertAll(overlays as Iterable<OverlayEntry>);
+    if (_ballonOverlay != null) {
+      overlays.add(_ballonOverlay!);
+    }
+    Overlay.of(targetContext).insertAll(overlays);
     isOpen = true;
   }
 
