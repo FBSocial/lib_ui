@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_ui/icon_font.dart';
@@ -23,6 +24,7 @@ class WebCustomInputBox extends StatefulWidget {
   final FocusNode? focusNode;
   final double borderRadius;
   final bool closeButtonEnable; //是否开启清空按钮
+  final double? closeButtonIconSize; //清空按钮图标大小
 
   // final int maxLines;
   final bool autofocus;
@@ -51,6 +53,7 @@ class WebCustomInputBox extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.contentPadding,
     this.closeButtonEnable = false,
+    this.closeButtonIconSize,
     Key? key,
   }) : super(key: key);
 
@@ -74,8 +77,6 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
   @override
   Widget build(BuildContext context) {
     final borderColor = widget.borderColor ?? AppTheme.of(context).fg.b10;
-    final closeButtonShow =
-        (widget.closeButtonEnable && _isShowClear && !widget.readOnly);
     final inputPadding = EdgeInsets.only(bottom: _isMultiline ? 15 : 0);
     return ClipRect(
         child: Stack(
@@ -83,7 +84,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
         Opacity(
           opacity: widget.readOnly ? 0.5 : 1,
           child: Container(
-            padding: closeButtonShow
+            padding: _closeButtonShow
                 ? inputPadding.copyWith(right: 8)
                 : inputPadding,
             decoration: BoxDecoration(
@@ -141,28 +142,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  // const Spacer(),
-                  if (closeButtonShow)
-                    SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: IconButton(
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        padding: EdgeInsets.zero,
-                        icon: const Icon(
-                          IconFont.close,
-                          size: 20,
-                          color: Color(0x7F8F959E),
-                        ),
-                        onPressed: () {
-                          widget.controller.clear();
-                          _onTextChange('');
-                        },
-                      ),
-                    ),
-                  sizeWidth4,
+                  if (_closeButtonShow) _getCloseButton,
                   RichText(
                     text: TextSpan(
                         text: '${Characters(widget.controller.text).length}',
@@ -200,6 +180,30 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
     setState(() {});
     if (widget.onChange != null) widget.onChange!(val);
   }
+
+  Widget get _getCloseButton => Container(
+        margin: const EdgeInsets.only(right: 4),
+        width: widget.closeButtonIconSize ?? 20,
+        height: widget.closeButtonIconSize ?? 20,
+        child: IconButton(
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          icon: Icon(
+            IconFont.close,
+            size: widget.closeButtonIconSize ?? 20,
+            color: clearColor,
+          ),
+          onPressed: () {
+            widget.controller.clear();
+            _onTextChange('');
+          },
+        ),
+      );
+
+  bool get _closeButtonShow =>
+      (widget.closeButtonEnable && _isShowClear && !widget.readOnly);
 
   bool get _isShowClear => widget.controller.text.trim().isNotEmpty;
 }
