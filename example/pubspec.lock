@@ -26,14 +26,6 @@ packages:
       url: "https://github.com/FBSocial/android_id.git"
     source: git
     version: "0.0.5"
-  animated_flip_counter:
-    dependency: transitive
-    description:
-      name: animated_flip_counter
-      sha256: abbb8368bf30cb027af59a1ed3747868790070d70c24405ce39dcd65fd3eba33
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.5"
   animations:
     dependency: transitive
     description:
@@ -74,14 +66,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
-  audio_video_progress_bar:
-    dependency: transitive
-    description:
-      name: audio_video_progress_bar
-      sha256: "7be62917604e19e3873e12c8025bbc6dbee5876e1fa4cd7772ea1d0eb0e88d99"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.11.0"
   audioplayers:
     dependency: transitive
     description:
@@ -307,20 +291,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.4"
-  dart_vlc:
-    dependency: transitive
-    description:
-      path: "../../../../plugins/dart_vlc"
-      relative: true
-    source: path
-    version: "0.2.1"
-  dart_vlc_ffi:
-    dependency: transitive
-    description:
-      path: "../../../../plugins/dart_vlc/ffi"
-      relative: true
-    source: path
-    version: "0.1.7"
   date_format:
     dependency: transitive
     description:
@@ -333,79 +303,58 @@ packages:
     dependency: transitive
     description:
       name: dbus
-      sha256: "6f07cba3f7b3448d42d015bfd3d53fe12e5b36da2423f23838efc1d5fb31a263"
+      sha256: "253bfaa3d340778d8bc755e89c3af38e85ef95e65fd5d5670aa3167f8d4f6577"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.8"
-  desktop_drop:
-    dependency: transitive
-    description:
-      path: "../../../../plugins/desktop_drop"
-      relative: true
-    source: path
-    version: "0.1.1"
-  desktop_lifecycle:
-    dependency: transitive
-    description:
-      path: "../../../../plugins/desktop_lifecycle"
-      relative: true
-    source: path
-    version: "0.1.0"
-  desktop_open_file:
-    dependency: transitive
-    description:
-      path: "../../../../plugins/desktop_open_file"
-      relative: true
-    source: path
-    version: "0.0.1"
+    version: "0.7.4"
   device_info_plus:
     dependency: "direct overridden"
     description:
       name: device_info_plus
-      sha256: b809c4ed5f7fcdb325ccc70b80ad934677dc4e2aa414bf46859a42bfdfafcbb6
+      sha256: "79439ccee1641b9cbb95dd0a6b3fb478eab63aab05700249d371626ec6c1810f"
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.3"
+    version: "4.0.0"
   device_info_plus_linux:
     dependency: transitive
     description:
       name: device_info_plus_linux
-      sha256: "77a8b3c4af06bc46507f89304d9f49dfc64b4ae004b994532ed23b34adeae4b3"
+      sha256: e4eb5db4704f5534e872148a21cfcd39581022b63df556da6720d88f7c9f91a9
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "2.1.1"
   device_info_plus_macos:
     dependency: transitive
     description:
       name: device_info_plus_macos
-      sha256: "37961762fbd46d3620c7b69ca606671014db55fc1b7a11e696fd90ed2e8fe03d"
+      sha256: "38871fd2ad31871399d8307630c9f4eb5941dd2c643ee221c44d58de95d367a1"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "2.2.3"
   device_info_plus_platform_interface:
     dependency: transitive
     description:
       name: device_info_plus_platform_interface
-      sha256: "83fdba24fcf6846d3b10f10dfdc8b6c6d7ada5f8ed21d62ea2909c2dfa043773"
+      sha256: b2743934f0efc3e291880d76fb341ea114b7e8417d77ee0f93bd21f5dfd3e8d2
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "2.6.1"
   device_info_plus_web:
     dependency: transitive
     description:
       name: device_info_plus_web
-      sha256: "5890f6094df108181c7a29720bc23d0fd6159f17d82787fac093d1fefcaf6325"
+      sha256: "38715ad1ef3bee8915dd7bee08a9ac9ab54472a8df425c887062a3046209f663"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "2.1.0"
   device_info_plus_windows:
     dependency: transitive
     description:
       name: device_info_plus_windows
-      sha256: "23a2874af0e23ee6e3a2a0ebcecec3a9da13241f2cb93a93a44c8764df123dd7"
+      sha256: "8fb1403fc94636d6ab48aeebb5f9379f2ca51cde3b337167ec6f39db09234492"
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.0"
+    version: "2.1.1"
   device_unique_id:
     dependency: transitive
     description:
@@ -445,35 +394,12 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.1"
-  dotted_border:
-    dependency: transitive
-    description:
-      name: dotted_border
-      sha256: "07a5c5e8d4e6e992279e190e0352be8faa5b8f96d81c77a78b2d42f060279840"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0+3"
-  dotted_decoration:
-    dependency: transitive
-    description:
-      name: dotted_decoration
-      sha256: a5c5771367690b4f64ebfa7911954ab472b9675f025c373f514e32ac4bb81d5e
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
-  dynamic_card:
-    dependency: transitive
-    description:
-      path: "../../../../plugins/dynamic_card"
-      relative: true
-    source: path
-    version: "2.0.1+2"
   dynamic_view:
     dependency: transitive
     description:
       path: "."
-      ref: "v1.4.13"
-      resolved-ref: b1fdd9a7f44d93035be313a9e040ac8fef5b8d96
+      ref: "v1.4.18"
+      resolved-ref: eb98f86657e1e8ffa15fbaa9bffd0d808719e022
       url: "https://github.com/FBSocial/flutter-dynamic-view.git"
     source: git
     version: "0.0.1"
@@ -501,23 +427,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  extended_image:
-    dependency: transitive
-    description:
-      path: "."
-      ref: rotated_fix
-      resolved-ref: "84a22fa9e90ac2f250772ebcab350060321f807e"
-      url: "https://github.com/FBSocial/extended_image.git"
-    source: git
-    version: "7.0.2"
-  extended_image_library:
-    dependency: transitive
-    description:
-      name: extended_image_library
-      sha256: "550743b43ab093aed35ef234500fcc7a304cbac1eca47b0cc991e07e88750758"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.4.2"
   extended_text:
     dependency: transitive
     description:
@@ -592,22 +501,14 @@ packages:
       url: "https://github.com/FBSocial/fb_utils.git"
     source: git
     version: "2.0.0"
-  fc_native_video_thumbnail:
-    dependency: transitive
-    description:
-      name: fc_native_video_thumbnail
-      sha256: "6c029f017702435aabe96bd2f60be9a2415e62fe0b2f0ce31a51d7cd4b51f674"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.0"
   ffi:
     dependency: transitive
     description:
       name: ffi
-      sha256: a38574032c5f1dd06c4aee541789906c12ccaab8ba01446e800d9c5b79c4a978
+      sha256: "13a6ccf6a459a125b3fcdb6ec73bd5ff90822e071207c663bfd1f70062d51d18"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "1.2.1"
   file:
     dependency: transitive
     description:
@@ -620,18 +521,10 @@ packages:
     dependency: transitive
     description:
       name: file_picker
-      sha256: b85eb92b175767fdaa0c543bf3b0d1f610fe966412ea72845fe5ba7801e763ff
+      sha256: "704259669b5e9cb24e15c11cfcf02caf5f20d30901b3916d60b6d1c2d647035f"
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.10"
-  file_utils:
-    dependency: transitive
-    description:
-      name: file_utils
-      sha256: d1e64389a22649095c8405c9e177272caf05139255931c9ff30d53b5c9bcaa34
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
+    version: "4.6.1"
   filesize:
     dependency: transitive
     description:
@@ -657,8 +550,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.5.5+4"
-      resolved-ref: "64148b119d059c5f84409adac2e34eca2325b484"
+      ref: "0.5.5+5"
+      resolved-ref: bdbc1793f462d218986e94fffd9e044f6113fb53
       url: "https://github.com/FBSocial/flutter_audio_recorder.git"
     source: git
     version: "0.5.5+3"
@@ -789,8 +682,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "2.1.0+2"
-      resolved-ref: "7db329b301f3cc0220929b8dd0b08e1c51de84f6"
+      ref: "791287984a47de29ba0ed494ebc552aaaa0dd6fe"
+      resolved-ref: "791287984a47de29ba0ed494ebc552aaaa0dd6fe"
       url: "https://github.com/FBSocial/flutter_link_preview.git"
     source: git
     version: "2.0.1+2"
@@ -802,38 +695,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  flutter_local_notifications:
-    dependency: transitive
-    description:
-      name: flutter_local_notifications
-      sha256: "57d0012730780fe137260dd180e072c18a73fbeeb924cdc029c18aaa0f338d64"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.9.1"
-  flutter_local_notifications_linux:
-    dependency: transitive
-    description:
-      name: flutter_local_notifications_linux
-      sha256: b472bfc173791b59ede323661eae20f7fff0b6908fea33dd720a6ef5d576bae8
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.1"
-  flutter_local_notifications_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_local_notifications_platform_interface
-      sha256: "21bceee103a66a53b30ea9daf677f990e5b9e89b62f222e60dd241cd08d63d3a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.0"
-  flutter_native_view:
-    dependency: transitive
-    description:
-      name: flutter_native_view
-      sha256: bc43839a8423fb2f5a4bd88b59b0418930f518af090ee796360cbdc813245cd6
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   flutter_parsed_text:
     dependency: transitive
     description:
@@ -871,8 +732,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "1.0.1+2"
-      resolved-ref: c9e8a14ff5de439b578ef1ca5b0403c2ce65ebf5
+      ref: "1.0.1+4"
+      resolved-ref: "323d7038764208e7f7dc4923167e298eb3a03cd6"
       url: "https://github.com/FBSocial/flutter_screen_orientation.git"
     source: git
     version: "1.0.1+2"
@@ -941,8 +802,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "68124853ead404764ad88c345df5f9c8ee2eaaf5"
-      resolved-ref: "68124853ead404764ad88c345df5f9c8ee2eaaf5"
+      ref: c260e33481f5888bb572692c59dc79ad32cdd90e
+      resolved-ref: c260e33481f5888bb572692c59dc79ad32cdd90e
       url: "https://github.com/FBSocial/fluwx.git"
     source: git
     version: "3.6.2"
@@ -979,14 +840,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  globbing:
-    dependency: transitive
-    description:
-      name: globbing
-      sha256: "4f89cfaf6fa74c9c1740a96259da06bd45411ede56744e28017cc534a12b6e2d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   graphs:
     dependency: transitive
     description:
@@ -995,14 +848,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
-  hashcodes:
-    dependency: transitive
-    description:
-      name: hashcodes
-      sha256: "80f9410a5b3c8e110c4b7604546034749259f5d6dcca63e0d3c17c9258f1a651"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   hive:
     dependency: transitive
     description:
@@ -1035,14 +880,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.5"
-  http_client_helper:
-    dependency: transitive
-    description:
-      name: http_client_helper
-      sha256: "14c6e756644339f561321dab021215475ba4779aa962466f59ccb3ecf66b36c3"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.4"
   http_multi_server:
     dependency: transitive
     description:
@@ -1075,22 +912,24 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
-  image_compression:
-    dependency: transitive
-    description:
-      name: image_compression
-      sha256: "911ae4a59196ebcc33c70a38bbc1fa0e2d07243589803dd616120e1a6125bfe9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.3"
   image_cropper:
     dependency: transitive
     description:
-      name: image_cropper
-      sha256: "17f6748cc564e6b12bc1404348433365fb6e1cef05fad61f921f7c8202737bc2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.4.1"
+      path: image_cropper
+      ref: "3.0.2_hotfix"
+      resolved-ref: "02620364ba1eb7f49387c503d8baa9d9fc613935"
+      url: "https://github.com/FBSocial/flutter_image_cropper.git"
+    source: git
+    version: "3.0.2"
+  image_cropper_platform_interface:
+    dependency: transitive
+    description:
+      path: image_cropper_platform_interface
+      ref: "3.0.2_hotfix"
+      resolved-ref: "02620364ba1eb7f49387c503d8baa9d9fc613935"
+      url: "https://github.com/FBSocial/flutter_image_cropper.git"
+    source: git
+    version: "3.0.3"
   image_gallery_saver:
     dependency: transitive
     description:
@@ -1103,11 +942,11 @@ packages:
     dependency: transitive
     description:
       path: "packages/image_picker/image_picker"
-      ref: "19a78f452a96f92904ce3318430d6c232f62aa68"
-      resolved-ref: "19a78f452a96f92904ce3318430d6c232f62aa68"
+      ref: "474f66baabe417a9ce016b53e5c7f42f0ae191ac"
+      resolved-ref: "474f66baabe417a9ce016b53e5c7f42f0ae191ac"
       url: "https://github.com/FBSocial/plugins.git"
     source: git
-    version: "0.8.4+7"
+    version: "0.8.4"
   image_picker_for_web:
     dependency: transitive
     description:
@@ -1133,14 +972,6 @@ packages:
       url: "https://github.com/FBSocial/image_save.git"
     source: git
     version: "5.0.0"
-  image_size_getter:
-    dependency: transitive
-    description:
-      name: image_size_getter
-      sha256: "414ebd27e9967fa7adbcf4a10c8409522faa6f98c87e3e54d2c423db8ad75320"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   install_referrer:
     dependency: transitive
     description:
@@ -1227,6 +1058,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  lib_dynamic_card:
+    dependency: transitive
+    description:
+      path: "../../lib_dynamic_card"
+      relative: true
+    source: path
+    version: "2.0.1+2"
   lib_entity:
     dependency: transitive
     description:
@@ -1386,11 +1224,12 @@ packages:
   media_projection_creator:
     dependency: transitive
     description:
-      name: media_projection_creator
-      sha256: "382a487b722b3ddf40db3fb1b81969f34dc97a621cf119ad8f4f51392866719a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.0"
+      path: "."
+      ref: "1.0.1"
+      resolved-ref: "8bde4fb93c3d8b3cf77355e13bd12167da1492e8"
+      url: "https://github.com/FBSocial/flutter_media_projection_creator.git"
+    source: git
+    version: "1.0.0"
   meta:
     dependency: transitive
     description:
@@ -1433,8 +1272,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "1.2.0+3"
-      resolved-ref: "807bf098d950f151e2f6fb88a4213e708907268c"
+      ref: "1.2.0+6"
+      resolved-ref: d9bbe553bbf64d809241bca604d4f923fe67eee5
       url: "https://gitee.com/fanbook/fb_media_picker.git"
     source: git
     version: "2.0.0+1"
@@ -1491,18 +1330,50 @@ packages:
     dependency: transitive
     description:
       name: package_info_plus
-      sha256: "8df5ab0a481d7dc20c0e63809e90a588e496d276ba53358afc4c4443d0a00697"
+      sha256: "7a6114becdf042be2b0777d77ace954d4a205644171a1cbd8712976b9bbb837c"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.3"
+    version: "1.4.2"
+  package_info_plus_linux:
+    dependency: transitive
+    description:
+      name: package_info_plus_linux
+      sha256: "04b575f44233d30edbb80a94e57cad9107aada334fc02aabb42b6becd13c43fc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.5"
+  package_info_plus_macos:
+    dependency: transitive
+    description:
+      name: package_info_plus_macos
+      sha256: a2ad8b4acf4cd479d4a0afa5a74ea3f5b1c7563b77e52cc32b3ee6956d5482a6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.0"
   package_info_plus_platform_interface:
     dependency: transitive
     description:
       name: package_info_plus_platform_interface
-      sha256: "9bc8ba46813a4cc42c66ab781470711781940780fd8beddd0c3da62506d3a6c6"
+      sha256: f7a0c8f1e7e981bc65f8b64137a53fd3c195b18d429fba960babc59a5a1c7ae8
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "1.0.2"
+  package_info_plus_web:
+    dependency: transitive
+    description:
+      name: package_info_plus_web
+      sha256: f0829327eb534789e0a16ccac8936a80beed4e2401c4d3a74f3f39094a822d3b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.6"
+  package_info_plus_windows:
+    dependency: transitive
+    description:
+      name: package_info_plus_windows
+      sha256: a6040b8695c82f8dd3c3d4dfab7ef96fbe9c67aac21b9bcf5db272589ef84441
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.5"
   pasteboard:
     dependency: transitive
     description:
@@ -1519,14 +1390,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.2"
-  path_drawing:
-    dependency: transitive
-    description:
-      name: path_drawing
-      sha256: bbb1934c0cbb03091af082a6389ca2080345291ef07a5fa6d6e078ba8682f977
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   path_parsing:
     dependency: transitive
     description:
@@ -1579,10 +1442,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_windows
-      sha256: d3f80b32e83ec208ac95253e0cd4d298e104fbc63cb29c5c69edaed43b0c69d6
+      sha256: a34ecd7fb548f8e57321fd8e50d865d266941b54e6c3b7758cf8f37c24116905
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.6"
+    version: "2.0.7"
   pedantic:
     dependency: transitive
     description:
@@ -1776,15 +1639,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
-  replay_kit_launcher:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "1.0.1"
-      resolved-ref: "5be3eb2b8adb2319eac18b75cf8ad5a5bc516bd3"
-      url: "git@github.com:FBSocial/flutter_replay_kit_launcher.git"
-    source: git
-    version: "1.0.0"
   rich_input:
     dependency: transitive
     description:
@@ -1808,14 +1662,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
-  screen_retriever:
+  screen_capture_assistant:
     dependency: transitive
     description:
-      name: screen_retriever
-      sha256: "4931f226ca158123ccd765325e9fbf360bfed0af9b460a10f960f9bb13d58323"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.6"
+      path: "."
+      ref: "1.0.1"
+      resolved-ref: "4cdba3fddd575ab1c0e8860d2651ff5247b963c6"
+      url: "https://github.com/FBSocial/screen_capture_assistant.git"
+    source: git
+    version: "0.0.1"
   service:
     dependency: transitive
     description:
@@ -1990,14 +1845,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.3"
-  sqflite_common_ffi:
-    dependency: transitive
-    description:
-      name: sqflite_common_ffi
-      sha256: "55641c9310e1da0856559f077ccc3cb7637b718d10b1fd8461c8088ef2d2f720"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.4"
   sqflite_web:
     dependency: transitive
     description:
@@ -2063,22 +1910,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
-  system_info2:
-    dependency: transitive
-    description:
-      name: system_info2
-      sha256: af2f948e3f31a3367a049932a8ad59faf0063ecf836a020d975b9f41566d8bc9
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.2"
-  system_info_plus:
-    dependency: transitive
-    description:
-      name: system_info_plus
-      sha256: b915c811c6605b802f3988859bc2bb79c95f735762a75b5451741f7a2b949d1b
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.5"
   term_glyph:
     dependency: transitive
     description:
@@ -2095,14 +1926,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.16"
-  timezone:
-    dependency: transitive
-    description:
-      name: timezone
-      sha256: "57b35f6e8ef731f18529695bffc62f92c6189fac2e52c12d478dec1931afb66e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.0"
   timing:
     dependency: transitive
     description:
@@ -2115,9 +1938,9 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.0.59"
-      resolved-ref: "37403e34d636dc3d1626001da748e15ba2dfa4ed"
-      url: "https://github.com/hkm5558/tun_editor.git"
+      ref: "0.0.58"
+      resolved-ref: "1fa641b6f007344fae76ed67b9a88138b4eb3e36"
+      url: "https://github.com/FBSocial/tun_editor.git"
     source: git
     version: "0.0.17+17"
   tuple:
@@ -2381,10 +2204,10 @@ packages:
     dependency: transitive
     description:
       name: wakelock_windows
-      sha256: "857f77b3fe6ae82dd045455baa626bc4b93cb9bb6c86bf3f27c182167c3a5567"
+      sha256: "108b1b73711f1664ee462e73af34a9286ff496e27d4d8371e2fb4da8fde4cdac"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.1"
+    version: "0.2.0"
   watcher:
     dependency: transitive
     description:
@@ -2401,56 +2224,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.0"
-  websafe_svg:
-    dependency: transitive
-    description:
-      name: websafe_svg
-      sha256: "75b2143412e802636e4468b69034cda1f1e60db6f8425d1835a577ef0b832b8b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0+4"
   win32:
     dependency: transitive
     description:
       name: win32
-      sha256: a6f0236dbda0f63aa9a25ad1ff9a9d8a4eaaa5012da0dc59d21afdb1dc361ca4
+      sha256: c0e3a4f7be7dae51d8f152230b86627e3397c1ba8c3fa58e63d44a9f3edc9cef
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.4"
-  win_toast:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "0.3.0+1"
-      resolved-ref: c610219ab26d95ec3708a332511a7dadf1974fae
-      url: "https://github.com/FBSocial/win_toast.git"
-    source: git
-    version: "0.3.0"
-  window_manager:
-    dependency: transitive
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "8c5d7004d06a56fb5cd37881a9cb352eced00053"
-      url: "https://github.com/FBSocial/window_manager.git"
-    source: git
-    version: "0.3.0"
+    version: "2.6.1"
   xdg_directories:
     dependency: transitive
     description:
       name: xdg_directories
-      sha256: bd512f03919aac5f1313eb8249f223bacf4927031bf60b02601f81f687689e86
+      sha256: ee1505df1426458f7f60aac270645098d318a8b4766d85fde75f76f2e21807d1
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0+3"
+    version: "1.0.0"
   xml:
     dependency: transitive
     description:
       name: xml
-      sha256: ac0e3f4bf00ba2708c33fbabbbe766300e509f8c82dbd4ab6525039813f7e2fb
+      sha256: "979ee37d622dec6365e2efa4d906c37470995871fe9ae080d967e192d88286b5"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.0"
+    version: "6.2.2"
   yaml:
     dependency: transitive
     description:
