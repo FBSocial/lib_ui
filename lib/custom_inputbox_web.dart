@@ -73,7 +73,6 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
     _isMultiline = widget.keyboardType == TextInputType.multiline;
     _contentPadding = widget.contentPadding ??
         EdgeInsets.fromLTRB(12, 12, _isMultiline ? 12 : 60, 12);
-
     super.initState();
   }
 
