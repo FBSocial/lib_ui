@@ -8,9 +8,12 @@ class ClickStatusBarToReachTop extends StatelessWidget {
   final Widget? child;
   final ScrollController? controller;
 
+  final VoidCallback? topAction;
+
   const ClickStatusBarToReachTop({
     this.child,
     this.controller,
+    this.topAction,
     Key? key,
   }) : super(key: key);
 
@@ -29,6 +32,9 @@ class ClickStatusBarToReachTop extends StatelessWidget {
                 curve:
                     Curves.linear, // TODO(ianh): Use a more appropriate curve.
               );
+              if (topAction != null) {
+                topAction!();
+              }
             },
             child: SizedBox(
               width: double.infinity,
