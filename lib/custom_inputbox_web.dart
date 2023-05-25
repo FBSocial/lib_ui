@@ -33,6 +33,8 @@ class WebCustomInputBox extends StatefulWidget {
   final EdgeInsets? contentPadding;
   final TextInputType keyboardType;
 
+  final List<TextInputFormatter>? inputFormatters;
+
   const WebCustomInputBox({
     required this.controller,
     this.hintText,
@@ -54,6 +56,7 @@ class WebCustomInputBox extends StatefulWidget {
     this.contentPadding,
     this.closeButtonEnable = false,
     this.closeButtonIconSize,
+    this.inputFormatters,
     Key? key,
   }) : super(key: key);
 
@@ -130,6 +133,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
                 ),
               ),
               onEditingComplete: widget.onEditingComplete,
+              inputFormatters: widget.inputFormatters,
             ),
           ),
         ),
