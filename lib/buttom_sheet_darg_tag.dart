@@ -5,8 +5,10 @@ double kBottomSheetDragTagHeight = 20;
 
 class BottomSheetDragTag extends StatelessWidget {
   final Color? backgroundColor;
+  final Color? dragTagColor;
 
-  const BottomSheetDragTag({Key? key, this.backgroundColor}) : super(key: key);
+  const BottomSheetDragTag({Key? key, this.backgroundColor, this.dragTagColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class BottomSheetDragTag extends StatelessWidget {
         width: 36,
         height: 4,
         decoration: BoxDecoration(
-            color: AppTheme.of(context).fg.b10,
+            color: dragTagColor ?? AppTheme.of(context).fg.b10,
             borderRadius: const BorderRadius.all(Radius.circular(4))),
       ),
     );
