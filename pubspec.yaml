@@ -20,7 +20,7 @@ dependencies:
   # OfficialWeb: https://rive.app/
   rive: ^0.8.1
   # 缓存网络图像文件 https://github.com/Baseflow/flutter_cached_network_image
-  cached_network_image: ^3.2.0
+  cached_network_image: ^3.2.3
   # 采用外接纹理的实现图片显示 https://github.com/BuildAndRelease/flutter_image_view
   flutter_image_view:
     git:
@@ -64,7 +64,7 @@ dependency_overrides:
   flutter_quill:
     git:
       url: https://github.com/FBSocial/fb_flutter_quill.git
-      ref: 069ca95c2e896ff036dc5cb6c1596044b87f0c86
+      ref: 6.3.5+5
   device_info_plus: ^4.0.0
   analyzer: ^5.10.0
   flutter_cache_manager: ^3.3.0
