@@ -54,7 +54,6 @@ class ProxyIndexList extends StatelessWidget {
         indexPadding: padding,
         indexController: controller!.indexController,
         initialIndex: initialIndex,
-        indexListener: indexListener?.indexListener,
         initialAlignment: initialAlignment == ProxyInitialAlignment.top
             ? InitialAlignment.top
             : InitialAlignment.bottom,
@@ -121,12 +120,10 @@ class ProxyController {
 }
 
 class ProxyIndexListener {
-  ItemPositionsListener? itemPositionsListener;
-  IndexListener? indexListener;
+  ItemPositionsListener itemPositionsListener;
+  // IndexListener? indexListener;
 
   ProxyIndexListener.fromItemListener(this.itemPositionsListener);
-
-  ProxyIndexListener.fromIndexListener(this.indexListener);
 }
 
 typedef ProxyBuilder = Widget Function(BuildContext context, int index);
