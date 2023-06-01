@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lib_theme/app_colors.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_ui/icon_font.dart';
@@ -196,7 +195,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
           icon: Icon(
             IconFont.close,
             size: widget.closeButtonIconSize ?? 20,
-            color: clearColor,
+            color: AppTheme.of(context).fg.b40,
           ),
           onPressed: () {
             widget.controller.clear();
