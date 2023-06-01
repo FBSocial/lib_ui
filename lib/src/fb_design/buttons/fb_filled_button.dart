@@ -209,7 +209,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         return colorDistinguishedByButtonType();
       case FbButtonState.disabled:
       case FbButtonState.completed:
-        return AppTheme.of(context).fg.b10.withOpacity(0.1);
+        return AppTheme.of(context).fg.b5;
       case FbButtonState.deactivated:
         final color = colorDistinguishedByButtonType();
         // 禁用态有些特殊，次按钮的背景色是 0.1，其他类型按钮的背景色是 0.4 透明度
