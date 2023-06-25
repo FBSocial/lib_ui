@@ -1,93 +1,241 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 import 'package:lib_base/icon_font/icon_font.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/fb_ui_kit/form/radio.dart';
 
-abstract class FormItem {}
-
-class FormSection implements FormItem {
+abstract class FormItem {
   final String title;
+  final FormLeading? leading;
+  final FormTailing? tailing;
 
-  FormSection(this.title);
+  FormItem({
+    required this.title,
+    this.leading,
+    this.tailing,
+  });
+
+  Widget build(BuildContext context);
+}
+
+abstract class FormLeading {
+  static const double defaultLeadingSize = 16;
+
+  double get leadingSize => defaultLeadingSize;
+
+  Widget build(BuildContext context);
+}
+
+abstract class FormTailing {
+  Widget build(BuildContext context);
+}
+
+class FormLeadingPlaceholder implements FormLeading {
+  const FormLeadingPlaceholder();
+
+  @override
+  double get leadingSize => 48;
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(width: 28);
+  }
+}
+
+class FormTailingArrow implements FormTailing {
+  final Widget? child;
+  const FormTailingArrow({this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (child != null)
+          Padding(
+            padding: const EdgeInsets.only(right: 4),
+            child: child,
+          ),
+        Icon(
+          IconFont.buffXiayibu,
+          size: 16,
+          color: AppTheme.of(context).fg.b20,
+        ),
+      ],
+    );
+  }
+}
+
+class FormTailingChecked implements FormTailing {
+  final bool selected;
+
+  const FormTailingChecked(this.selected);
+
+  @override
+  Widget build(BuildContext context) {
+    return Visibility(
+      visible: selected,
+      child: Icon(
+        IconFont.webRight,
+        size: 20,
+        color: AppTheme.of(context).fg.blue1,
+      ),
+    );
+  }
+}
+
+enum FormSectionStyle {
+  none,
+  ios,
+}
+
+class FormSection extends FormItem {
+  final List<FormItem> children;
+  final FormSectionStyle style;
+  final bool densy;
+
+  FormSection({
+    required super.title,
+    super.leading,
+    super.tailing,
+    required this.children,
+    this.style = FormSectionStyle.ios,
+    this.densy = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
+    final dividerIndent = children.fold<double>(
+        0,
+        (previousValue, element) => math.max(previousValue,
+            element.leading?.leadingSize ?? FormLeading.defaultLeadingSize));
+    Widget items = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: children.map((e) => e.build(context)).fold<List<Widget>>(
+          [],
+          (previousValue, element) => [
+                ...previousValue,
+                if (previousValue.isNotEmpty)
+                  Divider(
+                    indent: dividerIndent,
+                  ),
+                element,
+              ]).toList(),
+    );
+    switch (style) {
+      case FormSectionStyle.none:
+        break;
+      case FormSectionStyle.ios:
+        items = Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: theme.bg.bg3,
+            ),
+            child: items);
+        break;
+    }
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding:
+                EdgeInsets.symmetric(horizontal: 16, vertical: densy ? 4 : 8),
+            child: Text(title,
+                maxLines: 1,
+                style: TextStyle(fontSize: 14, color: theme.fg.b60)),
+          ),
+          items,
+        ]);
+  }
 }
 
 class WidgetFormItem implements FormItem {
   final Widget widget;
 
   WidgetFormItem(this.widget);
+
+  @override
+  FormLeading? get leading => throw UnimplementedError();
+
+  @override
+  FormTailing? get tailing => throw UnimplementedError();
+
+  @override
+  String get title => throw UnimplementedError();
+
+  @override
+  Widget build(BuildContext context) {
+    return widget;
+  }
 }
 
-class TextFormItem implements FormItem {
-  final String title;
-
-  /// 使用前置空白区，这通常用来对齐其他非文本表单项
-  final bool leading;
-  final bool hideArrow;
+class TextFormItem extends FormItem {
   final VoidCallback onTap;
 
-  TextFormItem(
-    this.title, {
-    this.leading = false,
-    this.hideArrow = false,
+  TextFormItem({
+    required super.title,
+    super.leading,
+    super.tailing,
     required this.onTap,
   });
-}
 
-class RadioFormItem implements FormItem {
-  final bool selected;
-  final String title;
-  final VoidCallback onChange;
-  final bool disabledOnSelected;
-
-  RadioFormItem(this.title,
-      {required this.onChange,
-      this.selected = false,
-      this.disabledOnSelected = true});
-}
-
-/// 如果 PC 端的样式与移动端不一致，可以把这个类改成抽象类，用桥接实现多端 UI
-class FormItemBuilder {
-  Widget buildText(BuildContext context, TextFormItem item) {
+  @override
+  Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: item.onTap,
+      onTap: onTap,
       child: Container(
         alignment: Alignment.centerLeft,
         height: 52,
         child: Row(
           children: [
-            SizedBox(width: item.leading ? 48 : 16),
+            const SizedBox(width: 16),
+            if (leading != null) leading!.build(context),
             Expanded(
               child: Text(
-                item.title,
+                title,
                 style: TextStyle(fontSize: 16, color: theme.fg.b100),
               ),
             ),
-            Icon(
-              IconFont.buffXiayibu,
-              size: 16,
-              color: theme.fg.b20,
-            ),
+            if (tailing != null) tailing!.build(context),
             const SizedBox(width: 16),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget buildRadio<T>(BuildContext context, RadioFormItem item) {
+class RadioFormItem extends FormItem {
+  final bool selected;
+  final VoidCallback onChange;
+  final bool disabledOnSelected;
+
+  RadioFormItem({
+    required super.title,
+    super.leading,
+    super.tailing,
+    required this.onChange,
+    this.selected = false,
+    this.disabledOnSelected = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: item.selected && item.disabledOnSelected ? null : item.onChange,
+      onTap: selected && disabledOnSelected ? null : onChange,
       child: SizedBox(
         height: 52,
         child: Row(
           children: [
-            SizedBox(width: 48, child: FbRadio(selected: item.selected)),
+            SizedBox(width: 48, child: FbRadio(selected: selected)),
             Text(
-              item.title,
+              title,
               style: TextStyle(fontSize: 16, color: theme.fg.b100),
             ),
           ],
@@ -95,7 +243,10 @@ class FormItemBuilder {
       ),
     );
   }
+}
 
+/// 如果 PC 端的样式与移动端不一致，可以把这个类改成抽象类，用桥接实现多端 UI
+class FormItemBuilder {
   Widget buildSection(BuildContext context, FormSection item) {
     final theme = AppTheme.of(context);
 
@@ -112,36 +263,22 @@ typedef FormData = List<FormItem>;
 class FbForm extends StatelessWidget {
   final FormData data;
   final EdgeInsets padding;
+  final bool shrinkWrap;
 
-  const FbForm(this.data, {super.key, this.padding = EdgeInsets.zero});
+  const FbForm(
+    this.data, {
+    super.key,
+    this.padding = EdgeInsets.zero,
+    this.shrinkWrap = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final itemBuilder = FormItemBuilder();
-    final theme = AppTheme.of(context);
-    final children = <Widget>[];
-    List<Widget>? section;
-    for (final item in data) {
-      if (section?.isNotEmpty == true) {
-        section!.add(const Divider(indent: 48));
-      }
-      if (item is WidgetFormItem) {
-        (section ?? children).add(item.widget);
-      } else if (item is FormSection) {
-        section = [];
-        children.add(itemBuilder.buildSection(context, item));
-        children.add(Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: theme.bg.bg3,
-            ),
-            child: Column(mainAxisSize: MainAxisSize.min, children: section)));
-      } else if (item is TextFormItem) {
-        (section ?? children).add(itemBuilder.buildText(context, item));
-      } else if (item is RadioFormItem) {
-        (section ?? children).add(itemBuilder.buildRadio(context, item));
-      }
-    }
-    return ListView(padding: padding, children: children);
+    return ListView(
+      shrinkWrap: shrinkWrap,
+      physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,
+      padding: padding,
+      children: data.map((e) => e.build(context)).toList(),
+    );
   }
 }
