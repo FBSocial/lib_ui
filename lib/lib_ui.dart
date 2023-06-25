@@ -7,6 +7,8 @@ import 'package:oktoast/oktoast.dart';
 export 'src/fb_design/buttons/fb_buttons.dart';
 export 'src/fb_design/fb_loading_indicator.dart';
 export 'src/fb_design/fb_text_field.dart';
+export 'fb_ui_kit/form/form.dart';
+export 'src/fb_design/bottom_sheet/default_common_share_header.dart';
 
 class FbTheme extends StatelessWidget {
   final Widget child;
