@@ -10,7 +10,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
   final TextStyle? subTitleStyle;
   final Widget? actionWidget;
   final Color? appBarBg;
-  final double? headSpaceHeight;
+  final double headSpaceHeight;
   final double? titleBottomGap;
 
   const DefaultCommonShareHeader({
@@ -21,7 +21,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
     this.subTitle,
     this.titleStyle,
     this.subTitleStyle,
-    this.headSpaceHeight,
+    this.headSpaceHeight = 12,
     this.titleBottomGap,
   }) : super(key: key);
 
@@ -45,7 +45,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: headSpaceHeight ?? 12),
+        SizedBox(height: headSpaceHeight),
         AppBar(
           primary: false,
           leadingWidth: 36,
