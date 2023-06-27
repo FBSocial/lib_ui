@@ -212,7 +212,6 @@ class TextFormItem extends FormItem {
 class RadioFormItem extends FormItem {
   final bool selected;
   final VoidCallback onChange;
-  final bool disabledOnSelected;
 
   RadioFormItem({
     required super.title,
@@ -220,7 +219,6 @@ class RadioFormItem extends FormItem {
     super.tailing,
     required this.onChange,
     this.selected = false,
-    this.disabledOnSelected = true,
   });
 
   @override
@@ -228,7 +226,7 @@ class RadioFormItem extends FormItem {
     final theme = AppTheme.of(context);
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: selected && disabledOnSelected ? null : onChange,
+      onTap: selected ? null : onChange,
       child: SizedBox(
         height: 52,
         child: Row(
