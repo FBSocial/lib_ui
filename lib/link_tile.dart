@@ -16,6 +16,7 @@ class LinkTile extends StatelessWidget {
   final Widget? trailingWidget;
   final bool titleExpanded;
   final Color? backgroundColor;
+  final Color? tapDownBackgroundColor;
 
   const LinkTile(
     this.context,
@@ -29,6 +30,7 @@ class LinkTile extends StatelessWidget {
     this.trailingWidget,
     this.titleExpanded = true,
     this.backgroundColor,
+    this.tapDownBackgroundColor,
     Key? key,
   }) : super(key: key);
 
@@ -38,7 +40,8 @@ class LinkTile extends StatelessWidget {
       onTap: onTap,
       height: height,
       backgroundColor: backgroundColor ?? AppTheme.of(context).bg.bg3,
-      tapDownBackgroundColor: AppTheme.of(context).bg.bg2,
+      tapDownBackgroundColor:
+          tapDownBackgroundColor ?? AppTheme.of(context).bg.bg2,
       borderRadius: borderRadius,
       child: Padding(
         padding: padding ??
