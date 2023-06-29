@@ -139,8 +139,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         padding: MaterialStateProperty.all(EdgeInsets.zero),
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
             RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                    Radius.circular((buttonSize.height) / 6)))),
+                borderRadius: BorderRadius.all(Radius.circular(
+                    FbButtonTheme.of(context)?.borderRadius ??
+                        (buttonSize.height / 6))))),
         foregroundColor: MaterialStateProperty.resolveWith(
             (states) => getForegroundColor(context, states)),
         overlayColor: MaterialStateProperty.resolveWith(

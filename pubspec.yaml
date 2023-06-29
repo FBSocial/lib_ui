@@ -54,6 +54,7 @@ dependencies:
   video_player: ^2.5.1
   simple_shadow: ^0.3.1
   device_info_plus: ^4.0.0
+  build_runner: ^2.3.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

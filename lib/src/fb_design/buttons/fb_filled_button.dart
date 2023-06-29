@@ -128,8 +128,9 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         //圆角：按钮高度 / 6 （规范提供公式）
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
             RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.all(Radius.circular(buttonSize.height / 6)))),
+                borderRadius: BorderRadius.all(Radius.circular(
+                    FbButtonTheme.of(context)?.borderRadius ??
+                        (buttonSize.height / 6))))),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontFamilyFallback: defaultFontFamilyFallback,
           fontSize: getFontSize(size),

@@ -45,8 +45,9 @@ extension FbButtonSizeX on FbButtonSize {
 
 class FbButtonThemeData {
   final Color? primaryColor;
+  final double? borderRadius;
 
-  FbButtonThemeData({this.primaryColor});
+  FbButtonThemeData({this.primaryColor, this.borderRadius});
 }
 
 class FbButtonTheme extends InheritedWidget {
