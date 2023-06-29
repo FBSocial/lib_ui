@@ -12,6 +12,8 @@ class DefaultCommonShareHeader extends StatelessWidget {
   final Color? appBarBg;
   final double headSpaceHeight;
   final double? titleBottomGap;
+  final double marginLeft;
+  final double marginRight;
 
   const DefaultCommonShareHeader({
     Key? key,
@@ -23,6 +25,8 @@ class DefaultCommonShareHeader extends StatelessWidget {
     this.subTitleStyle,
     this.headSpaceHeight = 12,
     this.titleBottomGap,
+    this.marginLeft = 12,
+    this.marginRight = 14,
   }) : super(key: key);
 
   @override
@@ -56,7 +60,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
             child: Container(
               width: iconSize,
               height: iconSize,
-              margin: const EdgeInsets.only(left: 12),
+              margin: EdgeInsets.only(left: marginLeft),
               decoration: BoxDecoration(
                 color: AppTheme.of(context).fg.b5,
                 shape: BoxShape.circle,
@@ -81,7 +85,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
           elevation: 0,
           actions: [
             if (actionWidget != null) actionWidget!,
-            sizeWidth14,
+            SizedBox(width: marginRight),
           ],
         ),
       ],

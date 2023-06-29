@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 import 'package:lib_base/icon_font/icon_font.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/fb_ui_kit/form/radio.dart';
@@ -19,9 +20,14 @@ abstract class FormItem {
 }
 
 abstract class FormLeading {
+  const FormLeading();
+
   static const double defaultLeadingSize = 16;
 
   double get leadingSize => defaultLeadingSize;
+
+  /// 如果返回 true 会让 item 不可点击
+  bool get interruptTap => false;
 
   Widget build(BuildContext context);
 }
@@ -30,7 +36,7 @@ abstract class FormTailing {
   Widget build(BuildContext context);
 }
 
-class FormLeadingPlaceholder implements FormLeading {
+class FormLeadingPlaceholder extends FormLeading {
   const FormLeadingPlaceholder();
 
   @override
@@ -38,12 +44,33 @@ class FormLeadingPlaceholder implements FormLeading {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(width: 28);
+    return SizedBox(width: leadingSize);
+  }
+}
+
+class FormLeadingRadioButton extends FormLeading {
+  final bool selected;
+
+  const FormLeadingRadioButton(this.selected);
+
+  @override
+  double get leadingSize => 48;
+
+  @override
+  bool get interruptTap => selected;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(width: 48, child: Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 10, 0),
+      child: FbRadio(selected: selected),
+    ));
   }
 }
 
 class FormTailingArrow implements FormTailing {
   final Widget? child;
+
   const FormTailingArrow({this.child});
 
   @override
@@ -91,7 +118,7 @@ enum FormSectionStyle {
 class FormSection extends FormItem {
   final List<FormItem> children;
   final FormSectionStyle style;
-  final bool densy;
+  final bool dense;
 
   FormSection({
     required super.title,
@@ -99,7 +126,7 @@ class FormSection extends FormItem {
     super.tailing,
     required this.children,
     this.style = FormSectionStyle.ios,
-    this.densy = false,
+    this.dense = false,
   });
 
   @override
@@ -141,7 +168,7 @@ class FormSection extends FormItem {
         children: [
           Container(
             padding:
-                EdgeInsets.symmetric(horizontal: 16, vertical: densy ? 4 : 8),
+                EdgeInsets.symmetric(horizontal: 16, vertical: dense ? 4 : 8),
             child: Text(title,
                 maxLines: 1,
                 style: TextStyle(fontSize: 14, color: theme.fg.b60)),
@@ -186,14 +213,19 @@ class TextFormItem extends FormItem {
     final theme = AppTheme.of(context);
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: onTap,
+      onTap: () {
+        if (leading?.interruptTap == true) return;
+        onTap();
+      },
       child: Container(
         alignment: Alignment.centerLeft,
         height: 52,
         child: Row(
           children: [
-            const SizedBox(width: 16),
-            if (leading != null) leading!.build(context),
+            if (leading != null)
+              leading!.build(context)
+            else
+              const SizedBox(width: 16),
             Expanded(
               child: Text(
                 title,
@@ -202,40 +234,6 @@ class TextFormItem extends FormItem {
             ),
             if (tailing != null) tailing!.build(context),
             const SizedBox(width: 16),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class RadioFormItem extends FormItem {
-  final bool selected;
-  final VoidCallback onChange;
-
-  RadioFormItem({
-    required super.title,
-    super.leading,
-    super.tailing,
-    required this.onChange,
-    this.selected = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: selected ? null : onChange,
-      child: SizedBox(
-        height: 52,
-        child: Row(
-          children: [
-            SizedBox(width: 48, child: FbRadio(selected: selected)),
-            Text(
-              title,
-              style: TextStyle(fontSize: 16, color: theme.fg.b100),
-            ),
           ],
         ),
       ),
