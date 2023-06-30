@@ -24,7 +24,7 @@ abstract class FormLeading {
 
   static const double defaultLeadingSize = 16;
 
-  double get leadingSize => defaultLeadingSize;
+  double get leadingSize => 46;
 
   /// 如果返回 true 会让 item 不可点击
   bool get interruptTap => false;
@@ -40,9 +40,6 @@ class FormLeadingPlaceholder extends FormLeading {
   const FormLeadingPlaceholder();
 
   @override
-  double get leadingSize => 48;
-
-  @override
   Widget build(BuildContext context) {
     return SizedBox(width: leadingSize);
   }
@@ -54,17 +51,16 @@ class FormLeadingRadioButton extends FormLeading {
   const FormLeadingRadioButton(this.selected);
 
   @override
-  double get leadingSize => 48;
-
-  @override
   bool get interruptTap => selected;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(width: 48, child: Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 10, 0),
-      child: FbRadio(selected: selected),
-    ));
+    return SizedBox(
+        width: 48,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 10, 0),
+          child: FbRadio(selected: selected),
+        ));
   }
 }
 
