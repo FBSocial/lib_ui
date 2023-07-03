@@ -1174,7 +1174,7 @@ packages:
     source: path
     version: "0.0.1"
   lib_fb_utils:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "../lib_fb_utils"
       relative: true

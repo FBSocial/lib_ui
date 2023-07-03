@@ -9,6 +9,7 @@ export 'src/fb_design/fb_loading_indicator.dart';
 export 'src/fb_design/fb_text_field.dart';
 export 'fb_ui_kit/form/form.dart';
 export 'src/fb_design/bottom_sheet/default_common_share_header.dart';
+export 'src/fb_design/fb_will_pop_scope.dart';
 
 class FbTheme extends StatelessWidget {
   final Widget child;

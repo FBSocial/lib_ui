@@ -1,17 +1,18 @@
 import 'dart:math' as math;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_base/icon_font/icon_font.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/fb_ui_kit/form/radio.dart';
 
 abstract class FormItem {
-  final String title;
+  final String? title;
   final FormLeading? leading;
   final FormTailing? tailing;
 
   FormItem({
-    required this.title,
+    this.title,
     this.leading,
     this.tailing,
   });
@@ -65,25 +66,51 @@ class FormLeadingRadioButton extends FormLeading {
 }
 
 class FormTailingArrow implements FormTailing {
-  final Widget? child;
+  final Widget? prefixWidget;
+  final String? prefix;
 
-  const FormTailingArrow({this.child});
+  const FormTailingArrow({this.prefix, this.prefixWidget});
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return Row(
       children: [
-        if (child != null)
+        if (prefixWidget != null || prefix != null)
           Padding(
             padding: const EdgeInsets.only(right: 4),
-            child: child,
+            child: prefixWidget ??
+                Text(prefix!,
+                    style: TextStyle(fontSize: 15, color: theme.fg.b40)),
           ),
         Icon(
           IconFont.buffXiayibu,
           size: 16,
-          color: AppTheme.of(context).fg.b20,
+          color: theme.fg.b20,
         ),
       ],
+    );
+  }
+}
+
+class FormTailingSwitch implements FormTailing {
+  final bool value;
+  final void Function(bool)? onChange;
+
+  const FormTailingSwitch(this.value, {this.onChange});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 36,
+      height: 20,
+      child: Transform.scale(
+        scale: 0.8,
+        child: CupertinoSwitch(
+          value: value,
+          onChanged: onChange,
+        ),
+      ),
     );
   }
 }
@@ -117,7 +144,7 @@ class FormSection extends FormItem {
   final bool dense;
 
   FormSection({
-    required super.title,
+    super.title,
     super.leading,
     super.tailing,
     required this.children,
@@ -162,13 +189,14 @@ class FormSection extends FormItem {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            padding:
-                EdgeInsets.symmetric(horizontal: 16, vertical: dense ? 4 : 8),
-            child: Text(title,
-                maxLines: 1,
-                style: TextStyle(fontSize: 14, color: theme.fg.b60)),
-          ),
+          if (title != null)
+            Container(
+              padding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: dense ? 4 : 8),
+              child: Text(title!,
+                  maxLines: 1,
+                  style: TextStyle(fontSize: 14, color: theme.fg.b60)),
+            ),
           items,
         ]);
   }
@@ -196,17 +224,29 @@ class WidgetFormItem implements FormItem {
 
 class TextFormItem extends FormItem {
   final VoidCallback onTap;
+  final String? subtitle;
+  final bool required;
 
   TextFormItem({
-    required super.title,
+    required String title,
+    this.required = false,
+    this.subtitle,
     super.leading,
     super.tailing,
     required this.onTap,
-  });
+  }) : super(title: title);
 
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
+    final titleWidget = Text.rich(
+      TextSpan(children: [
+        TextSpan(text: title!),
+        if (required)
+          TextSpan(text: " *", style: TextStyle(color: theme.function.red1)),
+      ]),
+      style: TextStyle(fontSize: 16, color: theme.fg.b100),
+    );
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () {
@@ -215,7 +255,7 @@ class TextFormItem extends FormItem {
       },
       child: Container(
         alignment: Alignment.centerLeft,
-        height: 52,
+        height: subtitle == null ? 52 : 76,
         child: Row(
           children: [
             if (leading != null)
@@ -223,12 +263,24 @@ class TextFormItem extends FormItem {
             else
               const SizedBox(width: 16),
             Expanded(
-              child: Text(
-                title,
-                style: TextStyle(fontSize: 16, color: theme.fg.b100),
-              ),
+              child: subtitle == null
+                  ? titleWidget
+                  : Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                          titleWidget,
+                          const SizedBox(height: 6),
+                          Text(
+                            subtitle!,
+                            style: TextStyle(fontSize: 13, color: theme.fg.b40),
+                          ),
+                        ]),
             ),
-            if (tailing != null) tailing!.build(context),
+            if (tailing != null) ...[
+              const SizedBox(width: 16),
+              tailing!.build(context)
+            ],
             const SizedBox(width: 16),
           ],
         ),
@@ -244,8 +296,8 @@ class FormItemBuilder {
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child:
-          Text(item.title, style: TextStyle(fontSize: 14, color: theme.fg.b60)),
+      child: Text(item.title!,
+          style: TextStyle(fontSize: 14, color: theme.fg.b60)),
     );
   }
 }
@@ -270,7 +322,18 @@ class FbForm extends StatelessWidget {
       shrinkWrap: shrinkWrap,
       physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,
       padding: padding,
-      children: data.map((e) => e.build(context)).toList(),
+      children: data.map((e) {
+        final widget = e.build(context);
+        if (e is FormSection) {
+          return Padding(
+            padding:
+                data[0] == e ? EdgeInsets.zero : const EdgeInsets.only(top: 16),
+            child: widget,
+          );
+        } else {
+          return widget;
+        }
+      }).toList(),
     );
   }
 }
