@@ -5,9 +5,11 @@ class CustomPageRouteBuilder extends PageRouteBuilder {
   // 跳转的页面
 //  final Widget widget;
 
-  CustomPageRouteBuilder(RoutePageBuilder pageBuilder)
+  CustomPageRouteBuilder(RoutePageBuilder pageBuilder,
+      {RouteSettings? settings})
       : super(
             opaque: false,
+            settings: settings,
             transitionDuration: const Duration(milliseconds: 300),
             pageBuilder: pageBuilder,
             transitionsBuilder:
