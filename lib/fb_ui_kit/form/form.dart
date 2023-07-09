@@ -288,7 +288,7 @@ class ButtonFormItem extends FormItem {
 }
 
 class TextFormItem extends FormItem {
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String? subtitle;
   final bool required;
 
@@ -298,7 +298,7 @@ class TextFormItem extends FormItem {
     this.subtitle,
     super.leading,
     super.tailing,
-    required this.onTap,
+    this.onTap,
   }) : super(title: title);
 
   @override
@@ -317,7 +317,7 @@ class TextFormItem extends FormItem {
       behavior: HitTestBehavior.translucent,
       onTap: () {
         if (leading?.interruptTap == true) return;
-        onTap();
+        onTap?.call();
       },
       child: LayoutBuilder(
         builder: (context, constraints) => Container(
