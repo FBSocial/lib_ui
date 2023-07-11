@@ -3,9 +3,11 @@ import 'package:lib_extension/string_extension.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 class SvgTipWidget extends StatelessWidget {
   final String svgName;
   final double size;
+  final BoxFit? fit;
   final String text;
   final double? textSize;
   final Color? textColor;
@@ -17,6 +19,7 @@ class SvgTipWidget extends StatelessWidget {
     required this.svgName,
     this.text = '',
     this.size = 140,
+    this.fit,
     this.textSize,
     this.textColor,
     this.fontWeight,
@@ -33,7 +36,10 @@ class SvgTipWidget extends StatelessWidget {
         SizedBox(
           width: size,
           height: size,
-          child: SvgPicture.asset(svgName),
+          child: SvgPicture.asset(
+            svgName,
+            fit: fit ?? BoxFit.contain,
+          ),
         ),
         const SizedBox(
           height: 18,
