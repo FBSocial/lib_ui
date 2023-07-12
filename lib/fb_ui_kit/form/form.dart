@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_base/icon_font/icon_font.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/fb_ui_kit/form/radio.dart';
 
@@ -75,13 +76,18 @@ class FormTailingArrow implements FormTailing {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         if (prefixWidget != null || prefix != null)
-          Padding(
-            padding: const EdgeInsets.only(right: 4),
-            child: prefixWidget ??
-                Text(prefix!,
-                    style: TextStyle(fontSize: 15, color: theme.fg.b40)),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 4),
+              child: prefixWidget ??
+                  Text(prefix!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 15, color: theme.fg.b40)),
+            ),
           ),
         Icon(
           IconFont.buffXiayibu,
@@ -108,6 +114,7 @@ class FormTailingSwitch implements FormTailing {
         scale: 0.8,
         child: CupertinoSwitch(
           value: value,
+          activeColor: AppTheme.of(context).fg.blue1,
           onChanged: onChange,
         ),
       ),
@@ -202,19 +209,10 @@ class FormSection extends FormItem {
   }
 }
 
-class WidgetFormItem implements FormItem {
+class WidgetFormItem extends FormItem {
   final Widget widget;
 
   WidgetFormItem(this.widget);
-
-  @override
-  FormLeading? get leading => throw UnimplementedError();
-
-  @override
-  FormTailing? get tailing => throw UnimplementedError();
-
-  @override
-  String get title => throw UnimplementedError();
 
   @override
   Widget build(BuildContext context) {
@@ -222,8 +220,75 @@ class WidgetFormItem implements FormItem {
   }
 }
 
-class TextFormItem extends FormItem {
+class ValueNotifierFormItem<T> extends FormItem {
+  final ValueNotifier<T> notifier;
+  final FormItem Function(T) builder;
+
+  ValueNotifierFormItem({
+    required this.notifier,
+    required this.builder,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<T>(
+      valueListenable: notifier,
+      builder: (context, value, child) => builder(value).build(context),
+    );
+  }
+}
+
+class ButtonFormItem extends FormItem {
   final VoidCallback onTap;
+  final IconData? icon;
+  final bool disabled;
+
+  ButtonFormItem({
+    required this.onTap,
+    required String title,
+    this.icon,
+    this.disabled = false,
+  }) : super(title: title);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
+    return GestureDetector(
+      onTap: disabled ? null : onTap,
+      child: Container(
+        height: 52,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: theme.bg.bg3,
+        ),
+        alignment: Alignment.center,
+        child: Opacity(
+          opacity: disabled ? 0.3 : 1,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (icon != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: Icon(icon, size: 18, color: theme.fg.blue1),
+                ),
+              Text(title!,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: theme.fg.blue1,
+                    fontWeight: FontWeight.w500,
+                    fontFamilyFallback: defaultFontFamilyFallback,
+                  )),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class TextFormItem extends FormItem {
+  final VoidCallback? onTap;
   final String? subtitle;
   final bool required;
 
@@ -233,7 +298,7 @@ class TextFormItem extends FormItem {
     this.subtitle,
     super.leading,
     super.tailing,
-    required this.onTap,
+    this.onTap,
   }) : super(title: title);
 
   @override
@@ -247,42 +312,49 @@ class TextFormItem extends FormItem {
       ]),
       style: TextStyle(fontSize: 16, color: theme.fg.b100),
     );
+    const paddingH = 16.0;
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () {
         if (leading?.interruptTap == true) return;
-        onTap();
+        onTap?.call();
       },
-      child: Container(
-        alignment: Alignment.centerLeft,
-        height: subtitle == null ? 52 : 76,
-        child: Row(
-          children: [
-            if (leading != null)
-              leading!.build(context)
-            else
-              const SizedBox(width: 16),
-            Expanded(
-              child: subtitle == null
-                  ? titleWidget
-                  : Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                          titleWidget,
-                          const SizedBox(height: 6),
-                          Text(
-                            subtitle!,
-                            style: TextStyle(fontSize: 13, color: theme.fg.b40),
-                          ),
-                        ]),
-            ),
-            if (tailing != null) ...[
-              const SizedBox(width: 16),
-              tailing!.build(context)
+      child: LayoutBuilder(
+        builder: (context, constraints) => Container(
+          alignment: Alignment.centerLeft,
+          height: subtitle == null ? 52 : 76,
+          child: Row(
+            children: [
+              if (leading != null)
+                leading!.build(context)
+              else
+                const SizedBox(width: paddingH),
+              Expanded(
+                child: subtitle == null
+                    ? titleWidget
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                            titleWidget,
+                            const SizedBox(height: 6),
+                            Text(
+                              subtitle!,
+                              maxLines: 1,
+                              style:
+                                  TextStyle(fontSize: 13, color: theme.fg.b40),
+                            ),
+                          ]),
+              ),
+              if (tailing != null) ...[
+                const SizedBox(width: 16),
+                LimitedBox(
+                    maxWidth: (constraints.maxWidth - paddingH * 2) / 2,
+                    child: tailing!.build(context))
+              ],
+              const SizedBox(width: paddingH),
             ],
-            const SizedBox(width: 16),
-          ],
+          ),
         ),
       ),
     );

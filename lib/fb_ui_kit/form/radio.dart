@@ -4,8 +4,9 @@ import 'package:lib_theme/lib_theme.dart';
 
 class FbRadio extends StatelessWidget {
   final bool selected;
+  final double size;
 
-  const FbRadio({super.key, required this.selected});
+  const FbRadio({super.key, required this.selected, this.size = 20});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class FbRadio extends StatelessWidget {
       return Icon(
         IconFont.buffSelectSingle,
         color: theme.fg.blue1,
-        size: 20,
+        size: size,
       );
     }
     return Icon(
