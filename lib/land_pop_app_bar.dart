@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lib_theme/app_theme.dart';
-
-import 'icon_font.dart';
+import 'package:lib_fb_ui/button/web_icon_button.dart';
+// import 'icon_font.dart';
 
 class LandPopAppBar extends StatelessWidget {
   final bool isBackVisible;
@@ -34,16 +34,15 @@ class LandPopAppBar extends StatelessWidget {
           ),
           Visibility(
             visible: isBackVisible,
-            child: InkWell(
-              onTap: Get.back,
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: Icon(
-                  IconFont.navBarCloseItem,
-                  size: 17,
-                  color: AppTheme.of(context).fg.b60,
-                ),
-              ),
+            child: WebIconBgButton(
+              Icons.clear_outlined,
+              color: Colors.transparent,
+              iconColor: AppTheme.of(context).fg.b95,
+              iconHoverColor: AppTheme.of(context).fg.b95,
+              hoverColor: AppTheme.of(context).bg.bg2,
+              highlightColor: AppTheme.of(context).bg.bg2,
+              size: 32,
+              onPressed: Get.back,
             ),
           ),
         ],
