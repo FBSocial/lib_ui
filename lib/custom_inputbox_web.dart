@@ -78,7 +78,8 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
   @override
   Widget build(BuildContext context) {
     final borderColor = widget.borderColor ?? AppTheme.of(context).fg.b10;
-    final inputPadding = EdgeInsets.only(bottom: _isMultiline ? 15 : 0);
+    final inputPadding =
+        EdgeInsets.only(right: 40, bottom: _isMultiline ? 15 : 0);
     return ClipRect(
         child: Stack(
       children: [
