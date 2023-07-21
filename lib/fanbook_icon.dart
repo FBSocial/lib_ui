@@ -15,10 +15,6 @@ class FanbookIcon extends StatelessWidget {
         height: size,
         foregroundDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: AppTheme.of(context).fg.b10,
-            width: 0.5,
-          ),
         ),
         child: SvgPicture.asset(
           'assets/svg/logo.svg',
