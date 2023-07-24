@@ -25,6 +25,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   final FbButtonState state;
   final bool widthUnlimited;
   final bool placeIconAfterLabel;
+  final double? borderRadius;
 
   const FbFilledButton.primary(
     this.label, {
@@ -35,6 +36,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.primary,
         super(key: key);
@@ -48,6 +50,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.secondary,
         super(key: key);
@@ -61,6 +64,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.tertiary,
         super(key: key);
@@ -74,6 +78,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.quaternary,
         super(key: key);
@@ -87,6 +92,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.icon,
     this.placeIconAfterLabel = false,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.dangerous,
         super(key: key);
@@ -100,6 +106,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.icon,
     this.placeIconAfterLabel = false,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.dangerous2,
         super(key: key);
@@ -129,7 +136,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
             RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(
-                    FbButtonTheme.of(context)?.borderRadius ??
+                    borderRadius ?? FbButtonTheme.of(context)?.borderRadius ??
                         (buttonSize.height / 6))))),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontFamilyFallback: defaultFontFamilyFallback,
