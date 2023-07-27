@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lib_theme/app_theme.dart';
 
 class FanbookIcon extends StatelessWidget {
   final double size;
@@ -15,10 +14,6 @@ class FanbookIcon extends StatelessWidget {
         height: size,
         foregroundDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: AppTheme.of(context).fg.b10,
-            width: 0.5,
-          ),
         ),
         child: SvgPicture.asset(
           'assets/svg/logo.svg',

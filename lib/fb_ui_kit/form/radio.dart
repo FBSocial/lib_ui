@@ -21,7 +21,7 @@ class FbRadio extends StatelessWidget {
     return Icon(
       IconFont.buffUnselectSingle,
       color: theme.fg.b30,
-      size: 20,
+      size: size,
     );
   }
 }

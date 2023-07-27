@@ -17,6 +17,7 @@ class WebCustomInputBox extends StatefulWidget {
   final Color? placeholderColor;
   final Color? fillColor;
   final Color? borderColor;
+  final Color? hoverColor;
   final OnChange? onChange;
   final int? maxLength;
   final bool readOnly;
@@ -41,6 +42,7 @@ class WebCustomInputBox extends StatefulWidget {
     this.textColor,
     this.placeholderColor,
     this.fillColor,
+    this.hoverColor,
     this.borderColor,
     this.maxLength,
     this.readOnly = false,
@@ -66,6 +68,7 @@ class WebCustomInputBox extends StatefulWidget {
 class _WebCustomInputBoxState extends State<WebCustomInputBox> {
   EdgeInsets? _contentPadding;
   late bool _isMultiline;
+  final ValueNotifier<bool> _isHover = ValueNotifier<bool>(false);
 
   @override
   void initState() {
@@ -85,55 +88,69 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
       children: [
         Opacity(
           opacity: widget.readOnly ? 0.5 : 1,
-          child: Container(
-            padding: _closeButtonShow
-                ? inputPadding.copyWith(right: 8)
-                : inputPadding,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(widget.borderRadius),
-              border: Border.all(color: borderColor),
-            ),
-            child: TextField(
-              maxLines: _isMultiline ? null : 1,
-              readOnly: widget.readOnly,
-              focusNode: widget.focusNode,
-              onChanged: _onTextChange,
-              autofocus: widget.autofocus,
-              controller: widget.controller,
-              style: TextStyle(
-                fontSize: widget.fontSize,
-                color: widget.textColor ?? AppTheme.of(context).fg.b100,
-              ),
-              keyboardType: TextInputType.multiline,
-              buildCounter: (
-                context, {
-                required currentLength,
-                maxLength,
-                required isFocused,
-              }) {
-                return null;
-              },
-              maxLength: widget.maxLength,
-              maxLengthEnforcement: MaxLengthEnforcement.none,
-              decoration: InputDecoration(
-                isDense: true,
-                contentPadding: _contentPadding,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(widget.borderRadius),
-                  gapPadding: 0,
-                ),
-                fillColor: widget.fillColor,
-                filled: true,
-                hintText: widget.hintText,
-                hintStyle: TextStyle(
-                  fontSize: widget.fontSize,
-                  color: widget.placeholderColor ?? AppTheme.of(context).fg.b40,
-                ),
-              ),
-              onEditingComplete: widget.onEditingComplete,
-              inputFormatters: widget.inputFormatters,
-            ),
+          child: MouseRegion(
+            onEnter: (event) => _isHover.value = true,
+            onExit: (event) => _isHover.value = false,
+            child: ValueListenableBuilder<bool>(
+                valueListenable: _isHover,
+                builder: (context, _hover, child) {
+                  return Container(
+                    padding: _closeButtonShow
+                        ? inputPadding.copyWith(right: 8)
+                        : inputPadding,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(widget.borderRadius),
+                      border: Border.all(color: borderColor),
+                      color: _hover
+                          ? widget.hoverColor ?? AppTheme.of(context).fg.b5
+                          : widget.fillColor,
+                    ),
+                    child: TextField(
+                      maxLines: _isMultiline ? null : 1,
+                      readOnly: widget.readOnly,
+                      focusNode: widget.focusNode,
+                      onChanged: _onTextChange,
+                      autofocus: widget.autofocus,
+                      controller: widget.controller,
+                      style: TextStyle(
+                        fontSize: widget.fontSize,
+                        color: widget.textColor ?? AppTheme.of(context).fg.b100,
+                      ),
+                      keyboardType: TextInputType.multiline,
+                      buildCounter: (
+                        context, {
+                        required currentLength,
+                        maxLength,
+                        required isFocused,
+                      }) {
+                        return null;
+                      },
+                      maxLength: widget.maxLength,
+                      maxLengthEnforcement: MaxLengthEnforcement.none,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        hoverColor: Colors.transparent,
+                        contentPadding: _contentPadding,
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius:
+                              BorderRadius.circular(widget.borderRadius),
+                          gapPadding: 0,
+                        ),
+                        fillColor: Colors.transparent,
+                        filled: true,
+                        hintText: widget.hintText,
+                        hintStyle: TextStyle(
+                          fontSize: widget.fontSize,
+                          color: widget.placeholderColor ??
+                              AppTheme.of(context).fg.b40,
+                        ),
+                      ),
+                      onEditingComplete: widget.onEditingComplete,
+                      inputFormatters: widget.inputFormatters,
+                    ),
+                  );
+                }),
           ),
         ),
         if (!widget.readOnly)

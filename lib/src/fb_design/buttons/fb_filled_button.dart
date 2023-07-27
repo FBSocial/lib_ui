@@ -23,6 +23,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
   final FbButtonState state;
   final bool widthUnlimited;
   final bool placeIconAfterLabel;
+  final double? borderRadius;
 
   const FbFilledButton.primary(
     this.label, {
@@ -33,6 +34,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.primary,
         super(key: key);
@@ -46,6 +48,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.secondary,
         super(key: key);
@@ -59,6 +62,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.tertiary,
         super(key: key);
@@ -72,6 +76,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.state = FbButtonState.normal,
     this.size = FbButtonSize.small,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.quaternary,
         super(key: key);
@@ -85,6 +90,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.icon,
     this.placeIconAfterLabel = false,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.dangerous,
         super(key: key);
@@ -98,6 +104,7 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
     this.size = FbButtonSize.small,
     this.icon,
     this.placeIconAfterLabel = false,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.dangerous2,
         super(key: key);
@@ -126,9 +133,9 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         //圆角：按钮高度 / 6 （规范提供公式）
         shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
             RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(
+                borderRadius: BorderRadius.all(Radius.circular(borderRadius ??
                     FbButtonTheme.of(context)?.borderRadius ??
-                        (buttonSize.height / 6))))),
+                    (buttonSize.height / 6))))),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontFamilyFallback: defaultFontFamilyFallback,
           fontSize: getFontSize(size),
@@ -175,7 +182,12 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
       case FbButtonState.completed:
         return AppTheme.of(context).fg.b10.withOpacity(0.8);
       case FbButtonState.deactivated:
-        return colorDistinguishedByButtonType().withOpacity(0.7);
+        final color = colorDistinguishedByButtonType();
+        if (type == _ButtonType.dangerous2) {
+          return color.withOpacity(0.3);
+        } else {
+          return color.withOpacity(0.7);
+        }
     }
   }
 
@@ -211,9 +223,12 @@ class FbFilledButton extends StatelessWidget with FbButtonMixin {
         return AppTheme.of(context).fg.b5;
       case FbButtonState.deactivated:
         final color = colorDistinguishedByButtonType();
+
         // 禁用态有些特殊，次按钮的背景色是 0.1，其他类型按钮的背景色是 0.4 透明度
         if (type == _ButtonType.secondary || type == _ButtonType.tertiary) {
           return color.withOpacity(0.1);
+        } else if (type == _ButtonType.dangerous2) {
+          return color;
         } else {
           return color.withOpacity(0.4);
         }
