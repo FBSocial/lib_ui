@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lib_theme/app_theme.dart';
-import 'package:lib_theme/const.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 

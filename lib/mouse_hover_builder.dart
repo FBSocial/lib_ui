@@ -20,6 +20,7 @@ class MouseHoverBuilder extends StatelessWidget {
     return MouseRegion(
       onEnter: (_) => _value.value = true,
       onExit: (_) => _value.value = false,
+      onHover: (_) => _value.value = true,
       cursor: cursor,
       child: ValueListenableBuilder<bool>(
         valueListenable: _value,

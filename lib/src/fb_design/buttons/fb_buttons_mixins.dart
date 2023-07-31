@@ -49,6 +49,7 @@ mixin FbButtonMixin {
           Text(label,
               style: TextStyle(
                   fontWeight: FontWeight.w500,
+                  fontSize: 14,
                   fontFamilyFallback: defaultFontFamilyFallback)),
       ],
     );
