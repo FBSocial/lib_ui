@@ -38,6 +38,9 @@ dependencies:
   get: ^4.6.5
 
 dependency_overrides:
+  meta: ^1.8.0
+  collection: ^1.17.0
+  async: ^2.10.0
   get: ^4.6.5
   json_serializable: ^6.6.1
   analyzer: ^5.10.0

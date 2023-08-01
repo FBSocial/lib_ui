@@ -63,6 +63,9 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 dependency_overrides:
+  meta: ^1.8.0
+  collection: ^1.17.0
+  async: ^2.10.0
   i18n_extension: ^8.0.0
   flutter_quill:
     git:
