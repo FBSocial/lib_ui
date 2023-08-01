@@ -75,6 +75,7 @@ dependency_overrides:
   analyzer: ^5.10.0
   flutter_cache_manager: ^3.3.0
   sqflite: ^2.2.7
+  audio_video_progress_bar: ^1.0.1
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

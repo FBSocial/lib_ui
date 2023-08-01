@@ -3,6 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  audio_device_desktop
+  bitsdojo_window_windows
   connectivity_plus
   dart_vlc
   desktop_drop
@@ -11,15 +13,20 @@ list(APPEND FLUTTER_PLUGIN_LIST
   fc_native_video_thumbnail
   flutter_image_view
   flutter_native_view
+  media_kit_libs_windows_video
+  media_kit_video
   pasteboard
   permission_handler_windows
+  screen_capture_assistant
   screen_retriever
   url_launcher_windows
   win_toast
   window_manager
+  zego_express_engine
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
+  media_kit_native_event_loop
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
