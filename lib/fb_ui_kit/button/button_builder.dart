@@ -84,6 +84,9 @@ class FbButton extends StatelessWidget {
   //  圆角
   final double? radius;
 
+  //  是否使用半圆角
+  final bool isOval;
+
   //  按钮文案大小
   final double? textSize;
 
@@ -125,6 +128,7 @@ class FbButton extends StatelessWidget {
     this.width = double.infinity,
     this.height = double.infinity,
     this.radius = 8,
+    this.isOval = true,
     this.textSize,
     this.icon,
     this.primaryColor,
@@ -157,6 +161,7 @@ class FbButton extends StatelessWidget {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
@@ -173,6 +178,7 @@ class FbButton extends StatelessWidget {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
@@ -189,6 +195,7 @@ class FbButton extends StatelessWidget {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
@@ -205,6 +212,7 @@ class FbButton extends StatelessWidget {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
@@ -221,6 +229,7 @@ class FbButton extends StatelessWidget {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
@@ -237,6 +246,7 @@ class FbButton extends StatelessWidget {
     double? width,
     double? height,
     double? radius,
+    bool isOval,
     double? textSize,
     IconData? icon,
     VoidCallback onPressed,
@@ -417,9 +427,15 @@ class FbButton extends StatelessWidget {
         //  边框
         side: MaterialStateProperty.all(_getBorderSide(context)),
         //  圆角：按钮高度 / 6 （规范提供公式）
-        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(radius ?? (btnSize.height / 8)))),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              isOval == true
+                  ? btnSize.height / 2
+                  : radius ?? (btnSize.height / 8),
+            ),
+          ),
+        ),
         tapTargetSize: MaterialTapTargetSize.padded,
       );
 
@@ -559,24 +575,28 @@ class _FbElevatedButton extends FbButton {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
-  }) : super(text,
-            key: key,
-            type: FbButtonType.elevated,
-            status: status ?? FbButtonStatus.normal,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            radius: radius,
-            textSize: textSize,
-            primaryColor: primaryColor,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          type: FbButtonType.elevated,
+          status: status ?? FbButtonStatus.normal,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          radius: radius,
+          isOval: isOval ?? true,
+          textSize: textSize,
+          primaryColor: primaryColor,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：次背景填充(灰色)按钮
@@ -589,24 +609,28 @@ class _FbSubElevatedButton extends FbButton {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
-  }) : super(text,
-            key: key,
-            type: FbButtonType.subElevated,
-            status: status ?? FbButtonStatus.normal,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            radius: radius,
-            textSize: textSize,
-            primaryColor: primaryColor,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          type: FbButtonType.subElevated,
+          status: status ?? FbButtonStatus.normal,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          radius: radius,
+          isOval: isOval ?? true,
+          textSize: textSize,
+          primaryColor: primaryColor,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：背景填充(浅色)按钮
@@ -619,24 +643,28 @@ class _FbLightElevatedButton extends FbButton {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
-  }) : super(text,
-            key: key,
-            type: FbButtonType.lightElevated,
-            status: status ?? FbButtonStatus.normal,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            radius: radius,
-            textSize: textSize,
-            primaryColor: primaryColor,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          type: FbButtonType.lightElevated,
+          status: status ?? FbButtonStatus.normal,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          radius: radius,
+          isOval: isOval ?? true,
+          textSize: textSize,
+          primaryColor: primaryColor,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：线性按钮
@@ -649,24 +677,28 @@ class _FbOutlinedButton extends FbButton {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
-  }) : super(text,
-            key: key,
-            type: FbButtonType.outlined,
-            status: status ?? FbButtonStatus.normal,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            radius: radius,
-            textSize: textSize,
-            primaryColor: primaryColor,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          type: FbButtonType.outlined,
+          status: status ?? FbButtonStatus.normal,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          radius: radius,
+          isOval: isOval ?? true,
+          textSize: textSize,
+          primaryColor: primaryColor,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：次线性按钮
@@ -679,24 +711,28 @@ class _FbSubOutlinedButton extends FbButton {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
-  }) : super(text,
-            key: key,
-            status: status ?? FbButtonStatus.normal,
-            type: FbButtonType.subOutlined,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            radius: radius,
-            textSize: textSize,
-            primaryColor: primaryColor,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          status: status ?? FbButtonStatus.normal,
+          type: FbButtonType.subOutlined,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          radius: radius,
+          isOval: isOval ?? true,
+          textSize: textSize,
+          primaryColor: primaryColor,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：警告按钮
@@ -709,21 +745,25 @@ class _FbWarningButton extends FbButton {
     double? width,
     double? height,
     double? radius,
+    bool? isOval,
     double? textSize,
     IconData? icon,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
-  }) : super(text,
-            key: key,
-            status: status ?? FbButtonStatus.normal,
-            type: FbButtonType.warning,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            radius: radius,
-            textSize: textSize,
-            primaryColor: Get.themeToken.auxiliary.red,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          status: status ?? FbButtonStatus.normal,
+          type: FbButtonType.warning,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          radius: radius,
+          isOval: isOval ?? true,
+          textSize: textSize,
+          primaryColor: Get.themeToken.auxiliary.red,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
