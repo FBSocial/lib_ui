@@ -227,6 +227,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.0"
+  confetti:
+    dependency: transitive
+    description:
+      path: "."
+      ref: "0.7.0+2"
+      resolved-ref: "6b0f325bc01b04e8681639957c28f38e718ee153"
+      url: "https://github.com/FBSocial/flutter_confetti.git"
+    source: git
+    version: "0.7.0"
   connectivity_plus:
     dependency: transitive
     description:
@@ -810,6 +819,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.5"
+  flutter_swipe_action_cell:
+    dependency: transitive
+    description:
+      name: flutter_swipe_action_cell
+      sha256: "159932ca5f45cf1cc4ba184454da5ea504d737b7efe10fb3fdee5f9a26e1915a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -855,6 +872,14 @@ packages:
       url: "https://github.com/FBSocial/fluwx.git"
     source: git
     version: "3.6.2"
+  freezed_annotation:
+    dependency: transitive
+    description:
+      name: freezed_annotation
+      sha256: c3fd9336eb55a38cc1bbd79ab17573113a8deccd0ecbbf926cca3c62803b5c2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
   frontend_server_client:
     dependency: transitive
     description:
@@ -989,27 +1014,29 @@ packages:
   image_picker:
     dependency: transitive
     description:
-      name: image_picker
-      sha256: b6951e25b795d053a6ba03af5f710069c99349de9341af95155d52665cb4607c
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.9"
+      path: "packages/image_picker/image_picker"
+      ref: "image_picker_fix_1.0.1"
+      resolved-ref: "52e8961b7d578d022e1c51246e0b601659297d93"
+      url: "https://github.com/FBSocial/packages.git"
+    source: git
+    version: "1.0.1"
   image_picker_android:
     dependency: transitive
     description:
-      name: image_picker_android
-      sha256: d2bab152deb2547ea6f53d82ebca9b7e77386bb706e5789e815d37e08ea475bb
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/image_picker/image_picker_android"
+      ref: "image_picker_android_fix_0.8.7+3"
+      resolved-ref: "173a736ba3a8b0be8edbd090d5f5021458b20895"
+      url: "https://github.com/FBSocial/packages.git"
+    source: git
     version: "0.8.7+3"
   image_picker_for_web:
     dependency: transitive
     description:
       name: image_picker_for_web
-      sha256: "98f50d6b9f294c8ba35e25cc0d13b04bfddd25dbc8d32fa9d566a6572f2c081c"
+      sha256: "869fe8a64771b7afbc99fc433a5f7be2fea4d1cb3d7c11a48b6b579eb9c797f0"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.12"
+    version: "2.2.0"
   image_picker_ios:
     dependency: transitive
     description:
@@ -1341,6 +1368,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.0"
+  module_common:
+    dependency: transitive
+    description:
+      path: "../../../module/module_common"
+      relative: true
+    source: path
+    version: "0.0.1"
   module_log:
     dependency: transitive
     description:
@@ -1359,8 +1393,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "350fa85be66edde87c955e4fc64063e865dfaf73"
-      resolved-ref: "350fa85be66edde87c955e4fc64063e865dfaf73"
+      ref: "11cc9ad92952a1aa41300d255b43ba2be435142f"
+      resolved-ref: "11cc9ad92952a1aa41300d255b43ba2be435142f"
       url: "https://gitee.com/fanbook/fb_media_picker.git"
     source: git
     version: "2.0.0+1"
@@ -1845,6 +1879,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  shimmer:
+    dependency: transitive
+    description:
+      name: shimmer
+      sha256: "5f88c883a22e9f9f299e5ba0e4f7e6054857224976a5d9f839d4ebdc94a14ac9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   simple_rc4:
     dependency: transitive
     description:
@@ -1861,6 +1903,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.1"
+  skeletons:
+    dependency: transitive
+    description:
+      name: skeletons
+      sha256: "5b2d08ae7f908ee1f7007ca99f8dcebb4bfc1d3cb2143dec8d112a5be5a45c8f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -2042,10 +2092,10 @@ packages:
     dependency: transitive
     description:
       name: tuple
-      sha256: "0ea99cd2f9352b2586583ab2ce6489d1f95a5f6de6fb9492faaf97ae2060f0aa"
+      sha256: a97ce2013f240b2f3807bcbaf218765b6f301c3eff91092bcfa23a039e7dd151
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   typed_data:
     dependency: transitive
     description:
