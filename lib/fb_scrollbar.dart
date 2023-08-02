@@ -53,6 +53,7 @@ class FBScrollbar extends RawScrollbar {
     required Widget child,
     ScrollController? controller,
     bool isAlwaysShown = false,
+    this.color,
     double thickness = defaultThickness,
     this.thicknessWhileDragging = defaultThicknessWhileDragging,
     Radius radius = defaultRadius,
@@ -108,6 +109,8 @@ class FBScrollbar extends RawScrollbar {
 
   final EdgeInsets? barPadding;
 
+  final Color? color;
+
   @override
   _FBScrollbarState createState() => _FBScrollbarState();
 }
@@ -139,7 +142,8 @@ class _FBScrollbarState extends RawScrollbarState<FBScrollbar> {
   @override
   void updateScrollbarPainter() {
     scrollbarPainter
-      ..color = CupertinoDynamicColor.resolve(_kScrollbarColor, context)
+      ..color = CupertinoDynamicColor.resolve(
+          widget.color ?? _kScrollbarColor, context)
       ..textDirection = Directionality.of(context)
       ..thickness = _thickness
       ..mainAxisMargin = _kScrollbarMainAxisMargin
