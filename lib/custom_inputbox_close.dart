@@ -32,6 +32,7 @@ class CustomInputCloseBox extends StatefulWidget {
   final double? height;
   final List<TextInputFormatter>? inputFormatters;
   final TextStyle? style;
+  final TextInputType? keyboardType;
 
   const CustomInputCloseBox({
     required this.controller,
@@ -54,6 +55,7 @@ class CustomInputCloseBox extends StatefulWidget {
     this.height,
     this.inputFormatters,
     this.style,
+    this.keyboardType,
     Key? key,
   }) : super(key: key);
 
@@ -127,33 +129,35 @@ class _CustomInputCloseBoxState extends State<CustomInputCloseBox> {
               height: widget.height,
               inputFormatters: widget.inputFormatters,
               style: widget.style,
+              keyboardType: widget.keyboardType,
             ),
           ),
-          SizedBox(
-            child: RichText(
-              text: TextSpan(
-                  text: '${widget.controller.text.characters.length}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    height: 1.35,
-                    fontFamilyFallback: defaultFontFamilyFallback,
-                    fontSize: 14,
-                    color: widget.controller.text.characters.length >
-                            widget.maxLength!
-                        ? AppTheme.of(context).auxiliary.red
-                        : AppTheme.of(context).fg.b40,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: '/${widget.maxLength}',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: AppTheme.of(context).fg.b40,
-                      ),
-                    )
-                  ]),
+          if (widget.maxLength != null)
+            SizedBox(
+              child: RichText(
+                text: TextSpan(
+                    text: '${widget.controller.text.characters.length}',
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      height: 1.35,
+                      fontFamilyFallback: defaultFontFamilyFallback,
+                      fontSize: 14,
+                      color: widget.controller.text.characters.length >
+                              widget.maxLength!
+                          ? AppTheme.of(context).auxiliary.red
+                          : AppTheme.of(context).fg.b40,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '/${widget.maxLength}',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppTheme.of(context).fg.b40,
+                        ),
+                      )
+                    ]),
+              ),
             ),
-          ),
           sizeWidth16,
         ],
       ),
