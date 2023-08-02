@@ -110,6 +110,8 @@ class FbButton extends StatelessWidget {
   //  获取正确颜色
   Color get _primaryColor => primaryColor ?? Get.theme.primaryColor;
 
+  bool isOval = false;
+
   FbButton(
     this.text, {
     Key? key,
@@ -124,6 +126,7 @@ class FbButton extends StatelessWidget {
     this.onLongPress,
     this.focusNode,
     this.autofocus = false,
+    this.isOval = false,
     this.clipBehavior = Clip.none,
   })  : assert(text != null && text.isNotEmpty),
         super(key: key);
@@ -137,6 +140,7 @@ class FbButton extends StatelessWidget {
     Color? primaryColor,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
+    bool isOval,
   }) = _FbTextButton;
 
   // 工厂函数: 生产背景填充按钮
@@ -151,6 +155,7 @@ class FbButton extends StatelessWidget {
     Color? primaryColor,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
+    bool isOval,
   }) = _FbElevatedButton;
 
   // 工厂函数: 生产背景次填充按钮
@@ -165,6 +170,7 @@ class FbButton extends StatelessWidget {
     Color? primaryColor,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
+    bool isOval,
   }) = _FbSubElevatedButton;
 
   // 工厂函数: 生产背景浅色填充按钮
@@ -179,6 +185,7 @@ class FbButton extends StatelessWidget {
     Color? primaryColor,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
+    bool isOval,
   }) = _FbLightElevatedButton;
 
   // 工厂函数: 生产线性按钮
@@ -193,6 +200,7 @@ class FbButton extends StatelessWidget {
     Color? primaryColor,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
+    bool isOval,
   }) = _FbOutlinedButton;
 
   // 工厂函数: 生产次线性（灰色）按钮
@@ -207,6 +215,7 @@ class FbButton extends StatelessWidget {
     Color? primaryColor,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
+    bool isOval,
   }) = _FbSubOutlinedButton;
 
   // 工厂函数: 警告按钮
@@ -220,6 +229,7 @@ class FbButton extends StatelessWidget {
     IconData? icon,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
+    bool isOval,
   }) = _FbWarningButton;
 
   @override
@@ -395,7 +405,8 @@ class FbButton extends StatelessWidget {
         side: MaterialStateProperty.all(_getBorderSide(context)),
         //  圆角：按钮高度 / 6 （规范提供公式）
         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(btnSize.height / 6))),
+            borderRadius:
+                BorderRadius.circular(btnSize.height / (isOval ? 2 : 6)))),
         tapTargetSize: MaterialTapTargetSize.padded,
       );
 
@@ -514,11 +525,13 @@ class _FbTextButton extends FbButton {
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
+    bool isOval = false,
   }) : super(text,
             key: key,
             status: status ?? FbButtonStatus.normal,
             size: size ?? FbButtonSize.small,
             primaryColor: primaryColor,
+            isOval: isOval,
             onPressed: onPressed,
             onLongPress: onLongPress);
 }
@@ -534,6 +547,7 @@ class _FbElevatedButton extends FbButton {
     double? height,
     IconData? icon,
     Color? primaryColor,
+    bool isOval = false,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
   }) : super(text,
@@ -545,6 +559,7 @@ class _FbElevatedButton extends FbButton {
             width: width,
             height: height,
             primaryColor: primaryColor,
+            isOval: isOval,
             onPressed: onPressed,
             onLongPress: onLongPress);
 }
@@ -562,6 +577,7 @@ class _FbSubElevatedButton extends FbButton {
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
+    bool isOval = false,
   }) : super(text,
             key: key,
             type: FbButtonType.subElevated,
@@ -570,6 +586,7 @@ class _FbSubElevatedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            isOval: isOval,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -588,6 +605,7 @@ class _FbLightElevatedButton extends FbButton {
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
+    bool isOval = false,
   }) : super(text,
             key: key,
             type: FbButtonType.lightElevated,
@@ -596,6 +614,7 @@ class _FbLightElevatedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            isOval: isOval,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -614,6 +633,7 @@ class _FbOutlinedButton extends FbButton {
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
+    bool isOval = false,
   }) : super(text,
             key: key,
             type: FbButtonType.outlined,
@@ -622,6 +642,7 @@ class _FbOutlinedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            isOval: isOval,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -640,6 +661,7 @@ class _FbSubOutlinedButton extends FbButton {
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
+    bool isOval = false,
   }) : super(text,
             key: key,
             status: status ?? FbButtonStatus.normal,
@@ -648,6 +670,7 @@ class _FbSubOutlinedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            isOval: isOval,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -665,6 +688,7 @@ class _FbWarningButton extends FbButton {
     IconData? icon,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
+    bool isOval = false,
   }) : super(text,
             key: key,
             status: status ?? FbButtonStatus.normal,
@@ -673,6 +697,7 @@ class _FbWarningButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            isOval: isOval,
             primaryColor: Get.themeToken.auxiliary.red,
             onPressed: onPressed,
             onLongPress: onLongPress);
