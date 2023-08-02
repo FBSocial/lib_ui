@@ -265,13 +265,7 @@ class FbButton extends StatelessWidget {
     if (type == FbButtonType.text) {
       btnSize = Size(0, btnSize.height);
     }
-    return Container(
-      color: Colors.transparent,
-      width: btnSize.width <= 0 ? null : btnSize.width,
-      height: btnSize.height,
-      alignment: Alignment.center,
-      child: _assembleChild(context, btnSize),
-    );
+    return _assembleChild(context, btnSize);
   }
 
   // ====== Method: Private ====== //
@@ -283,7 +277,7 @@ class FbButton extends StatelessWidget {
     //  按钮大小
     final double iconSize = size != FbButtonSize.big ? 14.67 : 20;
     //  按钮视图：文字/加载圈
-    final Widget child = status != FbButtonStatus.loading
+    Widget child = status != FbButtonStatus.loading
         ? Text(
             text!,
             style: TextStyle(
@@ -302,6 +296,12 @@ class FbButton extends StatelessWidget {
               strokeWidth: 1.5,
             ),
           );
+    //  设置子视图大小
+    child = SizedBox(
+      width: btnSize.width,
+      height: btnSize.height,
+      child: Center(child: child),
+    );
     //  根据类型选择创建相应的按钮
     switch (type) {
       case FbButtonType.elevated:
@@ -412,7 +412,8 @@ class FbButton extends StatelessWidget {
         minimumSize: MaterialStateProperty.all(
             type == FbButtonType.text ? Size.zero : btnSize),
         padding: MaterialStateProperty.all(
-            const EdgeInsets.symmetric(horizontal: 4)),
+          const EdgeInsets.symmetric(horizontal: 2),
+        ),
         //  边框
         side: MaterialStateProperty.all(_getBorderSide(context)),
         //  圆角：按钮高度 / 6 （规范提供公式）
