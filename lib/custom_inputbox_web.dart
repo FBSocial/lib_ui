@@ -11,6 +11,7 @@ typedef OnChange = void Function(String);
 ///
 class WebCustomInputBox extends StatefulWidget {
   final TextEditingController controller;
+  final double? height;
   final double fontSize;
   final String? hintText;
   final Color? textColor;
@@ -37,6 +38,7 @@ class WebCustomInputBox extends StatefulWidget {
 
   const WebCustomInputBox({
     required this.controller,
+    this.height,
     this.hintText,
     this.fontSize = 14,
     this.textColor,
@@ -81,8 +83,10 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
   @override
   Widget build(BuildContext context) {
     final borderColor = widget.borderColor ?? AppTheme.of(context).fg.b10;
-    final inputPadding =
-        EdgeInsets.only(right: 40, bottom: _isMultiline ? 15 : 0);
+    final inputPadding = EdgeInsets.only(
+      right: _isMultiline ? 15 : 40,
+      bottom: _isMultiline ? 15 : 0,
+    );
     return ClipRect(
         child: Stack(
       children: [
@@ -92,65 +96,63 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
             onEnter: (event) => _isHover.value = true,
             onExit: (event) => _isHover.value = false,
             child: ValueListenableBuilder<bool>(
-                valueListenable: _isHover,
-                builder: (context, _hover, child) {
-                  return Container(
-                    padding: _closeButtonShow
-                        ? inputPadding.copyWith(right: 8)
-                        : inputPadding,
-                    decoration: BoxDecoration(
+              valueListenable: _isHover,
+              builder: (context, _hover, child) => Container(
+                height: _isMultiline ? widget.height : null,
+                padding: _closeButtonShow
+                    ? inputPadding.copyWith(right: 8)
+                    : inputPadding,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                  border: Border.all(color: borderColor),
+                  color: _hover
+                      ? widget.hoverColor ?? AppTheme.of(context).fg.b5
+                      : widget.fillColor,
+                ),
+                child: TextField(
+                  maxLines: _isMultiline ? null : 1,
+                  readOnly: widget.readOnly,
+                  focusNode: widget.focusNode,
+                  onChanged: _onTextChange,
+                  autofocus: widget.autofocus,
+                  controller: widget.controller,
+                  style: TextStyle(
+                    fontSize: widget.fontSize,
+                    color: widget.textColor ?? AppTheme.of(context).fg.b100,
+                  ),
+                  keyboardType: TextInputType.multiline,
+                  buildCounter: (
+                    context, {
+                    required currentLength,
+                    maxLength,
+                    required isFocused,
+                  }) =>
+                      null,
+                  maxLength: widget.maxLength,
+                  maxLengthEnforcement: MaxLengthEnforcement.none,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    hoverColor: Colors.transparent,
+                    contentPadding: _contentPadding,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(widget.borderRadius),
-                      border: Border.all(color: borderColor),
-                      color: _hover
-                          ? widget.hoverColor ?? AppTheme.of(context).fg.b5
-                          : widget.fillColor,
+                      gapPadding: 0,
                     ),
-                    child: TextField(
-                      maxLines: _isMultiline ? null : 1,
-                      readOnly: widget.readOnly,
-                      focusNode: widget.focusNode,
-                      onChanged: _onTextChange,
-                      autofocus: widget.autofocus,
-                      controller: widget.controller,
-                      style: TextStyle(
-                        fontSize: widget.fontSize,
-                        color: widget.textColor ?? AppTheme.of(context).fg.b100,
-                      ),
-                      keyboardType: TextInputType.multiline,
-                      buildCounter: (
-                        context, {
-                        required currentLength,
-                        maxLength,
-                        required isFocused,
-                      }) {
-                        return null;
-                      },
-                      maxLength: widget.maxLength,
-                      maxLengthEnforcement: MaxLengthEnforcement.none,
-                      decoration: InputDecoration(
-                        isDense: true,
-                        hoverColor: Colors.transparent,
-                        contentPadding: _contentPadding,
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius:
-                              BorderRadius.circular(widget.borderRadius),
-                          gapPadding: 0,
-                        ),
-                        fillColor: Colors.transparent,
-                        filled: true,
-                        hintText: widget.hintText,
-                        hintStyle: TextStyle(
-                          fontSize: widget.fontSize,
-                          color: widget.placeholderColor ??
-                              AppTheme.of(context).fg.b40,
-                        ),
-                      ),
-                      onEditingComplete: widget.onEditingComplete,
-                      inputFormatters: widget.inputFormatters,
+                    fillColor: Colors.transparent,
+                    filled: true,
+                    hintText: widget.hintText,
+                    hintStyle: TextStyle(
+                      fontSize: widget.fontSize,
+                      color: widget.placeholderColor ??
+                          AppTheme.of(context).fg.b40,
                     ),
-                  );
-                }),
+                  ),
+                  onEditingComplete: widget.onEditingComplete,
+                  inputFormatters: widget.inputFormatters,
+                ),
+              ),
+            ),
           ),
         ),
         if (!widget.readOnly)
