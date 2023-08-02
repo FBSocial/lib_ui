@@ -81,6 +81,12 @@ class FbButton extends StatelessWidget {
   //  高度：尽在size为free的时候生效
   final double? height;
 
+  //  圆角
+  final double? radius;
+
+  //  按钮文案大小
+  final double? textSize;
+
   //  图标
   final IconData? icon;
 
@@ -118,6 +124,8 @@ class FbButton extends StatelessWidget {
     this.size = FbButtonSize.small,
     this.width = double.infinity,
     this.height = double.infinity,
+    this.radius = 8,
+    this.textSize,
     this.icon,
     this.primaryColor,
     this.onPressed,
@@ -134,6 +142,7 @@ class FbButton extends StatelessWidget {
     Key? key,
     FbButtonStatus? status,
     FbButtonSize? size,
+    double? textSize,
     Color? primaryColor,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
@@ -147,6 +156,8 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -161,6 +172,8 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -175,6 +188,8 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -189,6 +204,8 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -203,6 +220,8 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -217,6 +236,8 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
@@ -245,11 +266,12 @@ class FbButton extends StatelessWidget {
       btnSize = Size(0, btnSize.height);
     }
     return Container(
-        color: Colors.transparent,
-        width: btnSize.width <= 0 ? null : btnSize.width,
-        height: btnSize.height,
-        alignment: Alignment.center,
-        child: _assembleChild(context, btnSize));
+      color: Colors.transparent,
+      width: btnSize.width <= 0 ? null : btnSize.width,
+      height: btnSize.height,
+      alignment: Alignment.center,
+      child: _assembleChild(context, btnSize),
+    );
   }
 
   // ====== Method: Private ====== //
@@ -265,7 +287,7 @@ class FbButton extends StatelessWidget {
         ? Text(
             text!,
             style: TextStyle(
-              fontSize: size == FbButtonSize.big ? 16 : 14,
+              fontSize: textSize ?? (size == FbButtonSize.big ? 16 : 14),
             ),
           )
         : SizedBox(
@@ -395,7 +417,8 @@ class FbButton extends StatelessWidget {
         side: MaterialStateProperty.all(_getBorderSide(context)),
         //  圆角：按钮高度 / 6 （规范提供公式）
         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(btnSize.height / 6))),
+            borderRadius:
+                BorderRadius.circular(radius ?? (btnSize.height / 8)))),
         tapTargetSize: MaterialTapTargetSize.padded,
       );
 
@@ -511,6 +534,7 @@ class _FbTextButton extends FbButton {
     Key? key,
     FbButtonStatus? status,
     FbButtonSize? size,
+    double? textSize,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
@@ -518,6 +542,7 @@ class _FbTextButton extends FbButton {
             key: key,
             status: status ?? FbButtonStatus.normal,
             size: size ?? FbButtonSize.small,
+            textSize: textSize,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -532,6 +557,8 @@ class _FbElevatedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
@@ -544,6 +571,8 @@ class _FbElevatedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            radius: radius,
+            textSize: textSize,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -558,6 +587,8 @@ class _FbSubElevatedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
@@ -570,6 +601,8 @@ class _FbSubElevatedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            radius: radius,
+            textSize: textSize,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -584,6 +617,8 @@ class _FbLightElevatedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
@@ -596,6 +631,8 @@ class _FbLightElevatedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            radius: radius,
+            textSize: textSize,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -610,6 +647,8 @@ class _FbOutlinedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
@@ -622,6 +661,8 @@ class _FbOutlinedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            radius: radius,
+            textSize: textSize,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -636,6 +677,8 @@ class _FbSubOutlinedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
@@ -648,6 +691,8 @@ class _FbSubOutlinedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            radius: radius,
+            textSize: textSize,
             primaryColor: primaryColor,
             onPressed: onPressed,
             onLongPress: onLongPress);
@@ -662,6 +707,8 @@ class _FbWarningButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? radius,
+    double? textSize,
     IconData? icon,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
@@ -673,6 +720,8 @@ class _FbWarningButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            radius: radius,
+            textSize: textSize,
             primaryColor: Get.themeToken.auxiliary.red,
             onPressed: onPressed,
             onLongPress: onLongPress);
