@@ -81,6 +81,9 @@ class FbButton extends StatelessWidget {
   //  高度：尽在size为free的时候生效
   final double? height;
 
+  //  按钮文案大小
+  final double? textSize;
+
   //  图标
   final IconData? icon;
 
@@ -120,6 +123,7 @@ class FbButton extends StatelessWidget {
     this.size = FbButtonSize.small,
     this.width = double.infinity,
     this.height = double.infinity,
+    this.textSize,
     this.icon,
     this.primaryColor,
     this.onPressed,
@@ -151,6 +155,7 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -166,6 +171,7 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -196,6 +202,7 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -211,6 +218,7 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback onPressed,
@@ -226,6 +234,7 @@ class FbButton extends StatelessWidget {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     VoidCallback onPressed,
     VoidCallback? onLongPress,
@@ -275,7 +284,7 @@ class FbButton extends StatelessWidget {
         ? Text(
             text!,
             style: TextStyle(
-              fontSize: size == FbButtonSize.big ? 16 : 14,
+              fontSize: textSize ?? (size == FbButtonSize.big ? 16 : 14),
             ),
           )
         : SizedBox(
@@ -522,18 +531,22 @@ class _FbTextButton extends FbButton {
     Key? key,
     FbButtonStatus? status,
     FbButtonSize? size,
+    double? textSize,
+    bool isOval = false,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
-    bool isOval = false,
-  }) : super(text,
-            key: key,
-            status: status ?? FbButtonStatus.normal,
-            size: size ?? FbButtonSize.small,
-            primaryColor: primaryColor,
-            isOval: isOval,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          status: status ?? FbButtonStatus.normal,
+          size: size ?? FbButtonSize.small,
+          primaryColor: primaryColor,
+          textSize: textSize,
+          isOval: isOval,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：背景填充按钮
@@ -545,23 +558,27 @@ class _FbElevatedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     bool isOval = false,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
-  }) : super(text,
-            key: key,
-            type: FbButtonType.elevated,
-            status: status ?? FbButtonStatus.normal,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            primaryColor: primaryColor,
-            isOval: isOval,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          type: FbButtonType.elevated,
+          status: status ?? FbButtonStatus.normal,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          textSize: textSize,
+          primaryColor: primaryColor,
+          isOval: isOval,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：次背景填充(灰色)按钮
@@ -573,23 +590,27 @@ class _FbSubElevatedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
     bool isOval = false,
-  }) : super(text,
-            key: key,
-            type: FbButtonType.subElevated,
-            status: status ?? FbButtonStatus.normal,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            isOval: isOval,
-            primaryColor: primaryColor,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          type: FbButtonType.subElevated,
+          status: status ?? FbButtonStatus.normal,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          textSize: textSize,
+          isOval: isOval,
+          primaryColor: primaryColor,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：背景填充(浅色)按钮
@@ -601,23 +622,27 @@ class _FbLightElevatedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
     bool isOval = false,
-  }) : super(text,
-            key: key,
-            type: FbButtonType.lightElevated,
-            status: status ?? FbButtonStatus.normal,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            isOval: isOval,
-            primaryColor: primaryColor,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          type: FbButtonType.lightElevated,
+          status: status ?? FbButtonStatus.normal,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          textSize: textSize,
+          isOval: isOval,
+          primaryColor: primaryColor,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：线性按钮
@@ -629,6 +654,7 @@ class _FbOutlinedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
@@ -642,6 +668,7 @@ class _FbOutlinedButton extends FbButton {
             size: size ?? FbButtonSize.small,
             width: width,
             height: height,
+            textSize: textSize,
             isOval: isOval,
             primaryColor: primaryColor,
             onPressed: onPressed,
@@ -657,23 +684,27 @@ class _FbSubOutlinedButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     Color? primaryColor,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
     bool isOval = false,
-  }) : super(text,
-            key: key,
-            status: status ?? FbButtonStatus.normal,
-            type: FbButtonType.subOutlined,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            isOval: isOval,
-            primaryColor: primaryColor,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          status: status ?? FbButtonStatus.normal,
+          type: FbButtonType.subOutlined,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          textSize: textSize,
+          isOval: isOval,
+          primaryColor: primaryColor,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
 
 /// 统一按钮样式：警告按钮
@@ -685,20 +716,24 @@ class _FbWarningButton extends FbButton {
     FbButtonSize? size,
     double? width,
     double? height,
+    double? textSize,
     IconData? icon,
     VoidCallback? onPressed,
     VoidCallback? onLongPress,
     bool isOval = false,
-  }) : super(text,
-            key: key,
-            status: status ?? FbButtonStatus.normal,
-            type: FbButtonType.warning,
-            icon: icon,
-            size: size ?? FbButtonSize.small,
-            width: width,
-            height: height,
-            isOval: isOval,
-            primaryColor: Get.themeToken.auxiliary.red,
-            onPressed: onPressed,
-            onLongPress: onLongPress);
+  }) : super(
+          text,
+          key: key,
+          status: status ?? FbButtonStatus.normal,
+          type: FbButtonType.warning,
+          icon: icon,
+          size: size ?? FbButtonSize.small,
+          width: width,
+          height: height,
+          textSize: textSize,
+          isOval: isOval,
+          primaryColor: Get.themeToken.auxiliary.red,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+        );
 }
