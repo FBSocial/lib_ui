@@ -14,6 +14,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
   final double? titleBottomGap;
   final double marginLeft;
   final double marginRight;
+  final Widget? titleWidget;
 
   const DefaultCommonShareHeader({
     Key? key,
@@ -27,6 +28,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
     this.titleBottomGap,
     this.marginLeft = 12,
     this.marginRight = 14,
+    this.titleWidget,
   }) : super(key: key);
 
   @override
@@ -73,15 +75,16 @@ class DefaultCommonShareHeader extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          title: Column(
-            children: [
-              Text(title ?? '', style: _titleStyle),
-              if (subTitle != null) ...[
-                SizedBox(height: titleBottomGap ?? 4),
-                Text(subTitle!, style: _subTitleStyle),
-              ],
-            ],
-          ),
+          title: titleWidget ??
+              Column(
+                children: [
+                  Text(title ?? '', style: _titleStyle),
+                  if (subTitle != null) ...[
+                    SizedBox(height: titleBottomGap ?? 4),
+                    Text(subTitle!, style: _subTitleStyle),
+                  ],
+                ],
+              ),
           elevation: 0,
           actions: [
             if (actionWidget != null) actionWidget!,
