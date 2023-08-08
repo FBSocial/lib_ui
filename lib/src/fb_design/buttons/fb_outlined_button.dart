@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:lib_theme/const.dart';
 import 'package:lib_theme/lib_theme.dart';
 import 'package:lib_ui/lib_ui.dart';
 
@@ -21,6 +22,9 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   final bool widthUnlimited;
   final bool placeIconAfterLabel;
 
+  /// - 是否是圆角
+  final bool isOval;
+
   const FbOutlinedButton.primary(
     this.label, {
     required this.onTap,
@@ -30,6 +34,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.icon,
     this.placeIconAfterLabel = false,
+    this.isOval = false,
     Key? key,
   })  : type = _ButtonType.primary,
         super(key: key);
@@ -43,6 +48,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.icon,
     this.placeIconAfterLabel = false,
+    this.isOval = false,
     Key? key,
   })  : type = _ButtonType.secondary,
         super(key: key);
@@ -56,6 +62,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.widthUnlimited = false,
     this.icon,
     this.placeIconAfterLabel = false,
+    this.isOval = false,
     Key? key,
   })  : type = _ButtonType.dangerous,
         super(key: key);
@@ -135,11 +142,13 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         side: MaterialStateProperty.resolveWith(
             (states) => getBorderSide(context, states)),
         padding: MaterialStateProperty.all(EdgeInsets.zero),
-        shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(
-                    FbButtonTheme.of(context)?.borderRadius ??
-                        (buttonSize.height / 6))))),
+        shape:
+            ButtonStyleButton.allOrNull<OutlinedBorder>(RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(FbButtonTheme.of(context)?.borderRadius ??
+                (buttonSize.height / (isOval ? 2 : 6))),
+          ),
+        )),
         foregroundColor: MaterialStateProperty.resolveWith(
             (states) => getForegroundColor(context, states)),
         overlayColor: MaterialStateProperty.resolveWith(
