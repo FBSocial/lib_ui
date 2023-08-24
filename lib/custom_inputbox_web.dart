@@ -176,12 +176,12 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
                             color: Characters(widget.controller.text).length >
                                     widget.maxLength!
                                 ? AppTheme.of(context).function.red1
-                                : AppTheme.of(context).fg.b60),
+                                : AppTheme.of(context).fg.b40),
                         children: [
                           TextSpan(
                             text: '/${widget.maxLength}',
                             style: TextStyle(
-                              color: AppTheme.of(context).fg.b60,
+                              color: AppTheme.of(context).fg.b40,
                               fontWeight: FontWeight.normal,
                               height: 1.35,
                               fontFamilyFallback: defaultFontFamilyFallback,
