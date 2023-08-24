@@ -58,7 +58,7 @@ mixin FbButtonMixin {
   Size getButtonSize(FbButtonSize size) {
     switch (size) {
       case FbButtonSize.mini:
-        return const Size(48, 24);
+        return const Size(56, 28);
 
       case FbButtonSize.small:
         return const Size(60, 32);
