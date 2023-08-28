@@ -37,6 +37,9 @@ class CustomInputBox extends StatefulWidget {
   final TextInputType? keyboardType;
   final bool showSuffixIcon;
 
+  /// - 输入框模式
+  final TextInputAction? textInputAction;
+
   /// 添加这个属性的原因：
   /// 直播添加小助手页面中的搜索框会对前一个页面即创建直播间页面(此页面使用了高斯模糊效果）在绘制
   /// 上会有影响，路由过程中会有很明显的阴影效果，目前不太清楚具体原因，此处让添加小助手页面的搜索
@@ -68,6 +71,7 @@ class CustomInputBox extends StatefulWidget {
       this.keyboardType,
       this.textAlign = TextAlign.start,
       this.showSuffixIcon = true,
+      this.textInputAction,
       Key? key})
       : super(key: key);
 
@@ -204,6 +208,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
       controller: widget.controller,
       textAlign: widget.textAlign,
       keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
       buildCounter: (
         context, {
         required currentLength,
