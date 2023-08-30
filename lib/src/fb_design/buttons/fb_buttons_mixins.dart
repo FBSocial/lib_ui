@@ -28,6 +28,18 @@ mixin FbButtonMixin {
     }
   }
 
+  double getTextSize(FbButtonSize size) {
+    switch (size) {
+      case FbButtonSize.mini:
+        return 12;
+      case FbButtonSize.small:
+      case FbButtonSize.medium:
+        return 14;
+      case FbButtonSize.large:
+        return 16;
+    }
+  }
+
   Widget buildLabelWidget(
       FbButtonState state, FbButtonSize size, String label) {
     final showLoading = state == FbButtonState.loading && size.canLoading();
@@ -49,7 +61,7 @@ mixin FbButtonMixin {
           Text(label,
               style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  fontSize: 14,
+                  fontSize: getTextSize(size),
                   fontFamilyFallback: defaultFontFamilyFallback)),
       ],
     );
