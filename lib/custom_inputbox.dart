@@ -118,7 +118,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
       hintStyle: widget.hintStyle,
       prefixIcon: widget.prefixIcon,
       prefixIconConstraints: widget.prefixIconConstraints,
-      suffixIconConstraints: const BoxConstraints(maxWidth: 50),
+      suffixIconConstraints: const BoxConstraints(maxWidth: 40),
       suffixIcon: (widget.showSuffixIcon && _isShowClear && !widget.readOnly)
           ? Center(
               child: IconButton(
