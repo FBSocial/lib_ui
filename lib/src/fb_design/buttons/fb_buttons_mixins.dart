@@ -42,8 +42,10 @@ mixin FbButtonMixin {
 
   Widget buildLabelWidget(
       FbButtonState state, FbButtonSize size, String label) {
-    final showLoading = state == FbButtonState.loading && size.canLoading();
-    final showText = !(size == FbButtonSize.small && showLoading);
+    final showLoading = state == FbButtonState.loading;
+    final showText =
+        !((size == FbButtonSize.small || size == FbButtonSize.mini) &&
+            showLoading);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
