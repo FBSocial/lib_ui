@@ -117,7 +117,7 @@ class FbButton extends StatelessWidget {
 
   // ====== Properties: Get ====== //
   //  获取正确颜色
-  Color get _primaryColor => primaryColor ?? Get.theme.primaryColor;
+  Color get _primaryColor => primaryColor ?? Get.themeToken.fg.blue1;
 
   FbButton(
     this.text, {
@@ -306,12 +306,14 @@ class FbButton extends StatelessWidget {
               strokeWidth: 1.5,
             ),
           );
-    //  设置子视图大小
-    child = SizedBox(
-      width: btnSize.width,
-      height: btnSize.height,
-      child: Center(child: child),
-    );
+    //  设置子视图大小 - 文字按钮不处理
+    if (type != FbButtonType.text) {
+      child = SizedBox(
+        width: btnSize.width,
+        height: btnSize.height,
+        child: Center(child: child),
+      );
+    }
     //  根据类型选择创建相应的按钮
     switch (type) {
       case FbButtonType.elevated:
@@ -481,7 +483,7 @@ class FbButton extends StatelessWidget {
         _getFgColor = Colors.white;
         break;
       case FbButtonType.subOutlined:
-        _getFgColor = AppTheme.of(context).fg.b60;
+        _getFgColor = AppTheme.of(context).fg.b100;
         break;
       default:
         break;
