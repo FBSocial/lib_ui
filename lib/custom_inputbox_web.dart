@@ -32,6 +32,7 @@ class WebCustomInputBox extends StatefulWidget {
   final VoidCallback? onEditingComplete;
   final bool needCounter;
   final EdgeInsets? contentPadding;
+  final EdgeInsets? inputPadding;
   final TextInputType keyboardType;
 
   final List<TextInputFormatter>? inputFormatters;
@@ -57,6 +58,7 @@ class WebCustomInputBox extends StatefulWidget {
     this.needCounter = true,
     this.keyboardType = TextInputType.text,
     this.contentPadding,
+    this.inputPadding,
     this.closeButtonEnable = false,
     this.closeButtonIconSize,
     this.inputFormatters,
@@ -83,10 +85,11 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
   @override
   Widget build(BuildContext context) {
     final borderColor = widget.borderColor ?? AppTheme.of(context).fg.b10;
-    final inputPadding = EdgeInsets.only(
-      right: _isMultiline ? 15 : 40,
-      bottom: _isMultiline ? 15 : 0,
-    );
+    final inputPadding = widget.inputPadding ??
+        EdgeInsets.only(
+          right: _isMultiline ? 15 : 40,
+          bottom: _isMultiline ? 15 : 0,
+        );
     return ClipRect(
         child: Stack(
       children: [
@@ -98,7 +101,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
             child: ValueListenableBuilder<bool>(
               valueListenable: _isHover,
               builder: (context, _hover, child) => Container(
-                height: _isMultiline ? widget.height : null,
+                height: widget.height,
                 padding: _closeButtonShow
                     ? inputPadding.copyWith(right: 8)
                     : inputPadding,
