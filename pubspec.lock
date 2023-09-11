@@ -2593,15 +2593,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
-  zego_express_engine:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "customer/fanbook"
-      resolved-ref: b1169128ff964d42f012b6291bbff6f2a8f053eb
-      url: "https://github.com/zegoim/zego-express-flutter-sdk.git"
-    source: git
-    version: "3.6.0"
 sdks:
   dart: ">=2.19.6 <3.0.0"
   flutter: ">=3.7.0"
