@@ -48,7 +48,7 @@ class _FadeButtonState extends BaseButtonState<FadeButton> {
         onLongPress: widget.onLongPress != null ? onLongPress : null,
         onTapDown: (_) {
           setState(() {
-            _opacity = 0.3;
+            _opacity = 0.03;
           });
         },
         onTapUp: (_) => _onTapUp(),

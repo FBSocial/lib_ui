@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lib_theme/const.dart';
 import 'package:lib_theme/default_theme.dart';
+
+enum LoadingStyle {
+  normal,
+  style1,
+}
 
 class PrimaryButtonStyle {
   final Color? background;
@@ -22,6 +28,9 @@ class PrimaryButton extends StatelessWidget {
 
   final PrimaryButtonStyle? disabledStyle;
 
+  final double loadingSize;
+  final LoadingStyle loadingStyle;
+
   const PrimaryButton(
       {required this.onPressed,
       required this.label,
@@ -32,6 +41,8 @@ class PrimaryButton extends StatelessWidget {
       this.height,
       this.disabledStyle,
       this.loading = false,
+      this.loadingSize = 10,
+      this.loadingStyle = LoadingStyle.normal,
       this.padding,
       Key? key})
       : super(key: key);
@@ -39,6 +50,32 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    Widget loadingIndicator = DefaultTheme.defaultLoadingIndicator(
+        color: Colors.white, size: loadingSize);
+    Widget text = Text(
+      label,
+      style: textStyle.copyWith(
+        color: enabled ? Colors.white : (disabledStyle?.text ?? Colors.white),
+      ),
+    );
+
+    Widget content;
+    if (loadingStyle == LoadingStyle.style1) {
+      content = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (loading) ...[
+            loadingIndicator,
+            sizeWidth5,
+          ],
+          text,
+        ],
+      );
+    } else {
+      content = loading ? loadingIndicator : text;
+    }
+
     return SizedBox(
       width: width,
       height: height,
@@ -55,16 +92,7 @@ class PrimaryButton extends StatelessWidget {
                 : (disabledStyle?.background ??
                     theme.primaryColor.withOpacity(0.4)),
           ),
-          child: loading
-              ? DefaultTheme.defaultLoadingIndicator(color: Colors.white)
-              : Text(
-                  label,
-                  style: textStyle.copyWith(
-                    color: enabled
-                        ? Colors.white
-                        : (disabledStyle?.text ?? Colors.white),
-                  ),
-                )),
+          child: content),
     );
   }
 }

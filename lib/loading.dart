@@ -114,7 +114,7 @@ class Loading {
 
   /// 关闭loading
   static void hide() {
-    if (toast != null) {
+    if (toast != null && !toast!.dismissed) {
       toast!.dismiss();
       toast = null;
     }

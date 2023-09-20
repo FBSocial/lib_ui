@@ -28,10 +28,24 @@ mixin FbButtonMixin {
     }
   }
 
+  double getTextSize(FbButtonSize size) {
+    switch (size) {
+      case FbButtonSize.mini:
+        return 12;
+      case FbButtonSize.small:
+      case FbButtonSize.medium:
+        return 14;
+      case FbButtonSize.large:
+        return 16;
+    }
+  }
+
   Widget buildLabelWidget(
       FbButtonState state, FbButtonSize size, String label) {
-    final showLoading = state == FbButtonState.loading && size.canLoading();
-    final showText = !(size == FbButtonSize.small && showLoading);
+    final showLoading = state == FbButtonState.loading;
+    final showText =
+        !((size == FbButtonSize.small || size == FbButtonSize.mini) &&
+            showLoading);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -49,7 +63,7 @@ mixin FbButtonMixin {
           Text(label,
               style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  fontSize: 14,
+                  fontSize: getTextSize(size),
                   fontFamilyFallback: defaultFontFamilyFallback)),
       ],
     );
@@ -58,7 +72,7 @@ mixin FbButtonMixin {
   Size getButtonSize(FbButtonSize size) {
     switch (size) {
       case FbButtonSize.mini:
-        return const Size(48, 24);
+        return const Size(56, 28);
 
       case FbButtonSize.small:
         return const Size(60, 32);
