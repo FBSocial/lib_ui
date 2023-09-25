@@ -645,15 +645,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.3"
-  flutter_image_view:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "2.0.1+1"
-      resolved-ref: "548b1bc23186491f5fa5a8c2fcaba4ca43e0ebf0"
-      url: "https://github.com/FBSocial/flutter_image_view.git"
-    source: git
-    version: "2.0.1+1"
   flutter_inappwebview:
     dependency: transitive
     description:
@@ -782,10 +773,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_screenutil
-      sha256: "0a122936b450324cbdfd51be0819cc6fcebb093eb65585e9cd92263f7a1a8a39"
+      sha256: ad6440cd347426395d8899f9f916aeb0cc0f8a139d5d6f5ffd89b51beb51aca6
       url: "https://pub.dev"
     source: hosted
-    version: "5.7.0"
+    version: "5.1.0"
   flutter_secure_storage:
     dependency: transitive
     description:
@@ -1144,14 +1135,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  kumi_popup_window:
-    dependency: "direct main"
-    description:
-      name: kumi_popup_window
-      sha256: "3159a2ee307850ab3520cfb162efc1e330aac2e560569e20227bf2ac93ec06d5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
   lib_api:
     dependency: transitive
     description:
@@ -2077,8 +2060,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.0.58"
-      resolved-ref: "1fa641b6f007344fae76ed67b9a88138b4eb3e36"
+      ref: "0.0.62"
+      resolved-ref: "96a1de8fed3507410e9a3933e22408052b137900"
       url: "https://github.com/FBSocial/tun_editor.git"
     source: git
     version: "0.0.17+17"
@@ -2406,11 +2389,12 @@ packages:
   zego_express_engine:
     dependency: transitive
     description:
-      name: zego_express_engine
-      sha256: "3a65071dda894f132a9c716748b055d8526824ae9dfafa6a32e28611f60d5e5d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.3.0"
+      path: "."
+      ref: "customer/fanbook"
+      resolved-ref: b9acc68e98012bb225ed4d6587ba9bd7fe986b76
+      url: "https://github.com/zegoim/zego-express-flutter-sdk.git"
+    source: git
+    version: "3.8.1"
 sdks:
   dart: ">=2.19.0 <3.0.0"
   flutter: ">=3.7.0"

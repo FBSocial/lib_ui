@@ -21,11 +21,6 @@ dependencies:
   rive: ^0.8.1
   # 缓存网络图像文件 https://github.com/Baseflow/flutter_cached_network_image
   cached_network_image: ^3.2.3
-  # 采用外接纹理的实现图片显示 https://github.com/BuildAndRelease/flutter_image_view
-  flutter_image_view:
-    git:
-      url: https://github.com/FBSocial/flutter_image_view.git
-      ref: 2.0.1+1
   # 土司 https://github.com/OpenFlutter/flutter_oktoast
   oktoast: ^3.1.5
   # IOS原生文本输入框插件 https://gitee.com/fanbook/native_text_field
