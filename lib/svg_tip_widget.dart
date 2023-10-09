@@ -67,7 +67,10 @@ class SvgTipWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           )
         ],
-        if (bottomWidget != null) bottomWidget!,
+        if (bottomWidget != null) ...[
+          sizeHeight24,
+          bottomWidget!,
+        ],
       ],
     );
   }
