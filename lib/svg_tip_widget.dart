@@ -14,6 +14,8 @@ class SvgTipWidget extends StatelessWidget {
   final FontWeight? fontWeight;
   final String? desc;
   final Widget? bottomWidget;
+  final double? textPadding;
+  final double? descPadding;
 
   const SvgTipWidget({
     required this.svgName,
@@ -25,6 +27,8 @@ class SvgTipWidget extends StatelessWidget {
     this.fontWeight,
     this.desc,
     this.bottomWidget,
+    this.textPadding,
+    this.descPadding,
     Key? key,
   }) : super(key: key);
 
@@ -41,9 +45,7 @@ class SvgTipWidget extends StatelessWidget {
             fit: fit ?? BoxFit.contain,
           ),
         ),
-        const SizedBox(
-          height: 18,
-        ),
+        SizedBox(height: textPadding ?? 18),
         if (text.hasValue)
           Text(
             text,
@@ -54,7 +56,7 @@ class SvgTipWidget extends StatelessWidget {
                 fontWeight: fontWeight ?? FontWeight.w500),
           ),
         if (desc != null) ...[
-          sizeHeight16,
+          SizedBox(height: descPadding ?? 16),
           Text(
             desc!,
             style: TextStyle(
