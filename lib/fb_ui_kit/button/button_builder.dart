@@ -468,7 +468,7 @@ class FbButton extends StatelessWidget {
         if (type == FbButtonType.text) {
           return bgColor;
         }
-        return AppTheme.of(context).fg.b10;
+        return AppTheme.of(context).fg.b5.withOpacity(0.05);
       default:
         return bgColor;
     }
@@ -493,7 +493,7 @@ class FbButton extends StatelessWidget {
         _getFgColor = _getFgColor.withOpacity(0.4);
         break;
       case FbButtonStatus.disable:
-        _getFgColor = AppTheme.of(context).fg.b20;
+        _getFgColor = AppTheme.of(context).fg.b30;
         break;
       case FbButtonStatus.finish:
         _getFgColor = AppTheme.of(context).fg.b40;
