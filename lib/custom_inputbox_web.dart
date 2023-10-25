@@ -163,7 +163,7 @@ class _WebCustomInputBoxState extends State<WebCustomInputBox> {
             child: Container(
               alignment:
                   _isMultiline ? Alignment.bottomRight : Alignment.centerRight,
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.fromLTRB(5, 5, 12, 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
