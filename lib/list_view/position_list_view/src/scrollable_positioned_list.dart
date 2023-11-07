@@ -510,7 +510,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
         });
       };
       setState(() {
-        // TODO: _startScroll can be re-entrant, which invalidates this assert.
+        // _startScroll can be re-entrant, which invalidates this assert.
         // assert(!_isTransitioning);
         secondary.target = index;
         secondary.alignment = alignment;

@@ -32,16 +32,16 @@ class FbListFooter extends StatelessWidget {
             case LoadMoreStatus.noMore:
               break;
             case LoadMoreStatus.ready:
-              // TODO: Handle this case.
+              // Handle this case.
               break;
             case LoadMoreStatus.loading:
-              // TODO: Handle this case.
+              // Handle this case.
               break;
             case LoadMoreStatus.error:
-              // TODO: Handle this case.
+              // Handle this case.
               break;
             case LoadMoreStatus.toTop:
-              // TODO: Handle this case.
+              // Handle this case.
               break;
           }
         }

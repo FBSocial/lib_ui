@@ -15,7 +15,7 @@ class FadePageRouter extends CustomPageAnimRouter {
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation, Widget child) {
-    // TODO: implement buildTransitions
+    // implement buildTransitions
     return FadeTransition(
       opacity: animation,
       child: child,
