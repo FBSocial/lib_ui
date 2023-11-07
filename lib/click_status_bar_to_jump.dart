@@ -29,8 +29,7 @@ class ClickStatusBarToReachTop extends StatelessWidget {
               controller!.animateTo(
                 0,
                 duration: const Duration(milliseconds: 300),
-                curve:
-                    Curves.linear, // Use a more appropriate curve.
+                curve: Curves.linear,
               );
               if (topAction != null) {
                 topAction!();

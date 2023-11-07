@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lib_ui/load_more.dart';
+
 enum FbLoadStatus {
   idle,
   loading,
   error,
   noMore,
 }
+
 /// 为列表提供加载态和重试机制
 class FbListFooter extends StatelessWidget {
   final Widget child;
@@ -27,21 +29,17 @@ class FbListFooter extends StatelessWidget {
       onNotification: (notification) {
         final metrics = notification.metrics;
         if (metrics.pixels >= metrics.maxScrollExtent) {
-          switch(loadStatus) {
-
+          // TODO: Handle cases.
+          switch (loadStatus) {
             case LoadMoreStatus.noMore:
               break;
             case LoadMoreStatus.ready:
-              // Handle this case.
               break;
             case LoadMoreStatus.loading:
-              // Handle this case.
               break;
             case LoadMoreStatus.error:
-              // Handle this case.
               break;
             case LoadMoreStatus.toTop:
-              // Handle this case.
               break;
           }
         }
