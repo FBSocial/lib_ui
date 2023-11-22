@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_theme/get_theme.dart';
 import 'package:lib_utils/universal_platform.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:get/get.dart';
+
 import 'circular_progress.dart';
 import 'icon_font.dart';
 
@@ -133,39 +134,76 @@ class Loading {
     hide();
     Timer(Duration(milliseconds: duration), hide);
 
-    toast = showToastWidget(Material(
-      color: Colors.transparent,
-      child: isEmpty
-          ? const SizedBox()
-          : GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: isModal ? null : hide,
-              child: Center(
-                child: Container(
-                  width: 128,
-                  height: 128,
-                  decoration: BoxDecoration(
-                      color: Get.themeToken.fg.widget,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        widget ?? getActivityState(state),
-                        if (label != null) sizeHeight24,
-                        if (label != null)
-                          Text(
-                            label,
-                            style: TextStyle(
-                                fontSize: 14, color: Get.themeToken.fg.white1),
-                          ),
-                      ],
+    toast = showToastWidget(
+      Material(
+        color: Colors.transparent,
+        child: isEmpty
+            ? const SizedBox()
+            : GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: isModal ? null : hide,
+                child: Center(
+                  child: Container(
+                    width: 128,
+                    height: 128,
+                    decoration: BoxDecoration(
+                        color: Get.themeToken.fg.widget,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          widget ?? getActivityState(state),
+                          if (label != null) sizeHeight24,
+                          if (label != null)
+                            Text(
+                              label,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Get.themeToken.fg.white1),
+                            ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
+      ),
+    );
+  }
+
+  /// 显示一个透明的弹窗，并且在一定时间后关闭
+  static void showTransparentDelayTip(
+    BuildContext context, {
+    int duration = 400,
+  }) {
+    hide();
+    Timer(Duration(milliseconds: duration), hide);
+    toast = showToastWidget(
+        Material(
+          color: Colors.transparent,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            child: Center(
+              child: Container(
+                width: 128,
+                height: 128,
+                color: Colors.transparent,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
-    ));
+          ),
+        ),
+        handleTouch: true);
   }
 
   /// 判断是否loading
