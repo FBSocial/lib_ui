@@ -20,6 +20,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
   final FbButtonState state;
   final bool widthUnlimited;
   final bool placeIconAfterLabel;
+  final double? borderRadius;
 
   /// - 是否是圆角
   final bool isOval;
@@ -34,6 +35,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.icon,
     this.placeIconAfterLabel = false,
     this.isOval = false,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.primary,
         super(key: key);
@@ -48,6 +50,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.icon,
     this.placeIconAfterLabel = false,
     this.isOval = false,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.secondary,
         super(key: key);
@@ -62,6 +65,7 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
     this.icon,
     this.placeIconAfterLabel = false,
     this.isOval = false,
+    this.borderRadius,
     Key? key,
   })  : type = _ButtonType.dangerous,
         super(key: key);
@@ -144,7 +148,8 @@ class FbOutlinedButton extends StatelessWidget with FbButtonMixin {
         shape:
             ButtonStyleButton.allOrNull<OutlinedBorder>(RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(FbButtonTheme.of(context)?.borderRadius ??
+            Radius.circular(borderRadius ??
+                FbButtonTheme.of(context)?.borderRadius ??
                 (buttonSize.height / (isOval ? 2 : 6))),
           ),
         )),
