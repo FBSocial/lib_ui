@@ -6,10 +6,16 @@ class TabEditText extends StatefulWidget {
   final TextStyle? style;
   final ValueChanged<String>? onChanged;
   final InputDecoration? decoration;
+  final int? maxLength;
 
-  const TabEditText(
-      {Key? key, this.initialText, this.style, this.onChanged, this.decoration})
-      : super(key: key);
+  const TabEditText({
+    Key? key,
+    this.initialText,
+    this.style,
+    this.onChanged,
+    this.decoration,
+    this.maxLength,
+  }) : super(key: key);
 
   @override
   _TabEditTextState createState() => _TabEditTextState();
@@ -49,7 +55,7 @@ class _TabEditTextState extends State<TabEditText> {
           TextStyle(
               fontSize: 17, color: AppTheme.of(context).fg.b100, height: 1),
       onChanged: widget.onChanged,
-      maxLength: 5,
+      maxLength: widget.maxLength,
       decoration: widget.decoration ??
           const InputDecoration(
             border: InputBorder.none,
