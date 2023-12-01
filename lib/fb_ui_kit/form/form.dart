@@ -148,6 +148,7 @@ class FormSection extends FormItem {
   final List<FormItem> children;
   final FormSectionStyle style;
   final bool dense;
+  final double? radius;
 
   FormSection({
     super.title,
@@ -156,6 +157,7 @@ class FormSection extends FormItem {
     required this.children,
     this.style = FormSectionStyle.ios,
     this.dense = false,
+    this.radius,
   });
 
   @override
@@ -185,7 +187,7 @@ class FormSection extends FormItem {
       case FormSectionStyle.ios:
         items = Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(radius ?? 8),
               color: theme.bg.bg3,
             ),
             child: items);
