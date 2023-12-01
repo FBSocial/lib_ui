@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lib_extension/string_extension.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 
@@ -79,7 +80,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
               Column(
                 children: [
                   Text(title ?? '', style: _titleStyle),
-                  if (subTitle != null) ...[
+                  if (subTitle.hasValue) ...[
                     SizedBox(height: titleBottomGap ?? 4),
                     Text(subTitle!, style: _subTitleStyle),
                   ],
