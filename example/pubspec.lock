@@ -657,8 +657,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "v5.5.0+7"
-      resolved-ref: "99c76a45a939238bbb0d8a5c8aaa1ddc1966595d"
+      ref: "v5.5.0+14"
+      resolved-ref: "821eed0cdf88012ec9f78a499aa2e1df38a9a5ce"
       url: "https://gitee.com/fanbook/flutter_inappwebview.git"
     source: git
     version: "5.5.0+5"
@@ -1006,8 +1006,8 @@ packages:
     dependency: transitive
     description:
       path: "packages/image_picker/image_picker"
-      ref: "image_picker_fix_1.0.1"
-      resolved-ref: "52e8961b7d578d022e1c51246e0b601659297d93"
+      ref: "image_picker_fix_1.0.1+1"
+      resolved-ref: "94194e4fbaf08170cef71d3752cc4dfb8a783e32"
       url: "https://github.com/FBSocial/packages.git"
     source: git
     version: "1.0.1"
@@ -1031,10 +1031,11 @@ packages:
   image_picker_ios:
     dependency: transitive
     description:
-      name: image_picker_ios
-      sha256: b3e2f21feb28b24dd73a35d7ad6e83f568337c70afab5eabac876e23803f264b
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/image_picker/image_picker_ios"
+      ref: "image_picker_ios_fix_0.8.8"
+      resolved-ref: b86185d560987bbd558925c893199fc7479b3932
+      url: "https://github.com/FBSocial/packages.git"
+    source: git
     version: "0.8.8"
   image_picker_linux:
     dependency: transitive
@@ -1384,8 +1385,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "11cc9ad92952a1aa41300d255b43ba2be435142f"
-      resolved-ref: "11cc9ad92952a1aa41300d255b43ba2be435142f"
+      ref: "1dff8dba00ca0c76acba37fa967b993edea306fd"
+      resolved-ref: "1dff8dba00ca0c76acba37fa967b993edea306fd"
       url: "https://gitee.com/fanbook/fb_media_picker.git"
     source: git
     version: "2.0.0+1"
@@ -2195,34 +2196,18 @@ packages:
     dependency: transitive
     description:
       name: ve_alog
-      sha256: "95026b62f3bf2f1f072742cdb19e73a5decfe8d4dd943bd26ad1ba677efbcea3"
+      sha256: a5d55c85d8f7e9aa1b31bac41cc67567dd93ac9e8c5dc2936565359aaa6e3434
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.5"
+    version: "0.0.9"
   ve_apm:
     dependency: transitive
     description:
       name: ve_apm
-      sha256: "713c3c61be6d26dc668e85bfc177712fe0b98f0cda4833c2b79402a1df2ffd8d"
+      sha256: "31956d98e0b135bff152d99ccab4734570bed333c267db2d2e3159c0a7f822e2"
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.4"
-  ve_code_gen:
-    dependency: transitive
-    description:
-      name: ve_code_gen
-      sha256: "889625ec524042ad78af31233f199830a85cf0914782dae74790f2079b22bbf2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.3"
-  ve_onekit:
-    dependency: transitive
-    description:
-      name: ve_onekit
-      sha256: e2b6e553868e32b98f7884c40176fd64ee113d4d6da4e74b589190a44e7c6d81
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.1"
+    version: "3.1.0"
   vector_graphics:
     dependency: transitive
     description:
@@ -2307,8 +2292,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "3.3.1"
-      resolved-ref: e91a3bd374915b113ef4a280a3546dbfed22dffb
+      ref: a383e0329d93e279e51b6bf0b22dccdad56ad331
+      resolved-ref: a383e0329d93e279e51b6bf0b22dccdad56ad331
       url: "https://github.com/FBSocial/volcengine_native.git"
     source: git
     version: "0.0.1"
