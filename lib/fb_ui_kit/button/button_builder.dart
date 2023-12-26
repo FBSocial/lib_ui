@@ -285,6 +285,7 @@ class FbButton extends StatelessWidget {
             text!,
             style: TextStyle(
               fontSize: textSize ?? (size == FbButtonSize.big ? 16 : 14),
+              fontWeight: FontWeight.w500,
             ),
           )
         : SizedBox(
