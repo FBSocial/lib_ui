@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
-import 'package:lib_ui/text_field/native_input.dart';
-import 'package:lib_utils/config/config.dart';
 import 'package:lib_utils/orientation_util.dart';
 
 import 'icon_font.dart';
@@ -43,13 +41,6 @@ class CustomInputBox extends StatefulWidget {
   /// - 输入框类型和输入数量限制
   final List<TextInputFormatter>? inputFormatters;
 
-  /// 添加这个属性的原因：
-  /// 直播添加小助手页面中的搜索框会对前一个页面即创建直播间页面(此页面使用了高斯模糊效果）在绘制
-  /// 上会有影响，路由过程中会有很明显的阴影效果，目前不太清楚具体原因，此处让添加小助手页面的搜索
-  /// 框单独使用flutter输入框
-  /// ---- 其它地方此属性不要使用！ ----
-  final bool useFlutter;
-
   const CustomInputBox(
       {required this.controller,
       this.hintText,
@@ -70,7 +61,6 @@ class CustomInputBox extends StatefulWidget {
       this.prefixIcon,
       this.prefixIconConstraints,
       this.height,
-      this.useFlutter = false,
       this.keyboardType,
       this.textAlign = TextAlign.start,
       this.showSuffixIcon = true,
@@ -143,64 +133,6 @@ class _CustomInputBoxState extends State<CustomInputBox> {
             )
           : const SizedBox(),
     );
-
-    if (Config.useNativeInput && !widget.useFlutter) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          NativeInput(
-            readOnly: widget.readOnly,
-            focusNode: widget.focusNode,
-            onChanged: _onTextChange,
-            autofocus: widget.autofocus,
-            controller: widget.controller,
-            decoration: decoration.copyWith(
-              contentPadding: widget.nativeContentPadding ??
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
-            ),
-            maxLength: widget.maxLength,
-            onEditingComplete: widget.onEditingComplete,
-            maxLengthEnforcement: widget.maxLength != null
-                ? MaxLengthEnforcement.none
-                : MaxLengthEnforcement.enforced,
-            borderRadius: widget.borderRadius,
-            height: widget.height,
-          ),
-          if (widget.needCounter && widget.maxLength != null) ...[
-            sizeHeight6,
-            Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: Container(
-                  padding: EdgeInsets.zero,
-                  child: RichText(
-                    text: TextSpan(
-                        text: '${widget.controller.text.characters.length}',
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            height: 1.35,
-                            fontFamilyFallback: defaultFontFamilyFallback,
-                            fontSize: 12,
-                            color: widget.controller.text.characters.length >
-                                    widget.maxLength!
-                                ? AppTheme.of(context).function.red1
-                                : AppTheme.of(context).fg.b60),
-                        children: [
-                          TextSpan(
-                            text: '/${widget.maxLength}',
-                            style: TextStyle(
-                                color: AppTheme.of(context).fg.b60,
-                                fontWeight: FontWeight.normal,
-                                height: 1.35,
-                                fontFamilyFallback: defaultFontFamilyFallback,
-                                fontSize: 12),
-                          )
-                        ]),
-                  )),
-            )
-          ]
-        ],
-      );
-    }
 
     return ClipRect(
         child: TextField(

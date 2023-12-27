@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lib_theme/app_theme.dart';
-import 'package:lib_theme/const.dart';
-import 'package:lib_theme/default_theme.dart';
 import 'package:lib_ui/custom_text_selection.dart';
-import 'package:lib_utils/config/config.dart';
-import 'package:lib_utils/universal_platform.dart';
-import 'package:native_text_field/native_text_field.dart';
 
 class NativeInput extends StatefulWidget {
   final TextEditingController? controller;
-  final NativeTextFieldController? nativeController;
   final FocusNode? focusNode;
   final InputDecoration decoration;
-  final TextInputType?
-      keyboardType; // iOS 支持的类型是 .text/.number/.phone/.emailAddress
+  final TextInputType? keyboardType;
+  // iOS 支持的类型是 .text/.number/.phone/.emailAddress
   final TextStyle? style;
   final TextAlign textAlign;
   final VoidCallback? onEditingComplete;
@@ -36,7 +29,6 @@ class NativeInput extends StatefulWidget {
 
   const NativeInput(
       {this.controller,
-      this.nativeController,
       this.focusNode,
       this.decoration = const InputDecoration(),
       this.keyboardType = TextInputType.text,
@@ -66,42 +58,7 @@ class NativeInput extends StatefulWidget {
 }
 
 class _NativeInputState extends State<NativeInput> {
-  int? _maxLength;
-
-//  String _allowRegExp = '';
-  Color? _fillColor;
-  late EdgeInsets _contentPadding;
-  late String _hintText;
-  TextStyle? _hintStyle;
-
   final ValueNotifier<int> _currentLengthNotifier = ValueNotifier(0);
-
-  /// 是否使用原生通用型输入框
-  bool get _useNativeInput => Config.useNativeInput || widget.forceNative;
-
-  @override
-  void initState() {
-    if (_useNativeInput) {
-      final List<TextInputFormatter> formats = widget.inputFormatters ?? [];
-      for (var element in formats) {
-        if (element is LengthLimitingTextInputFormatter) {
-          _maxLength = element.maxLength;
-        } else if (element is FilteringTextInputFormatter) {
-//          _allowRegExp = element.filterPattern.toString();
-        }
-      }
-      _maxLength ??= widget.maxLength;
-      _currentLengthNotifier.value =
-          widget.controller?.text.characters.length ?? 0;
-
-      _fillColor = widget.decoration.fillColor ?? Colors.transparent;
-      _contentPadding = widget.decoration.contentPadding as EdgeInsets? ??
-          const EdgeInsets.fromLTRB(8, 8, 8, 8);
-      _hintText = widget.decoration.hintText ?? '';
-      _hintStyle = widget.decoration.hintStyle;
-    }
-    super.initState();
-  }
 
   @override
   void dispose() {
@@ -111,116 +68,6 @@ class _NativeInputState extends State<NativeInput> {
 
   @override
   Widget build(BuildContext context) {
-    if (_useNativeInput) {
-      final maxLength = _maxLength == 0 ||
-              widget.maxLengthEnforcement == MaxLengthEnforcement.none
-          ? null
-          : _maxLength!;
-      return Stack(
-        alignment: Alignment.center,
-        children: [
-          Container(
-            padding: _contentPadding.copyWith(
-              right: widget.decoration.suffixIcon != null
-                  ? (UniversalPlatform.isIOS ? 40 : 48)
-                  : null,
-              left: widget.decoration.prefixIcon != null ? 38 : null,
-              bottom: widget.maxLines != 1 ? 20 : null,
-            ),
-            decoration: BoxDecoration(
-                color: _fillColor,
-                borderRadius: BorderRadius.circular(widget.borderRadius)),
-            child: NativeTextField(
-              text: widget.controller?.text ?? '',
-              controller: widget.controller,
-              nativeController: widget.nativeController,
-              focusNode: widget.focusNode,
-//              allowRegExp: _allowRegExp,
-              keyboardType: widget.keyboardType ?? TextInputType.text,
-              textStyle:
-                  widget.style ?? Theme.of(context).textTheme.titleMedium,
-              placeHolder: _hintText,
-              placeHolderStyle: _hintStyle ??
-                  TextStyle(
-                    color: AppTheme.of(context).fg.b60,
-                    fontWeight: FontWeight.normal,
-                    height: 1.35,
-                    fontFamilyFallback: defaultFontFamilyFallback,
-                    fontSize: 16,
-                  ),
-              textAlign: widget.textAlign,
-              onEditingComplete: widget.onEditingComplete,
-              onSubmitted: widget.onSubmitted,
-              onChanged: (string) {
-                _currentLengthNotifier.value = string.characters.length;
-                widget.onChanged?.call(string);
-              },
-              autoFocus: widget.autofocus,
-              maxLength: maxLength,
-              readOnly: widget.readOnly ?? false,
-              height: widget.height,
-              maxLines: widget.maxLines,
-              disableFocusNodeListener: widget.disableFocusNodeListener,
-              disableGesture: widget.disableGesture,
-              cursorColor: primaryColor,
-            ),
-          ),
-          if (widget.decoration.prefixIcon != null)
-            Row(
-              children: [
-                widget.decoration.prefixIcon!,
-              ],
-            ),
-          if (widget.decoration.suffixIcon != null)
-            Positioned(
-              right: 0,
-              child: widget.decoration.suffixIcon!,
-            )
-          else if (widget.maxLength != 0 && widget.buildCounter != null)
-            Positioned(
-              right: 0,
-              bottom: widget.maxLines != 1 ? 0 : null,
-              child: ValueListenableBuilder<int>(
-                  valueListenable: _currentLengthNotifier,
-                  builder: (ctx, value, _) {
-                    if (widget.buildCounter == null) {
-                      return RichText(
-                        text: TextSpan(
-                            text:
-                                '${widget.controller!.text.characters.length}',
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              height: 1.35,
-                              fontFamilyFallback: defaultFontFamilyFallback,
-                              fontSize: 12,
-                              color: widget.controller!.text.characters.length >
-                                      maxLength!
-                                  ? AppTheme.of(context).function.red1
-                                  : AppTheme.of(context).fg.b60,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: '/$maxLength',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: AppTheme.of(context).fg.b60,
-                                ),
-                              )
-                            ]),
-                      );
-                    } else {
-                      return widget.buildCounter!(
-                        context,
-                        currentLength: value,
-                        maxLength: widget.maxLength,
-                        isFocused: false,
-                      )!;
-                    }
-                  }),
-            )
-        ],
-      );
-    }
     return ClipRect(
         child: Padding(
       padding: const EdgeInsets.only(left: 1),

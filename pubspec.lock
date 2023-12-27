@@ -505,8 +505,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "2.0.0"
-      resolved-ref: c4195fd7143507c4c603af884dc997ecfa9b4ef3
+      ref: "979489d603c441517878ddc7cdb9c042f95078f0"
+      resolved-ref: "979489d603c441517878ddc7cdb9c042f95078f0"
       url: "https://github.com/FBSocial/fb_utils.git"
     source: git
     version: "2.0.0"
@@ -815,15 +815,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_text_field:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "2.0.2"
-      resolved-ref: bd9351a0579fdd90ee29b643a3f9f5ec013628d9
-      url: "https://github.com/FBSocial/flutter_text_field.git"
-    source: git
-    version: "2.0.1+1"
   flutter_vlc_player:
     dependency: transitive
     description:
@@ -1376,15 +1367,6 @@ packages:
       url: "https://gitee.com/fanbook/fb_media_picker.git"
     source: git
     version: "2.0.0+1"
-  native_text_field:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "2.0.3"
-      resolved-ref: "5e362b62281d245351aea7ad67ed3b1e723d1451"
-      url: "https://github.com/FBSocial/native_text_field.git"
-    source: git
-    version: "2.0.1+1"
   nested:
     dependency: transitive
     description:

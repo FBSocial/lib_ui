@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:lib_theme/app_theme.dart';
 import 'package:lib_theme/const.dart';
 import 'package:lib_ui/text_field/native_input.dart';
-import 'package:lib_utils/config/config.dart';
 import 'package:lib_utils/universal_platform.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -46,8 +45,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final bool compatibilityPadding =
-        UniversalPlatform.isAndroid && !Config.useNativeInput;
+    final bool compatibilityPadding = UniversalPlatform.isAndroid;
     return Material(
       child: SizedBox(
         height: 40,

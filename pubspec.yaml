@@ -23,11 +23,6 @@ dependencies:
   cached_network_image: ^3.2.3
   # 土司 https://github.com/OpenFlutter/flutter_oktoast
   oktoast: ^3.1.5
-  # IOS原生文本输入框插件 https://gitee.com/fanbook/native_text_field
-  native_text_field:
-    git:
-      url: https://github.com/FBSocial/native_text_field.git
-      ref: 2.0.3
 
   lib_base:
     path: ../lib_base
