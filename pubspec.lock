@@ -748,8 +748,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: "."
-      ref: "6.3.5+5"
-      resolved-ref: edbe01bf19d6843fad27a7b41bb2e2584b8dfd59
+      ref: "6.3.5+13"
+      resolved-ref: df788a3dcbf717496874c69767978a69d279f7c1
       url: "https://github.com/FBSocial/fb_flutter_quill.git"
     source: git
     version: "6.3.5"
@@ -987,7 +987,7 @@ packages:
     source: hosted
     version: "1.7.1"
   image_picker:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       path: "packages/image_picker/image_picker"
       ref: "image_picker_fix_1.0.1+1"
@@ -1215,6 +1215,13 @@ packages:
     dependency: transitive
     description:
       path: "../lib_net"
+      relative: true
+    source: path
+    version: "0.0.1"
+  lib_rich_text:
+    dependency: transitive
+    description:
+      path: "../lib_rich_text"
       relative: true
     source: path
     version: "0.0.1"
@@ -2329,6 +2336,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.1"
+  x_picker:
+    dependency: transitive
+    description:
+      path: "."
+      ref: "4f7c004f01f62e7fe8d18803bb4270418cc900b8"
+      resolved-ref: "4f7c004f01f62e7fe8d18803bb4270418cc900b8"
+      url: "https://gitee.com/fanbook/x_picker.git"
+    source: git
+    version: "0.0.1"
   xdg_directories:
     dependency: transitive
     description:

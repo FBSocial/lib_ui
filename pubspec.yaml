@@ -57,7 +57,12 @@ dependency_overrides:
   flutter_quill:
     git:
       url: https://github.com/FBSocial/fb_flutter_quill.git
-      ref: 6.3.5+12
+      ref: 6.3.5+13
+  image_picker:
+    git:
+      url: https://github.com/FBSocial/packages.git
+      path: packages/image_picker/image_picker/
+      ref: image_picker_fix_1.0.1+1
   device_info_plus: ^4.0.0
   analyzer: ^5.10.0
   flutter_cache_manager: ^3.3.0
