@@ -40,7 +40,7 @@ dependencies:
   sliding_sheet:
     git:
       url: https://github.com/FBSocial/sliding_sheet.git
-      ref: 0.5.2+2
+      ref: 0.5.2+3
   video_player: ^2.5.1
   simple_shadow: ^0.3.1
   device_info_plus: ^4.0.0

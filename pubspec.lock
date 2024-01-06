@@ -1887,8 +1887,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.5.2+2"
-      resolved-ref: aa8d81d8e82713b3b04eab40956679f57b15c3f1
+      ref: "0.5.2+3"
+      resolved-ref: "814ede6326981009b7f82848d25050cc26ec564e"
       url: "https://github.com/FBSocial/sliding_sheet.git"
     source: git
     version: "0.5.2"
