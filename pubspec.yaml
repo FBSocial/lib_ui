@@ -18,7 +18,7 @@ dependencies:
   # 矢量动画库：
   # pub.dev: https://pub.dev/packages/rive
   # OfficialWeb: https://rive.app/
-  rive: ^0.8.1
+  rive: ^0.9.1
   # 缓存网络图像文件 https://github.com/Baseflow/flutter_cached_network_image
   cached_network_image: ^3.2.3
   # 土司 https://github.com/OpenFlutter/flutter_oktoast
