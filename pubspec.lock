@@ -2328,15 +2328,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.1"
-  x_picker:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "4f7c004f01f62e7fe8d18803bb4270418cc900b8"
-      resolved-ref: "4f7c004f01f62e7fe8d18803bb4270418cc900b8"
-      url: "https://gitee.com/fanbook/x_picker.git"
-    source: git
-    version: "0.0.1"
   xdg_directories:
     dependency: transitive
     description:
