@@ -740,8 +740,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: "."
-      ref: "6.3.5+13"
-      resolved-ref: df788a3dcbf717496874c69767978a69d279f7c1
+      ref: "6.3.5+14"
+      resolved-ref: b32e63a4a26083898a0cbe056ed928fb355990b9
       url: "https://github.com/FBSocial/fb_flutter_quill.git"
     source: git
     version: "6.3.5"
@@ -1283,7 +1283,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: a93f584096b50eee42ff87176019bc43b2deee9e
+      resolved-ref: d09696fc7b6a218bd96dbc58e919bcf8a20fbba4
       url: "https://github.com/FBSocial/markdown_quill.git"
     source: git
     version: "1.0.0"
@@ -1361,8 +1361,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "1dff8dba00ca0c76acba37fa967b993edea306fd"
-      resolved-ref: "1dff8dba00ca0c76acba37fa967b993edea306fd"
+      ref: e89ffc24e7c2d59f560a0a48aad014c2855c0e74
+      resolved-ref: e89ffc24e7c2d59f560a0a48aad014c2855c0e74
       url: "https://gitee.com/fanbook/fb_media_picker.git"
     source: git
     version: "2.0.0+1"
