@@ -641,8 +641,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "v5.5.0+14"
-      resolved-ref: "821eed0cdf88012ec9f78a499aa2e1df38a9a5ce"
+      ref: "v5.5.0+15"
+      resolved-ref: "84c7b62482faba10429cd74a95b0d175b5c8fce3"
       url: "https://gitee.com/fanbook/flutter_inappwebview.git"
     source: git
     version: "5.5.0+5"

@@ -256,32 +256,6 @@ class SuperTooltip {
               ));
     }
 
-    /// Handling snap far away feature.
-    // if (snapsFarAwayVertically) {
-    //   maxHeight = null;
-    //   left = 0.0;
-    //   right = 0.0;
-    //   if (_targetCenter.dy > overlay.size.center(Offset.zero).dy) {
-    //     popupDirection = TooltipDirection.top;
-    //     top = 0.0;
-    //   } else {
-    //     popupDirection = TooltipDirection.bottom;
-    //     bottom = 0.0;
-    //   }
-    // } // Only one of of them is possible, and vertical has higher priority.
-    // else if (snapsFarAwayHorizontally) {
-    //   maxWidth = null;
-    //   top = 0.0;
-    //   bottom = 0.0;
-    //   if (_targetCenter.dx < overlay.size.center(Offset.zero).dx) {
-    //     popupDirection = TooltipDirection.right;
-    //     right = 0.0;
-    //   } else {
-    //     popupDirection = TooltipDirection.left;
-    //     left = 0.0;
-    //   }
-    // }
-
     _ballonOverlay = OverlayEntry(
         builder: (context) => _AnimationWrapper(
               builder: (context, opacity) => AnimatedOpacity(
@@ -357,33 +331,6 @@ class SuperTooltip {
       ),
     );
   }
-
-  // EdgeInsets _getBallonContainerMargin() {
-  //   final top = (showCloseButton == ShowCloseButton.outside)
-  //       ? closeButtonSize + 5
-  //       : 0.0;
-  //
-  //   switch (popupDirection) {
-  //     //
-  //     case TooltipDirection.down:
-  //       return EdgeInsets.only(
-  //         top: arrowTipDistance + arrowLength,
-  //       );
-  //
-  //     case TooltipDirection.up:
-  //       return EdgeInsets.only(
-  //           bottom: arrowTipDistance + arrowLength, top: top);
-  //
-  //     case TooltipDirection.left:
-  //       return EdgeInsets.only(right: arrowTipDistance + arrowLength, top: top);
-  //
-  //     case TooltipDirection.right:
-  //       return EdgeInsets.only(left: arrowTipDistance + arrowLength, top: top);
-  //
-  //     default:
-  //       throw AssertionError(popupDirection);
-  //   }
-  // }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -604,115 +551,6 @@ class _PopupBallonLayoutDelegate extends SingleChildLayoutDelegate {
 
   @override
   BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
-    // var calcMinWidth = _minWidth ?? 0.0;
-    // var calcMaxWidth = _maxWidth ?? double.infinity;
-    // var calcMinHeight = _minHeight ?? 0.0;
-    // var calcMaxHeight = _maxHeight ?? double.infinity;
-    //
-    // void calcMinMaxWidth() {
-    //   if (_left != null && _right != null) {
-    //     calcMaxWidth = constraints.maxWidth - (_left + _right);
-    //   } else if ((_left != null && _right == null) ||
-    //       (_left == null && _right != null)) {
-    //     // make sure that the sum of left, right + maxwidth isn't bigger than the screen width.
-    //     final sideDelta = (_left ?? 0.0) + (_right ?? 0.0) + _outSidePadding;
-    //     if (calcMaxWidth > constraints.maxWidth - sideDelta) {
-    //       calcMaxWidth = constraints.maxWidth - sideDelta;
-    //     }
-    //   } else {
-    //     if (calcMaxWidth > constraints.maxWidth - 2 * _outSidePadding) {
-    //       calcMaxWidth = constraints.maxWidth - 2 * _outSidePadding;
-    //     }
-    //   }
-    // }
-    //
-    // void calcMinMaxHeight() {
-    //   if (_top != null && _bottom != null) {
-    //     calcMaxHeight = constraints.maxHeight - (_top + _bottom);
-    //   } else if ((_top != null && _bottom == null) ||
-    //       (_top == null && _bottom != null)) {
-    //     // make sure that the sum of top, bottom + maxHeight isn't bigger than the screen Height.
-    //     final sideDelta = (_top ?? 0.0) + (_bottom ?? 0.0) + _outSidePadding;
-    //     if (calcMaxHeight > constraints.maxHeight - sideDelta) {
-    //       calcMaxHeight = constraints.maxHeight - sideDelta;
-    //     }
-    //   } else {
-    //     if (calcMaxHeight > constraints.maxHeight - 2 * _outSidePadding) {
-    //       calcMaxHeight = constraints.maxHeight - 2 * _outSidePadding;
-    //     }
-    //   }
-    // }
-    //
-    // switch (_popupDirection) {
-    //   //
-    //   case TooltipDirection.bottom:
-    //   case TooltipDirection.bottomLeft:
-    //   case TooltipDirection.bottomRight:
-    //     calcMinMaxWidth();
-    //     if (_bottom != null) {
-    //       calcMinHeight = calcMaxHeight =
-    //           constraints.maxHeight - _bottom - _targetCenter.dy;
-    //     } else {
-    //       calcMaxHeight = min(_maxHeight ?? constraints.maxHeight,
-    //               constraints.maxHeight - _targetCenter.dy) -
-    //           _outSidePadding;
-    //     }
-    //     break;
-    //
-    //   case TooltipDirection.top:
-    //   case TooltipDirection.topLeft:
-    //   case TooltipDirection.topRight:
-    //     calcMinMaxWidth();
-    //
-    //     if (_top != null) {
-    //       calcMinHeight = calcMaxHeight = _targetCenter.dy - _top;
-    //     } else {
-    //       calcMaxHeight =
-    //           min(_maxHeight ?? constraints.maxHeight, _targetCenter.dy) -
-    //               _outSidePadding;
-    //     }
-    //     break;
-    //
-    //   case TooltipDirection.right:
-    //   case TooltipDirection.rightTop:
-    //   case TooltipDirection.rightBottom:
-    //     calcMinMaxHeight();
-    //     if (_right != null) {
-    //       calcMinWidth =
-    //           calcMaxWidth = constraints.maxWidth - _right - _targetCenter.dx;
-    //     } else {
-    //       calcMaxWidth = min(_maxWidth ?? constraints.maxWidth,
-    //               constraints.maxWidth - _targetCenter.dx) -
-    //           _outSidePadding;
-    //     }
-    //     break;
-    //
-    //   case TooltipDirection.left:
-    //   case TooltipDirection.leftTop:
-    //   case TooltipDirection.leftBottom:
-    //     calcMinMaxHeight();
-    //     if (_left != null) {
-    //       calcMinWidth = calcMaxWidth = _targetCenter.dx - _left;
-    //     } else {
-    //       calcMaxWidth =
-    //           min(_maxWidth ?? constraints.maxWidth, _targetCenter.dx) -
-    //               _outSidePadding;
-    //     }
-    //     break;
-    //
-    //   default:
-    //     logger.info('err $_popupDirection');
-    //     throw AssertionError(_popupDirection);
-    // }
-    //
-    // final childConstraints = BoxConstraints(
-    //     minWidth: calcMinWidth > calcMaxWidth ? calcMaxWidth : calcMinWidth,
-    //     maxWidth: calcMaxWidth,
-    //     minHeight:
-    //         calcMinHeight > calcMaxHeight ? calcMaxHeight : calcMinHeight,
-    //     maxHeight: calcMaxHeight);
-
-    // logger.info("Child constraints: $childConstraints");
     return BoxConstraints(
         maxHeight: _maxHeight ?? constraints.maxHeight,
         maxWidth: _maxWidth ?? constraints.maxWidth);
