@@ -636,20 +636,6 @@ class _BubbleShape extends ShapeBorder {
       case TooltipDirection.bottomLeft:
       case TooltipDirection.bottomRight:
         return _getBottomRightPath(rect)
-          // ..lineTo(
-          //     min(
-          //         max(targetCenter.dx + arrowBaseWidth / 2,
-          //             rect.left + borderRadius + arrowBaseWidth),
-          //         rect.right - topRightRadius),
-          //     rect.top)
-          // ..lineTo(targetCenter.dx,
-          //     targetCenter.dy + arrowTipDistance) // up to arrow tip   \
-          // ..lineTo(
-          //     max(
-          //         min(targetCenter.dx - arrowBaseWidth / 2,
-          //             rect.right - topLeftRadius - arrowBaseWidth),
-          //         rect.left + topLeftRadius),
-          //     rect.top) //  down /
           ..lineTo(rect.left + topLeftRadius, rect.top)
           ..arcToPoint(Offset(rect.left, rect.top + topLeftRadius),
               radius: Radius.circular(topLeftRadius), clockwise: false)
@@ -692,19 +678,6 @@ class _BubbleShape extends ShapeBorder {
       case TooltipDirection.leftTop:
       case TooltipDirection.leftBottom:
         return _getLeftTopPath(rect)
-          // ..lineTo(
-          //     rect.right,
-          //     max(
-          //         min(targetCenter.dy - arrowBaseWidth / 2,
-          //             rect.bottom - bottomRightRadius - arrowBaseWidth),
-          //         rect.top + topRightRadius))
-          // ..lineTo(targetCenter.dx - arrowTipDistance,
-          //     targetCenter.dy) // right to arrow tip   \
-          //  left /
-          // ..lineTo(
-          //     rect.right,
-          //     min(targetCenter.dy + arrowBaseWidth / 2,
-          //         rect.bottom - bottomRightRadius))
           ..lineTo(rect.right, rect.bottom - borderRadius)
           ..arcToPoint(Offset(rect.right - bottomRightRadius, rect.bottom),
               radius: Radius.circular(bottomRightRadius))
@@ -721,21 +694,6 @@ class _BubbleShape extends ShapeBorder {
           ..lineTo(rect.left + topLeftRadius, rect.top)
           ..arcToPoint(Offset(rect.left, rect.top + topLeftRadius),
               radius: Radius.circular(topLeftRadius), clockwise: false)
-          // ..lineTo(
-          //     rect.left,
-          //     max(
-          //         min(targetCenter.dy - arrowBaseWidth / 2,
-          //             rect.bottom - bottomLeftRadius - arrowBaseWidth),
-          //         rect.top + topLeftRadius))
-          //
-          // //left to arrow tip   /
-          // ..lineTo(targetCenter.dx + arrowTipDistance, targetCenter.dy)
-          //
-          // //  right \
-          // ..lineTo(
-          //     rect.left,
-          //     min(targetCenter.dy + arrowBaseWidth / 2,
-          //         rect.bottom - bottomLeftRadius))
           ..lineTo(rect.left, rect.bottom - bottomLeftRadius)
           ..arcToPoint(Offset(rect.left + bottomLeftRadius, rect.bottom),
               radius: Radius.circular(bottomLeftRadius), clockwise: false);
