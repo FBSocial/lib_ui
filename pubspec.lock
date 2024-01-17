@@ -1361,8 +1361,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: e89ffc24e7c2d59f560a0a48aad014c2855c0e74
-      resolved-ref: e89ffc24e7c2d59f560a0a48aad014c2855c0e74
+      ref: "78607d64e6f3d654e608a7d100bb134bc786ab90"
+      resolved-ref: "78607d64e6f3d654e608a7d100bb134bc786ab90"
       url: "https://gitee.com/fanbook/fb_media_picker.git"
     source: git
     version: "2.0.0+1"
@@ -2251,10 +2251,10 @@ packages:
     dependency: transitive
     description:
       name: visibility_detector
-      sha256: ec932527913f32f65aa01d3a393504240b9e9021ecc77123f017755605e48832
+      sha256: "15c54a459ec2c17b4705450483f3d5a2858e733aee893dcee9d75fd04814940d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.2"
+    version: "0.3.3"
   volcengine_native:
     dependency: transitive
     description:
