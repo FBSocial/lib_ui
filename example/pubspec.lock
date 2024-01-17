@@ -1893,8 +1893,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.5.2+3"
-      resolved-ref: "814ede6326981009b7f82848d25050cc26ec564e"
+      ref: "0.5.2+4"
+      resolved-ref: "6ec667b86f923cbde21ff849d9827dd29c645ac5"
       url: "https://github.com/FBSocial/sliding_sheet.git"
     source: git
     version: "0.5.2"
