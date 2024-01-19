@@ -16,6 +16,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
   final double marginLeft;
   final double marginRight;
   final Widget? titleWidget;
+  final bool? showLeading;
 
   const DefaultCommonShareHeader({
     Key? key,
@@ -30,6 +31,7 @@ class DefaultCommonShareHeader extends StatelessWidget {
     this.marginLeft = 12,
     this.marginRight = 14,
     this.titleWidget,
+    this.showLeading = true,
   }) : super(key: key);
 
   @override
@@ -58,23 +60,25 @@ class DefaultCommonShareHeader extends StatelessWidget {
           leadingWidth: 36,
           toolbarHeight: 44,
           backgroundColor: appBarBg ?? AppTheme.of(context).bg.bg3,
-          leading: GestureDetector(
-            onTap: Get.back,
-            child: Container(
-              width: iconSize,
-              height: iconSize,
-              margin: EdgeInsets.only(left: marginLeft),
-              decoration: BoxDecoration(
-                color: AppTheme.of(context).fg.b5,
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                Icons.keyboard_arrow_down_outlined,
-                size: 22,
-                color: AppTheme.of(context).fg.b100,
-              ),
-            ),
-          ),
+          leading: (showLeading ?? true)
+              ? GestureDetector(
+                  onTap: Get.back,
+                  child: Container(
+                    width: iconSize,
+                    height: iconSize,
+                    margin: EdgeInsets.only(left: marginLeft),
+                    decoration: BoxDecoration(
+                      color: AppTheme.of(context).fg.b5,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.keyboard_arrow_down_outlined,
+                      size: 22,
+                      color: AppTheme.of(context).fg.b100,
+                    ),
+                  ),
+                )
+              : const SizedBox(width: iconSize),
           centerTitle: true,
           title: titleWidget ??
               Column(
