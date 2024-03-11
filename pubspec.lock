@@ -916,10 +916,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_screenutil
-      sha256: "0a122936b450324cbdfd51be0819cc6fcebb093eb65585e9cd92263f7a1a8a39"
+      sha256: ad6440cd347426395d8899f9f916aeb0cc0f8a139d5d6f5ffd89b51beb51aca6
       url: "https://pub.dev"
     source: hosted
-    version: "5.7.0"
+    version: "5.1.0"
   flutter_secure_storage:
     dependency: transitive
     description:
@@ -976,6 +976,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
+  flutter_watermarked_image:
+    dependency: transitive
+    description:
+      path: "."
+      ref: ed49c1df6b80ff4a1bb938e418df98d0cfc82c98
+      resolved-ref: ed49c1df6b80ff4a1bb938e418df98d0cfc82c98
+      url: "https://github.com/FBSocial/flutter_watermarked_image"
+    source: git
+    version: "0.0.1"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -1051,10 +1060,11 @@ packages:
   head_image_cropper:
     dependency: transitive
     description:
-      name: head_image_cropper
-      sha256: a4e354ee6218e89479733644c03c72a8c3a106e46705d57693ca2fab5d29d689
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: a16d12bfb02569356d03cf84efe28b5f875638ec
+      resolved-ref: a16d12bfb02569356d03cf84efe28b5f875638ec
+      url: "https://github.com/FBSocial/head_image_cropper.git"
+    source: git
     version: "3.1.0"
   hive:
     dependency: transitive
@@ -1084,10 +1094,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: "6aa2946395183537c8b880962d935877325d6a09a2867c3970c05c0fed6ac482"
+      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.5"
+    version: "0.13.6"
   http_client_helper:
     dependency: transitive
     description:
@@ -1436,6 +1446,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.0"
+  material_tag_editor:
+    dependency: transitive
+    description:
+      name: material_tag_editor
+      sha256: "02582fad5f2f4e761ae089b1b63156827612bc720e1c229ca887f99c22ada0b9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.2"
   media_kit:
     dependency: transitive
     description:
@@ -1448,26 +1466,27 @@ packages:
     dependency: transitive
     description:
       name: media_kit_libs_macos_video
-      sha256: "28ad624666cd20ed78f96a26917dddf6f286ea4bab21620676cc59ba62f3d3e5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.6"
-  media_kit_libs_windows_video:
-    dependency: transitive
-    description:
-      name: media_kit_libs_windows_video
-      sha256: b343e644927982a2ef3db63877b36d84bdda8173d8318ca0d1c68c1ea8a35982
+      sha256: c4d3706af5a67bf194d8208eef5cf29ea79e64931ea9bcd50f665b9a438f8416
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  media_kit_libs_windows_video:
+    dependency: transitive
+    description:
+      path: media_kit_libs_windows_video
+      ref: "media_kit-v0.0.11+1"
+      resolved-ref: "13b7ea85c1f6899635a8c3296c7e6a6ce8e40940"
+      url: "https://github.com/FBSocial/media-kit.git"
+    source: git
+    version: "1.0.2"
   media_kit_native_event_loop:
     dependency: transitive
     description:
       name: media_kit_native_event_loop
-      sha256: "5351f0c28124b5358756515d8619abad182cdefe967468d7fb5b274737cc2f59"
+      sha256: "521125e534603c3f603b93283db3938f557f33ecc383fbd62edd4beb3bf73747"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.6"
+    version: "1.0.4"
   media_kit_video:
     dependency: transitive
     description:
@@ -2257,8 +2276,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.0.60"
-      resolved-ref: "8fd3ce805cc035bd2297783b890f6c994a6ace7c"
+      ref: develop
+      resolved-ref: "12954369bb9bbb8cfbbaa499f2a668eca460001c"
       url: "https://github.com/FBSocial/tun_editor.git"
     source: git
     version: "0.0.17+17"
@@ -2306,10 +2325,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher
-      sha256: "75f2846facd11168d007529d6cd8fcb2b750186bea046af9711f10b907e1587e"
+      sha256: eb1e00ab44303d50dd487aab67ebc575456c146c6af44422f9c13889984c00f3
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.10"
+    version: "6.1.11"
   url_launcher_android:
     dependency: transitive
     description:
@@ -2593,6 +2612,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  zego_express_engine:
+    dependency: transitive
+    description:
+      path: "."
+      ref: "customer/fanbook"
+      resolved-ref: c6705501c0dae9d216d8cd642777071496b46c9e
+      url: "https://github.com/zegoim/zego-express-flutter-sdk.git"
+    source: git
+    version: "3.8.1"
 sdks:
   dart: ">=2.19.6 <3.0.0"
   flutter: ">=3.7.0"
